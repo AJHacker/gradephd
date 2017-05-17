@@ -1,7 +1,7 @@
 <html>
 <body>
 <?php
-  echo $_GET["error"] + "<br>";
+  echo $_GET["error"];
 ?>
   <form action="user.php" method="post">
   AndrewID: <input type="text" name="name"><br>
