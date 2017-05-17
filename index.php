@@ -1,6 +1,6 @@
 <html>
 <php?
-echo 'welcome';
+  echo "welcome";
 ?>
 
 </html>
