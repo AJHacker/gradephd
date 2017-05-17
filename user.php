@@ -5,10 +5,15 @@
   $name = $_POST["name"];
   $pass = $_POST["password"];
   if(file_exists ("/users/"+$name+strlen($pass))){
-    echo 'USER FOUND';
+    echo 'Classes:';
   } else {
-    header("Location: https://gradephd.herokuapp.com/?error=USER NOT FOUND!"); /* Redirect browser */
-    exit();
+    if (mkdir("/users/" + $name+strlen($pass), 0700,true)){
+       echo 'User Created With Name ' + $name + 'and password length of ' + strlen($pass);
+    
+    } else{
+      echo 'error!'; 
+    }
+   
   }
 ?>
 
