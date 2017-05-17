@@ -7,7 +7,8 @@
   if(file_exists ( "/users/"+$name )){
     echo 'USER FOUND';
   } else {
-    echo 'USER CREATED'; 
+    header("Location: https://gradephd.herokuapp.com/?"); /* Redirect browser */
+    exit();
   }
 ?>
 
