@@ -36,7 +36,7 @@
 		
 
 	} elseif($action == "signin"){
-		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email."';";
+		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
