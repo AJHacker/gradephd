@@ -9,7 +9,7 @@
 
 	$action = $_POST["action"];
 	$email = $_POST["email"];
-	$pass = $_POST["password"];
+	$pass = $_POST["pass"];
 	$repass = $_POST["repass"];
 	echo $action . $email .$pass .$repass;
 	function pg_connection_string_from_database_url() {
