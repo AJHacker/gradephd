@@ -17,11 +17,11 @@
       (
       EMAIL            TEXT    NOT NULL,
       PASSWORD         TEXT    NOT NULL,
-      CLASS1           TEXT    IS NULL,
-      CLASS2           TEXT    IS NULL,
-      CLASS3           TEXT    IS NULL,
-      CLASS4           TEXT    IS NULL,
-      CLASS5           TEXT    IS NULL
+      CLASS1           TEXT,
+      CLASS2           TEXT,
+      CLASS3           TEXT,
+      CLASS4           TEXT,
+      CLASS5           TEXT
       );
 EOF;
 
