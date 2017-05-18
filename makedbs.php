@@ -10,18 +10,18 @@
 	if(!$db)echo "ERROR";
 	if($db)echo "WORKS";
 	pg_close($db);
-	exit();
+	//exit();
 
 	$sql =<<<EOF
       CREATE TABLE USERS
       (
       EMAIL            TEXT    NOT NULL,
       PASSWORD         TEXT    NOT NULL,
-      CLASS1           TEXT    NOT NULL,
-      CLASS2           TEXT    NOT NULL,
-      CLASS3           TEXT    NOT NULL,
-      CLASS4           TEXT    NOT NULL,
-      CLASS5           TEXT    NOT NULL
+      CLASS1           TEXT    IS NULL,
+      CLASS2           TEXT    IS NULL,
+      CLASS3           TEXT    IS NULL,
+      CLASS4           TEXT    IS NULL,
+      CLASS5           TEXT    IS NULL
       );
 EOF;
 
