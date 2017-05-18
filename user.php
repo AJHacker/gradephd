@@ -29,7 +29,7 @@
 			header("Location: https://gradephd.herokuapp.com/?error=User Exists With Email"); /* Redirect browser */
 			exit();
 		}
-	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES (".$email .",".$pass.")";
+	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')";
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
 	 	echo "Welcome to GradePHD ".$email;
