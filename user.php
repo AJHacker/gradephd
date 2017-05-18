@@ -20,7 +20,7 @@
 	$db = pg_connect(pg_connection_string_from_database_url());
 
 	if($action == "signup"){
-		if(!$pass==$repass){
+		if($pass!=$repass){
 			header("Location: https://gradephd.herokuapp.com/?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
