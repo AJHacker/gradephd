@@ -7,9 +7,9 @@
 	}
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
-	if(!$db)echo "ERROR";
-	if($db)echo "WORKS";
-	pg_close($db);
+	//if(!$db)echo "ERROR";
+	//if($db)echo "WORKS";
+	//pg_close($db);
 	//exit();
 
 	$sql =<<<EOF
