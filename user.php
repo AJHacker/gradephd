@@ -42,6 +42,7 @@
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
 			exit();
 		}
+		echo "Welcome Back to GradePHD ".$email;
 
 
 	} elseif($action == "reset") {
