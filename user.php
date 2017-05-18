@@ -34,7 +34,7 @@
 	 	echo "Welcome to GradePHD ".$email;
 		
 
-	} else if($action == "signin"){
+	} elseif($action == "signin"){
 		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email.";";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){
@@ -43,7 +43,7 @@
 		}
 
 
-	} else if($action == "reset") {
+	} elseif($action == "reset") {
 		echo "will make this shit later";
 	} else {
 		echo "FUCKING HELL!";
