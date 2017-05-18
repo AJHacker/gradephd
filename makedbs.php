@@ -28,6 +28,6 @@ EOF;
 
 	$result=pg_query($db,$sql);
 	echo pg_last_error();
-	echo $result;
+	//echo $result;
 
 ?>
