@@ -22,6 +22,12 @@
 			header("https://gradephd.herokuapp.com/?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
+		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email.";";
+		$result=pg_query($db,$query);
+		if (0!=pg_num_rows($result)){
+			header("https://gradephd.herokuapp.com/?error=User Exists With Email"); /* Redirect browser */
+			exit();
+		}
 	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES (".$email ",".$pass.")";
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
@@ -29,9 +35,12 @@
 		}
 
 	} else if($action == "signin"){
-		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email."' AND password IS '".$pass."';";
+		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email.";";
 		$result=pg_query($db,$query);
-;
+		if (0==pg_num_rows($result)){
+			header("https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
+			exit();
+		}
 
 
 	} else if($action == "reset") {
