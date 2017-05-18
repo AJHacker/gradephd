@@ -4,7 +4,7 @@
 
 </head>
 <body>
-
+<p>
 <?php
 	$action = $_POST["action"];
 	$email = $_POST["email"];
@@ -54,7 +54,7 @@
 
 
 ?>
-
+</p>
 
 </body>
 </html>
