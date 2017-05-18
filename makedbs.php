@@ -12,10 +12,10 @@
 	//pg_close($db);
 	//exit();
 
-	$sql =<<<EOF
+	$sqltest =<<<EOF
       CREATE TABLE USERS
       (
-      EMAIL            TEXT    NOT NULL,
+      EMAIL            TEXT    NOT NULL PRIMARY KEY,
       PASSWORD         TEXT    NOT NULL,
       CLASS1           TEXT,
       CLASS2           TEXT,
@@ -25,6 +25,7 @@
       );
 EOF;
 
+	$sql = "ALTER TABLE USERS ADD PRIMARY KEY (EMAIL);"
 
 	$result=pg_query($db,$sql);
 	echo pg_last_error();

@@ -1,7 +1,10 @@
 <head>
 <link rel="stylesheet" href="styles/mainpage.css">
 </head>
-<form action="/user.php" method="get">
+<?php 
+  echo $_GET["error"];
+?>
+<form action="/user.php" method="post">
   <input checked="<%= true %>" id="signin" name="action" type="radio" value="signin"></input>
   <label for="signin">Sign in</label>
   <input id="signup" name="action" type="radio" value="signup"></input>
