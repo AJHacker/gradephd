@@ -25,7 +25,7 @@
       );
 EOF;
 
-	$sql = "ALTER TABLE USERS ADD PRIMARY KEY (EMAIL);";
+	$sqltest2 = "ALTER TABLE USERS ADD PRIMARY KEY (EMAIL);";
 
 	$result=pg_query($db,$sql);
 	echo pg_last_error();
