@@ -28,5 +28,5 @@
 </form>
 <?php 
   echo "<center>".$_GET["error"]."</center>";
-  ?>
+?>
 <div id="hint">Click on the tabs</div>
