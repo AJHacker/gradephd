@@ -6,7 +6,7 @@
 <body>
 <p>
 <?php
-
+	session_start();
 	$action = $_POST["action"];
 	$email = $_POST["email"];
 	$pass = $_POST["pass"];
@@ -44,12 +44,12 @@
 		}
 		$query= "SELECT password FROM users WHERE email='".$email."';";
         $result=pg_query($db,$query);
-	$correct_pass=pg_fetch_row($result)[0];
-        if($pass!=$correct_pass) {
+		$correct_pass=pg_fetch_row($result)[0];
+        if($pass!=$correct_pass) { //Verify password
             header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ");
             exit();
         }
-
+        $_SESSION['verifiedUser'] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		
 
