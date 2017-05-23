@@ -20,7 +20,7 @@
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
 
-	$query= "SELECT * FROM users WHERE email = '".$email."';";
+	$query= "SELECT * FROM users WHERE email = '".$verifiedUser."';";
 	$result=pg_query($db,$query);
 		
 
