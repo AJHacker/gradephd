@@ -44,9 +44,8 @@
 		}
 		$query= "SELECT password FROM users WHERE email='".$email."';";
         $correct_pass=pg_query($db,$query);
-        echo $correct_pass;
         if($pass!=$correct_pass) {
-            header("Location: https://gradephd.herokuapp.com/?error=Invalid Password");
+            header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ".$correct_pass);
             exit();
         }
 
