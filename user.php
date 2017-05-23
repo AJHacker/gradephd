@@ -45,6 +45,7 @@
 		
 
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
+		
 
 
 	} elseif($action == "reset") {
