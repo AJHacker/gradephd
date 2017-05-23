@@ -3,9 +3,7 @@
 </head>
 
 <form action="/user.php" method="post">
-  <?php 
-  echo "<center>".$_GET["error"]."</center>";
-  ?>
+  
   <input checked="<%= true %>" id="signin" name="action" type="radio" value="signin"></input>
   <label for="signin">Sign in</label>
   <input id="signup" name="action" type="radio" value="signup"></input>
@@ -28,4 +26,7 @@
     </span>
   </button>
 </form>
+<?php 
+  echo "<center>".$_GET["error"]."</center>";
+  ?>
 <div id="hint">Click on the tabs</div>

@@ -44,13 +44,14 @@
         }
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
-		if (0==pg_num_rows($result)){
+		if (0==pg_num_rows($result)){//NO USER FOUND
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
 			exit();
 		}
 		
 
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
+		
 
 
 	} elseif($action == "reset") {
