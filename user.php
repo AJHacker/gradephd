@@ -18,31 +18,33 @@
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
 
-	if($action == "signup"){
-		if($pass!=$repass){
+	if($action == "signup"){ //NEW USER SIGN UP
+		if($pass!=$repass){ //Passwords Don't match
 			header("Location: https://gradephd.herokuapp.com/?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
 		$query= "SELECT email,password,class1,class2,class3,class4,class5 FROM users WHERE email IS '".$email.";";
 		$result=pg_query($db,$query);
-		if (0!=pg_num_rows($result)){
+		if (0!=pg_num_rows($result)){ // CHECK IF USER EXISTS
 			header("Location: https://gradephd.herokuapp.com/?error=User Exists With Email"); /* Redirect browser */
 			exit();
 		}
-	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')";
+	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')"; //CREATE USER
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
-	 	echo "Welcome to GradePHD ".$email;
+	 	echo "<center>Welcome to GradePHD ".$email."</center>";
 		
 
-	} elseif($action == "signin"){
+	} elseif($action == "signin") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
 			exit();
-		}
-		echo "Welcome Back to GradePHD ".$email;
+		} 
+		
+
+		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 
 
 	} elseif($action == "reset") {
