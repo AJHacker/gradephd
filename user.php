@@ -36,12 +36,18 @@
 		
 
 	} elseif($action == "signin") { //SIGN IN
+        $query= "SELECT password FROM users WHERE email='".$email."';";
+        $correct_pass=pg_query($db,$query);
+        if($pass!=$correct_pass) {
+            header("Location: https://gradephd.herokuapp.com/?error=Invalid Password");
+            exit();
+        }
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
 			exit();
-		} 
+		}
 		
 
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
