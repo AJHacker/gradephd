@@ -31,7 +31,7 @@ $db = pg_connect(pg_connection_string_from_database_url());
          echo $row[0];
        }
       }
-      pg_query($db, "TRUNCATE USERS;");
+      pg_query($db, "TRUNCATE TABLE USERS;");
     }
 
    pg_close($db);
