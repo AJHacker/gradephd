@@ -26,12 +26,13 @@ $db = pg_connect(pg_connection_string_from_database_url());
     } else {
      // OLD CODE FROM WOFM
      while ($row = pg_fetch_row($result1)) { 
-       if (!($row[0]=="users")) {
+       if (!($row[0]=="users" || $row[0]=="all_classes")) {
          pg_query($db, "DROP TABLE " . $row[0] . ";");
          echo $row[0];
        }
       }
       pg_query($db, "TRUNCATE TABLE USERS;");
+      pg_query($db, "TRUNCATE TABLE ALL_CLASSES");
     }
 
    pg_close($db);
