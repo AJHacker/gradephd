@@ -11,6 +11,8 @@
 	//if($db)echo "WORKS";
 	//pg_close($db);
 	//exit();
+	
+	pg_query($db,"DROP TABLE USERS");
 
 	$sqltest =<<<EOF
       CREATE TABLE USERS
@@ -28,10 +30,16 @@
       );
 EOF;
 
-	$sqltest2 = "ALTER TABLE USERS ADD PRIMARY KEY (EMAIL);";
-
-	$result=pg_query($db,$sql);
+	$sqltest1 =<<<EOF
+      CREATE TABLE ALL_CLASSES
+      (
+	NUMBER		TEXT	NOT NULL 	PRIMARY KEY,
+	SEMESTER	TEXT 	NOT NULL,
+	PROFESSOR 	TEXT 	NOT NULL
+      );
+EOF;
+	$result=pg_query($db,$sqltest);
 	echo pg_last_error();
-	//echo $result;
-
+	$result=pg_query($db,$sqltest1);
+	echo pg_last_error();
 ?>
