@@ -21,7 +21,10 @@
       CLASS2           TEXT,
       CLASS3           TEXT,
       CLASS4           TEXT,
-      CLASS5           TEXT
+      CLASS5           TEXT,
+	CLASS6		TEXT,
+	CLASS7		TEXT,
+	CLASS8		TEXT
       );
 EOF;
 
