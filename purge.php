@@ -1,5 +1,7 @@
 <html>
-
+<head>
+<link rel="stylesheet" href="styles/mainpage.css">
+</head>
 <h1>Welcome!</h1>
 <?php
 $user = $_POST['user'];
