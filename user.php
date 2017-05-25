@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
 <head>
 <link rel="stylesheet" href="styles/mainpage.css">
@@ -6,7 +9,6 @@
 <body>
 <p>
 <?php
-	session_start();
 	$action = $_POST["action"];
 	$email = $_POST["email"];
 	$pass = $_POST["pass"];
@@ -49,7 +51,7 @@
             header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ");
             exit();
         }
-        $_SESSION['verifiedUser'] = $email;
+        $_SESSION["verifiedUser"] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		
 

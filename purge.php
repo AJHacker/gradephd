@@ -23,26 +23,24 @@ if($user == "admin" && $pass == "admin") {
             print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
         } else {
          // OLD CODE FROM WOFM
-         while ($row = pg_fetch_row($result1)) { 
-            pg_query($db, "DROP TABLE " . $row[0] . ";");
-            echo $row[0];
-           }
-          }
+            while ($row = pg_fetch_row($result1)) { 
+                pg_query($db, "DROP TABLE " . $row[0] . ";");
+                echo $row[0];
+            }
+          
         }
     
        pg_close($db);
-}
-else
-{
-    if(isset($_POST))
-    {?>
-
+} else {
+    if(isset($_POST)) {
+        echo '
             <form method="POST" action="purge.php">
             User <input type="text" name="user"></input><br/>
             Pass <input type="password" name="pass"></input><br/>
             <input type="submit" name="submit" value="Purge"></input>
             </form>
-    <?}
+            ';
+    }
 }
 
 ?>

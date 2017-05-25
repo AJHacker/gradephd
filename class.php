@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
 <head>
 <script type="text/javascript">
@@ -10,6 +13,7 @@
 <body>
 <center>
 <?php
+
     $user=$_SESSION["verifiedUser"];
 
     if(!$user){
