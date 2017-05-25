@@ -37,16 +37,23 @@
             </select>
             <br>
             Professor: <input type='text' name='prof' placeholder='Sullivan'><br> 
-         
+            Points or Percentages?: 
+            <input type='radio' name='porp' value='percentage'>Percent
+            <input type='radio' name='porp' value='points'>Points<br>
+
             <input type='submit' value='Submit'>
         </form> 
-        ");
-    } elseif ($coursenum && $semester && $prof) {
-        $class_name=$coursenum . $semester . $prof;
-        $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
-            );";
-        //initialize new class table
+        ";
     }
+    else{
+        echo "fuck everything";
+    }
+    // } elseif ($coursenum && $semester && $prof) {
+    //     $class_name=$coursenum . $semester . $prof;
+    //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
+    //         );";
+    //     //initialize new class table
+    // }
 
 ?>
 </center>
