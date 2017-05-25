@@ -1,5 +1,10 @@
 <html>
 <head>
+<script type="text/javascript">
+    
+
+    
+</script>
 <link rel='stylesheet' href='styles/mainpage.css'>
 </head>
 <body>
@@ -16,10 +21,10 @@
     $semester=$_POST['semester'];
     $prof=$_POST['prof'];
     
-    if (!$prof && !$coursenum && !$semester) {
+    if (!$coursenum && !$semester && !$prof) {
     
         echo "
-        <form action='/create_class.php' method='post'>
+        <form action='/class.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100'><br> 
             Semester: 
             <select name='semester'>
@@ -32,12 +37,14 @@
             </select>
             <br>
             Professor: <input type='text' name='prof' placeholder='Sullivan'><br> 
-        
+         
             <input type='submit' value='Submit'>
         </form> 
         ");
-    } elseif ($coursenum && $semester &&  {
-        
+    } elseif ($coursenum && $semester && $prof) {
+        $class_name=$coursenum . $semester . $prof;
+        $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
+            );";
         //initialize new class table
     }
 
@@ -48,14 +55,3 @@
 </body>
 </html>
 
-<!-- 15-122(name,meta,h1,h2,h3..) -> (hw:20|quz:50|,dlh,dlq,hwlt,hwlm,)
-
-
-users(name, pass, class1-8) -> (dzy,123,15122,21-127)
-all_classes(coursenum, semester, professor) -> (15-122, s17, iliiano)
-class(hw weight, hw count, midterm weight, midterm count,....) -> 15-122s17iliano(numbers)
-
-user(classes 1-7) -> dzy(15-122s17iliano,...)
-user_grades(hw,midterm,final,lab)
-
- -->
