@@ -53,31 +53,118 @@
         if ($porp=='percentage') {
             echo "
             <form action='/class.php' method='post'>
-                <div>
-                    Homeworks:<br>
+                <fieldset>
+                    <legend>Homeworks</legend>
                     How many? <input type=number name='hwnum'><br>
                     Total percentage of final grade?  <input type=number name='hwpercent'>%<br>
                     Lowest <input type=number name='hwnumwc'> are <input type=number name='hwwcp'>% normal weight.
-                </div>
-                <div>
-                    Labs:<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Labs</legend>
                     How many? <input type=number name='lnum'><br>
                     Total percentage of final grade?  <input type=number name='lpercent'>%<br>
                     Lowest <input type=number name='lnumwc'> are <input type=number name='lwcp'>% normal weight.
-                </div>
-                <div>
-                    Quizzes:<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Quizzes</legend>
                     How many? <input type=number name='qnum'><br>
                     Total percentage of final grade?  <input type=number name='qpercent'>%<br>
                     Lowest <input type=number name='qnumwc'> are <input type=number name='qwcp'>% normal weight.
-                </div>
-                <div>
+                </fieldset>
+                <fieldset>
+                    <legend>Midterms</legend>
                     Midterm 1:<br>
-                    
-                
+                    Total percentage of final grade?  <input type=number name='m1percent'>%<br>
+                    Midterm 2:<br>
+                    Total percentage of final grade?  <input type=number name='m2percent'>%<br>
+                    Midterm 3:<br>
+                    Total percentage of final grade?  <input type=number name='m3percent'>%<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Final</legend>
+                    Total percentage of final grade?  <input type=number name='fpercent'>%<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Other 1(optional)</legend>
+                    Name of category: <input type=text name='misc1name'>
+                    How many? <input type=number name='misc1num'>
+                    Total percentage of final grade?  <input type=number name='misc1percent'>%<br>
+                    Lowest <input type=number name='misc1numwc'> are <input type=number name='misc1wcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Other 2(optional)</legend>
+                    Name of category: <input type=text name='misc2name'>
+                    How many? <input type=number name='misc2num'>
+                    Total percentage of final grade?  <input type=number name='misc2percent'>%<br>
+                    Lowest <input type=number name='misc2numwc'> are <input type=number name='misc2wcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Other 1(optional)</legend>
+                    Name of category: <input type=text name='misc3name'>
+                    How many? <input type=number name='misc3num'>
+                    Total percentage of final grade?  <input type=number name='misc3percent'>%<br>
+                    Lowest <input type=number name='misc3numwc'> are <input type=number name='misc3wcp'>% normal weight.
+                </fieldset>
+            <input type='submit' value='Submit'>
+            </form>
             ";
         } elseif ($porp=='points') {
-            echo "";
+            echo "            
+            <form action='/class.php' method='post'>
+                <fieldset>
+                    <legend>Homeworks</legend>
+                    How many? <input type=number name='hwnum'><br>
+                    Total points?  <input type=number name='hwpercent'>%<br>
+                    Lowest <input type=number name='hwnumwc'> are <input type=number name='hwwcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Labs</legend>
+                    How many? <input type=number name='lnum'><br>
+                    Total percentage of final grade?  <input type=number name='lpercent'>%<br>
+                    Lowest <input type=number name='lnumwc'> are <input type=number name='lwcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Quizzes</legend>
+                    How many? <input type=number name='qnum'><br>
+                    Total percentage of final grade?  <input type=number name='qpercent'>%<br>
+                    Lowest <input type=number name='qnumwc'> are <input type=number name='qwcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Midterms</legend>
+                    Midterm 1:<br>
+                    Total percentage of final grade?  <input type=number name='m1percent'>%<br>
+                    Midterm 2:<br>
+                    Total percentage of final grade?  <input type=number name='m2percent'>%<br>
+                    Midterm 3:<br>
+                    Total percentage of final grade?  <input type=number name='m3percent'>%<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Final</legend>
+                    Total percentage of final grade?  <input type=number name='fpercent'>%<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Other 1(optional)</legend>
+                    Name of category: <input type=text name='misc1name'>
+                    How many? <input type=number name='misc1num'>
+                    Total percentage of final grade?  <input type=number name='misc1percent'>%<br>
+                    Lowest <input type=number name='misc1numwc'> are <input type=number name='misc1wcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Other 2(optional)</legend>
+                    Name of category: <input type=text name='misc2name'>
+                    How many? <input type=number name='misc2num'>
+                    Total percentage of final grade?  <input type=number name='misc2percent'>%<br>
+                    Lowest <input type=number name='misc2numwc'> are <input type=number name='misc2wcp'>% normal weight.
+                </fieldset>
+                <fieldset>
+                    <legend>Other 1(optional)</legend>
+                    Name of category: <input type=text name='misc3name'>
+                    How many? <input type=number name='misc3num'>
+                    Total percentage of final grade?  <input type=number name='misc3percent'>%<br>
+                    Lowest <input type=number name='misc3numwc'> are <input type=number name='misc3wcp'>% normal weight.
+                </fieldset>
+            <input type='submit' value='Submit'>
+            </form>";
         }
     }
     // } elseif ($coursenum && $semester && $prof) {
