@@ -26,6 +26,7 @@ if($user == "admin" && $pass == "admin") {
             while ($row = pg_fetch_row($result1)) { 
                 pg_query($db, "DROP TABLE " . $row[0] . ";");
                 echo $row[0];
+                echo "\n";
             }
           
         }

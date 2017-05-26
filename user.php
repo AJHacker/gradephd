@@ -35,6 +35,7 @@
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
+	 	echo "<a href='/class.php'>Class Registration</a>";
 		
 
 	} elseif($action == "signin") { //SIGN IN
@@ -59,8 +60,11 @@
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
-	} else {
-		echo "FUCKING HELL!";
+	} elseif(!$action) {
+		header("Location: https://gradephd.herokuapp.com/?error=Please Login First");
+        exit();
+	} else{
+		echo "Fuck This Shit WTF is going on FUck my life :(";
 	}
   
   
