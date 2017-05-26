@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html>
 <head>
 <link rel="stylesheet" href="styles/mainpage.css">
@@ -6,7 +9,6 @@
 <body>
 <p>
 <?php
-	session_start();
 	$action = $_POST["action"];
 	$email = $_POST["email"];
 	$pass = $_POST["pass"];
@@ -33,6 +35,7 @@
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
+	 	echo "<a href='/class.php'>Class Registration</a>";
 		
 
 	} elseif($action == "signin") { //SIGN IN
@@ -49,15 +52,19 @@
             header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ");
             exit();
         }
-        $_SESSION['verifiedUser'] = $email;
+        $_SESSION["verifiedUser"] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
+		echo "<a href='/class.php'>Class Registration</a>";
 		
 
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
-	} else {
-		echo "FUCKING HELL!";
+	} elseif(!$action) {
+		header("Location: https://gradephd.herokuapp.com/?error=Please Login First");
+        exit();
+	} else{
+		echo "Fuck This Shit WTF is going on FUck my life :(";
 	}
   
   
