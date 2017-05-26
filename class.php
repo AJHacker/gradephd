@@ -167,7 +167,6 @@
         if($misc1_diff){
             $diff[$y]="misc1";
             $arr[$y]="Other 1";
-
             $y++;
         }
         if($misc2_diff){
@@ -188,10 +187,9 @@
             $type=$diff[$i];
             $word=$arr[$i];
             echo "<fieldset>";
-            echo "<legend>"
+            echo "<legend>$word</legend>";
             echo "<ol>";
             for ($x=0;$x<$n;$x++) {
-
                 echo "<li><input type=number name='$type$i'></li>";
             }
             echo "</ol>";
@@ -215,5 +213,4 @@
 </body>
 </html>
 
-l>
 

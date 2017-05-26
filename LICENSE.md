@@ -61,10 +61,7 @@ https://www.w3schools.com/sql/sql_injection.asp
 
 
 
-HW
-LAB
-QUIZ
-MIDTERM
-TESTS
-
-
+-Finish the form Stuff 
+-Make the database stuff (By wednesday)
+-Visualizer
+-css
