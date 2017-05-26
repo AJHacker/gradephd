@@ -24,8 +24,9 @@
     $coursenum=$_POST['coursenum'];
     $semester=$_POST['semester'];
     $prof=$_POST['prof'];
+    $porp=$_POST['porp'];
     
-    if (!$coursenum && !$semester && !$prof) {
+    if (!$coursenum && !$semester && !$prof && !$porp) {
     
         echo "
         <form action='/class.php' method='post'>
@@ -48,8 +49,21 @@
             <input type='submit' value='Submit'>
         </form> 
         ";
-    } else{
-        echo "fuck everything";
+    } elseif ($coursenum && $semester && $prof && $porp) {
+        if ($porp=='percentage') {
+            echo "
+            <form action='/class.php' method='post'>
+                <div>
+                    Homeworks:<br>
+                    How many? <input type=number name='hwnum'><br>
+                    Total percentage of final grade?  <input type=number name='hwpercent'>%<br>
+                    Lowest <input type=number name='hwnumweighted'> are <input type=number name='hw
+                    
+                
+            ";
+        } elseif ($porp=='points') {
+            echo "";
+        }
     }
     // } elseif ($coursenum && $semester && $prof) {
     //     $class_name=$coursenum . $semester . $prof;
