@@ -15,31 +15,40 @@
 	pg_query($db,"DROP TABLE USERS");
 
 	$sqltest =<<<EOF
-      CREATE TABLE USERS
-      (
-      EMAIL            TEXT    NOT NULL PRIMARY KEY,
-      PASSWORD         TEXT    NOT NULL,
-      CLASS1           TEXT,
-      CLASS2           TEXT,
-      CLASS3           TEXT,
-      CLASS4           TEXT,
-      CLASS5           TEXT,
-	  CLASS6		   TEXT,
-	  CLASS7		   TEXT,
-	  CLASS8		   TEXT
-      );
+        CREATE TABLE USERS
+        (
+        EMAIL            TEXT    NOT NULL PRIMARY KEY,
+        PASSWORD         TEXT    NOT NULL,
+        CLASS1           TEXT,
+        CLASS2           TEXT,
+        CLASS3           TEXT,
+        CLASS4           TEXT,
+        CLASS5           TEXT,
+        CLASS6		   TEXT,
+        CLASS7		   TEXT,
+        CLASS8		   TEXT
+        );
 EOF;
 
 	$sqltest1 =<<<EOF
-      CREATE TABLE ALL_CLASSES
-      (
-	NAME		TEXT	NOT NULL 	PRIMARY KEY,
-	HWINFO	TEXT 	NOT NULL,
-	LABINFO 	TEXT 	NOT NULL
-      );
+        CREATE TABLE ALL_CLASSES
+        (
+        NAME		TEXT	NOT NULL 	PRIMARY KEY,
+        HWINFO		TEXT,
+        LABINFO 	TEXT,
+        QUIZINO		TEXT,
+        MT1INFO     TEXT,
+        MT2INFO     TEXT,
+        MT3INFO     TEXT,
+        FINALINFO   TEXT,
+        MISC1       TEXT,
+        MISC2       TEXT,
+        MISC3       TEXT
+        );
 EOF;
 	$result=pg_query($db,$sqltest);
 	echo pg_last_error();
 	$result=pg_query($db,$sqltest1);
 	echo pg_last_error();
+	echo "SUCCESS BIIIIIIITCH";
 ?>

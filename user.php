@@ -53,6 +53,7 @@
         }
         $_SESSION["verifiedUser"] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
+		echo "<a href='/class.php'>Class Registration</a>";
 		
 
 
