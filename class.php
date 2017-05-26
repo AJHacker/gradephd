@@ -16,7 +16,7 @@
 
     $user=$_SESSION["verifiedUser"];
 
-    if(!$user){
+    if (!$user) {
         header("Location: https://gradephd.herokuapp.com/?error=Please Login First"); 
 		exit();
     }
@@ -48,8 +48,7 @@
             <input type='submit' value='Submit'>
         </form> 
         ";
-    }
-    else{
+    } else{
         echo "fuck everything";
     }
     // } elseif ($coursenum && $semester && $prof) {
