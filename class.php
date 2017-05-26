@@ -57,7 +57,22 @@
                     Homeworks:<br>
                     How many? <input type=number name='hwnum'><br>
                     Total percentage of final grade?  <input type=number name='hwpercent'>%<br>
-                    Lowest <input type=number name='hwnumweighted'> are <input type=number name='hw
+                    Lowest <input type=number name='hwnumwc'> are <input type=number name='hwwcp'>% normal weight.
+                </div>
+                <div>
+                    Labs:<br>
+                    How many? <input type=number name='lnum'><br>
+                    Total percentage of final grade?  <input type=number name='lpercent'>%<br>
+                    Lowest <input type=number name='lnumwc'> are <input type=number name='lwcp'>% normal weight.
+                </div>
+                <div>
+                    Quizzes:<br>
+                    How many? <input type=number name='qnum'><br>
+                    Total percentage of final grade?  <input type=number name='qpercent'>%<br>
+                    Lowest <input type=number name='qnumwc'> are <input type=number name='qwcp'>% normal weight.
+                </div>
+                <div>
+                    Midterm 1:<br>
                     
                 
             ";

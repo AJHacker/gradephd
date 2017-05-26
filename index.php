@@ -30,7 +30,7 @@ function yesorno(){
   
   <input name = "email" id="email" placeholder="Email" type="text"></input><br>
   <input name = "pass" id="pass" placeholder="Password" type="password"></input></br>
-  <input name = "repass" id="repass" placeholder="Repeat password" type="password"></input></br>
+  <input name = "repass" id="repass" placeholder="Repeat password" type="password" style="visibility: hidden;"></input></br>
   <input type="Submit" value="Hello Sir?">
 </form>
 
