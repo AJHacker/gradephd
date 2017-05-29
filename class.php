@@ -184,47 +184,50 @@
         $counts = array();
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
         if (!count($diff)) {
-        echo "<form action='/class.php'>";
-        for ($i=0;$i<count($diff);$i++) {
-            $n=$_POST[$diff[$i]."num"];
-            $type=$diff[$i];
-            $counts[$type]=$n;
-            $word=$arr[$i];
-            echo "<fieldset>";
-            echo "<legend>$word</legend>";
-            echo "<ol>";
-            for ($x=0;$x<$n;$x++) {
-                echo "<li><input type=number name='$type$x' required></li    >"          }    
-        eco "</ol>";
-        echo "</    dset>"    ;
+            echo "<form action='/class.php'>";
+            for ($i=0;$i<count($diff);$i++) {
+                $n=$_POST[$diff[$i]."num"];
+                $type=$diff[$i];
+                $counts[$type]=$n;
+                $word=$arr[$i];
+                echo "<fieldset>";
+                echo "<legend>$word</legend>";
+                echo "<ol>";
+                for ($x=0;$x<$n;$x++) {
+                    echo "<li><input type=number name='$type$x' required></li>";
+                }    
+                echo "</ol>";
+                echo "</fieldset>";
+            }
+            echo "<input type='submit' value='Submit'>";
+            echo "</form>";
+        }
+        $_SESSION+=$_POST;
+        $_SESSION['diff']=$diff;
+        $_SESSION['arr']=$arr;
+        $_SESSION['counts']=$counts;
+
+        $_SESSION['form_finished']=true;
+    }else{
+        echo "ATLEAST YOU GAVE ME THE WEIGHTS";
+
+        $diff = $_SESSION['diff'];
+        $counts = $_SESSION['counts'];
+
+        for($x=0;$x<count($diff);$x++){
+            for($i=0;$i<$counts[$diff[$x]];$i++){
+                $str = $diff[$x].$i;
+                $s=$_POST[$str];
+                echo "database entry? $s";
+            }
+        }
     }
-    echo "<input type='submit' value='Submit'>";
-        echo "</form>";
-            $_SESSION+=$_POST;
-            $_SESSION['diff']=$diff;
-            $_SESSION['arr']=$arr;
-            $_SESSION['counts']=$counts;
-    
-            $_SESSION['form_finished']=true;
-        }else{
-            echo "ATLEAST YOU GAVE ME THE WEIGHTS";
-    
-            $diff = $_SESSION['diff'];
-            $counts = $_SESSION['counts'];
-    
-            for($x=0;$x<count($diff);$x++){
-                for($i=0;$i<$counts[$diff[$x]];$i++){
-                    $str = $diff[$x].$i;
-                    $s=$_POST[$str];
-                    echo "database entry? $s";
-                                   }
-       }
-        // elseif ($coursenum && $semester && $prof) {
-        //     $class_name=$coursenum . $semester . $prof;
-        //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
-        //         );";
-        //     //initialize new class table
-        // }
+    // elseif ($coursenum && $semester && $prof) {
+    //     $class_name=$coursenum . $semester . $prof;
+    //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
+    //         );";
+    //     //initialize new class table
+    // }
     
     ?>
     </center>
@@ -232,5 +235,6 @@
     
     </body>
     </html>
-    
-    
+    but yea theres no boxes to put the diff weights in
+    its prob my service too cuz it keeps going in and out
+    the html got all fucked up
