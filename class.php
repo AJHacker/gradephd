@@ -194,11 +194,10 @@
             echo "<legend>$word</legend>";
             echo "<ol>";
             for ($x=0;$x<$n;$x++) {
-                echo "<li><input type=number name='$type$x' requi  }
-</          }
-            eco "li>"co "</ol>";
-              "</"</dset>";
-        }
+                echo "<li><input type=number name='$type$x' required></li    >"          }    
+        eco "</ol>";
+        echo "</    dset>"    ;
+    }
     echo "<input type='submit' value='Submit'>";
         echo "</form>";
             $_SESSION+=$_POST;
@@ -210,17 +209,16 @@
         }else{
             echo "ATLEAST YOU GAVE ME THE WEIGHTS";
     
-        	$diff = $_SESSION['diff'];
-        	$counts = $_SESSION['counts'];
+            $diff = $_SESSION['diff'];
+            $counts = $_SESSION['counts'];
     
-        	for($x=0;$x<count($diff);$x++){
-        		for($i=0;$i<$counts[$diff[$x]];$i++){
-        			$str = $diff[$x].$i;
+            for($x=0;$x<count($diff);$x++){
+                for($i=0;$i<$counts[$diff[$x]];$i++){
+                    $str = $diff[$x].$i;
                     $s=$_POST[$str];
-        			echo "database entry? $s";
-        		}
-        	}
-        }
+                    echo "database entry? $s";
+                                   }
+       }
         // elseif ($coursenum && $semester && $prof) {
         //     $class_name=$coursenum . $semester . $prof;
         //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
