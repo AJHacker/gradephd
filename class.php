@@ -184,7 +184,7 @@
         $counts = array();
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
         if (count($diff)>0) {
-            echo "<form action='/class.php'>";
+            echo "<form action='/class.php' method='post'>";
             for ($i=0;$i<count($diff);$i++) {
                 $n=$_POST[$diff[$i]."num"];
                 $type=$diff[$i];
@@ -218,15 +218,13 @@
             for($i=0;$i<$counts[$diff[$x]];$i++){
                 $str = $diff[$x].$i;
                 $s=$_POST[$str];
-                echo "database entry? $s";
+                echo "database entry? $s<br>";
             }
         }
         session_unset();
         $_SESSION['verifiedUser']=$user;
     }
-    // elseif ($coursenum && $semester && $prof) {
-    //     $class_name=$coursenum . $semester . $prof;
-    //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
+    //     $sql="CREATE TABLE IF NOT EXISTS '" . $new_class . "' (
     //         );";
     //     //initialize new class table
     // }
