@@ -209,7 +209,7 @@
 
         $_SESSION['form_finished']=true;
     }else{
-        echo "ATLEAST YOU GAVE ME THE WEIGHTS";
+        echo "ATLEAST YOU GAVE ME THE WEIGHTS<br>";
 
         $diff = $_SESSION['diff'];
         $counts = $_SESSION['counts'];
@@ -218,7 +218,7 @@
             for($i=0;$i<$counts[$diff[$x]];$i++){
                 $str = $diff[$x].$i;
                 $s=$_POST[$str];
-                echo "database entry? $s<br>";
+                echo "database entry? $diff[$x],$s<br>";
             }
         }
         session_unset();
