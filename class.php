@@ -36,8 +36,7 @@
     $misc3_diff=($_POST['misc3weight']=='different');
     
     if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
-        echo "!$coursenum && !$semester && !$prof && !$porp && !$new_class";
-    
+        echo "1";    
         echo "
         <form action='/class.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100'><br> 
@@ -60,7 +59,7 @@
         </form> 
         ";
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
-        echo "$coursenum && $semester && $prof && $porp && !$new_class";
+        echo "2";
         $class_name=$coursenum."|".$semester."|".$prof;
         $_SESSION['new_class']=$class_name;
 //        unset($_SESSION['new_class']);
@@ -143,7 +142,6 @@
         ";
     
     } elseif ($new_class && !$SESSION['form_finished']){
-        echo "$new_class && !$SESSION['form_finished']";
         $diff=array();
         $arr = array();
         $y=0;
@@ -184,7 +182,6 @@
         }
 
         $counts = array();
-        ####
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
         echo "<form action='/class.php'>";
         for ($i=0;$i<count($diff);$i++) {
@@ -210,7 +207,6 @@
 
         $_SESSION['form_finished']=true;
     }else{
-        ####
         echo "ATLEAST YOU GAVE ME THE WEIGHTS";
 
     	$diff = $_SESSION['diff'];
