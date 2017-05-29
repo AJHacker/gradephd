@@ -39,7 +39,7 @@
         echo "1";    
         echo "
         <form action='/class.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100'><br> 
+            Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
             Semester: 
             <select name='semester'>
                 <option value='F17'>F17</option>
@@ -50,9 +50,9 @@
                 <option value='S20'>S20</option>
             </select>
             <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan'><br> 
+            Professor: <input type='text' name='prof' placeholder='Sullivan' required><br> 
             Points or Percentages?: 
-            <input type='radio' name='porp' value='percentage'>Percent
+            <input type='radio' name='porp' value='percentage' required>Percent
             <input type='radio' name='porp' value='points'>Points<br>
 
             <input type='submit' value='Submit'>
@@ -141,7 +141,7 @@
         </form>
         ";
     
-    } elseif ($new_class && !$SESSION['form_finished']){
+    } elseif ($new_class && !$_SESSION['form_finished']){
         $diff=array();
         $arr = array();
         $y=0;
@@ -193,7 +193,7 @@
             echo "<legend>$word</legend>";
             echo "<ol>";
             for ($x=0;$x<$n;$x++) {
-                echo "<li><input type=number name='$type$x'></li>";
+                echo "<li><input type=number name='$type$x' required></li>";
             }
             echo "</ol>";
             echo "</fieldset>";
