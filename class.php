@@ -198,19 +198,76 @@
                 echo "</ol>";
                 echo "</fieldset>";
             }
+            $_SESSION+=$_POST;
+            $_SESSION['diff']=$diff;
+            $_SESSION['arr']=$arr;
+            $_SESSION['counts']=$counts;
+    
+            $_SESSION['form_finished']=true;
             echo "<input type='submit' value='Submit'>";
             echo "</form>";
+        } else {
+            $_SESSION+=$_POST;
+            $_SESSION['diff']=$diff;
+            $_SESSION['arr']=$arr;
+            $_SESSION['counts']=$counts;
+    
+            $_SESSION['form_finished']=true;
+            header("Location: https://gradephd.herokuapp.com/class.php"); 
+            exit();
         }
-        $_SESSION+=$_POST;
-        $_SESSION['diff']=$diff;
-        $_SESSION['arr']=$arr;
-        $_SESSION['counts']=$counts;
-
-        $_SESSION['form_finished']=true;
     }else{
         echo "DATABASE ENTRY<br>";
         
+        function pg_connection_string_from_database_url() {
+            extract(parse_url($_ENV["DATABASE_URL"]));
+            return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
+        }
+
+        $db = pg_connect(pg_connection_string_from_database_url());
         
+        //HOME WORK STUFFS
+        $hwnum = $_SESSION['hwnum'];
+        $hwpercent = $_SESSION['hwpercent'];
+       
+
+        
+        $HWINFO = "$_SESSION['hwnum']|$_SESSION['hwpercent']|$"; 
+        
+
+        $LABINFO
+        $QUIZINFO
+        $TESTINFO
+        $FINALINFO
+        $MISC1
+        $MISC2
+
+        //MISC 3 STUFFS
+        $misc3num=$_SESSION['misc'];
+        $MISC3
+
+        $sql="INSERT INTO TABLE ALL_CLASSES VALUES ( 
+        '$new_class', 
+        '$HWINFO',
+        '$LABINFO',
+        '$QUIZINFO',
+        '$TESTINFO',
+        '$FINALINFO',
+        '$MISC1',
+        '$MISC2',
+        '$MISC3'
+        )";
+
+        NAME        TEXT    NOT NULL    PRIMARY KEY,
+        HWINFO      TEXT,
+        LABINFO     TEXT,
+        QUIZINO     TEXT, yea thats fine
+        TESTINFO    TEXT,
+        FINALINFO   TEXT,
+        MISC1       TEXT,
+        MISC2       TEXT,
+        MISC3       TEXT
+    
 
         $diff = $_SESSION['diff'];
         $counts = $_SESSION['counts'];
@@ -225,11 +282,8 @@
         }
         session_unset();
         $_SESSION['verifiedUser']=$user;
+
     }
-    //     $sql="CREATE TABLE IF NOT EXISTS '" . $new_class . "' (
-    //         );";
-    //     //initialize new class table
-    // }
     
     ?>
     </center>

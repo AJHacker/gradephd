@@ -24,9 +24,9 @@
         CLASS3           TEXT,
         CLASS4           TEXT,
         CLASS5           TEXT,
-        CLASS6		   TEXT,
-        CLASS7		   TEXT,
-        CLASS8		   TEXT
+        CLASS6		 TEXT,
+        CLASS7	         TEXT,
+        CLASS8		 TEXT
         );
 EOF;
 
@@ -36,12 +36,12 @@ EOF;
         NAME		TEXT	NOT NULL 	PRIMARY KEY,
         HWINFO		TEXT,
         LABINFO 	TEXT,
-        QUIZINO		TEXT,
-        TESTINFO    TEXT,
-        FINALINFO   TEXT,
-        MISC1       TEXT,
-        MISC2       TEXT,
-        MISC3       TEXT
+        QUIZINFO	TEXT,
+        TESTINFO        TEXT,
+        FINALINFO       TEXT,
+        MISC1           TEXT,
+        MISC2           TEXT,
+        MISC3           TEXT
         );
 EOF;
 	$result=pg_query($db,$sqltest);
