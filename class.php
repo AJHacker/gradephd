@@ -235,6 +235,4 @@
     
     </body>
     </html>
-    but yea theres no boxes to put the diff weights in
-    its prob my service too cuz it keeps going in and out
-    the html got all fucked up
+   
