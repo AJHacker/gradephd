@@ -183,7 +183,7 @@
 
         $counts = array();
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
-        if (!count($diff)) {
+        if (count($diff)>0) {
             echo "<form action='/class.php'>";
             for ($i=0;$i<count($diff);$i++) {
                 $n=$_POST[$diff[$i]."num"];
@@ -221,6 +221,8 @@
                 echo "database entry? $s";
             }
         }
+        session_unset();
+        $_SESSION['verifiedUser']=$user;
     }
     // elseif ($coursenum && $semester && $prof) {
     //     $class_name=$coursenum . $semester . $prof;
