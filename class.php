@@ -180,24 +180,40 @@
             $y++;
         }
 
-
-        echo "<form>";
+        $counts = array();
+        echo "<form action='/class.php'>";
         for ($i=0;$i<count($diff);$i++) {
             $n=$_POST[$diff[$i]."num"];
             $type=$diff[$i];
+            $counts[$type]=$n;
             $word=$arr[$i];
             echo "<fieldset>";
             echo "<legend>$word</legend>";
             echo "<ol>";
             for ($x=0;$x<$n;$x++) {
-                echo "<li><input type=number name='$type$i'></li>";
+                echo "<li><input type=number name='$type$x'></li>";
             }
             echo "</ol>";
             echo "</fieldset>";
         }
+        echo "<input type='submit' value='Submit'>";
         echo "</form>";
         $_SESSION+=$_POST;
+        $_SESSION['diff']=$diff;
+        $_SESSION['arr']=$arr;
+        $_SESSION['counts']=$counts;
         
+    }else{
+    	$diff = $_SESSION['diff'];
+    	$counts = $_SESSION['counts'];
+
+    	for($x=0;$x<count($diff);$x++){
+    		for($i=0;$i<$counts[$diff[$x]];$i++){
+    			$str = $diff[$x].$i;
+    			echo "database entry? $POST[$str]";
+    		}
+    	}
+
     }
     // elseif ($coursenum && $semester && $prof) {
     //     $class_name=$coursenum . $semester . $prof;
