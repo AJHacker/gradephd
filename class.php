@@ -60,7 +60,7 @@
         </form> 
         ";
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
-        echo ""
+        echo "$coursenum && $semester && $prof && $porp && !$new_class";
         $class_name=$coursenum."|".$semester."|".$prof;
         $_SESSION['new_class']=$class_name;
 //        unset($_SESSION['new_class']);
@@ -143,6 +143,7 @@
         ";
     
     } elseif ($new_class && !$SESSION['form_finished']){
+        echo "$new_class && !$SESSION['form_finished']";
         $diff=array();
         $arr = array();
         $y=0;
@@ -183,6 +184,7 @@
         }
 
         $counts = array();
+        ####
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
         echo "<form action='/class.php'>";
         for ($i=0;$i<count($diff);$i++) {
@@ -208,6 +210,7 @@
 
         $_SESSION['form_finished']=true;
     }else{
+        ####
         echo "ATLEAST YOU GAVE ME THE WEIGHTS";
 
     	$diff = $_SESSION['diff'];
