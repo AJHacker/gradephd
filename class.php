@@ -20,8 +20,7 @@
     if (!$user) {
         header("Location: https://gradephd.herokuapp.com/?error=Please Login First"); 
         exit();
-    }
-    
+    }    
     $coursenum=$_POST['coursenum'];
     $semester=$_POST['semester'];
     $prof=$_POST['prof'];
@@ -209,7 +208,9 @@
 
         $_SESSION['form_finished']=true;
     }else{
-        echo "ATLEAST YOU GAVE ME THE WEIGHTS<br>";
+        echo "DATABASE ENTRY<br>";
+        
+        
 
         $diff = $_SESSION['diff'];
         $counts = $_SESSION['counts'];
@@ -218,7 +219,8 @@
             for($i=0;$i<$counts[$diff[$x]];$i++){
                 $str = $diff[$x].$i;
                 $s=$_POST[$str];
-                echo "database entry? $diff[$x],$s<br>";
+                $type=$diff[$x];
+                echo "database entry? $type,$s<br>";
             }
         }
         session_unset();
