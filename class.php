@@ -215,7 +215,8 @@
     	for($x=0;$x<count($diff);$x++){
     		for($i=0;$i<$counts[$diff[$x]];$i++){
     			$str = $diff[$x].$i;
-    			echo "database entry? $POST[$str]";
+                $s=$_POST[$str];
+    			echo "database entry? $s";
     		}
     	}
     }
