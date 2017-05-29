@@ -20,8 +20,7 @@
     if (!$user) {
         header("Location: https://gradephd.herokuapp.com/?error=Please Login First"); 
         exit();
-    }
-    
+    }    
     $coursenum=$_POST['coursenum'];
     $semester=$_POST['semester'];
     $prof=$_POST['prof'];
@@ -39,7 +38,7 @@
         echo "1";    
         echo "
         <form action='/class.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100'><br> 
+            Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
             Semester: 
             <select name='semester'>
                 <option value='F17'>F17</option>
@@ -50,9 +49,9 @@
                 <option value='S20'>S20</option>
             </select>
             <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan'><br> 
+            Professor: <input type='text' name='prof' placeholder='Sullivan' required><br> 
             Points or Percentages?: 
-            <input type='radio' name='porp' value='percentage'>Percent
+            <input type='radio' name='porp' value='percentage' required>Percent
             <input type='radio' name='porp' value='points'>Points<br>
 
             <input type='submit' value='Submit'>
@@ -141,7 +140,7 @@
         </form>
         ";
     
-    } elseif ($new_class && !$SESSION['form_finished']){
+    } elseif ($new_class && !$_SESSION['form_finished']){
         $diff=array();
         $arr = array();
         $y=0;
@@ -183,23 +182,25 @@
 
         $counts = array();
         echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
-        echo "<form action='/class.php'>";
-        for ($i=0;$i<count($diff);$i++) {
-            $n=$_POST[$diff[$i]."num"];
-            $type=$diff[$i];
-            $counts[$type]=$n;
-            $word=$arr[$i];
-            echo "<fieldset>";
-            echo "<legend>$word</legend>";
-            echo "<ol>";
-            for ($x=0;$x<$n;$x++) {
-                echo "<li><input type=number name='$type$x'></li>";
+        if (count($diff)>0) {
+            echo "<form action='/class.php' method='post'>";
+            for ($i=0;$i<count($diff);$i++) {
+                $n=$_POST[$diff[$i]."num"];
+                $type=$diff[$i];
+                $counts[$type]=$n;
+                $word=$arr[$i];
+                echo "<fieldset>";
+                echo "<legend>$word</legend>";
+                echo "<ol>";
+                for ($x=0;$x<$n;$x++) {
+                    echo "<li><input type=number name='$type$x' required></li>";
+                }    
+                echo "</ol>";
+                echo "</fieldset>";
             }
-            echo "</ol>";
-            echo "</fieldset>";
+            echo "<input type='submit' value='Submit'>";
+            echo "</form>";
         }
-        echo "<input type='submit' value='Submit'>";
-        echo "</form>";
         $_SESSION+=$_POST;
         $_SESSION['diff']=$diff;
         $_SESSION['arr']=$arr;
@@ -207,30 +208,33 @@
 
         $_SESSION['form_finished']=true;
     }else{
-        echo "ATLEAST YOU GAVE ME THE WEIGHTS";
+        echo "DATABASE ENTRY<br>";
+        
+        
 
-    	$diff = $_SESSION['diff'];
-    	$counts = $_SESSION['counts'];
+        $diff = $_SESSION['diff'];
+        $counts = $_SESSION['counts'];
 
-    	for($x=0;$x<count($diff);$x++){
-    		for($i=0;$i<$counts[$diff[$x]];$i++){
-    			$str = $diff[$x].$i;
-    			echo "database entry? $POST[$str]";
-    		}
-    	}
+        for($x=0;$x<count($diff);$x++){
+            for($i=0;$i<$counts[$diff[$x]];$i++){
+                $str = $diff[$x].$i;
+                $s=$_POST[$str];
+                $type=$diff[$x];
+                echo "database entry? $type,$s<br>";
+            }
+        }
+        session_unset();
+        $_SESSION['verifiedUser']=$user;
     }
-    // elseif ($coursenum && $semester && $prof) {
-    //     $class_name=$coursenum . $semester . $prof;
-    //     $sql="CREATE TABLE IF NOT EXISTS '" . $class_name . "' (
+    //     $sql="CREATE TABLE IF NOT EXISTS '" . $new_class . "' (
     //         );";
     //     //initialize new class table
     // }
-
-?>
-</center>
-</p>
-
-</body>
-</html>
-
-
+    
+    ?>
+    </center>
+    </p>
+    
+    </body>
+    </html>
+   
