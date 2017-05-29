@@ -140,7 +140,7 @@
         </form>
         ";
     
-    } elseif ($new_class){
+    } elseif ($new_class && !$SESSION['form_finished']){
         $diff=array();
         $arr = array();
         $y=0;
@@ -202,7 +202,8 @@
         $_SESSION['diff']=$diff;
         $_SESSION['arr']=$arr;
         $_SESSION['counts']=$counts;
-        
+
+        $_SESSION['form_finished']=true;
     }else{
     	$diff = $_SESSION['diff'];
     	$counts = $_SESSION['counts'];
