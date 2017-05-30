@@ -202,7 +202,7 @@
     // Either Variable Weights, or Drop Lowest, Not Both for now.
     // The assert statement below checks this.
 
-    Console.assert( (drop_lowest && !variable_weights) || (variable_weights && !drop_lowest) );
+    console.assert( (drop_lowest && !variable_weights) || (variable_weights && !drop_lowest) );
 
 
     // Creates new boolean variables for each category, which are set to true
@@ -287,13 +287,13 @@
     var verify_weights = function (arr) {
 
         arr.forEach(function (item, index) {
-            Console.assert(arr[index] >= 0 && arr[index] <= 100);
+            console.assert(arr[index] >= 0 && arr[index] <= 100);
             if(arr[index] < 0 || arr[index] > 100) return false;
         });
 
         s = arr.reduce((a, b) => a + b, 0);
         
-        Console.assert(Math.abs(s - 100) <= Epsilon);
+        console.assert(Math.abs(s - 100) <= Epsilon);
         return Math.abs(s - 100) <= Epsilon;
     }
 
@@ -437,7 +437,7 @@
     // the variable weights.
 
     else {
-        Console.assert(variable_weights);
+        console.assert(variable_weights);
 
 
     }
