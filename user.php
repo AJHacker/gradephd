@@ -36,6 +36,7 @@
 	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')"; //CREATE USER
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
+        $_SESSION["verifiedUser"] = $email;
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
 		
 

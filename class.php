@@ -375,7 +375,7 @@
             
         pg_query($db,$sql);
         
-        $class_sql="CREATE TABLE '$new_class' (
+        $class_sql="CREATE TABLE $new_class (
             USER     TEXT    NOT NULL    PRIMARY KEY,
             ";
           
@@ -415,7 +415,7 @@
         echo "make class table:";
         echo pg_last_error();
         
-        pg_query($db,"INSERT INTO '$new_class' (USER) VALUES ($user);");
+        pg_query($db,"INSERT INTO $new_class (USER) VALUES ($user);");
         echo "insert user:";
         echo pg_last_error();
 

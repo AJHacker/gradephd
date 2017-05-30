@@ -408,12 +408,15 @@
         
         var thresh = 0;
         while(thresh < no) {
-            arr2[arr2.findIndex(x => x === arr3[thresh])] = -1;
+            arr2[arr.findIndex(x => x === arr3[thresh])] = -1;
             thresh += 1;
         }
 
         var ind = 0;
-        
+        while(ind < no) {
+
+            ind += 1;
+        }
 
     };
 
@@ -431,8 +434,8 @@
         if (take_misc1) drop (misc1, misc1_drop, misc1_drop_perc);
         if (take_misc2) drop (misc2, misc2_drop, misc2_drop_perc);
         if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
-    } 
-
+    }
+    
     // Otherwise, the user must have chosen the Variable Weights option.
     // Assings the scores of each category, while taking into account 
     // the variable weights.
