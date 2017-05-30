@@ -270,10 +270,10 @@
 
     // Weights of each item in each category
 
-    var hw_weight = new_array(8, 100/8);
-    var quiz_weight = new_array(8, 100/8);
+    var hw_weight = new_array (8, 100/8);
+    var quiz_weight = new_array (8, 100/8);
     var lab_weight = [];
-    var mid_weight = new_array(4, 100/4);
+    var mid_weight = new_array (4, 100/4);
     var fin_weight = [100];
     var misc1_weight = [];
     var misc2_weight = [];
@@ -324,14 +324,14 @@
 
     // Calculates the mean score in each category, based on the values entered.
 
-    var hw_mean    = mean(hw);
-    var quiz_mean  = mean(quiz);
-    var lab_mean   = mean(lab);
-    var mid_mean   = mean(mid);
-    var fin_mean   = mean(fin);
-    var misc1_mean = mean(misc1);
-    var misc2_mean = mean(misc2);
-    var misc3_mean = mean(misc3);
+    var hw_mean    = mean (hw);
+    var quiz_mean  = mean (quiz);
+    var lab_mean   = mean (lab);
+    var mid_mean   = mean (mid);
+    var fin_mean   = mean (fin);
+    var misc1_mean = mean (misc1);
+    var misc2_mean = mean (misc2);
+    var misc3_mean = mean (misc3);
 
 
     // Boolean values, which if true, indicate that the respective category will
@@ -359,14 +359,14 @@
     // Assign values to the places that the user left empty during the 
     // input process, only if that given category counts towards the total.
 
-    if (take_hw)    assign_null(hw, hw_mean);
-    if (take_quiz)  assign_null(quiz, quiz_mean);
-    if (take_lab)   assign_null(lab, lab_mean);
-    if (take_mid)   assign_null(mid, mid_mean);
-    if (take_fin)   assign_null(fin, fin_mean);
-    if (take_misc1) assign_null(misc1, misc1_mean);
-    if (take_misc2) assign_null(misc2, misc2_mean);
-    if (take_misc3) assign_null(misc3, misc3_mean);
+    if (take_hw)    assign_null (hw, hw_mean);
+    if (take_quiz)  assign_null (quiz, quiz_mean);
+    if (take_lab)   assign_null (lab, lab_mean);
+    if (take_mid)   assign_null (mid, mid_mean);
+    if (take_fin)   assign_null (fin, fin_mean);
+    if (take_misc1) assign_null (misc1, misc1_mean);
+    if (take_misc2) assign_null (misc2, misc2_mean);
+    if (take_misc3) assign_null (misc3, misc3_mean);
 
 
     // Returns a Comparison Function, which returns -1 if 'a' should 
@@ -417,66 +417,66 @@
 
     // Drops the lowest 'x' grades to 'y' percent, as indicated by the user.
 
-    if (take_hw)    drop(hw, hw_drop, hw_drop_perc);
-    if (take_quiz)  drop(quiz, quiz_drop, quiz_drop_perc);
-    if (take_lab)   drop(lab, lab_drop, lab_drop_perc);
-    if (take_mid)   drop(mid, mid_drop, mid_drop_perc);
-    if (take_fin)   drop(fin, fin_drop, fin_drop_perc);
-    if (take_misc1) drop(misc1, misc1_drop, misc1_drop_perc);
-    if (take_misc2) drop(misc2, misc2_drop, misc2_drop_perc);
-    if (take_misc3) drop(misc3, misc3_drop, misc3_drop_perc);
+    if (take_hw)    drop (hw, hw_drop, hw_drop_perc);
+    if (take_quiz)  drop (quiz, quiz_drop, quiz_drop_perc);
+    if (take_lab)   drop (lab, lab_drop, lab_drop_perc);
+    if (take_mid)   drop (mid, mid_drop, mid_drop_perc);
+    if (take_fin)   drop (fin, fin_drop, fin_drop_perc);
+    if (take_misc1) drop (misc1, misc1_drop, misc1_drop_perc);
+    if (take_misc2) drop (misc2, misc2_drop, misc2_drop_perc);
+    if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
 
 
     // Create arrays that store the different 'ideal' curves for each 
     // category too.
 
-    var hw_0   = assign_null(hw.slice(), 0);
-    var hw_25  = assign_null(hw.slice(), 25);
-    var hw_50  = assign_null(hw.slice(), 50);
-    var hw_75  = assign_null(hw.slice(), 75);
-    var hw_100 = assign_null(hw.slice(), 100);
+    var hw_0   = assign_null (hw.slice(), 0);
+    var hw_25  = assign_null (hw.slice(), 25);
+    var hw_50  = assign_null (hw.slice(), 50);
+    var hw_75  = assign_null (hw.slice(), 75);
+    var hw_100 = assign_null (hw.slice(), 100);
 
-    var quiz_0   = assign_null(quiz.slice(), 0);
-    var quiz_25  = assign_null(quiz.slice(), 25);
-    var quiz_50  = assign_null(quiz.slice(), 50);
-    var quiz_75  = assign_null(quiz.slice(), 75);
-    var quiz_100 = assign_null(quiz.slice(), 100);
+    var quiz_0   = assign_null (quiz.slice(), 0);
+    var quiz_25  = assign_null (quiz.slice(), 25);
+    var quiz_50  = assign_null (quiz.slice(), 50);
+    var quiz_75  = assign_null (quiz.slice(), 75);
+    var quiz_100 = assign_null (quiz.slice(), 100);
 
-    var lab_0   = assign_null(lab.slice(), 0);
-    var lab_25  = assign_null(lab.slice(), 25);
-    var lab_50  = assign_null(lab.slice(), 50);
-    var lab_75  = assign_null(lab.slice(), 75);
-    var lab_100 = assign_null(lab.slice(), 100);
+    var lab_0   = assign_null (lab.slice(), 0);
+    var lab_25  = assign_null (lab.slice(), 25);
+    var lab_50  = assign_null (lab.slice(), 50);
+    var lab_75  = assign_null (lab.slice(), 75);
+    var lab_100 = assign_null (lab.slice(), 100);
 
-    var mid_0   = assign_null(mid.slice(), 0);
-    var mid_25  = assign_null(mid.slice(), 25);
-    var mid_50  = assign_null(mid.slice(), 50);
-    var mid_75  = assign_null(mid.slice(), 75);
-    var mid_100 = assign_null(mid.slice(), 100);
+    var mid_0   = assign_null (mid.slice(), 0);
+    var mid_25  = assign_null (mid.slice(), 25);
+    var mid_50  = assign_null (mid.slice(), 50);
+    var mid_75  = assign_null (mid.slice(), 75);
+    var mid_100 = assign_null (mid.slice(), 100);
 
-    var fin_0   = assign_null(fin.slice(), 0);
-    var fin_25  = assign_null(fin.slice(), 25);
-    var fin_50  = assign_null(fin.slice(), 50);
-    var fin_75  = assign_null(fin.slice(), 75);
-    var fin_100 = assign_null(fin.slice(), 100);
+    var fin_0   = assign_null (fin.slice(), 0);
+    var fin_25  = assign_null (fin.slice(), 25);
+    var fin_50  = assign_null (fin.slice(), 50);
+    var fin_75  = assign_null (fin.slice(), 75);
+    var fin_100 = assign_null (fin.slice(), 100);
 
-    var misc1_0   = assign_null(misc1.slice(), 0);
-    var misc1_25  = assign_null(misc1.slice(), 25);
-    var misc1_50  = assign_null(misc1.slice(), 50);
-    var misc1_75  = assign_null(misc1.slice(), 75);
-    var misc1_100 = assign_null(misc1.slice(), 100);
+    var misc1_0   = assign_null (misc1.slice(), 0);
+    var misc1_25  = assign_null (misc1.slice(), 25);
+    var misc1_50  = assign_null (misc1.slice(), 50);
+    var misc1_75  = assign_null (misc1.slice(), 75);
+    var misc1_100 = assign_null (misc1.slice(), 100);
 
-    var misc2_0   = assign_null(misc2.slice(), 0);
-    var misc2_25  = assign_null(misc2.slice(), 25);
-    var misc2_50  = assign_null(misc2.slice(), 50);
-    var misc2_75  = assign_null(misc2.slice(), 75);
-    var misc2_100 = assign_null(misc2.slice(), 100);
+    var misc2_0   = assign_null (misc2.slice(), 0);
+    var misc2_25  = assign_null (misc2.slice(), 25);
+    var misc2_50  = assign_null (misc2.slice(), 50);
+    var misc2_75  = assign_null (misc2.slice(), 75);
+    var misc2_100 = assign_null (misc2.slice(), 100);
 
-    var misc3_0   = assign_null(misc3.slice(), 0);
-    var misc3_25  = assign_null(misc3.slice(), 25);
-    var misc3_50  = assign_null(misc3.slice(), 50);
-    var misc3_75  = assign_null(misc3.slice(), 75);
-    var misc3_100 = assign_null(misc3.slice(), 100);
+    var misc3_0   = assign_null (misc3.slice(), 0);
+    var misc3_25  = assign_null (misc3.slice(), 25);
+    var misc3_50  = assign_null (misc3.slice(), 50);
+    var misc3_75  = assign_null (misc3.slice(), 75);
+    var misc3_100 = assign_null (misc3.slice(), 100);
 
 
     // Actual Plotter

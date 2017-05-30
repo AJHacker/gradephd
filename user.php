@@ -64,23 +64,21 @@
 	} elseif(!$action && !$message) {
 		header("Location: https://gradephd.herokuapp.com/?error=Please Login First");
         exit();
-
-	} else {
-		echo $message;
-		$query= "SELECT * FROM users WHERE email = '".$email."';";
-		$result=pg_query($db,$query);
-		$A=pg_fetch_row($result);
-		  
-		echo "<h3><a href='/class.php'>Add a Class</a></h3>";
-
-		echo "<h2>Enrolled Classes</h2><ul>";
-		for($i = 2;$i<10;$i++) {
-		    $class=$A[$i];
-		    echo "<li><a href='/plot.php?class=$class>$class</a></li>";
-		}
-		echo "</ul>";
-	    
 	}
+	echo $message;
+	$query= "SELECT * FROM users WHERE email = '".$email."';";
+	$result=pg_query($db,$query);
+	$A=pg_fetch_row($result);
+	  
+	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
+
+	echo "<h2>Enrolled Classes</h2><ul>";
+	for($i = 2;$i<10;$i++) {
+	    $class=$A[$i];
+	    echo "<li><a href='/plot.php?class=$class>$class</a></li>";
+	}
+	echo "</ul>";
+	
 ?>
 </p>
 
