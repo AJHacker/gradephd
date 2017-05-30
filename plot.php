@@ -430,10 +430,14 @@
         if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
     } 
 
-    
+    // Otherwise, the user must have chosen the Variable Weights option.
+    // Assings the scores of each category, while taking into account 
+    // the variable weights.
 
     else {
+        Console.assert(variable_weights);
 
+        
     }
 
 

@@ -411,7 +411,7 @@
 
         $class_sql = substr($class_sql, 0, -1);
         $class_sql.=");";
-        pg_query($db,$sql);
+        pg_query($db,$class_sql);
         
         pg_query($db,"INSERT INTO '$new_class' (USER) VALUES ($user);");
 
