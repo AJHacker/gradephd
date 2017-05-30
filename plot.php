@@ -399,12 +399,12 @@
         console.assert(0 <= no && no <= arr.length);
         console.assert(0 <= perc);
 
-        var arr3 = arr.slice().sort(order(true)).slice(0, no);
-        
         var arr2 = arr.slice();
         arr2.forEach(function (item, index) {
-            arr[index] = index;
+            arr2[index] = index;
         });
+
+        var arr3 = arr.slice().sort(order(true)).slice(0, no);
         
         var thresh = 0;
         while(thresh < no) {
@@ -417,9 +417,6 @@
             if (arr2[ind] === -1) arr[ind] = arr[ind] * perc / 100;
             ind += 1;
         }
-        console.log("arr " + arr);
-        console.log("arr2 " + arr2);
-        console.log("arr3 " + arr3);
     };
 
 

@@ -409,6 +409,7 @@
 
         $class_sql = substr($class_sql, 0, -1);
         $class_sql.=");";
+        echo $class_sql;
         pg_query($db,$class_sql);
         echo "make class table:";
         echo pg_last_error();
