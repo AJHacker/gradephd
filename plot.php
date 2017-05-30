@@ -26,7 +26,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        $C          = explode("|",$class);
+        $C          = explode("_",$class);
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
@@ -412,7 +412,8 @@
             thresh += 1;
         }
 
-
+        var ind = 0;
+        
 
     };
 

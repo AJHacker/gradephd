@@ -67,7 +67,7 @@
         ";
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
         echo "2";
-        $class_name=$coursenum."|".$semester."|".$prof;
+        $class_name=$coursenum."_".$semester."_".$prof;
         $_SESSION['new_class']=$class_name;
 //        unset($_SESSION['new_class']);
         if ($porp=='percentage') {
