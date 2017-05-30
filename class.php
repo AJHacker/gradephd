@@ -412,8 +412,12 @@
         $class_sql = substr($class_sql, 0, -1);
         $class_sql.=");";
         pg_query($db,$class_sql);
+        echo "make class table:";
+        echo pg_last_error();
         
         pg_query($db,"INSERT INTO '$new_class' (USER) VALUES ($user);");
+        echo "insert user:";
+        echo pg_last_error();
 
         session_unset();
         $_SESSION['verifiedUser']=$user;

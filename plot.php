@@ -284,7 +284,7 @@
     // Returns true if it is valid, returns false and logs an error
     // otherwise.
 
-   var verify_weights = function (arr) {
+    var verify_weights = function (arr) {
 
         arr.forEach(function (item, index) {
             Console.assert(arr[index] >= 0 && arr[index] <= 100);
@@ -305,6 +305,8 @@
         ;
     }
 
+
+    // TODO -> MAKE A WEIGHED MEAN FUNCTION
 
     // Function to count the mean of the non-null values in an array.
     // Returns "Don't Count" if all values in the array are 'null'.
@@ -337,11 +339,11 @@
     // Boolean values, which if true, indicate that the respective category will
     // count towards the total, otherwise not.
 
-    var take_hw    = (hw_mean !== "Don't Count");
-    var take_quiz  = (quiz_mean !== "Don't Count");
-    var take_lab   = (lab_mean !== "Don't Count");
-    var take_mid   = (mid_mean !== "Don't Count");
-    var take_fin   = (fin_mean !== "Don't Count");
+    var take_hw    = (hw_mean    !== "Don't Count");
+    var take_quiz  = (quiz_mean  !== "Don't Count");
+    var take_lab   = (lab_mean   !== "Don't Count");
+    var take_mid   = (mid_mean   !== "Don't Count");
+    var take_fin   = (fin_mean   !== "Don't Count");
     var take_misc1 = (misc1_mean !== "Don't Count");
     var take_misc2 = (misc2_mean !== "Don't Count");
     var take_misc3 = (misc3_mean !== "Don't Count");
@@ -437,7 +439,7 @@
     else {
         Console.assert(variable_weights);
 
-        
+
     }
 
 
