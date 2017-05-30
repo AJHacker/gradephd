@@ -399,12 +399,12 @@
         console.assert(0 <= no && no <= arr.length);
         console.assert(0 <= perc);
 
+        var arr3 = arr.slice().sort(order(true)).slice(0, no);
+        
         var arr2 = arr.slice();
         arr2.forEach(function (item, index) {
             arr[index] = index;
         });
-
-        var arr3 = arr.slice().sort(order(true)).slice(0, no);
         
         var thresh = 0;
         while(thresh < no) {
@@ -413,11 +413,13 @@
         }
 
         var ind = 0;
-        while(ind < no) {
-
+        while(ind < arr.length) {
+            if (arr2[ind] === -1) arr[ind] = arr[ind] * perc / 100;
             ind += 1;
         }
-
+        console.log("arr " + arr);
+        console.log("arr2 " + arr2);
+        console.log("arr3 " + arr3);
     };
 
 
@@ -435,7 +437,7 @@
         if (take_misc2) drop (misc2, misc2_drop, misc2_drop_perc);
         if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
     }
-    
+
     // Otherwise, the user must have chosen the Variable Weights option.
     // Assings the scores of each category, while taking into account 
     // the variable weights.
