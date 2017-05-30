@@ -418,7 +418,7 @@
         session_unset();
         $_SESSION['verifiedUser']=$user;
         
-        header("Location: https://gradephd.herokuapp.com/?message=Class Added");
+        header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
         exit();
     }
     

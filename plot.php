@@ -378,7 +378,7 @@
 
     var order = function (ascending) {
         return function(a, b) {
-            if(a === null) return 1;
+            if (a === null) return 1;
             else if (b === null) return -1;
             else if (a === b) return 0;
             else if (ascending) return a < b ? -1 : 1;
@@ -415,16 +415,26 @@
     };
 
 
+    // The below operations are performed only if the user had chosen
+    // the Drop Lowest Grade(s) option.
     // Drops the lowest 'x' grades to 'y' percent, as indicated by the user.
+    
+    if (drop_lowest) {
+        if (take_hw)    drop (hw, hw_drop, hw_drop_perc);
+        if (take_quiz)  drop (quiz, quiz_drop, quiz_drop_perc);
+        if (take_lab)   drop (lab, lab_drop, lab_drop_perc);
+        if (take_mid)   drop (mid, mid_drop, mid_drop_perc);
+        if (take_fin)   drop (fin, fin_drop, fin_drop_perc);
+        if (take_misc1) drop (misc1, misc1_drop, misc1_drop_perc);
+        if (take_misc2) drop (misc2, misc2_drop, misc2_drop_perc);
+        if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
+    } 
 
-    if (take_hw)    drop (hw, hw_drop, hw_drop_perc);
-    if (take_quiz)  drop (quiz, quiz_drop, quiz_drop_perc);
-    if (take_lab)   drop (lab, lab_drop, lab_drop_perc);
-    if (take_mid)   drop (mid, mid_drop, mid_drop_perc);
-    if (take_fin)   drop (fin, fin_drop, fin_drop_perc);
-    if (take_misc1) drop (misc1, misc1_drop, misc1_drop_perc);
-    if (take_misc2) drop (misc2, misc2_drop, misc2_drop_perc);
-    if (take_misc3) drop (misc3, misc3_drop, misc3_drop_perc);
+    
+
+    else {
+
+    }
 
 
     // Create arrays that store the different 'ideal' curves for each 

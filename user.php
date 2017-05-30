@@ -75,7 +75,7 @@
 	echo "<h2>Enrolled Classes</h2><ul>";
 	for($i = 2;$i<10;$i++) {
 	    $class=$A[$i];
-	    echo "<li><a href='/plot.php?class=$class>$class</a></li>";
+	    if ($class) echo "<li><a href='/plot.php?class=$class>$class</a></li>";
 	}
 	echo "</ul>";
 	
