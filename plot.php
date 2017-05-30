@@ -155,7 +155,8 @@
         
     ?>
 
-    <div id="predictor" style="width:600px;height:250px;"></div>
+    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;
+                               right:0;width:60%;height:60%; margin: auto;"></div>
 
 
     <script>
@@ -317,8 +318,8 @@
     var hw    = [90, 92, 86, 100, 99, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, 80, 60]       ;
     var lab   = []                                     ;
-    var mid   = [100, 77, 78, 94]                      ;
-    var fin   = [96]                                   ;
+    var mid   = [100, null, 78, 94]                      ;
+    var fin   = [null]                                   ;
     var misc1 = []                                     ;
     var misc2 = []                                     ;
     var misc3 = []                                     ;
@@ -346,7 +347,7 @@
     var verify = function (arr) {
         // TODO -> LATER
         ;
-    }
+    };
 
 
     // Function to caclculate the mean of the non-null values in an array.
@@ -775,15 +776,66 @@
 
 
 
-    // ACTUAL PLOTTING BEGINS HERE.
+    // ------------  ACTUAL PLOTTING BEGINS HERE. ---------------
+
+
+
+    
+    // SOME DETAILS ABOUT THE ARRAYS CONTAINING THE DATA,
+    // TO PREVENT FROM HAVING TO READ THE ABOVE CODE:
+
+    
+    // hw, quiz, lab, mid, fin, misc1, misc2, misc3 are
+    // the arrays containing the raw input from the user.
+    // They have 'null' values whenever the user leaves a
+    // particular field blank.
+
+    // hw_u, quiz_u, lab_u, mid_u, fin_u, misc1_u, misc2_u, misc3_u
+    // contain the data to be plotted for the user's curve.
+    // Similary, we also have hw_0, quiz_0, .... for the 'zero' curve,
+    // hw_25, quiz_25, ... for the '25' curve, etc. (50, 75, 100).
+
+    // A particular category is to be considered for plotting only if
+    // the boolean variable representing that category is set to true.
+    // These boolean variables are take_hw, take_quiz, .... respectively.
+
 
 
     PREDICTOR = document.getElementById('predictor');
-    Plotly.plot( PREDICTOR, [{
-    x: [1, 2, 3, 4, 5],
-    y: [1, 2, 4, 8, 16] }], {
-    margin: { t: 0 } } );
+    // Plotly.plot( PREDICTOR, [{
+    // x: [1, 2, 3, 4, 5],
+    // y: [1, 2, 4, 8, 16] }], {
+    // margin: { t: 0 } } );
+
+
+    var user_line = {
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16],
+        type: 'scatter',
+        name: 'Username - Blue',
+        line: {
+            color: 'rgb(55, 128, 191)',
+            width: 2,
+            shape: 'spline'
+        }
+    };
+
     
+    var data = [user_line];
+
+    
+    var layout = {
+      legend: {
+        y: 0.5,
+        traceorder: 'reversed',
+        font: {size: 16},
+        yref: 'paper'
+      }};
+
+
+    Plotly.newPlot('predictor', data, layout);
+
+
 
     </script>
 
