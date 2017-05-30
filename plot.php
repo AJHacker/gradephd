@@ -18,7 +18,7 @@
     <?php
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $user_sql   = "SELECT * FROM $class WHERE user='$user';";
+        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
         
