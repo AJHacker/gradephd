@@ -116,7 +116,7 @@
             <fieldset>
                 <legend>Final</legend>
                 Is there a final? <input type='radio' name='fnum' value = '1'>Yes
-                                  <input type='radio' name='fnum' value = '0'>No
+                                  <input type='radio' name='fnum' value = '0' checked>No
                 Total " . $s . "?  <input type=number name='fpercent'>".$v."
             </fieldset>
             <fieldset>
@@ -375,36 +375,36 @@
             
         pg_query($db,$sql);
         
-        $class_sql="CREATE TABLE $new_class (USER     TEXT    NOT NULL    PRIMARY KEY,";
+        $class_sql="CREATE TABLE $new_class (NAME     TEXT    NOT NULL    PRIMARY KEY,";
           
         for($x=1;$x<$hwnum+1;$x++){
-            $class_sql.="hw$x INTEGER,";
+            $class_sql.=" hw$x INTEGER,";
         }
 
         for ($x=1;$x<$lnum+1;$x++) {
-            $class_sql.="l$x INTEGER,";
+            $class_sql.=" l$x INTEGER,";
         }
 
         for ($x=1;$x<$qnum+1;$x++) {
-            $class_sql.="q$x INTEGER,";
+            $class_sql.=" q$x INTEGER,";
         }
 
         for($x=1;$x<$tnum+1;$x++){
-            $class_sql.="t$x INTEGER,";
+            $class_sql.=" t$x INTEGER,";
         }
         
-        $class_sql.="f INTEGER,";
+        $class_sql.=" f INTEGER,";
 
         for ($x=1;$x<$misc1num+1;$x++) {
-            $class_sql.="misc1$x INTEGER,";
+            $class_sql.=" misc1$x INTEGER,";
         }
 
         for ($x=1;$x<$misc2num+1;$x++) {
-            $class_sql.="misc2$x INTEGER,";
+            $class_sql.=" misc2$x INTEGER,";
         }
 
         for ($x=1;$x<$misc3num+1;$x++) {
-            $class_sql.="misc3$x INTEGER,";
+            $class_sql.=" misc3$x INTEGER,";
         }
 
         $class_sql = substr($class_sql, 0, -1);
@@ -414,7 +414,7 @@
         echo "make class table:";
         echo pg_last_error();
         
-        pg_query($db,"INSERT INTO $new_class (USER) VALUES ('$user');");
+        pg_query($db,"INSERT INTO $new_class (NAME) VALUES ('$user');");
         echo "insert user:";
         echo pg_last_error();
 
