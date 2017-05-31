@@ -67,7 +67,7 @@
         exit();
 	}
 	echo $message;
-	$query= "SELECT * FROM users WHERE email = '".$email."';";
+	$query= "SELECT * FROM users WHERE email = '".$_SESSION['verifiedUser']."';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result);
 	  
