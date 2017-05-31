@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <html>
 
 
@@ -13,150 +9,8 @@
 
 
 <body>
- 
 
-    <?php
-        $class      = $_GET['class'];
-        $user       = $_SESSION['verifiedUser'];
-        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
-        $result     = pg_query($db,$user_sql);
-        $A          = pg_fetch_row($result);
-        
-        $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
-        $result     = pg_query($db,$class_sql);
-        $B          = pg_fetch_row($result);
-        
-        $C          = explode("_",$class);
-        $class_name = $C[0];
-        $semester   = $C[1];
-        $prof       = $C[2];
-        
-        
-        //Homework
-        $HWINFO     = explode("|",$B[1]);
-        $hwnum      = $HWINFO[0];
-        $hwpercent  = $HWINFO[1];
-        $hwexploded = explode(",",$HWINFO[2]);
-        $hwweight   = $hwexploded[0];
-        if ($hwweight == "same") {
-            $hwdrop     = $hwexploded[1];
-            $hwdroppc   = $hwexploded[2];
-        } else {
-            $i          = strpos($hwexploded,",");
-            $hwweights  = substr($hwexploded,$i+1);
-        }
-        
-        
-        //Lab
-        $LABINFO    = explode("|",$B[2]);
-        $lnum       = $LABINFO[0];
-        $lpercent   = $LABINFO[1];
-        $lexploded  = explode(",",$LABINFO[2]);
-        $lweight    = $lexploded[0];
-        if ($lweight == "same") {
-            $ldrop      = $lexploded[1];
-            $ldroppc    = $lexploded[2];
-        } else {
-            $i          = strpos($lexploded,",");
-            $lweights   = substr($lexploded,$i+1);
-        }
-        
-        //Quiz
-        $QUIZINFO   = explode("|",$B[3]);
-        $qnum       = $QUIZINFO[0];
-        $qpercent   = $QUIZINFO[1];
-        $qexploded  = explode(",",$QUIZINFO[2]);
-        $qweight    = $qexploded[0];
-        if ($qweight == "same") {
-            $qdrop      = $qexploded[1];
-            $qdroppc    = $qexploded[2];
-        } else {
-            $i          = strpos($qexploded,",");
-            $qweights   = substr($qexploded,$i+1);
-        }
-        
-        //Test
-        $TESTINFO   = explode("|",$B[4]);
-        $tnum       = $TESTINFO[0];
-        $tpercent   = $TESTINFO[1];
-        $texploded  = explode(",",$TESTINFO[2]);
-        $tweight    = $texploded[0];
-        if ($tweight == "same") {
-            $tdrop      = $texploded[1];
-            $tdroppc    = $texploded[2];
-        } else {
-            $i          = strpos($texploded,",");
-            $tweights   = substr($texploded,$i+1);
-        
-        //Final
-        $FINALINFO  = explode("|",$B[5]);        
-        $fnum       = $FINALINFO[0];
-        $fpercent   = $FINALINFO[1];
-
-        //Misc1
-        $MISC1INFO      = explode("|",$B[6]);
-        $misc1num       = $MISC1INFO[0];
-        $misc1percent   = $MISC1INFO[1];
-        $misc1exploded  = explode(",",$MISC1INFO[2]);
-        $misc1weight    = $misc1exploded[0];
-        if ($misc1weight == "same") {
-            $misc1drop      = $misc1exploded[1];
-            $misc1droppc    = $misc1exploded[2];
-        } else {
-            $i              = strpos($misc1exploded,",");
-            $misc1weights   = substr($misc1exploded,$i+1);
-        }
-
-        //Misc2
-        $MISC2INFO      = explode("|",$B[6]);
-        $misc2num       = $MISC2INFO[0];
-        $misc2percent   = $MISC2INFO[1];
-        $misc2exploded  = explode(",",$MISC2INFO[2]);
-        $misc2weight    = $misc2exploded[0];
-        if ($misc2weight == "same") {
-            $misc2drop      = $misc2exploded[1];
-            $misc2droppc    = $misc2exploded[2];
-        } else {
-            $i              = strpos($misc2exploded,",");
-            $misc2weights   = substr($misc2exploded,$i+1);
-        }
-        
-        //Misc3
-        $MISC3INFO      = explode("|",$B[8]);
-        $misc3num       = $MISC3INFO[0];
-        $misc3percent   = $MISC3INFO[1];
-        $misc3exploded  = explode(",",$MISC3INFO[2]);
-        $misc3weight    = $misc3exploded[0];
-        if ($misc3weight == "same") {
-            $misc3drop      = $misc3exploded[1];
-            $misc3droppc    = $misc3exploded[2];
-        } else {
-            $i              = strpos($misc3exploded,",");
-            $misc3weights   = substr($mic3exploded,$i+1);
-        }
-        
-        //User Scores
-        $i      = 1;
-        $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
-        $i      +=$hwnum;
-        $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
-        $i      +=$lnum;
-        $quiz   = "[".implode(",",array_slice($A,$i,$i+$qnum))."]";
-        $i      +=$qnum;
-        $mid    = "[".implode(",",array_slice($A,$i,$i+$tnum))."]";
-        $i      +=$tnum;
-        $f      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
-        $i      +=$fnum;
-        $misc1  = "[".implode(",",array_slice($A,$i,$i+$misc1num))."]";
-        $i      +=$misc1num;
-        $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
-        $i      +=$misc2num;
-        $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
-        
-    ?>
-
-    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;
-                               right:0;width:60%;height:60%; margin: auto;"></div>
+    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
 
 
     <script>
@@ -318,8 +172,8 @@
     var hw    = [90, 92, 86, 100, 99, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, 80, 60]       ;
     var lab   = []                                     ;
-    var mid   = [100, null, 78, 94]                    ;
-    var fin   = [null]                                 ;
+    var mid   = [100, null, 78, 94]                      ;
+    var fin   = [null]                                   ;
     var misc1 = []                                     ;
     var misc2 = []                                     ;
     var misc3 = []                                     ;
@@ -799,6 +653,13 @@
     // the boolean variable representing that category is set to true.
     // These boolean variables are take_hw, take_quiz, .... respectively.
 
+    var p_ux = []
+    var p_uy = []
+
+    if (take_hw) {
+        p_ux = p_ux.con
+        p_uy = p_uy.concat(hw_u);
+    }
 
 
     PREDICTOR = document.getElementById('predictor');
@@ -809,15 +670,16 @@
 
 
     var user_line = {
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16],
+        x: [...Array(no_hw + no_quiz + no_mid + no_fin).keys()],
+        y: hw_u.concat(quiz_u).concat(mid_u).concat(fin_u),
         type: 'scatter',
-        name: 'Username - Blue',
+        name: 'UserCurrent - Blue',
         line: {
             color: 'rgb(55, 128, 191)',
-            width: 2,
-            shape: 'spline'
-        }
+            width: 2
+        },
+        connectgaps: true,
+        showarrow: true
     };
 
     
@@ -825,12 +687,27 @@
 
     
     var layout = {
-      legend: {
-        y: 0.5,
-        traceorder: 'reversed',
-        font: {size: 16},
-        yref: 'paper'
-      }};
+      // legend: {
+      //   y: 0.5,
+      //   traceorder: 'reversed',
+      //   font: {size: 16},
+      //   yref: 'paper'
+      // }
+      xaxis: {
+        dtick: 1
+      },
+      yaxis: {
+        dtick: 5,
+        zeroline: false,
+        showline: false
+      },
+      annotations: {
+        text: 'Grade Predictor'
+      }
+      // xaxis: {
+      //   tickvals: ['hw1', 'hw2', 'hw3', 'hw4']
+        //ticktext: ['HW1', 'HW2', 'HW3', 'HW4']
+      };
 
 
     Plotly.newPlot('predictor', data, layout);
