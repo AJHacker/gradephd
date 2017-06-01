@@ -28,6 +28,7 @@
         $result     = pg_query($db,$class_sql);
         echo "get class<br>";
         echo pg_last_error().'<br>';
+        echo 'num rows:'.pg_num_rows().'<br>';
         $B          = pg_fetch_row($result);
         
         $C          = explode("_",$class);
