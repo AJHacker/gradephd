@@ -79,7 +79,7 @@
 	echo $query;
 	$result=pg_query($db,$query);
 	echo $result;
-	$A=pg_fetch_row($result);
+	$A=pg_fetch_row($result,0);
 	for($i = 2;$i<10;$i++) {
 	    $class=$A[$i];
 	    if ($class) echo "<li><a href='/plot.php?class=$class>$class</a></li>";
