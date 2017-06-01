@@ -423,15 +423,17 @@
         
         //Add the class to the user's entry in the users table
         $get_user="SELECT * FROM users WHERE email='$user';";
+        echo $get_user."<br>";
         $result=pg_query($db,$get_user);
         echo "get row:";
-        $classes=pg_fetch_row($result);
+        $classes=pg_fetch_row($result,0);
         echo pg_last_error() . "<br>";
         $n=1;
         for ($n;$n<9;$n++) {
             if (!$classes[$n]) break;
         }
         $add_class_to_user="UPDATE users SET class$n='$new_class' WHERE email='$user';";
+        echo $add_class_to_user."<br>";
         pg_query($db,$add_class_to_user);
         echo "set class:";
         echo pg_last_error();
