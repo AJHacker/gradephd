@@ -26,7 +26,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        $C          = explode("_",$class);
+        $C          = explode("_","");
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
