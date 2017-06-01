@@ -182,7 +182,7 @@
         
     // Number of items in each category
 
-    var no_hw    = <?php echo $hwnum; ?>;
+    var no_hw    = "<?php echo $hwnum ?>";
     
     console.log("Hi, I'm below the first php variable"):
     
