@@ -382,7 +382,8 @@
         
         echo "insert class<br>";
         pg_query($db,$sql);
-        echo pg_last_error().'<br>';
+        echo pg_last_error();
+        echo "<br>";
         
         $class_sql="CREATE TABLE $new_class (NAME     TEXT    NOT NULL    PRIMARY KEY,";
           
