@@ -34,7 +34,9 @@
         
         //Homework
         $HWINFO     = explode("|",$B[1]);
+        echo "hw";
         $hwnum      = $HWINFO[0];
+        echo $hwnum;
         $hwpercent  = $HWINFO[1];
         $hwexploded = explode(",",$HWINFO[2]);
         $hwweight   = $hwexploded[0];
@@ -163,7 +165,6 @@
         $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
         $i      +=$misc2num;
         $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
-        echo $hwnum;
     ?>
 
     <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
