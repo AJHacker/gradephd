@@ -178,10 +178,14 @@
 
     var Epsilon = 0.00000001;
 
-    
+    console.log("Hi, I'm below Epsilon");
+        
     // Number of items in each category
 
     var no_hw    = <?php echo $hwnum; ?>;
+    
+    console.log("Hi, I'm below the first php variable"):
+    
     var no_quiz  = <?php echo $qnum; ?>;
     var no_lab   = <?php echo $lnum; ?>;
     var no_mid   = <?php echo $tnum; ?>;
