@@ -368,7 +368,7 @@
         $MISC3INFO.="|$misc3name";
 
         //Add to all_classes
-        $sql="INSERT INTO ALL_CLASSES VALUES ( 
+        $sql="INSERT INTO all_classes VALUES ( 
             '$new_class', 
             '$HWINFO',
             '$LABINFO',
@@ -377,7 +377,7 @@
             '$FINALINFO',
             '$MISC1INFO',
             '$MISC2INFO',
-            '$MISC3sINFO'
+            '$MISC3INFO'
             );";
         
         echo "insert class<br>";
