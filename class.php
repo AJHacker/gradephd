@@ -406,7 +406,8 @@
         for ($x=1;$x<$misc3num+1;$x++) {
             $class_sql.=" misc3$x INTEGER,";
         }
-
+        
+        //Make Class Table
         $class_sql = substr($class_sql, 0, -1);
         $class_sql.=");";
         echo $class_sql."<br>";
@@ -414,12 +415,30 @@
         echo "make class table:";
         echo pg_last_error();
         
+
+        //Add the user as a student in the class
         pg_query($db,"INSERT INTO $new_class (NAME) VALUES ('$user');");
         echo "insert user:";
+        echo pg_last_error();
+        
+        //Add the class to the user's entry in the users table
+        $get_user="SELECT * FROM users WHERE email='$user';";
+        $result=pg_query($db,$get_user);
+        echo "get row:";
+        $classes=pg_fetch_row($result);
+        echo pg_last_error() . "<br>";
+        $n=1;
+        for ($n;$n<9;$n++) {
+            if (!$classes[$n]) break;
+        }
+        $add_class_to_user="UPDATE users SET class$n='$new_class' WHERE email='$user';";
+        pg_query($db,$add_class_to_user);
+        echo "set class:";
         echo pg_last_error();
 
         session_unset();
         $_SESSION['verifiedUser']=$user;
+
         
         header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
         exit();

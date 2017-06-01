@@ -69,16 +69,13 @@
 
 	}
 	echo $message;
-	echo $email;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2><ul>";
 	
 		
 	$email = $_SESSION['verifiedUser'];
 	$query= "SELECT * FROM users WHERE email = '$email';";
-	echo $query;
 	$result=pg_query($db,$query);
-	echo $result;
 	$A=pg_fetch_row($result,0);
 	for($i = 2;$i<10;$i++) {
 	    $class=$A[$i];
