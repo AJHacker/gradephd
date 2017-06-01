@@ -77,7 +77,7 @@
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result,0);
-	for($i = 2;$i<10;$i++) {
+	for($i = 0;$i<10;$i++) {
 	    $class=$A[$i];
 	    if ($class) echo "<li><a href='/plot.php?class=$class>$class</a></li>";
 	}

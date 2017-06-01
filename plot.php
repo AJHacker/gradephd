@@ -106,6 +106,7 @@
             $i              = strpos($misc1exploded,",");
             $misc1weights   = substr($misc1exploded,$i+1);
         }
+        $misc1name=$MISC1INFO[3];
 
         //Misc2
         $MISC2INFO      = explode("|",$B[6]);
@@ -120,6 +121,7 @@
             $i              = strpos($misc2exploded,",");
             $misc2weights   = substr($misc2exploded,$i+1);
         }
+        $misc2name=$MISC2INFO[3];
         
         //Misc3
         $MISC3INFO      = explode("|",$B[8]);
@@ -134,6 +136,7 @@
             $i              = strpos($misc3exploded,",");
             $misc3weights   = substr($mic3exploded,$i+1);
         }
+        $misc3name=$MISC3INFO[3];
         
         //User Scores
         $i      = 1;
