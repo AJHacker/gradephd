@@ -61,7 +61,15 @@ https://www.w3schools.com/sql/sql_injection.asp
 
 
 
--Finish the form Stuff 
--Make the database stuff (By wednesday)
--Visualizer
--css
+
+-If  there are any other thngs you can think of just write them down
+
+-Add list of classes to enroll in user.php (search feature?)
+-Require an email to login, verification link
+
+
+-Database entry of all information *CURRENTLY WORKING ON*
+
+-Visualizer *NEXT STEP*
+-css *NEXT STEP*
+-Polish it up and make sure it works

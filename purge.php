@@ -22,7 +22,6 @@ if($user == "admin" && $pass == "admin") {
         if (!pg_num_rows($result1)) {
             print("Your connection is working, but your database is empty.\nFret not. This is expected for new apps.\n");
         } else {
-         // OLD CODE FROM WOFM
             while ($row = pg_fetch_row($result1)) { 
                 pg_query($db, "DROP TABLE " . $row[0] . ";");
                 echo $row[0];
