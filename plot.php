@@ -20,22 +20,24 @@
         $user       = $_SESSION['verifiedUser'];
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
+        echo "get user<br>";
+        echo pg_last_error().'<br>';
         $A          = pg_fetch_row($result);
         
         $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
         $result     = pg_query($db,$class_sql);
+        echo "get class<br>";
+        echo pg_last_error().'<br>';
         $B          = pg_fetch_row($result);
         
         $C          = explode("_",$class);
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
-        echo $semester."<br>";
         
         
         //Homework
         $HWINFO     = explode("|",$B[1]);
-        echo "hw";
         print_r($HWINFO);
         $hwnum      = $HWINFO[0];
         echo $hwnum;
