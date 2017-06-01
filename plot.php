@@ -30,11 +30,13 @@
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
+        echo $semester."<br>";
         
         
         //Homework
         $HWINFO     = explode("|",$B[1]);
         echo "hw";
+        print_r($HWINFO);
         $hwnum      = $HWINFO[0];
         echo $hwnum;
         $hwpercent  = $HWINFO[1];
