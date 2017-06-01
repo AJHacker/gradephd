@@ -103,8 +103,8 @@
     // Arrays representing respective weights of each item in each category.
 
     var hw_weight    = no_hw    === 0 ? [] : verify_weights(new_array (no_hw   , 100/no_hw   ));
-    var quiz_weight  = no_quiz  === 0 ? [] : verify_weights(new_array (no_quiz , 100/no_hw   ));
-    var lab_weight   = no_lab   === 0 ? [] : verify_weights(new_array (no_lab  , 100/no_hw   ));
+    var quiz_weight  = no_quiz  === 0 ? [] : verify_weights(new_array (no_quiz , 100/no_quiz ));
+    var lab_weight   = no_lab   === 0 ? [] : verify_weights(new_array (no_lab  , 100/no_lab  ));
     var mid_weight   = no_mid   === 0 ? [] : verify_weights(new_array (no_mid  , 100/no_mid  ));
     var fin_weight   = no_fin   === 0 ? [] : verify_weights(new_array (no_fin  , 100/no_fin  ));
     var misc1_weight = no_misc1 === 0 ? [] : verify_weights(new_array (no_misc1, 100/no_misc1));
@@ -181,8 +181,8 @@
     var hw    = [90, 92, 86, 100, 99, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, 80, 60]       ;
     var lab   = []                                     ;
-    var mid   = [100, null, 78, 94]                      ;
-    var fin   = [null]                                   ;
+    var mid   = [100.4, 77.2, 77.6, 94]                ;
+    var fin   = [96]                                   ;
     var misc1 = []                                     ;
     var misc2 = []                                     ;
     var misc3 = []                                     ;
@@ -263,8 +263,8 @@
     var misc3_mean = variable_weights ? weighted_mean (misc3, misc3_weight) : mean (misc3);
 
 
-    // Boolean values, which if true, indicate that the respective category will
-    // count towards the total, otherwise not.
+    // Boolean values, which if true, indicate that the user has put in 
+    // enough info for a given category to be approximated, otherwise not.
 
     var take_hw    = (hw_mean    !== "Don't Count");
     var take_quiz  = (quiz_mean  !== "Don't Count");
@@ -291,62 +291,70 @@
     // by creating arrays that store the different curves for each 
     // category, to store this info in.
 
-    if (take_hw)    {   var hw_u      = assign_null (hw.slice()   , hw_mean   );
+    if (no_hw > 0)  {   if (take_hw)
+                        var hw_u      = assign_null (hw.slice()   , hw_mean   );
                         var hw_0      = assign_null (hw.slice()   , 0         );
                         var hw_25     = assign_null (hw.slice()   , 25        );
                         var hw_50     = assign_null (hw.slice()   , 50        );
                         var hw_75     = assign_null (hw.slice()   , 75        );
                         var hw_100    = assign_null (hw.slice()   , 100       );
-                    }
-    if (take_quiz)  {   var quiz_u    = assign_null (quiz.slice() , quiz_mean );
+                     }
+    if (no_quiz > 0) {  if (take_quiz)
+                        var quiz_u    = assign_null (quiz.slice() , quiz_mean );
                         var quiz_0    = assign_null (quiz.slice() , 0         );
                         var quiz_25   = assign_null (quiz.slice() , 25        );
                         var quiz_50   = assign_null (quiz.slice() , 50        );
                         var quiz_75   = assign_null (quiz.slice() , 75        );
                         var quiz_100  = assign_null (quiz.slice() , 100       );
-                    }
-    if (take_lab)   {   var lab_u     = assign_null (lab.slice()  , lab_mean  );
+                     }
+    if (no_lab > 0)  {  if (take_lab)
+                        var lab_u     = assign_null (lab.slice()  , lab_mean  );
                         var lab_0     = assign_null (lab.slice()  , 0         );
                         var lab_25    = assign_null (lab.slice()  , 25        );
                         var lab_50    = assign_null (lab.slice()  , 50        );
                         var lab_75    = assign_null (lab.slice()  , 75        );
                         var lab_100   = assign_null (lab.slice()  , 100       );
                     }
-    if (take_mid)   {   var mid_u     = assign_null (mid.slice()  , mid_mean  );
+    if (no_mid > 0)   { if (take_mid)
+                        var mid_u     = assign_null (mid.slice()  , mid_mean  );
                         var mid_0     = assign_null (mid.slice()  , 0         );
                         var mid_25    = assign_null (mid.slice()  , 25        );
                         var mid_50    = assign_null (mid.slice()  , 50        );
                         var mid_75    = assign_null (mid.slice()  , 75        );
                         var mid_100   = assign_null (mid.slice()  , 100       );
                     }
-    if (take_fin)   {   var fin_u     = assign_null (fin.slice()  , fin_mean  );
+    if (no_fin > 0)   { if (take_fin)
+                        var fin_u     = assign_null (fin.slice()  , fin_mean  );
                         var fin_0     = assign_null (fin.slice()  , 0         );
                         var fin_25    = assign_null (fin.slice()  , 25        );
                         var fin_50    = assign_null (fin.slice()  , 50        );
                         var fin_75    = assign_null (fin.slice()  , 75        );
                         var fin_100   = assign_null (fin.slice()  , 100       );
                     }
-    if (take_misc1) {   var misc1_u   = assign_null (misc1.slice(), misc1_mean);
+    if (no_misc1 > 0) { if (take_misc1)
+                        var misc1_u   = assign_null (misc1.slice(), misc1_mean);
                         var misc1_0   = assign_null (misc1.slice(), 0         );
                         var misc1_25  = assign_null (misc1.slice(), 25        );
                         var misc1_50  = assign_null (misc1.slice(), 50        );
                         var misc1_75  = assign_null (misc1.slice(), 75        );
                         var misc1_100 = assign_null (misc1.slice(), 100       );
                     }
-    if (take_misc2) {   var misc2_u   = assign_null (misc2.slice(), misc2_mean);
+    if (no_misc2 > 0) { if (take_misc2)
+                        var misc2_u   = assign_null (misc2.slice(), misc2_mean);
                         var misc2_0   = assign_null (misc2.slice(), 0         );
                         var misc2_25  = assign_null (misc2.slice(), 25        );
                         var misc2_50  = assign_null (misc2.slice(), 50        );
                         var misc2_75  = assign_null (misc2.slice(), 75        );
                         var misc2_100 = assign_null (misc2.slice(), 100       );
                     }
-    if (take_misc3) {   var misc3_u   = assign_null (misc3.slice(), misc3_mean);
+    if (no_misc3 > 0) { if (take_misc3)
+                        var misc3_u   = assign_null (misc3.slice(), misc3_mean);
                         var misc3_0   = assign_null (misc3.slice(), 0         );
                         var misc3_25  = assign_null (misc3.slice(), 25        );
                         var misc3_50  = assign_null (misc3.slice(), 50        );
                         var misc3_75  = assign_null (misc3.slice(), 75        );
                         var misc3_100 = assign_null (misc3.slice(), 100       );
-                    }
+                       }
 
 
     // Returns a Comparison Function, which returns -1 if 'a' should 
@@ -404,52 +412,13 @@
     // 'score' (in percent) for each category, for each curve.
 
     var hw_scr        = null;
-    var hw_0_scr      = null;
-    var hw_25_scr     = null;
-    var hw_50_scr     = null;
-    var hw_100_scr    = null;
-
     var quiz_scr      = null;
-    var quiz_0_scr    = null;
-    var quiz_25_scr   = null;
-    var quiz_50_scr   = null;
-    var quiz_100_scr  = null;
-
     var lab_scr       = null;
-    var lab_0_scr     = null;
-    var lab_25_scr    = null;
-    var lab_50_scr    = null;
-    var lab_100_scr   = null;
-
     var mid_scr       = null;
-    var mid_0_scr     = null;
-    var mid_25_scr    = null;
-    var mid_50_scr    = null;
-    var mid_100_scr   = null;
-
     var fin_scr       = null;
-    var fin_0_scr     = null;
-    var fin_25_scr    = null;
-    var fin_50_scr    = null;
-    var fin_100_scr   = null;
-
     var misc1_scr     = null;
-    var misc1_0_scr   = null;
-    var misc1_25_scr  = null;
-    var misc1_50_scr  = null;
-    var misc1_100_scr = null;
-
     var misc2_scr     = null;
-    var misc2_0_scr   = null;
-    var misc2_25_scr  = null;
-    var misc2_50_scr  = null;
-    var misc2_100_scr = null;
-
     var misc3_scr     = null;
-    var misc3_0_scr   = null;
-    var misc3_25_scr  = null;
-    var misc3_50_scr  = null;
-    var misc3_100_scr = null;
 
 
     //
@@ -468,14 +437,14 @@
     // Drops the lowest 'x' grades to 'y' percent, as indicated by the user.
     
     if (drop_lowest) {
-        if (take_hw)    { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
-        if (take_quiz)  { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
-        if (take_lab)   { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
-        if (take_mid)   { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
-        if (take_fin)   { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
-        if (take_misc1) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
-        if (take_misc2) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
-        if (take_misc3) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
+        if (no_hw    > 0) { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
+        if (no_quiz  > 0) { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
+        if (no_lab   > 0) { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
+        if (no_mid   > 0) { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
+        if (no_fin   > 0) { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
+        if (no_misc1 > 0) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
+        if (no_misc2 > 0) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
+        if (no_misc3 > 0) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
     }
 
 
@@ -516,76 +485,84 @@
 
     // 
 
-    if (take_hw)    { hw_weight     = re_perc ([], hw_weight, false);
-                      hw_scr        = weighted_mean (hw_u     , hw_weight   ); scores     [0] = hw_scr       ; 
-                      hw_0_scr      = weighted_mean (hw_0     , hw_weight   ); scores_0   [0] = hw_0_scr     ;
-                      hw_25_scr     = weighted_mean (hw_25    , hw_weight   ); scores_25  [0] = hw_25_scr    ; 
-                      hw_50_scr     = weighted_mean (hw_50    , hw_weight   ); scores_50  [0] = hw_50_scr    ; 
-                      hw_75_scr     = weighted_mean (hw_75    , hw_weight   ); scores_75  [0] = hw_75_scr    ; 
-                      hw_100_scr    = weighted_mean (hw_100   , hw_weight   ); scores_100 [0] = hw_100_scr   ; 
+    if (no_hw > 0)  { hw_weight     = re_perc ([], hw_weight, false);
+                      if (take_hw)
+                          hw_scr        = weighted_mean (hw_u     , hw_weight   ); scores     [0] = hw_scr       ; 
+                      var hw_0_scr      = weighted_mean (hw_0     , hw_weight   ); scores_0   [0] = hw_0_scr     ;
+                      var hw_25_scr     = weighted_mean (hw_25    , hw_weight   ); scores_25  [0] = hw_25_scr    ; 
+                      var hw_50_scr     = weighted_mean (hw_50    , hw_weight   ); scores_50  [0] = hw_50_scr    ; 
+                      var hw_75_scr     = weighted_mean (hw_75    , hw_weight   ); scores_75  [0] = hw_75_scr    ; 
+                      var hw_100_scr    = weighted_mean (hw_100   , hw_weight   ); scores_100 [0] = hw_100_scr   ; 
                       percentages_temp [0] = hw_perc   ;        
                      } 
-    if (take_quiz)  { quiz_weight   = re_perc ([], quiz_weight, false);
-                      quiz_scr      = weighted_mean (quiz_u   , quiz_weight ); scores     [1] = quiz_scr     ; 
-                      quiz_0_scr    = weighted_mean (quiz_0   , quiz_weight ); scores_0   [1] = quiz_0_scr   ;
-                      quiz_25_scr   = weighted_mean (quiz_25  , quiz_weight ); scores_25  [1] = quiz_25_scr  ; 
-                      quiz_50_scr   = weighted_mean (quiz_50  , quiz_weight ); scores_50  [1] = quiz_50_scr  ; 
-                      quiz_75_scr   = weighted_mean (quiz_75  , quiz_weight ); scores_75  [1] = quiz_75_scr  ; 
-                      quiz_100_scr  = weighted_mean (quiz_100 , quiz_weight ); scores_100 [1] = quiz_100_scr ; 
+    if (no_quiz > 0){ quiz_weight   = re_perc ([], quiz_weight, false);
+                      if (take_quiz)
+                          quiz_scr      = weighted_mean (quiz_u   , quiz_weight ); scores     [1] = quiz_scr     ; 
+                      var quiz_0_scr    = weighted_mean (quiz_0   , quiz_weight ); scores_0   [1] = quiz_0_scr   ;
+                      var quiz_25_scr   = weighted_mean (quiz_25  , quiz_weight ); scores_25  [1] = quiz_25_scr  ; 
+                      var quiz_50_scr   = weighted_mean (quiz_50  , quiz_weight ); scores_50  [1] = quiz_50_scr  ; 
+                      var quiz_75_scr   = weighted_mean (quiz_75  , quiz_weight ); scores_75  [1] = quiz_75_scr  ; 
+                      var quiz_100_scr  = weighted_mean (quiz_100 , quiz_weight ); scores_100 [1] = quiz_100_scr ; 
                       percentages_temp [1] = quiz_perc ;                    
                      }                                                     
-    if (take_lab)   { lab_weight    = re_perc ([], lab_weight, false);
-                      lab_scr       = weighted_mean (lab_u    , lab_weight  ); scores     [2] = lab_scr      ; 
-                      lab_0_scr     = weighted_mean (lab_0    , lab_weight  ); scores_0   [2] = lab_0_scr    ;
-                      lab_25_scr    = weighted_mean (lab_25   , lab_weight  ); scores_25  [2] = lab_25_scr   ; 
-                      lab_50_scr    = weighted_mean (lab_50   , lab_weight  ); scores_50  [2] = lab_50_scr   ; 
-                      lab_75_scr    = weighted_mean (lab_75   , lab_weight  ); scores_75  [2] = lab_75_scr   ; 
-                      lab_100_scr   = weighted_mean (lab_100  , lab_weight  ); scores_100 [2] = lab_100_scr  ; 
+    if (no_lab > 0) { lab_weight    = re_perc ([], lab_weight, false);
+                      if (take_lab)
+                          lab_scr       = weighted_mean (lab_u    , lab_weight  ); scores     [2] = lab_scr      ; 
+                      var lab_0_scr     = weighted_mean (lab_0    , lab_weight  ); scores_0   [2] = lab_0_scr    ;
+                      var lab_25_scr    = weighted_mean (lab_25   , lab_weight  ); scores_25  [2] = lab_25_scr   ; 
+                      var lab_50_scr    = weighted_mean (lab_50   , lab_weight  ); scores_50  [2] = lab_50_scr   ; 
+                      var lab_75_scr    = weighted_mean (lab_75   , lab_weight  ); scores_75  [2] = lab_75_scr   ; 
+                      var lab_100_scr   = weighted_mean (lab_100  , lab_weight  ); scores_100 [2] = lab_100_scr  ; 
                       percentages_temp [2] = lab_perc  ;                                      
                      }                                                                      
-    if (take_mid)   { mid_weight    = re_perc ([], mid_weight, false);       
-                      mid_scr       = weighted_mean (mid_u    , mid_weight  ); scores     [3] = mid_scr      ; 
-                      mid_0_scr     = weighted_mean (mid_0    , mid_weight  ); scores_0   [3] = mid_0_scr    ;
-                      mid_25_scr    = weighted_mean (mid_25   , mid_weight  ); scores_25  [3] = mid_25_scr   ; 
-                      mid_50_scr    = weighted_mean (mid_50   , mid_weight  ); scores_50  [3] = mid_50_scr   ; 
-                      mid_75_scr    = weighted_mean (mid_75   , mid_weight  ); scores_75  [3] = mid_75_scr   ; 
-                      mid_100_scr   = weighted_mean (mid_100  , mid_weight  ); scores_100 [3] = mid_100_scr  ; 
+    if (no_mid > 0) { mid_weight    = re_perc ([], mid_weight, false);       
+                      if(take_mid)
+                          mid_scr       = weighted_mean (mid_u    , mid_weight  ); scores     [3] = mid_scr      ; 
+                      var mid_0_scr     = weighted_mean (mid_0    , mid_weight  ); scores_0   [3] = mid_0_scr    ;
+                      var mid_25_scr    = weighted_mean (mid_25   , mid_weight  ); scores_25  [3] = mid_25_scr   ; 
+                      var mid_50_scr    = weighted_mean (mid_50   , mid_weight  ); scores_50  [3] = mid_50_scr   ; 
+                      var mid_75_scr    = weighted_mean (mid_75   , mid_weight  ); scores_75  [3] = mid_75_scr   ; 
+                      var mid_100_scr   = weighted_mean (mid_100  , mid_weight  ); scores_100 [3] = mid_100_scr  ; 
                       percentages_temp [3] = mid_perc  ;
                      }              
-    if (take_fin)   { fin_weight    = re_perc ([], fin_weight, false);
-                      fin_scr       = weighted_mean (fin_u    , fin_weight  ); scores     [4] = fin_scr      ; 
-                      fin_0_scr     = weighted_mean (fin_0    , fin_weight  ); scores_0   [4] = fin_0_scr    ;
-                      fin_25_scr    = weighted_mean (fin_25   , fin_weight  ); scores_25  [4] = fin_25_scr   ; 
-                      fin_50_scr    = weighted_mean (fin_50   , fin_weight  ); scores_50  [4] = fin_50_scr   ; 
-                      fin_75_scr    = weighted_mean (fin_75   , fin_weight  ); scores_75  [4] = fin_75_scr   ; 
-                      fin_100_scr   = weighted_mean (fin_100  , fin_weight  ); scores_100 [4] = fin_100_scr  ;
+    if (no_fin > 0){  fin_weight    = re_perc ([], fin_weight, false);
+                      if (take_fin)
+                          fin_scr       = weighted_mean (fin_u    , fin_weight  ); scores     [4] = fin_scr      ; 
+                      var fin_0_scr     = weighted_mean (fin_0    , fin_weight  ); scores_0   [4] = fin_0_scr    ;
+                      var fin_25_scr    = weighted_mean (fin_25   , fin_weight  ); scores_25  [4] = fin_25_scr   ; 
+                      var fin_50_scr    = weighted_mean (fin_50   , fin_weight  ); scores_50  [4] = fin_50_scr   ; 
+                      var fin_75_scr    = weighted_mean (fin_75   , fin_weight  ); scores_75  [4] = fin_75_scr   ; 
+                      var fin_100_scr   = weighted_mean (fin_100  , fin_weight  ); scores_100 [4] = fin_100_scr  ;
                       percentages_temp [4] = fin_perc  ;                                      
                      }                                                                      
-    if (take_misc1) { misc1_weight  = re_perc ([], misc1_weight, false);
-                      misc1_scr     = weighted_mean (misc1_u  , misc1_weight); scores     [5] = misc1_scr    ; 
-                      misc1_0_scr   = weighted_mean (misc1_0  , misc1_weight); scores_0   [5] = misc1_0_scr  ;
-                      misc1_25_scr  = weighted_mean (misc1_25 , misc1_weight); scores_25  [5] = misc1_25_scr ; 
-                      misc1_50_scr  = weighted_mean (misc1_50 , misc1_weight); scores_50  [5] = misc1_50_scr ; 
-                      misc1_75_scr  = weighted_mean (misc1_75 , misc1_weight); scores_75  [5] = misc1_75_scr ; 
-                      misc1_100_scr = weighted_mean (misc1_100, misc1_weight); scores_100 [5] = misc1_100_scr; 
+    if (no_misc1 > 0){misc1_weight  = re_perc ([], misc1_weight, false);
+                      if (take_misc1)
+                          misc1_scr     = weighted_mean (misc1_u  , misc1_weight); scores     [5] = misc1_scr    ; 
+                      var misc1_0_scr   = weighted_mean (misc1_0  , misc1_weight); scores_0   [5] = misc1_0_scr  ;
+                      var misc1_25_scr  = weighted_mean (misc1_25 , misc1_weight); scores_25  [5] = misc1_25_scr ; 
+                      var misc1_50_scr  = weighted_mean (misc1_50 , misc1_weight); scores_50  [5] = misc1_50_scr ; 
+                      var misc1_75_scr  = weighted_mean (misc1_75 , misc1_weight); scores_75  [5] = misc1_75_scr ; 
+                      var misc1_100_scr = weighted_mean (misc1_100, misc1_weight); scores_100 [5] = misc1_100_scr; 
                       percentages_temp [5] = misc1_perc;
                      }
-    if (take_misc2) { misc2_weight  = re_perc ([], misc2_weight, false);
-                      misc2_scr     = weighted_mean (misc2_u  , misc2_weight); scores     [6] = misc2_scr    ; 
-                      misc2_0_scr   = weighted_mean (misc2_0  , misc2_weight); scores_0   [6] = misc2_0_scr  ;
-                      misc2_25_scr  = weighted_mean (misc2_25 , misc2_weight); scores_25  [6] = misc2_25_scr ; 
-                      misc2_50_scr  = weighted_mean (misc2_50 , misc2_weight); scores_50  [6] = misc2_50_scr ; 
-                      misc2_75_scr  = weighted_mean (misc2_75 , misc2_weight); scores_75  [6] = misc2_75_scr ; 
-                      misc2_100_scr = weighted_mean (misc2_100, misc2_weight); scores_100 [6] = misc2_100_scr; 
+    if (no_misc2 > 0){misc2_weight  = re_perc ([], misc2_weight, false);
+                      if (take_misc2)
+                          misc2_scr     = weighted_mean (misc2_u  , misc2_weight); scores     [6] = misc2_scr    ; 
+                      var misc2_0_scr   = weighted_mean (misc2_0  , misc2_weight); scores_0   [6] = misc2_0_scr  ;
+                      var misc2_25_scr  = weighted_mean (misc2_25 , misc2_weight); scores_25  [6] = misc2_25_scr ; 
+                      var misc2_50_scr  = weighted_mean (misc2_50 , misc2_weight); scores_50  [6] = misc2_50_scr ; 
+                      var misc2_75_scr  = weighted_mean (misc2_75 , misc2_weight); scores_75  [6] = misc2_75_scr ; 
+                      var misc2_100_scr = weighted_mean (misc2_100, misc2_weight); scores_100 [6] = misc2_100_scr; 
                       percentages_temp [6] = misc2_perc;
                      }
-    if (take_misc3) { misc3_weight  = re_perc ([], misc3_weight, false);
-                      misc3_scr     = weighted_mean (misc3_u  , misc3_weight); scores     [7] = misc3_scr    ; 
-                      misc3_0_scr   = weighted_mean (misc3_0  , misc3_weight); scores_0   [7] = misc3_0_scr  ;
-                      misc3_25_scr  = weighted_mean (misc3_25 , misc3_weight); scores_25  [7] = misc3_25_scr ; 
-                      misc3_50_scr  = weighted_mean (misc3_50 , misc3_weight); scores_50  [7] = misc3_50_scr ; 
-                      misc3_75_scr  = weighted_mean (misc3_75 , misc3_weight); scores_75  [7] = misc3_75_scr ; 
-                      misc3_100_scr = weighted_mean (misc3_100, misc3_weight); scores_100 [7] = misc3_100_scr; 
+    if (no_misc3 > 0){misc3_weight  = re_perc ([], misc3_weight, false);
+                      if (take_misc3)
+                          misc3_scr     = weighted_mean (misc3_u  , misc3_weight); scores     [7] = misc3_scr    ; 
+                      var misc3_0_scr   = weighted_mean (misc3_0  , misc3_weight); scores_0   [7] = misc3_0_scr  ;
+                      var misc3_25_scr  = weighted_mean (misc3_25 , misc3_weight); scores_25  [7] = misc3_25_scr ; 
+                      var misc3_50_scr  = weighted_mean (misc3_50 , misc3_weight); scores_50  [7] = misc3_50_scr ; 
+                      var misc3_75_scr  = weighted_mean (misc3_75 , misc3_weight); scores_75  [7] = misc3_75_scr ; 
+                      var misc3_100_scr = weighted_mean (misc3_100, misc3_weight); scores_100 [7] = misc3_100_scr; 
                       percentages_temp [7] = misc3_perc;
                      }
 
@@ -662,13 +639,39 @@
     // the boolean variable representing that category is set to true.
     // These boolean variables are take_hw, take_quiz, .... respectively.
 
-    var p_ux = []
-    var p_uy = []
 
-    if (take_hw) {
-        p_ux = p_ux.con
-        p_uy = p_uy.concat(hw_u);
-    }
+
+    // STRING ARRAYS FOR LABELLING PLOT ARE MADE HERE.
+
+    
+    // 
+
+    var labeler = function (num, str) {
+        arr = new_array(num, str);
+        for (var i = 0; i < num; i++) {
+            arr[i] += " " + (i+1).toString();
+        }
+        return arr;
+    };
+
+
+    // 
+
+    if (no_hw    > 0) var hw_label    = labeler   (no_hw   , "Homework" );
+    if (no_lab   > 0) var lab_label   = labeler   (no_lab  , "Lab"      );
+    if (no_quiz  > 0) var quiz_label  = labeler   (no_quiz , "Quiz"     );
+    if (no_mid   > 0) var mid_label   = labeler   (no_mid  , "Midterm"  );
+    if (no_fin   > 0) var fin_label   = new_array (no_fin  , "Final"    );
+    if (no_misc1 > 0) var misc1_label = labeler   (no_misc1,  misc1_name);
+    if (no_misc2 > 0) var misc2_label = labeler   (no_misc2,  misc2_name);
+    if (no_misc3 > 0) var misc3_label = labeler   (no_misc3,  misc3_name);
+
+
+    console.log(hw_label);
+    console.log(fin_label);
+    console.log(misc2_label);
+
+
 
 
     PREDICTOR = document.getElementById('predictor');
