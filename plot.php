@@ -28,14 +28,14 @@
         $result     = pg_query($db,$class_sql);
         echo "get class<br>";
         echo pg_last_error().'<br>';
-        echo 'num rows:'.pg_num_rows().'<br>';
+        echo 'num rows:'.pg_num_rows($result).'<br>';
         $test="SELECT * FROM all_classes;";
         echo $test;
         $testr=pg_query($db,$test);
         echo pg_last_error();
-        $t=pg_fetch_row($result);
+        $t=pg_fetch_row($testr);
         print_r($t);
-        echo "\n";
+        echo "<br>";
         $B          = pg_fetch_row($result);
         
         $C          = explode("_",$class);
@@ -45,6 +45,7 @@
         
         
         //Homework
+        echo "hw<br>";
         $HWINFO     = explode("|",$B[1]);
         print_r($HWINFO);
         $hwnum      = $HWINFO[0];
