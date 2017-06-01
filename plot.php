@@ -30,7 +30,9 @@
         echo pg_last_error().'<br>';
         echo 'num rows:'.pg_num_rows().'<br>';
         $test="SELECT * FROM all_classes;";
+        echo $test;
         $testr=pg_query($db,$test);
+        echo pg_last_error();
         $t=pg_fetch_row($result);
         print_r($t);
         echo "\n";
