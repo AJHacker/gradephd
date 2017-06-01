@@ -26,9 +26,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        echo $class;
         $C          = explode("_",$class);
-        echo 30;
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
@@ -165,7 +163,7 @@
         $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
         $i      +=$misc2num;
         $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
-        
+        echo $hwnum;
     ?>
 
     <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
@@ -182,9 +180,9 @@
         
     // Number of items in each category
 
-    var no_hw    = "<?php echo $hwnum ?>";
+    var no_hw    = <?php echo $hwnum ?>;
     
-    console.log("Hi, I'm below the first php variable"):
+    console.log("Hi, I'm below the first php variable");
     
     var no_quiz  = <?php echo $qnum; ?>;
     var no_lab   = <?php echo $lnum; ?>;
