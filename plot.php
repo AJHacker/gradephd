@@ -29,6 +29,11 @@
         echo "get class<br>";
         echo pg_last_error().'<br>';
         echo 'num rows:'.pg_num_rows().'<br>';
+        $test="SELECT * FROM all_classes;";
+        $testr=pg_query($db,$test);
+        $t=pg_fetch_row($result);
+        print_r($t);
+        echo "\n";
         $B          = pg_fetch_row($result);
         
         $C          = explode("_",$class);
