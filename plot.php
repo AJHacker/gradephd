@@ -21,14 +21,15 @@
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         echo "get user<br>";
-        echo pg_last_error().'<br>';
+        echo pg_last_error();
         $A          = pg_fetch_row($result);
         
         $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
         $result     = pg_query($db,$class_sql);
         echo "get class<br>";
-        echo pg_last_error().'<br>';
-        echo 'num rows:'.pg_num_rows($result).'<br>';
+        echo pg_last_error();
+        echo 'num rows:';
+        echo pg_num_rows($result);
         $test="SELECT * FROM all_classes;";
         echo $test;
         $testr=pg_query($db,$test);
