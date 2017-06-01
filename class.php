@@ -379,8 +379,10 @@
             '$MISC2INFO',
             '$MISC3sINFO'
             );";
-            
+        
+        echo "insert class<br>";
         pg_query($db,$sql);
+        echo pg_last_error().'<br>';
         
         $class_sql="CREATE TABLE $new_class (NAME     TEXT    NOT NULL    PRIMARY KEY,";
           
