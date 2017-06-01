@@ -28,6 +28,7 @@
         
         echo $class;
         $C          = explode("_",$class);
+        echo 30;
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
