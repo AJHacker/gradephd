@@ -124,7 +124,7 @@
                 How many? <input type=number name='misc1num' value = '0'><br>
                 Total " . $s . "?  <input type=number name='misc1percent' value = '0'>".$v."<br>
                 <input value='same' name='misc1weight' type='radio' checked>                
-                All same weight and Lowest <input type=number name='misc1numwc'> are <input type=number name='misc1wcp'>% normal weight.<br>
+                All same weight and Lowest <input type=number name='misc1numwc' value='0'> are <input type=number name='misc1wcp' value='100' >% normal weight.<br>
                 <input value='different' name='misc1weight' type='radio'>Different weights for all
             </fieldset>
             <fieldset>
@@ -133,7 +133,7 @@
                 How many? <input type=number name='misc2num' value = '0'><br>
                 Total ?  <input type=number name='misc2percent' value = '0'>".$v."<br>
                 <input value='same' name='misc2weight' type='radio' checked>                
-                All same weight and Lowest <input type=number name='misc2numwc'> are <input type=number name='misc2wcp'>% normal weight.<br>
+                All same weight and Lowest <input type=number name='misc2numwc' value='0'> are <input type=number name='misc2wcp' value='100'>% normal weight.<br>
                 <input value='different' name='misc2weight' type='radio'>Different weights for all
             </fieldset>
             <fieldset>
@@ -142,7 +142,7 @@
                 How many? <input type=number name='misc3num' value = '0'><br>
                 Total " . $s . "?  <input type=number name='misc3percent' value = '0'><br>
                 <input value='same' name='misc3weight' type='radio' checked>
-                All same weight and Lowest <input type=number name='misc3numwc'> are <input type=number name='misc3wcp'>% normal weight.<br>
+                All same weight and Lowest <input type=number name='misc3numwc' value='0'> are <input type=number name='misc3wcp' value='100'>% normal weight.<br>
                 <input value='different' name='misc3weight' type='radio'>Different weights for all
             </fieldset>
         <input type='submit' value='Submit'>
