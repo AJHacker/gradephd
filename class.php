@@ -43,7 +43,6 @@
     $misc3_diff=($_POST['misc3weight']=='different');
     
     if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
-        echo "1";    
         echo "
         <form action='/class.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
@@ -66,7 +65,6 @@
         </form> 
         ";
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
-        echo "2";
         $class_name=$coursenum."_".$semester."_".$prof;
         $class_name=str_replace("-","@",$class_name);
         $_SESSION['new_class']=$class_name;
@@ -118,7 +116,7 @@
                 <legend>Final</legend>
                 Is there a final? <input type='radio' name='fnum' value = '1'>Yes
                                   <input type='radio' name='fnum' value = '0' checked>No
-                Total " . $s . "?  <input type=number name='fpercent'>".$v."
+                Total " . $s . "?  <input type=number name='fpercent' value = '0'>".$v."
             </fieldset>
             <fieldset>
                 <legend>Other 1 (optional)</legend>
@@ -192,7 +190,6 @@
         }
 
         $counts = array();
-        echo "WHY THE FUCK YOU GOTTA HAVE DIFFERENT WEIGHTS";
         if (count($diff)>0) {
             echo "<form action='/class.php' method='post'>";
             for ($i=0;$i<count($diff);$i++) {
