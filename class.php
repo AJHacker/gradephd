@@ -314,7 +314,7 @@
         $misc1percent = $_SESSION['misc1percent'];
         $misc1weight = $_SESSION['misc1weight'];
         $misc1numwc = $_SESSION['misc1numwc'];
-        $misw1cp = $_SESSION['misc1wcp'];
+        $misc1wcp = $_SESSION['misc1wcp'];
        
         $MISC1INFO = "$misc1num|$misc1percent|$misc1weight";
         if ($misc1weight=="same") {
