@@ -24,8 +24,8 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $table      = str_replace("-","@",$class);
-        $user_sql   = "SELECT * FROM $table WHERE name='$user';";
+        $class      = str_replace("-","@",$class);
+        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
         
@@ -193,7 +193,6 @@
         $i      +=$misc2num;
         $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         
-        echo 'PHP COMPLETED';
     ?>
 
     <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
