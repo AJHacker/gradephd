@@ -24,7 +24,8 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
+        $table      = str_replace("-","@",$class);
+        $user_sql   = "SELECT * FROM $table WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
         
@@ -50,8 +51,8 @@
             $hwdroppc   = $hwexploded[2];
             $hwweights="[]";
         } else {
-            $ldrop=0;
-            $ldroppc=0;
+            $hwdrop=0;
+            $hwdroppc=0;
             $i          = strpos($hwexploded,",");
             $hwweights  = "[".substr($hwexploded,$i+1)."]";
         }
@@ -87,6 +88,8 @@
             $qdroppc    = $qexploded[2];
             $qweights="[]";
         } else {
+            $qdrop=0;
+            $qdroppc=0;
             $i          = strpos($qexploded,",");
             $qweights   = "[".substr($qexploded,$i+1)."]";
         }
@@ -103,6 +106,8 @@
             $tdroppc    = $texploded[2];
             $tweights="[]";
         } else {
+            $tdrop=0;
+            $tdroppc=0;
             $i          = strpos($texploded,",");
             $tweights   = "[".substr($texploded,$i+1)."]";
         }
@@ -124,6 +129,8 @@
             $misc1droppc    = $misc1exploded[2];
             $misc1weights="[]";
         } else {
+            $misc1drop=0;
+            $misc1droppc=0;
             $i              = strpos($misc1exploded,",");
             $misc1weights   = "[".substr($misc1exploded,$i+1)."]";
         }
@@ -141,6 +148,8 @@
             $misc2droppc    = $misc2exploded[2];
             $misc2weights="[]";
         } else {
+            $misc2drop=0;
+            $misc2droppc=0;
             $i              = strpos($misc2exploded,",");
             $misc2weights   = "[".substr($misc2exploded,$i+1)."]";
         }
@@ -158,6 +167,8 @@
             $misc3droppc    = $misc3exploded[2];
             $misc3weights="[]";
         } else {
+            $misc3drop=0;
+            $misc3droppc=0;
             $i              = strpos($misc3exploded,",");
             $misc3weights   = "[".substr($misc3exploded,$i+1)."]";
         }
@@ -192,6 +203,7 @@
 
 
     // Floating Point Error allowed in Grade Calculations (Out of 100).
+    
     var Epsilon = 0.00000001;
 
     
@@ -208,12 +220,14 @@
 
 
     // Names of miscellaneous categories
+    
     if (no_misc1 > 0) var misc1_name = <?php echo "'$misc1name'"; ?>;
     if (no_misc2 > 0) var misc2_name = <?php echo "'$misc2name'"; ?>;
     if (no_misc3 > 0) var misc3_name = <?php echo "'$misc3name'"; ?>;
 
     
     // Percent weight of each category contributing towards total grade
+
     var hw_perc    = <?php echo $hwpercent; ?>;
     var quiz_perc  = <?php echo $qpercent; ?>;
     var lab_perc   = <?php echo $lpercent; ?>;
@@ -226,7 +240,7 @@
 
     // Function to return a new array of length 'size', 
     // containing 'val' as each of its values.
-    3
+    
     var new_array = function (size, val) {
         var arr = [];
         for(var i = 0; i < size; i++) {
@@ -250,7 +264,7 @@
     // Function to verify that an array holding weights is 'valid'.
     // Returns true if it is valid, returns false and logs an error
     // otherwise.
-    4
+    
     var verify_weights = function (arr) {
         if (arr.length === 0) return arr;
         s = 0;
@@ -281,14 +295,14 @@
     // Creates new boolean variables for each category, which are set to true
     // if entries in that category have variable weights, false otherwise.
 
-    var hw_vw    = <?php echo $hwweight; ?>;
-    var quiz_vw  = <?php echo $qweight; ?>;
-    var lab_vw   = <?php echo $lweight; ?>;
-    var mid_vw   = <?php echo $tweight; ?>;
+    var hw_vw    = <?php echo $hwweight? 'true' : 'false'; ?>;
+    var quiz_vw  = <?php echo $qweight? 'true' : 'false'; ?>;
+    var lab_vw   = <?php echo $lweight? 'true' : 'false'; ?>;
+    var mid_vw   = <?php echo $tweight? 'true' : 'false'; ?>;
     var fin_vw   = false;
-    var misc1_vw = <?php echo $misc1weight; ?>;
-    var misc2_vw = <?php echo $misc2weight; ?>;
-    var misc3_vw = <?php echo $misc3weight; ?>;
+    var misc1_vw = <?php echo $misc1weight? 'true' : 'false'; ?>;
+    var misc2_vw = <?php echo $misc2weight? 'true' : 'false'; ?>;
+    var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
 
 
     // Values of each category, stored in arrays
