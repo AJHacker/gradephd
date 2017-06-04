@@ -369,7 +369,11 @@
         $MISC3INFO.="|$misc3name";
 
         //Add to all_classes
+<<<<<<< HEAD
         $sql="INSERT INTO ALL_CLASSES VALUES ( 
+=======
+        $sql="INSERT INTO all_classes VALUES ( 
+>>>>>>> origin/master
             '$new_class', 
             '$HWINFO',
             '$LABINFO',
@@ -380,8 +384,11 @@
             '$MISC2INFO',
             '$MISC3INFO'
             );";
-            
+        
+        echo "insert class<br>";
         pg_query($db,$sql);
+        echo pg_last_error();
+        echo "<br>";
         
         $class_sql="CREATE TABLE $new_class (NAME     TEXT    NOT NULL    PRIMARY KEY,";
           
