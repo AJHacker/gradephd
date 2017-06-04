@@ -253,11 +253,11 @@
     // Calculates the mean/weighted mean score in each category, 
     // based on the option chosen, and the values entered.
 
-    var hw_mean    = variable_weights ? weighted_mean (hw,    hw_weight)    : mean (hw)   ;
-    var quiz_mean  = variable_weights ? weighted_mean (quiz,  quiz_weight)  : mean (quiz) ;
-    var lab_mean   = variable_weights ? weighted_mean (lab,   lab_weight)   : mean (lab)  ;
-    var mid_mean   = variable_weights ? weighted_mean (mid,   mid_weight)   : mean (mid)  ;
-    var fin_mean   = variable_weights ? weighted_mean (fin,   fin_weight)   : mean (fin)  ;
+    var hw_mean    = hw_vw ? weighted_mean (hw,    hw_weight)    : mean (hw)   ;
+    var quiz_mean  = quiz_vw ? weighted_mean (quiz,  quiz_weight)  : mean (quiz) ;
+    var lab_mean   = lab_vw ? weighted_mean (lab,   lab_weight)   : mean (lab)  ;
+    var mid_mean   = mid_vw ? weighted_mean (mid,   mid_weight)   : mean (mid)  ;
+    var fin_mean   = fin_vw ? weighted_mean (fin,   fin_weight)   : mean (fin)  ;
     var misc1_mean = variable_weights ? weighted_mean (misc1, misc1_weight) : mean (misc1);
     var misc2_mean = variable_weights ? weighted_mean (misc2, misc2_weight) : mean (misc2);
     var misc3_mean = variable_weights ? weighted_mean (misc3, misc3_weight) : mean (misc3);

@@ -16,9 +16,16 @@
  
 
     <?php
+        function pg_connection_string_from_database_url() {
+            extract(parse_url($_ENV["DATABASE_URL"]));
+            return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
+        }
+        $db = pg_connect(pg_connection_string_from_database_url());
+
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
+        $table      = str_replace("-","@",$class);
+        $user_sql   = "SELECT * FROM $table WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
         
@@ -26,6 +33,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
+        $class=str_replace("@","-",$class);
         $C          = explode("_",$class);
         $class_name = $C[0];
         $semester   = $C[1];
@@ -41,9 +49,12 @@
         if ($hwweight == "same") {
             $hwdrop     = $hwexploded[1];
             $hwdroppc   = $hwexploded[2];
+            $hwweights="[]";
         } else {
+            $hwdrop=0;
+            $hwdroppc=0;
             $i          = strpos($hwexploded,",");
-            $hwweights  = substr($hwexploded,$i+1);
+            $hwweights  = "[".substr($hwexploded,$i+1)."]";
         }
         $hwweight=($hwexploded[0]=="different");
         
@@ -57,9 +68,12 @@
         if ($lweight == "same") {
             $ldrop      = $lexploded[1];
             $ldroppc    = $lexploded[2];
+            $lweights="[]";
         } else {
+            $ldrop=0;
+            $ldroppc=0;
             $i          = strpos($lexploded,",");
-            $lweights   = substr($lexploded,$i+1);
+            $lweights   = "[".substr($lexploded,$i+1)."]";
         }
         $lweight=($lexploded[0]=="different");
         
@@ -72,9 +86,12 @@
         if ($qweight == "same") {
             $qdrop      = $qexploded[1];
             $qdroppc    = $qexploded[2];
+            $qweights="[]";
         } else {
+            $qdrop=0;
+            $qdroppc=0;
             $i          = strpos($qexploded,",");
-            $qweights   = substr($qexploded,$i+1);
+            $qweights   = "[".substr($qexploded,$i+1)."]";
         }
         $qweight=($qexploded[0]=="different");
         
@@ -87,9 +104,12 @@
         if ($tweight == "same") {
             $tdrop      = $texploded[1];
             $tdroppc    = $texploded[2];
+            $tweights="[]";
         } else {
+            $tdrop=0;
+            $tdroppc=0;
             $i          = strpos($texploded,",");
-            $tweights   = substr($texploded,$i+1);
+            $tweights   = "[".substr($texploded,$i+1)."]";
         }
         $tweight=($texploded[0]=="different");
         
@@ -107,9 +127,12 @@
         if ($misc1weight == "same") {
             $misc1drop      = $misc1exploded[1];
             $misc1droppc    = $misc1exploded[2];
+            $misc1weights="[]";
         } else {
+            $misc1drop=0;
+            $misc1droppc=0;
             $i              = strpos($misc1exploded,",");
-            $misc1weights   = substr($misc1exploded,$i+1);
+            $misc1weights   = "[".substr($misc1exploded,$i+1)."]";
         }
         $misc1name=$MISC1INFO[3];
         $misc1weight=($misc1exploded[0]=="different");
@@ -123,9 +146,12 @@
         if ($misc2weight == "same") {
             $misc2drop      = $misc2exploded[1];
             $misc2droppc    = $misc2exploded[2];
+            $misc2weights="[]";
         } else {
+            $misc2drop=0;
+            $misc2droppc=0;
             $i              = strpos($misc2exploded,",");
-            $misc2weights   = substr($misc2exploded,$i+1);
+            $misc2weights   = "[".substr($misc2exploded,$i+1)."]";
         }
         $misc2name=$MISC2INFO[3];
         $misc2weight=($misc2exploded[0]=="different");
@@ -139,9 +165,12 @@
         if ($misc3weight == "same") {
             $misc3drop      = $misc3exploded[1];
             $misc3droppc    = $misc3exploded[2];
+            $misc3weights="[]";
         } else {
+            $misc3drop=0;
+            $misc3droppc=0;
             $i              = strpos($misc3exploded,",");
-            $misc3weights   = substr($mic3exploded,$i+1);
+            $misc3weights   = "[".substr($misc3exploded,$i+1)."]";
         }
         $misc3name=$MISC3INFO[3];
         $misc3weight=($misc3exploded[0]=="different");
@@ -156,7 +185,7 @@
         $i      +=$qnum;
         $mid    = "[".implode(",",array_slice($A,$i,$i+$tnum))."]";
         $i      +=$tnum;
-        $f      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
+        $fin      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
         $i      +=$fnum;
         $misc1  = "[".implode(",",array_slice($A,$i,$i+$misc1num))."]";
         $i      +=$misc1num;
@@ -164,6 +193,7 @@
         $i      +=$misc2num;
         $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         
+        echo 'PHP COMPLETED';
     ?>
 
     <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
@@ -173,7 +203,7 @@
 
 
     // Floating Point Error allowed in Grade Calculations (Out of 100).
-
+    
     var Epsilon = 0.00000001;
 
     
@@ -190,7 +220,7 @@
 
 
     // Names of miscellaneous categories
-
+    
     if (no_misc1 > 0) var misc1_name = <?php echo "'$misc1name'"; ?>;
     if (no_misc2 > 0) var misc2_name = <?php echo "'$misc2name'"; ?>;
     if (no_misc3 > 0) var misc3_name = <?php echo "'$misc3name'"; ?>;
@@ -206,11 +236,11 @@
     var misc1_perc = <?php echo $misc1percent; ?>;
     var misc2_perc = <?php echo $misc2percent; ?>;
     var misc3_perc = <?php echo $misc3percent; ?>;
-
+    
 
     // Function to return a new array of length 'size', 
     // containing 'val' as each of its values.
-
+    
     var new_array = function (size, val) {
         var arr = [];
         for(var i = 0; i < size; i++) {
@@ -234,7 +264,7 @@
     // Function to verify that an array holding weights is 'valid'.
     // Returns true if it is valid, returns false and logs an error
     // otherwise.
-
+    
     var verify_weights = function (arr) {
         if (arr.length === 0) return arr;
         s = 0;
@@ -265,23 +295,23 @@
     // Creates new boolean variables for each category, which are set to true
     // if entries in that category have variable weights, false otherwise.
 
-    var hw_vw    = <?php echo $hwweight; ?>;
-    var quiz_vw  = <?php echo $qweight; ?>;
-    var lab_vw   = <?php echo $lweight; ?>;
-    var mid_vw   = <?php echo $tweight; ?>;
+    var hw_vw    = <?php echo $hwweight? 'true' : 'false'; ?>;
+    var quiz_vw  = <?php echo $qweight? 'true' : 'false'; ?>;
+    var lab_vw   = <?php echo $lweight? 'true' : 'false'; ?>;
+    var mid_vw   = <?php echo $tweight? 'true' : 'false'; ?>;
     var fin_vw   = false;
-    var misc1_vw = <?php echo $misc1weight; ?>;
-    var misc2_vw = <?php echo $misc2weight; ?>;
-    var misc3_vw = <?php echo $misc3weight; ?>;
+    var misc1_vw = <?php echo $misc1weight? 'true' : 'false'; ?>;
+    var misc2_vw = <?php echo $misc2weight? 'true' : 'false'; ?>;
+    var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
 
 
     // Values of each category, stored in arrays
     
     var hw    = <?php echo $hw; ?>;
-    var quiz  = <?php echo $q; ?>;
-    var lab   = <?php echo $l; ?>;
-    var mid   = <?php echo $t; ?>;
-    var fin   = <?php echo $f; ?>;
+    var quiz  = <?php echo $quiz; ?>;
+    var lab   = <?php echo $lab; ?>;
+    var mid   = <?php echo $mid; ?>;
+    var fin   = <?php echo $fin; ?>;
     var misc1 = <?php echo $misc1; ?>;
     var misc2 = <?php echo $misc2; ?>;
     var misc3 = <?php echo $misc3; ?>;

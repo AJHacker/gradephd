@@ -79,7 +79,10 @@
 	$A=pg_fetch_row($result,0);
 	for($i = 2;$i<10;$i++) {
 	    $class=$A[$i];
-	    if ($class) echo "<li><a href='/plot.php?class=$class'3>$class</a></li>";
+	    if ($class) {
+	    	$class=str_replace("@","-",$class);
+	    	echo "<li><a href='/plot.php?class=$class'3>$class</a></li>";
+	    }
 	}
 	echo "</ul>";
 	
