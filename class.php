@@ -68,6 +68,7 @@
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
         echo "2";
         $class_name=$coursenum."_".$semester."_".$prof;
+        $class_name=str_replace("-","@",$class_name);
         $_SESSION['new_class']=$class_name;
 //        unset($_SESSION['new_class']);
         if ($porp=='percentage') {
@@ -81,8 +82,8 @@
         <form action='/class.php' method='post'>
             <fieldset>
                 <legend>Homeworks</legend>
-                How many? <input type=number name='hwnum'><br>
-                Total " . $s . "?  <input type=number name='hwpercent'>".$v."<br>
+                How many? <input type=number name='hwnum'  value = '0'><br>
+                Total " . $s . "?  <input type=number name='hwpercent' value = '0'>".$v."<br>
                 <input value='same' name = 'hwweight' type='radio' checked>
                 Lowest <input type=number name='hwnumwc' value='0'> are <input type=number name='hwwcp' value='100'>% normal weight.<br>
                 <input value='different' name = 'hwweight' type='radio'>Different weights for all
@@ -90,8 +91,8 @@
             </fieldset>
             <fieldset>
                 <legend>Labs</legend>
-                How many? <input type=number name='lnum'><br>
-                Total " . $s . "?  <input type=number name='lpercent'>".$v."<br>
+                How many? <input type=number name='lnum' value = '0'><br>
+                Total " . $s . "?  <input type=number name='lpercent' value = '0'>".$v."<br>
                 <input value='same' name = 'lweight' type='radio' checked>
                 All same weight and Lowest <input type=number name='lnumwc' value='0'> are <input type=number name='lwcp' value='100'>% normal weight.<br>
                 <input value='different' name = 'lweight' type='radio'>Different weights for all
@@ -99,16 +100,16 @@
             </fieldset>
             <fieldset>
                 <legend>Quizzes</legend>
-                How many? <input type=number name='qnum'><br>
-                Total " . $s . "?  <input type=number name='qpercent'>".$v."<br>
+                How many? <input type=number name='qnum' value = '0'><br>
+                Total " . $s . "?  <input type=number name='qpercent' value = '0'>".$v."<br>
                 <input value='same' name = 'qweight' type='radio' checked>
                 All same weight and Lowest <input type=number name='qnumwc' value = '0'> are <input type=number name='qwcp' value='100'>% normal weight.<br>
                 <input value='different' name = 'qweight' type='radio'>Different weights for all
             </fieldset>
             <fieldset>
                 <legend>Tests</legend>
-                How many? <input type=number name='tnum'><br>
-                Total " . $s . "?  <input type=number name='tpercent'>".$v."<br>
+                How many? <input type=number name='tnum' value = '0'><br>
+                Total " . $s . "?  <input type=number name='tpercent' value = '0'>".$v."<br>
                 <input value='same' name='tweight' type='radio' checked>
                 All same weight and Lowest <input type=number name='tnumwc' value='0'> are <input type=number name='twcp' value='100'>% normal weight.<br>
                 <input value='different' name='tweight' type='radio'>Different weights for all
@@ -121,27 +122,27 @@
             </fieldset>
             <fieldset>
                 <legend>Other 1 (optional)</legend>
-                Name of category: <input type=text name='misc1name'><br>
-                How many? <input type=number name='misc1num'><br>
-                Total " . $s . "?  <input type=number name='misc1percent'>".$v."<br>
+                Name of category: <input type=text name='misc1name' value = 'Participation'><br>
+                How many? <input type=number name='misc1num' value = '0'><br>
+                Total " . $s . "?  <input type=number name='misc1percent' value = '0'>".$v."<br>
                 <input value='same' name='misc1weight' type='radio' checked>                
                 All same weight and Lowest <input type=number name='misc1numwc'> are <input type=number name='misc1wcp'>% normal weight.<br>
                 <input value='different' name='misc1weight' type='radio'>Different weights for all
             </fieldset>
             <fieldset>
                 <legend>Other 2 (optional)</legend>
-                Name of category: <input type=text name='misc2name'><br>
-                How many? <input type=number name='misc2num'><br>
-                Total ?  <input type=number name='misc2percent'>".$v."<br>
+                Name of category: <input type=text name='misc2name' value = 'Attendance'><br>
+                How many? <input type=number name='misc2num' value = '0'><br>
+                Total ?  <input type=number name='misc2percent' value = '0'>".$v."<br>
                 <input value='same' name='misc2weight' type='radio' checked>                
                 All same weight and Lowest <input type=number name='misc2numwc'> are <input type=number name='misc2wcp'>% normal weight.<br>
                 <input value='different' name='misc2weight' type='radio'>Different weights for all
             </fieldset>
             <fieldset>
                 <legend>Other 3 (optional)</legend>
-                Name of category: <input type=text name='misc3name'><br>
-                How many? <input type=number name='misc3num'><br>
-                Total " . $s . "?  <input type=number name='misc3percent'><br>
+                Name of category: <input type=text name='misc3name' value = 'Fun'><br>
+                How many? <input type=number name='misc3num' value = '0'><br>
+                Total " . $s . "?  <input type=number name='misc3percent' value = '0'><br>
                 <input value='same' name='misc3weight' type='radio' checked>
                 All same weight and Lowest <input type=number name='misc3numwc'> are <input type=number name='misc3wcp'>% normal weight.<br>
                 <input value='different' name='misc3weight' type='radio'>Different weights for all
@@ -311,6 +312,7 @@
         
         
         //MISC1
+        $misc1name=$_SESSION['misc1name'];
         $misc1num = $_SESSION['misc1num'];
         $misc1percent = $_SESSION['misc1percent'];
         $misc1weight = $_SESSION['misc1weight'];
@@ -326,8 +328,10 @@
                 $MISC1.=",$w";
             }
         }
+        $MISC1INFO.="|$misc1name";
 
         //MISC 2
+        $misc2name=$_SESSION['misc2name'];
         $misc2num = $_SESSION['misc2num'];
         $misc2percent = $_SESSION['misc2percent'];
         $misc2weight = $_SESSION['misc2weight'];
@@ -343,8 +347,10 @@
                 $MISC2INFO.=",$w";
             }
         }
+        $MISC2INFO.="|$misc2name";
 
         //MISC 3 
+        $misc3name=$_SESSION['misc3name'];
         $misc3num = $_SESSION['misc3num'];
         $misc3percent = $_SESSION['misc3percent'];
         $misc3weight = $_SESSION['misc3weight'];
@@ -360,8 +366,10 @@
                 $MISC3INFO.=",$w";
             }
         }
+        $MISC3INFO.="|$misc3name";
 
-        $sql="INSERT INTO TABLE ALL_CLASSES VALUES ( 
+        //Add to all_classes
+        $sql="INSERT INTO ALL_CLASSES VALUES ( 
             '$new_class', 
             '$HWINFO',
             '$LABINFO',
@@ -370,7 +378,7 @@
             '$FINALINFO',
             '$MISC1INFO',
             '$MISC2INFO',
-            '$MISC3sINFO'
+            '$MISC3INFO'
             );";
             
         pg_query($db,$sql);
@@ -430,7 +438,7 @@
         echo pg_last_error() . "<br>";
         $n=1;
         for ($n;$n<9;$n++) {
-            if (!$classes[$n]) break;
+            if (!$classes[$n+1]) break;
         }
         $add_class_to_user="UPDATE users SET class$n='$new_class' WHERE email='$user';";
         echo $add_class_to_user."<br>";
@@ -442,8 +450,8 @@
         $_SESSION['verifiedUser']=$user;
 
         
-        // header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
-        // exit();
+        header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
+        exit();
     }
     
     ?>
