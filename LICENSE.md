@@ -68,7 +68,6 @@ https://www.w3schools.com/sql/sql_injection.asp
 -Require an email to login, verification link
 
 
--Database entry of all information *CURRENTLY WORKING ON*
 
 -Visualizer *NEXT STEP*
 -css *NEXT STEP*
