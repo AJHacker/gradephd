@@ -918,12 +918,24 @@
 
     
     var layout = {
-      legend: {
-        y: 0.5,
-        traceorder: 'reversed',
-        font: {size: 16},
-        yref: 'paper'
-      }};
+      title: 'Predictor',
+      xaxis: {
+        title: 'Grades So Far',
+        titlefont: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      },
+      yaxis: {
+        title: 'What you got on those grades',
+        titlefont: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      }
+    };
 
 
     Plotly.newPlot('predictor', data, layout);
