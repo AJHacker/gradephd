@@ -1012,9 +1012,12 @@
        <form method = 'post' action='/save.php'>
 
     <?php 
-        foreach ($GA as $name => $grade) {
-            echo "$name: <input type=text name='$name' value = '$grade'>";
+        $names = array_keys($GA);
+        foreach($names as $name){
+            $grade = $GA[$name];
+            echo "$name: <input type='text' name='$name' value = '$grade'>";
         }
+        
     ?>
 
        
