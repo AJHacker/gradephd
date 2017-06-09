@@ -959,29 +959,66 @@
     </script>
 
     <?php 
+        $name=$A[0];
+        $grades = array_slice($A,1);
+        $hw = array();
+        for($i=1;$i<$hwnum+1;$i++){
+            array_push($hw,"HW$i");
+        }
 
-        $query= "select * from information_schema.columns
- where table_name = '$class_at';";
-        echo $query;
+        $l = array();
+        for($i=1;$i<$lnum+1;$i++){
+            array_push($l;,"LAB$i");
+        }
 
-        $result=pg_query($db, $query);
-        echo $result;
-        echo pg_last_error();
-        $abc=pg_fetch_row($result, 0);
-        echo pg_last_error();
+        $q = array();
+        for($i=$i<$qnum;$i++){
+            array_push($q,"QUIZ$i");
+        }
+
+        $t = array();
+        for($i=0;$i<$tnum;$i++){
+            array_push($t,"TEST$i");
+        }
+        $f = array();
+        for($i=0;$i<$fnum;$i++){
+            array_push($f,"FINAL");
+        }
+        $misc1 = array();
+        for($i=0;$i<$misc1num;$i++){
+            array_push($misc1,"$misc1name$i");
+        }
+        $misc2 = array();
+        for($i=0;$i<$misc2num;$i++){
+            array_push($misc2,"misc2name$i");
+        }
+        $misc3 = array();
+        for($i=0;$i<$misc3num;$i++){
+            array_push($misc3,"misc3name$i");
+
+        }
+        $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
+            
+        $GA = array_combine($final, $grades);
 
 
-        print_r($abc);
-    
+        }
+
     ?>
 
 
 
    　<div id = 'gradesDiv'>
-       
+       <form method = 'post' action='/save.php'>
 
-       <form>
-           <input type=text name='$$$'>
+    <?php 
+        foreach ($GA as $name => $grade) {
+            echo "$name: <input type=text name='$name' value = '$grade'>";
+        }
+    ?>
+
+       
+            
         </form>
 
 
