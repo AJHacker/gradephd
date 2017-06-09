@@ -24,7 +24,7 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $class      = str_replace("-","@",$class);
+        $class_at      = str_replace("-","@",$class);
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
@@ -33,7 +33,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        $class=str_replace("@","-",$class);
+        $class=str_replace("@","-",$class_at);
         $C          = explode("_",$class);
         $class_name = $C[0];
         $semester   = $C[1];
@@ -960,7 +960,7 @@
     <?php 
 
         $query= "select * from information_schema.columns
- where table_name = $class;";
+ where table_name = $class_at;";
         echo $query;
 
         $result=pg_query($db, $query);
