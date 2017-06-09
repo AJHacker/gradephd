@@ -960,7 +960,7 @@
     <?php 
 
         $query= "select * from information_schema.columns
- where table_name = $class_at;";
+ where table_name = '$class_at';";
         echo $query;
 
         $result=pg_query($db, $query);
