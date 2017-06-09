@@ -959,11 +959,11 @@
 
     <?php 
 
-        $colnms= "select* from information_schema.columns
+        $qurey= "select * from information_schema.columns
  where table_name = '$class';";
-        echo $colmns;
+        echo $qurey;
 
-        $result=pg_query($db, $colnms);
+        $result=pg_query($db, $qurey);
         echo $result;
         echo pg_last_error();
         $colnms=pg_fetch_row($result, 0);
