@@ -959,18 +959,18 @@
 
     <?php 
 
-        $qurey= "select * from information_schema.columns
- where table_name = '$class';";
-        echo $qurey;
+        $query= "select * from information_schema.columns
+ where table_name = $class;";
+        echo $query;
 
-        $result=pg_query($db, $qurey);
+        $result=pg_query($db, $query);
         echo $result;
         echo pg_last_error();
-        $colnms=pg_fetch_row($result, 0);
+        $abc=pg_fetch_row($result, 0);
         echo pg_last_error();
 
 
-        print_r($colnms);
+        print_r($abc);
     
     ?>
 
