@@ -802,6 +802,19 @@
     };
 
 
+    var yify = function (perc_temp, sum) {
+        var total = 0;
+        perc_temp.forEach (function (item, index) {
+                total += perc_temp [index];
+        });
+        var perc = new_array (perc_temp.length, null);
+        perc_temp.forEach (function (item, index) {
+            perc [index] = perc_temp [index] * sum / total;
+        });
+        return perc;
+    };
+
+
     // 
 
     if (no_hw    > 0) var hw_label    = labeler   (no_hw   , "Homework" );
@@ -902,7 +915,7 @@
 
 
     var user_line = {
-        x: [1, 2, 3, 4, 5],
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
         y: [1, 2, 4, 8, 16],
         type: 'scatter',
         name: 'Username - Blue',
@@ -914,7 +927,7 @@
     };
 
     
-    var data = [user_line];
+    var data = [];
 
     
     var layout = {
@@ -942,7 +955,31 @@
 
 
 
+
     </script>
+
+    <?php 
+
+        $colnms= "select* from information_schema.columns
+ where table_name = '$class';";
+        $result=pg_query($db, $colnms);
+        $colnms=pg_fetch_row($result, 0);
+        
+    
+    ?>
+
+
+
+   　<div id = 'gradesDiv'>
+       
+
+       <form>
+           <input type=text name='$$$'>
+        </form>
+
+
+
+   </div>
 
 
 </body>
