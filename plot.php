@@ -962,9 +962,11 @@
 
         $colnms= "select* from information_schema.columns
  where table_name = '$class';";
+
         $result=pg_query($db, $colnms);
         $colnms=pg_fetch_row($result, 0);
-        
+
+        print_r($colnms);
     
     ?>
 
