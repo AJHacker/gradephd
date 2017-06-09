@@ -200,7 +200,6 @@
 
     <script>
 
-
     // Floating Point Error allowed in Grade Calculations (Out of 100).
     
     var Epsilon = 0.00000001;
@@ -964,7 +963,10 @@
  where table_name = '$class';";
 
         $result=pg_query($db, $colnms);
+        echo pg_last_error();
         $colnms=pg_fetch_row($result, 0);
+        echo pg_last_error();
+
 
         print_r($colnms);
     
