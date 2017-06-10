@@ -29,6 +29,7 @@
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
+        print_r($A);
         
         $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
         $result     = pg_query($db,$class_sql);
