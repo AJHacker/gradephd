@@ -1011,8 +1011,10 @@
 
     <?php 
         $names = array_keys($GA);
+        echo $names;
         foreach ($names as $name) {
             $grade = $GA[$name];
+            echo $grade;
             echo "$name: <input type='text' name='$name' value = '$grade'>";
         }
         
