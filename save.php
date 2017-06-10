@@ -18,7 +18,7 @@
         $sql .= $_POST[$name].", ";
     }
     $sql = rtrim($sql,', ');
-    $sql.=" WHERE name = $user;";
+    $sql.=" WHERE name = '$user';";
     function pg_connection_string_from_database_url() {
             extract(parse_url($_ENV["DATABASE_URL"]));
             return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
