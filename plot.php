@@ -998,7 +998,7 @@
 
         }
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
-            
+   
         $GA = array_combine($final, $grades);
 
 
@@ -1010,10 +1010,7 @@
         <form method = 'post' action='/save.php'>
 
     <?php 
-        echo 'HELLO SIR!';
-        $names = array_keys($GA);
-        echo $names;
-        foreach ($names as $name) {
+        foreach ($final as $name) {
             $grade = $GA[$name];
             echo $grade;
             echo "$name: <input type='text' name='$name' value = '$grade'>";
