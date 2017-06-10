@@ -14,7 +14,8 @@
     $sql = "UPDATE $class SET ";
     foreach ($final as $name){
         $sql.="$name=";
-        $sql .= $_POST[$name].",";
+        $grade= $_POST[$name]==null ? null: $_POST[$name];
+        $sql .= "$grade,";
     }
     $sql = rtrim($sql,',');
     $sql.="WHERE name = $user;";
@@ -28,9 +29,8 @@
     pg_query($db,$sql);
     echo pg_last_error();
     
-    
+    $class=str_replace("@","-",$class);
     //header("Location: https://gradephd.herokuapp.com/plot.php?class=$class");
-    exit();
 ?>
     
 </html>
