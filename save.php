@@ -14,7 +14,7 @@
     $sql = "UPDATE $class SET ";
     foreach ($final as $name){
         $sql.="$name=";
-        $grade= $_POST[$name]==null ? null: $_POST[$name];
+        $grade= $_POST[$name]==null ? 'null': $_POST[$name];
         $sql .= "$grade,";
     }
     $sql = rtrim($sql,',');
