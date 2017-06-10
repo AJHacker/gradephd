@@ -1003,9 +1003,11 @@
         $GA = array_combine($final, $grades);
         if ($GA==null) echo "fuck\n";
         echo count($final);
+        print_r($final);
         echo "\n";
         echo count($grades);
-
+        print_r($grades);
+        echo "\n";
         print_r($GA);
 
     ?>
