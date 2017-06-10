@@ -1021,7 +1021,7 @@
             echo "<tr>";
             foreach ($final as $name) {
                 $grade = $GA[$name];
-                echo "<td><input style = 'width:1em;' type='number' name='$name' value = '$grade'></td>";
+                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
             }
             echo "</tr>";
             
