@@ -402,7 +402,9 @@
             $class_sql.=" t$x INTEGER,";
         }
         
-        $class_sql.=" f INTEGER,";
+        for($x=1;$x<$fnum+1;$x++) {
+            $class_sql.=" f INTEGER,";
+        }
 
         for ($x=1;$x<$misc1num+1;$x++) {
             $class_sql.=" misc1$x INTEGER,";
