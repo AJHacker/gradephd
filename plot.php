@@ -964,40 +964,45 @@
         $grades = array_slice($A,1);
         $hw = array();
         for($i=1;$i<$hwnum+1;$i++){
-            array_push($hw,"HW$i");
+            array_push($hw,"HW $i");
         }
 
         $l = array();
         for($i=1;$i<$lnum+1;$i++){
-            array_push($l,"LAB$i");
+            array_push($l,"Lab $i");
         }
 
         $q = array();
         for($i=1;$i<$qnum+1;$i++){
-            array_push($q,"QUIZ$i");
+            array_push($q,"Quiz $i");
         }
 
         $t = array();
         for($i=1;$i<$tnum+1;$i++){
-            array_push($t,"TEST$i");
+            array_push($t,"Test $i");
         }
         $f = array();
         for($i=1;$i<$fnum+1;$i++){
-            array_push($f,"FINAL");
+            array_push($f,"Final");
         }
         $misc1 = array();
         for($i=1;$i<$misc1num+1;$i++){
-            array_push($misc1,"$misc1name$i");
+            array_push($misc1,"$misc1name $i");
         }
+        $_SESSION['misc1name']=$misc1name;
         $misc2 = array();
         for($i=1;$i<$misc2num+1;$i++){
-            array_push($misc2,"misc2name$i");
+            array_push($misc2,"$misc2name $i");
         }
+        $_SESSION['misc2name']=$misc2name;
+
         $misc3 = array();
         for($i=1;$i<$misc3num+1;$i++){
-            array_push($misc3,"misc3name$i");
+            array_push($misc3,"$misc3name $i");
 
         }
+        $_SESSION['misc3name']=$misc3name;
+
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
    
         $GA = array_combine($final, $grades);

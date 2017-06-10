@@ -10,12 +10,31 @@
 
     $final = $_SESSION['final'];
     $class= $_SESSION['class'];
+    $misc1name=$_SESSION['misc1name'];
+    $misc2name=$_SESSION['misc2name'];
+    $misc3name=$_SESSION['misc3name'];
+    
+     
+
+
+    $abbrev=array(
+        'HW' => 'hw', 
+        'Lab' => 'l', 
+        'Quiz' => 'q', 
+        'Test' => 't', 
+        'Final' => 'f', 
+        '$misc1name'=>'misc1',
+        '$misc2name'=>'misc2',
+        '$misc3name'=>'misc3'
+        );
    
     $sql = "UPDATE $class SET ";
     foreach ($final as $name){
         if ($_POST[$name]==null) continue;
-        $sql.="$name=";
+        $s=explode(" ",$name)[0];
+        $sql.=$abbrev[$s]."=";
         $sql .= $_POST[$name].", ";
+        
     }
     $sql = rtrim($sql,', ');
     $sql.=" WHERE name = '$user';";
