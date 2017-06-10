@@ -36,11 +36,10 @@
         
         $class=str_replace("@","-",$class);
         $C          = explode("_",$class);
-        $class_name = $C[0];
+        $class_name = $C[2];
         $semester   = $C[1];
-        $prof       = $C[2];
-        $porp       = $C[3];
-        
+        $prof       = $C[0];
+
         
         //Homework
         $HWINFO     = explode("|",$B[1]);
