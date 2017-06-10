@@ -80,7 +80,7 @@
 	for($i = 2;$i<10;$i++) {
 	    $class=$A[$i];
 	    if ($class) {
-	    	$class=str_replace("@","-",$class);
+	    	$class=str_replace("0xDEADBEEF","-",$class);
 	    	echo "<li><a href='/plot.php?class=$class'3>$class</a></li>";
 	    }
 	}
