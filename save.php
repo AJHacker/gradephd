@@ -30,13 +30,10 @@
    
     $sql = "UPDATE $class SET ";
     foreach ($final as $name){
-        echo $name;#
-        echo $_POST[$name];
         if ($_POST[$name]==null) continue;
         $s=explode(" ",$name);
-        echo $s;#
         $sql.=$abbrev[$s[0]].$s[1]."=";
-        $sql .= $_POST[$name].", "; 
+        $sql .= $_POST[$name].", ";
     }
     $sql = rtrim($sql,', ');
     $sql.=" WHERE name = '$user';";
@@ -44,7 +41,7 @@
             extract(parse_url($_ENV["DATABASE_URL"]));
             return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
         }
-
+       
     $db = pg_connect(pg_connection_string_from_database_url());
     echo $sql."<br>";
     pg_query($db,$sql);
