@@ -968,11 +968,11 @@
 
         $l = array();
         for($i=1;$i<$lnum+1;$i++){
-            array_push($l;,"LAB$i");
+            array_push($l,"LAB$i");
         }
 
         $q = array();
-        for($i=$i<$qnum;$i++){
+        for($i=1;$i<$qnum;$i++){
             array_push($q,"QUIZ$i");
         }
 
@@ -1002,31 +1002,25 @@
         $GA = array_combine($final, $grades);
 
 
-        }
 
     ?>
 
 
-
-   　<div id = 'gradesDiv'>
-       <form method = 'post' action='/save.php'>
+    <div id = 'gradesDiv'>
+        <form method = 'post' action='/save.php'>
 
     <?php 
         $names = array_keys($GA);
-        foreach($names as $name){
+        foreach ($names as $name) {
             $grade = $GA[$name];
             echo "$name: <input type='text' name='$name' value = '$grade'>";
         }
         
     ?>
 
-       
             
         </form>
-
-
-
-   </div>
+    </div>
 
 
 </body>
