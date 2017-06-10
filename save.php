@@ -13,9 +13,9 @@
    
     $sql = "UPDATE '$class' SET ";
     foreach ($final as $name){
+        if ($_POST[$name]==null) continue;
         $sql.="$name=";
-        $grade= $_POST[$name]==null ? 'null': $_POST[$name];
-        $sql .= $grade.", ";
+        $sql .= $_POST[$name].", ";
     }
     $sql = rtrim($sql,', ');
     $sql.=" WHERE name = $user;";
