@@ -1001,7 +1001,10 @@
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
    
         $GA = array_combine($final, $grades);
-        if ($GA==null) echo "fuck";
+        if ($GA==null) echo "fuck\n";
+        echo count($final);
+        echo "\n";
+        echo count($grades);
 
         print_r($GA);
 
