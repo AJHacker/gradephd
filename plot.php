@@ -1002,7 +1002,7 @@
    
         $GA = array_combine($final, $grades);
 
-
+        print_r($GA);
 
     ?>
 
