@@ -65,7 +65,7 @@
         </form> 
         ";
     } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
-        $class_name=$coursenum."_".$semester."_".$prof;
+        $class_name=$coursenum."_".$semester."_".$prof."_".$porp;
         $class_name=str_replace("-","@",$class_name);
         $_SESSION['new_class']=$class_name;
 //        unset($_SESSION['new_class']);

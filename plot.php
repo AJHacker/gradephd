@@ -39,6 +39,7 @@
         $class_name = $C[0];
         $semester   = $C[1];
         $prof       = $C[2];
+        $porp       = $C[3];
         
         
         //Homework
@@ -977,23 +978,23 @@
         }
 
         $t = array();
-        for($i=0;$i<$tnum;$i++){
+        for($i=1;$i<$tnum;$i++){
             array_push($t,"TEST$i");
         }
         $f = array();
-        for($i=0;$i<$fnum;$i++){
+        for($i=1;$i<$fnum;$i++){
             array_push($f,"FINAL");
         }
         $misc1 = array();
-        for($i=0;$i<$misc1num;$i++){
+        for($i=1;$i<$misc1num;$i++){
             array_push($misc1,"$misc1name$i");
         }
         $misc2 = array();
-        for($i=0;$i<$misc2num;$i++){
+        for($i=1;$i<$misc2num;$i++){
             array_push($misc2,"misc2name$i");
         }
         $misc3 = array();
-        for($i=0;$i<$misc3num;$i++){
+        for($i=1;$i<$misc3num;$i++){
             array_push($misc3,"misc3name$i");
 
         }
@@ -1028,6 +1029,7 @@
         ?>
 
             </table>
+        <input type='submit' value = 'Save Grades'>
         </form>
     </div>
 
