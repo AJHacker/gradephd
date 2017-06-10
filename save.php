@@ -29,7 +29,7 @@
     pg_query($db,$sql);
     echo pg_last_error();
     
-    $class=str_replace("@","-",$class);
+    $class=str_replace("#","-",$class);
     //header("Location: https://gradephd.herokuapp.com/plot.php?class=$class");
 ?>
     
