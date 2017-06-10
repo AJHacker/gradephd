@@ -24,7 +24,7 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        $class   = str_replace("-","#",$class);
+        $class   = str_replace("-","0xDEADBEEF",$class);
         $class_at = $class;
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
@@ -34,7 +34,7 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        $class=str_replace("#","-",$class);
+        $class=str_replace("0xDEADBEEF","-",$class);
         $C          = explode("_",$class);
         $class_name = $C[2];
         $semester   = $C[1];
