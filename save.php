@@ -11,7 +11,7 @@
     $final = $_SESSION['final'];
     $class= $_SESSION['class'];
    
-    $sql = "UPDATE '$class' SET ";
+    $sql = "UPDATE $class SET ";
     foreach ($final as $name){
         if ($_POST[$name]==null) continue;
         $sql.="$name=";
