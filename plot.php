@@ -1010,6 +1010,7 @@
         <form method = 'post' action='/save.php'>
 
     <?php 
+        echo 'HELLO SIR!';
         $names = array_keys($GA);
         echo $names;
         foreach ($names as $name) {
