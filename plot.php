@@ -1001,6 +1001,7 @@
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
    
         $GA = array_combine($final, $grades);
+        if ($GA==null) echo "fuck";
 
         print_r($GA);
 
