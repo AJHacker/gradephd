@@ -1008,18 +1008,27 @@
 
     <div id = 'gradesDiv'>
         <form method = 'post' action='/save.php'>
+            <table style="width:100%;overflow:scroll;">
 
-    <?php 
-        foreach ($final as $name) {
-            echo $name;
-            $grade = $GA[$name];
-            echo $grade;
-            echo "$name: <input type='text' name='$name' value = '$grade'>";
-        }
-        
-    ?>
 
+
+        <?php 
+            echo "<tr>";
+            foreach ($final as $name) {
+                echo "<th>$name</th>";
+            }
+            echo "</tr>";
+            echo "<tr>";
+            foreach ($final as $name) {
+    
+                $grade = $GA[$name];
+                echo "<td>$name: <input type='text' name='$name' value = '$grade'></td>";
+            }
+            echo "</tr>";
             
+        ?>
+
+            </table>
         </form>
     </div>
 
