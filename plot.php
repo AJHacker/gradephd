@@ -1011,7 +1011,7 @@
 
     <?php 
         foreach ($final as $name) {
-            echo $final;
+            echo $name;
             $grade = $GA[$name];
             echo $grade;
             echo "$name: <input type='text' name='$name' value = '$grade'>";
