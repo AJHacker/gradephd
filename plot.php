@@ -196,8 +196,8 @@
         
     ?>
 
-    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>
-
+    <!--<div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>-->
+    <div id="predictor"></div>
 
     <script>
 
@@ -1020,9 +1020,8 @@
             echo "</tr>";
             echo "<tr>";
             foreach ($final as $name) {
-    
                 $grade = $GA[$name];
-                echo "<td>$name: <input type='text' name='$name' value = '$grade'></td>";
+                echo "<td><input style = 'width:1em;' type='number' name='$name' value = '$grade'></td>";
             }
             echo "</tr>";
             
