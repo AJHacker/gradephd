@@ -973,28 +973,28 @@
         }
 
         $q = array();
-        for($i=1;$i<$qnum;$i++){
+        for($i=1;$i<$qnum+1;$i++){
             array_push($q,"QUIZ$i");
         }
 
         $t = array();
-        for($i=1;$i<$tnum;$i++){
+        for($i=1;$i<$tnum+1;$i++){
             array_push($t,"TEST$i");
         }
         $f = array();
-        for($i=1;$i<$fnum;$i++){
+        for($i=1;$i<$fnum+1;$i++){
             array_push($f,"FINAL");
         }
         $misc1 = array();
-        for($i=1;$i<$misc1num;$i++){
+        for($i=1;$i<$misc1num+1;$i++){
             array_push($misc1,"$misc1name$i");
         }
         $misc2 = array();
-        for($i=1;$i<$misc2num;$i++){
+        for($i=1;$i<$misc2num+1;$i++){
             array_push($misc2,"misc2name$i");
         }
         $misc3 = array();
-        for($i=1;$i<$misc3num;$i++){
+        for($i=1;$i<$misc3num+1;$i++){
             array_push($misc3,"misc3name$i");
 
         }
