@@ -15,10 +15,10 @@
     foreach ($final as $name){
         $sql.="$name=";
         $grade= $_POST[$name]==null ? 'null': $_POST[$name];
-        $sql .= $grade.",";
+        $sql .= $grade.", ";
     }
-    $sql = rtrim($sql,',');
-    $sql.="WHERE name = $user;";
+    $sql = rtrim($sql,', ');
+    $sql.=" WHERE name = $user;";
     function pg_connection_string_from_database_url() {
             extract(parse_url($_ENV["DATABASE_URL"]));
             return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
