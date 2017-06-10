@@ -398,11 +398,11 @@
     // Calculates the mean/weighted mean score in each category, 
     // based on the option chosen, and the values entered.
 
-    var hw_mean    = hw_vw ? weighted_mean (hw,    hw_weight)    : mean (hw)   ;
-    var quiz_mean  = quiz_vw ? weighted_mean (quiz,  quiz_weight)  : mean (quiz) ;
-    var lab_mean   = lab_vw ? weighted_mean (lab,   lab_weight)   : mean (lab)  ;
-    var mid_mean   = mid_vw ? weighted_mean (mid,   mid_weight)   : mean (mid)  ;
-    var fin_mean   = fin_vw ? weighted_mean (fin,   fin_weight)   : mean (fin)  ;
+    var hw_mean    = hw_vw    ? weighted_mean (hw,    hw_weight)    : mean (hw)   ;
+    var quiz_mean  = quiz_vw  ? weighted_mean (quiz,  quiz_weight)  : mean (quiz) ;
+    var lab_mean   = lab_vw   ? weighted_mean (lab,   lab_weight)   : mean (lab)  ;
+    var mid_mean   = mid_vw   ? weighted_mean (mid,   mid_weight)   : mean (mid)  ;
+    var fin_mean   = fin_vw   ? weighted_mean (fin,   fin_weight)   : mean (fin)  ;
     var misc1_mean = misc1_vw ? weighted_mean (misc1, misc1_weight) : mean (misc1);
     var misc2_mean = misc2_vw ? weighted_mean (misc2, misc2_weight) : mean (misc2);
     var misc3_mean = misc3_vw ? weighted_mean (misc3, misc3_weight) : mean (misc3);
@@ -582,20 +582,20 @@
     // The below operations are performed only if the user had chosen
     // the Drop Lowest Score(s) option.
     // Drops the lowest 'x' grades to 'y' percent, as indicated by the user.
-    
-    if (no_hw    > 0) { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
-    if (no_quiz  > 0) { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
-    if (no_lab   > 0) { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
-    if (no_mid   > 0) { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
-    if (no_fin   > 0) { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
-    if (no_misc1 > 0) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
-    if (no_misc2 > 0) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
-    if (no_misc3 > 0) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
+
+        if (no_hw    > 0) { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
+        if (no_quiz  > 0) { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
+        if (no_lab   > 0) { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
+        if (no_mid   > 0) { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
+        if (no_fin   > 0) { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
+        if (no_misc1 > 0) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
+        if (no_misc2 > 0) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
+        if (no_misc3 > 0) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
 
 
     // Function to recompute percentage weight of each element
     // in perc_temp, based on which categories are left completely
-    // blank by the user (if flag is true), and for all elements
+    // blank by the user (if flag is truee), and for all elements
     // in the array, otherwise (if flag is false). The scores and the 
     // older percentages (in 'perc_temp') are provided as input, and
     // the newly computed percentages are then returned as an arry;
@@ -802,7 +802,6 @@
         return arr;
     };
 
-
     var yify = function (perc_temp, sum) {
         var total = 0;
         perc_temp.forEach (function (item, index) {
@@ -814,6 +813,15 @@
         });
         return perc;
     };
+
+    var hw_new_weights = yify(hw_weight, hw_perc);
+    var lab_new_weights = yify(lab_weight, lab_perc);
+    var quiz_new_weights = yify(quiz_weight, quiz_perc);
+    var mid_new_weights = yify(mid_weight, mid_perc);
+    var fin_new_weights = yify(fin_weight, fin_perc);
+    var misc1_new_weights = yify(misc1_weight, misc1_perc);
+    var misc2_weights = yify(misc2_weight, misc2_perc);
+    var misc3_weights = yify(misc3_weight, misc3_perc);
 
 
     // 
@@ -833,64 +841,92 @@
     console.log(fin_label);
     console.log(misc2_label);
 
+    
+    var is_all_null = function (arr) {
+        for(var i = 0; i < arr.length; i++) {
+            if (arr[i] !== null) return false;
+        }
+        return true;
+    };
+
 
     var label  = [];
+    var p_cy = [];
+    var p_py = [];
     var p_0y   = [];
     var p_25y  = [];
     var p_50y  = [];
     var p_75y  = [];
     var p_100y = [];
+ 
+    
 
-    if (no_hw    > 0) { label   = label.concat  (hw_label);
+    if (no_hw    > 0) { p_cy    = p_cy.concat   (hw);
+                        p_py    = p_py.concat   (hw_u);
+                        label   = label.concat  (hw_label);
                         p_0y    = p_0y.concat   (hw_0);
                         p_25y   = p_25y.concat  (hw_25);
                         p_50y   = p_50y.concat  (hw_50);
                         p_75y   = p_75y.concat  (hw_75);
                         p_100y  = p_100y.concat (hw_100);
                        }
-    if (no_lab   > 0) { label   = label.concat  (lab_label);
+    if (no_lab   > 0) { p_cy    = p_cy.concat   (lab);
+                        p_py    = p_py.concat   (lab_u);
+                        label   = label.concat  (lab_label);
                         p_0y    = p_0y.concat   (lab_0);
                         p_25y   = p_25y.concat  (lab_25);
                         p_50y   = p_50y.concat  (lab_50);
                         p_75y   = p_75y.concat  (lab_75);
                         p_100y  = p_100y.concat (lab_100);
                        }
-    if (no_quiz  > 0) { label   = label.concat  (quiz_label);
+    if (no_quiz  > 0) { p_cy    = p_cy.concat   (quiz);
+                        p_py    = p_py.concat   (quiz_u);
+                        label   = label.concat  (quiz_label);
                         p_0y    = p_0y.concat   (quiz_0);
                         p_25y   = p_25y.concat  (quiz_25);
                         p_50y   = p_50y.concat  (quiz_50);
                         p_75y   = p_75y.concat  (quiz_75);
                         p_100y  = p_100y.concat (quiz_100);
                        }
-    if (no_mid   > 0) { label   = label.concat  (mid_label);
+    if (no_mid   > 0) { p_cy    = p_cy.concat   (mid);
+                        p_py    = p_py.concat   (mid_u);
+                        label   = label.concat  (mid_label);
                         p_0y    = p_0y.concat   (mid_0);
                         p_25y   = p_25y.concat  (mid_25);
                         p_50y   = p_50y.concat  (mid_50);
                         p_75y   = p_75y.concat  (mid_75);
                         p_100y  = p_100y.concat (mid_100);
                        }
-    if (no_fin   > 0) { label   = label.concat  (fin_label);
+    if (no_fin   > 0) { p_cy    = p_cy.concat   (fin);
+                        p_py    = p_py.concat   (fin_u);
+                        label   = label.concat  (fin_label);
                         p_0y    = p_0y.concat   (fin_0);
                         p_25y   = p_25y.concat  (fin_25);
                         p_50y   = p_50y.concat  (fin_50);
                         p_75y   = p_75y.concat  (fin_75);
                         p_100y  = p_100y.concat (fin_100);
                        }
-    if (no_misc1 > 0) { label   = label.concat  (misc1_label);
+    if (no_misc1 > 0) { p_cy    = p_cy.concat   (misc1);
+                        p_py    = p_py.concat   (misc1_u);
+                        label   = label.concat  (misc1_label);
                         p_0y    = p_0y.concat   (misc1_0);
                         p_25y   = p_25y.concat  (misc1_25);
                         p_50y   = p_50y.concat  (misc1_50);
                         p_75y   = p_75y.concat  (misc1_75);
                         p_100y  = p_100y.concat (misc1_100);
                        }
-    if (no_misc2 > 0) { label   = label.concat  (misc2_label);
+    if (no_misc2 > 0) { p_cy    = p_cy.concat   (misc2);
+                        p_py    = p_py.concat   (misc2_u);
+                        label   = label.concat  (misc2_label);
                         p_0y    = p_0y.concat   (misc2_0);
                         p_25y   = p_25y.concat  (misc2_25);
                         p_50y   = p_50y.concat  (misc2_50);
                         p_75y   = p_75y.concat  (misc2_75);
                         p_100y  = p_100y.concat (misc2_100);
                        }
-    if (no_misc3 > 0) { label   = label.concat  (misc3_label);
+    if (no_misc3 > 0) { p_cy    = p_cy.concat   (misc3);
+                        p_py    = p_py.concat   (misc3_u);
+                        label   = label.concat  (misc3_label);
                         p_0y    = p_0y.concat   (misc3_0);
                         p_25y   = p_25y.concat  (misc3_25);
                         p_50y   = p_50y.concat  (misc3_50);
@@ -898,13 +934,125 @@
                         p_100y  = p_100y.concat (misc3_100);
                       }
 
-
+    console.log("curr: "  + p_cy );
+    console.log("pred: "  + p_py );
     console.log("Label: " + label );
     console.log("0   : "  + p_0y  );
     console.log("25  : "  + p_25y );
     console.log("50  : "  + p_50y );
     console.log("75  : "  + p_75y );
     console.log("100 : "  + p_100y);
+
+    var combined = [];
+
+    for(var i = 0; i < p_100y.length; i++) {
+        combined.push([label[i], p_cy[i], p_py[i], p_0y[i], p_25y[i], p_50y[i], p_75y[i], p_100y[i]]);
+    }
+
+    console.log("combined: "  + combined);
+    var arr1 = [];
+    var arr2 = [];
+    for (var i = 0; i < combined.length; i++) {    
+        if (combined[i][1] === null) {
+            arr2.push(combined[i]);
+        } else {
+            arr1.push(combined[i]);
+        }
+    }
+    var arr3 = [];
+    var arr4 = [];
+    for (var i = 0; i < arr2.length; i++) {    
+        if (arr2[i][2] === null) {
+            arr4.push(arr2[i]);
+        } else {
+            arr3.push(arr2[i]);
+        }
+    }
+    var final_array = arr1.concat(arr3);
+    final_array = final_array.concat(arr4);
+    console.log("final: "  + final_array);
+
+    for(var i = 0; i < final_array.length; i++) {
+        label[i] = final_array[i][0];
+        p_cy[i] = final_array[i][1];
+        p_py[i] = final_array[i][2];
+        p_0y[i] = final_array[i][3];
+        p_25y[i] = final_array[i][4];
+        p_50y[i] = final_array[i][5];
+        p_75y[i] = final_array[i][6];
+        p_100y[i] = final_array[i][7];
+    }
+
+    // var sumify = function(arr) {
+    //     var arr2 = new_array(arr.length, 0);
+    //     for (var i = 0; i < arr.length; i++) {
+    //         var sum = 0;
+    //         for(var j = 0; j <= i; j++) {
+    //             sum += arr[j];
+    //         }
+    //         arr2[i] = sum;
+    //     }
+    //     return arr2;
+    // }
+
+    var sumify = function(arr) {
+        var num = null;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === null) {
+                num = i;
+                break;
+            }
+        }
+        if(num === null) num = arr.length;
+        var arr2 = new_array(num, 0);
+        for (var i = 0; i < num; i++) {
+            var sum = 0;
+            for(var j = 0; j <= i; j++) {
+                sum += arr[j];
+            }
+            arr2[i] = sum;
+        }
+        return arr2;
+    }
+
+    var yify2 = function (arr, sum) {
+        var arr2 = arr.slice();
+        // var total = 0;
+        // for (var i = 0; i < arr2.length; i++) {
+        //     total += arr2[i];
+        // }
+        for (var i = 0; i < arr2.length; i++) {
+            if(arr2[i] != null)
+                arr2[i] = arr2[i] * 100 / sumify(p_100y)[p_100y.length - 1];
+        }
+        return arr2;
+    };
+
+    var np_cy = yify2(sumify(p_cy), 100);;
+    var np_py = yify2(sumify(p_py), 100);;
+    var np_0y = yify2(sumify(p_0y), 100);
+    var np_25y = yify2(sumify(p_25y), 100);
+    var np_50y = yify2(sumify(p_50y), 100);
+    var np_75y = yify2(sumify(p_75y), 100);
+    var np_100y = yify2(sumify(p_100y), 100);
+
+
+
+    // var p_ux = []
+    // var p_uy = []
+
+    // if (take_hw) {
+
+    //     p_uy = p_uy.concat(hw_u);
+    // }
+
+    // if(take_lab) {
+
+    //     p_uy = p_uy.c
+    // }
+
+
+
 
 
 
@@ -915,45 +1063,139 @@
     // margin: { t: 0 } } );
 
 
-    var user_line = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-        y: [1, 2, 4, 8, 16],
+    // var user_line = {
+    //     x: [...Array(no_hw + no_quiz + no_mid + no_fin).keys()],
+    //     y: hw_u.concat(quiz_u).concat(mid_u).concat(fin_u),
+    //     type: 'scatter',
+    //     name: 'UserCurrent - Blue',
+    //     line: {
+    //         color: 'rgb(55, 128, 191)',
+    //         width: 2
+    //     },
+    //     connectgaps: true,
+    //     showarrow: true
+    // };
+
+    var user_line0 = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_0y,
+        mode:'lines+markers',
         type: 'scatter',
-        name: 'Username - Blue',
+        name: '0 - Black',
         line: {
-            color: 'rgb(55, 128, 191)',
+            color: 'rgb(0, 0, 0)',
             width: 2,
-            shape: 'spline'
+            // shape: 'spline'
+        }
+    };
+
+    var user_line25 = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_25y,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: '25 - Red',
+        line: {
+            color: 'rgb(255, 0, 0)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
+    var user_line50 = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_50y,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: '50 - Blue',
+        line: {
+            color: 'rgb(0, 255, 0)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
+    var user_line75 = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_75y,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: '75 - Green',
+        line: {
+            color: 'rgb(0, 0, 255)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
+    var user_line100 = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_100y,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: '100 - Yellow',
+        line: {
+            color: 'rgb(210, 255, 250)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
+    var user_line_current = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_cy,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: 'current - ',
+        line: {
+            color: 'rgb(255, 0, 255)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
+    var user_line_predicted = {
+        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        y: np_py,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: 'predicted',
+        line: {
+            color: 'rgb(0, 255, 255)',
+            width: 2,
+            // shape: 'spline'
         }
     };
 
     
-    var data = [];
+    var data = [user_line0, user_line25, user_line50, user_line75, user_line100, user_line_predicted, user_line_current];
 
     
     var layout = {
-      title: 'Predictor',
+      // legend: {
+      //   y: 0.5,
+      //   traceorder: 'reversed',
+      //   font: {size: 16},
+      //   yref: 'paper'
+      // }
       xaxis: {
-        title: 'Grades So Far',
-        titlefont: {
-          family: 'Courier New, monospace',
-          size: 18,
-          color: '#7f7f7f'
-        }
+        dtick: 10
       },
       yaxis: {
-        title: 'What you got on those grades',
-        titlefont: {
-          family: 'Courier New, monospace',
-          size: 18,
-          color: '#7f7f7f'
-        }
+        dtick: 10,
+        zeroline: false,
+        showline: false
+      },
+      annotations: {
+        text: 'Grade Predictor'
       }
-    };
+      // xaxis: {
+      //   tickvals: ['hw1', 'hw2', 'hw3', 'hw4']
+        //ticktext: ['HW1', 'HW2', 'HW3', 'HW4']
+      };
 
 
     Plotly.newPlot('predictor', data, layout);
-
 
 
 

@@ -31,13 +31,12 @@
     $sql = "UPDATE $class SET ";
     foreach ($final as $name){
         echo $name;#
-        echo $_POST[$name;]#
+        echo $_POST[$name];
         if ($_POST[$name]==null) continue;
         $s=explode(" ",$name);
         echo $s;#
         $sql.=$abbrev[$s[0]].$s[1]."=";
-        $sql .= $_POST[$name].", ";
-        
+        $sql .= $_POST[$name].", "; 
     }
     $sql = rtrim($sql,', ');
     $sql.=" WHERE name = '$user';";
