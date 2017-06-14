@@ -1281,27 +1281,6 @@
         <form method = 'post' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
-<<<<<<< HEAD
-            <?php 
-                echo "<tr>";
-                foreach ($final as $name) {
-                    echo "<th>$name</th>";
-                }
-                echo "</tr>";
-                echo "<tr>";
-                foreach ($final as $name) {
-                    $grade = $GA[$name];
-                    
-                    // add JS event listener for name variable here, and refresh div every time it changes
-                    echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
-                }
-                echo "</tr>";
-                $_SESSION['final']=$final;
-                $_SESSION['class']=$class_at;
-            ?>  
-=======
-
-
         <?php 
             echo "<tr>";
             foreach ($final as $name) {
@@ -1319,7 +1298,6 @@
             $_SESSION['final']=$final;
             $_SESSION['class']=$class_at;
         ?>  
->>>>>>> origin/master
 
             </table>
         <input type='submit' value = 'Save Grades'>
