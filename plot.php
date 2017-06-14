@@ -1283,8 +1283,6 @@
             echo "<tr>";
             foreach ($final as $name) {
                 $grade = $GA[$name];
-                echo $grade==null;
-                echo $grade;
                 
                 // add JS event listener for name variable here, and refresh div every time it changes
                 echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
