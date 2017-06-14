@@ -33,6 +33,8 @@
         $item=str_replace(" ","_",$name);
         if ($_POST[$item]==null) continue;
         $s=explode(" ",$name);
+        $a=$s[0];
+        $b=$s[1];
         $sql.=$abbrev[$a]."".$b."=";
         $sql .= $_POST[$item].", ";
     }
