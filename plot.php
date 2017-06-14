@@ -1271,7 +1271,7 @@
 
 
     <div id = 'gradesDiv'>
-        <form method = 'post' action='/save.php'>
+        <form method = 'POST' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
         <?php 
@@ -1283,7 +1283,7 @@
             echo "<tr>";
             foreach ($final as $name) {
                 $grade = $GA[$name];
-                
+
                 // add JS event listener for name variable here, and refresh div every time it changes
                 echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
             }
