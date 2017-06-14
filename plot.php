@@ -29,7 +29,6 @@
         $user_sql   = "SELECT * FROM $class WHERE name='$user';";
         $result     = pg_query($db,$user_sql);
         $A          = pg_fetch_row($result);
-        print_r($A);
         
         $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
         $result     = pg_query($db,$class_sql);
@@ -1266,13 +1265,7 @@
    
         $GA = array_combine($final, $grades);
         if ($GA==null) echo "fuck\n";
-        echo count($final);
-        print_r($final);
-        echo "\n";
-        echo count($grades);
-        print_r($grades);
-        echo "\n";
-        print_r($GA);
+        
 
     ?>
 
@@ -1295,6 +1288,8 @@
                 echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
             }
             echo "</tr>";
+            echo 'Final: '.$final;
+            echo 'Class: '.$class;
             $_SESSION['final']=$final;
             $_SESSION['class']=$class_at;
         ?>  

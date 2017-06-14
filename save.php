@@ -8,11 +8,11 @@
         exit();
     }   
 
-    $final = $_SESSION['final'];
+    $final= $_SESSION['final'];
     $class= $_SESSION['class'];
-    $misc1name=$_SESSION['misc1name'];
-    $misc2name=$_SESSION['misc2name'];
-    $misc3name=$_SESSION['misc3name'];
+    $misc1name = $_SESSION['misc1name'];
+    $misc2name = $_SESSION['misc2name'];
+    $misc3name = $_SESSION['misc3name'];
     
      
 
