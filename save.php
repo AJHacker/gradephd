@@ -23,22 +23,16 @@
         'Quiz' => 'q', 
         'Test' => 't', 
         'Final' => 'f', 
-        '$misc1name'=>'misc1',
-        '$misc2name'=>'misc2',
-        '$misc3name'=>'misc3'
+        $misc1name=>'misc1',
+        $misc2name=>'misc2',
+        $misc3name=>'misc3'
         );
-    print_r($abbrev);
-    echo"\n";
    
     $sql = "UPDATE $class SET ";
     foreach ($final as $name) {
         $item=str_replace(" ","_",$name);
         if ($_POST[$item]==null) continue;
-        $s=explode("_",$name);
-        print_r($s);
-        $a=$s[0];
-        $b=$s[1];
-        echo "$a\n";
+        $s=explode(" ",$name);
         $sql.=$abbrev[$a]."".$b."=";
         $sql .= $_POST[$item].", ";
     }
