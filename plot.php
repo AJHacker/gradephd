@@ -1288,8 +1288,8 @@
                 echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
             }
             echo "</tr>";
-            echo 'Final: '.$final;
-            echo 'Class: '.$class;
+            print_r($final);
+            
             $_SESSION['final']=$final;
             $_SESSION['class']=$class_at;
         ?>  
