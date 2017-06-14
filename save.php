@@ -51,7 +51,7 @@
     echo pg_last_error();
     
     $class=str_replace("0xDEADBEEF","-",$class);
-    //header("Location: https://gradephd.herokuapp.com/plot.php?class=$class");
+    header("Location: https://gradephd.herokuapp.com/plot.php?class=$class");
 ?>
     
 </html>
