@@ -27,16 +27,14 @@
         '$misc2name'=>'misc2',
         '$misc3name'=>'misc3'
         );
-    echo "POST";
-    print_r($_POST);
-    echo "\n";
    
     $sql = "UPDATE $class SET ";
     foreach ($final as $name) {
-        if ($_POST[$name]==null) continue;
+        $item=str_replace(" ","_",$name);
+        if ($_POST[$item]==null) continue;
         $s=explode("_",$name);
         $sql.=$abbrev[$s[0]]."".$s[1]."=";
-        $sql .= $_POST[$name].", ";
+        $sql .= $_POST[$item].", ";
     }
     $sql = rtrim($sql,', ');
     $sql.=" WHERE name = '$user';";
