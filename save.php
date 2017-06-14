@@ -27,13 +27,19 @@
         '$misc2name'=>'misc2',
         '$misc3name'=>'misc3'
         );
+    print_r($abbrev);
+    echo"\n";
    
     $sql = "UPDATE $class SET ";
     foreach ($final as $name) {
         $item=str_replace(" ","_",$name);
         if ($_POST[$item]==null) continue;
         $s=explode("_",$name);
-        $sql.=$abbrev[$s[0]]."".$s[1]."=";
+        print_r($s);
+        $a=$s[0];
+        $b=$s[1];
+        echo "$a\n";
+        $sql.=$abbrev[$a]."".$b."=";
         $sql .= $_POST[$item].", ";
     }
     $sql = rtrim($sql,', ');
