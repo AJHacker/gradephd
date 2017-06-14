@@ -1015,6 +1015,8 @@
         return arr2;
     }
 
+    var ideal = new_array(final_array.length, 100);
+
     var yify2 = function (arr, sum) {
         var arr2 = arr.slice();
         // var total = 0;
@@ -1023,13 +1025,14 @@
         // }
         for (var i = 0; i < arr2.length; i++) {
             if(arr2[i] != null)
-                arr2[i] = arr2[i] * 100 / sumify(p_100y)[p_100y.length - 1];
+                arr2[i] = arr2[i] * 100 / (final_array.length * 100);
         }
         return arr2;
     };
 
-    var np_cy = yify2(sumify(p_cy), 100);;
-    var np_py = yify2(sumify(p_py), 100);;
+    var nideal = yify2(sumify(ideal), 100);
+    var np_cy = yify2(sumify(p_cy), 100);
+    var np_py = yify2(sumify(p_py), 100);
     var np_0y = yify2(sumify(p_0y), 100);
     var np_25y = yify2(sumify(p_25y), 100);
     var np_50y = yify2(sumify(p_50y), 100);
@@ -1076,8 +1079,9 @@
     //     showarrow: true
     // };
 
+
     var user_line0 = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_0y,
         mode:'lines+markers',
         type: 'scatter',
@@ -1090,7 +1094,7 @@
     };
 
     var user_line25 = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_25y,
         mode:'lines+markers',
         type: 'scatter',
@@ -1103,7 +1107,7 @@
     };
 
     var user_line50 = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_50y,
         mode:'lines+markers',
         type: 'scatter',
@@ -1116,7 +1120,7 @@
     };
 
     var user_line75 = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_75y,
         mode:'lines+markers',
         type: 'scatter',
@@ -1129,24 +1133,24 @@
     };
 
     var user_line100 = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_100y,
         mode:'lines+markers',
         type: 'scatter',
         name: '100 - Yellow',
         line: {
-            color: 'rgb(210, 255, 250)',
+            color: 'rgb(255, 255, 0)',
             width: 2,
             // shape: 'spline'
         }
     };
 
     var user_line_current = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_cy,
         mode:'lines+markers',
         type: 'scatter',
-        name: 'current - ',
+        name: 'current - Pink',
         line: {
             color: 'rgb(255, 0, 255)',
             width: 2,
@@ -1155,11 +1159,11 @@
     };
 
     var user_line_predicted = {
-        x: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        x: label,
         y: np_py,
         mode:'lines+markers',
         type: 'scatter',
-        name: 'predicted',
+        name: 'predicted - Blue',
         line: {
             color: 'rgb(0, 255, 255)',
             width: 2,
@@ -1167,8 +1171,21 @@
         }
     };
 
+    var ideal_line = {
+        x: label,
+        y: nideal,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: 'ideal - Black',
+        line: {
+            color: 'rgb(0, 0, 0)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+
     
-    var data = [user_line0, user_line25, user_line50, user_line75, user_line100, user_line_predicted, user_line_current];
+    var data = [user_line0, user_line25, user_line50, user_line75, user_line100, user_line_predicted, user_line_current, ideal_line];
 
     
     var layout = {
@@ -1179,7 +1196,7 @@
       //   yref: 'paper'
       // }
       xaxis: {
-        dtick: 10
+        dtick: 1
       },
       yaxis: {
         dtick: 10,
@@ -1264,24 +1281,23 @@
         <form method = 'post' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
-
-
-        <?php 
-            echo "<tr>";
-            foreach ($final as $name) {
-                echo "<th>$name</th>";
-            }
-            echo "</tr>";
-            echo "<tr>";
-            foreach ($final as $name) {
-                $grade = $GA[$name];
-    
-                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
-            }
-            echo "</tr>";
-            $_SESSION['final']=$final;
-            $_SESSION['class']=$class_at;
-        ?>  
+            <?php 
+                echo "<tr>";
+                foreach ($final as $name) {
+                    echo "<th>$name</th>";
+                }
+                echo "</tr>";
+                echo "<tr>";
+                foreach ($final as $name) {
+                    $grade = $GA[$name];
+                    
+                    // add JS event listener for name variable here, and refresh div every time it changes
+                    echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade'></center></td>";
+                }
+                echo "</tr>";
+                $_SESSION['final']=$final;
+                $_SESSION['class']=$class_at;
+            ?>  
 
             </table>
         <input type='submit' value = 'Save Grades'>
