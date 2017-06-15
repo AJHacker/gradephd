@@ -24,7 +24,8 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
-        echo '<center>'.$user.'</center>';
+        
+            
         $class   = str_replace("-","0xDEADBEEF",$class);
         $class_at = $class;
         
@@ -32,12 +33,20 @@
         $result     = pg_query($db,$class_sql);
         $B          = pg_fetch_row($result);
         
-        $class=str_replace("0xDEADBEEF","-",$class);
+        $class      =str_replace("0xDEADBEEF","-",$class);
         $C          = explode("_",$class);
         $class_name = $C[2];
         $semester   = $C[1];
         $prof       = $C[0];
 
+        
+        if($user){
+            echo "<center>You're logged in as: $user<br>";
+            echo "Viewing grade predictor for $class taught by $prof for the $semester semester</center>";
+        }else{
+            echo "<center>You're not logged in. Log in to save your grades<br>";
+            echo "Viewing grade predictor for $class taught by $prof for the $semester semester</center>";
+        }
         
         //Homework
         $HWINFO     = explode("|",$B[1]);
@@ -175,10 +184,9 @@
         $misc3weight=($misc3exploded[0]=="different");
         
         if ($user) {
-            $user_sql   = "SELECT * FROM $class WHERE name='$user';";
+            $user_sql   = "SELECT * FROM $class_at WHERE name='$user';";
             $result     = pg_query($db,$user_sql);
             $A          = pg_fetch_row($result);
-            print_r($A);
             //User Scores
             $i      = 1;
             $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
@@ -197,7 +205,7 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         } else {
-            $hw="[,,,,,,,,]";
+            $hw="[,,,,,]";
             $lab="[]";
             $quiz="[]";
             $mid="[]";
