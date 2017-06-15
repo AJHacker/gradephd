@@ -45,9 +45,9 @@
             echo "Viewing grade predictor for $class taught by $prof for the $semester semester</center>";
         }else{
             echo "<center>You're not logged in. Log in to save your grades<br>";
-            echo "Viewing grade predictor for $class taught by $prof for the $semester semester</center>";
+            echo "Viewing grade predictor for $class_name taught by $prof for the $semester semester</center>";
         }
-        
+
         //Homework
         $HWINFO     = explode("|",$B[1]);
         $hwnum      = $HWINFO[0];
@@ -205,7 +205,7 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         } else {
-            $hw="[,,,,,]";
+            $hw="[]";
             $lab="[]";
             $quiz="[]";
             $mid="[]";
