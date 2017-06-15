@@ -207,14 +207,14 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$misc3num))."]";
         } else {
-            $hw='['.str_repeat(",", $hwnum).']';
-            $lab='['.str_repeat(",", $lnum).']';
-            $quiz='['.str_repeat(",", $qnum).']';
-            $mid='['.str_repeat(",", $tnum).']';
-            $fin='['.str_repeat(",", $fnum).']';
-            $misc1='['.str_repeat(",", $misc1num).']';
-            $misc2='['.str_repeat(",", $misc2num).']';
-            $misc3='['.str_repeat(",", $misc3num).']';
+            $hw='['.str_repeat(",", $hwnum+1).']';
+            $lab='['.str_repeat(",", $lnum+1).']';
+            $quiz='['.str_repeat(",", $qnum+1).']';
+            $mid='['.str_repeat(",", $tnum+1).']';
+            $fin='['.str_repeat(",", $fnum+1).']';
+            $misc1='['.str_repeat(",", $misc1num+1).']';
+            $misc2='['.str_repeat(",", $misc2num+1).']';
+            $misc3='['.str_repeat(",", $misc3num+1).']';
         }
         
     ?>
