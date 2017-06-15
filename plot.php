@@ -189,21 +189,21 @@
             $A          = pg_fetch_row($result);
             //User Scores
             $i      = 1;
-            $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
+            $hw     = "[".implode(",",array_slice($A,$i,$hwnum))."]";
             $i      +=$hwnum;
-            $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
+            $lab    = "[".implode(",",array_slice($A,$i,$lnum))."]";
             $i      +=$lnum;
-            $quiz   = "[".implode(",",array_slice($A,$i,$i+$qnum))."]";
+            $quiz   = "[".implode(",",array_slice($A,$i,$qnum))."]";
             $i      +=$qnum;
-            $mid    = "[".implode(",",array_slice($A,$i,$i+$tnum))."]";
+            $mid    = "[".implode(",",array_slice($A,$i,$tnum))."]";
             $i      +=$tnum;
-            $fin      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
+            $fin      = "[".implode(",",array_slice($A,$i,$fnum))."]";
             $i      +=$fnum;
-            $misc1  = "[".implode(",",array_slice($A,$i,$i+$misc1num))."]";
+            $misc1  = "[".implode(",",array_slice($A,$i,$misc1num))."]";
             $i      +=$misc1num;
-            $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
+            $misc2  = "[".implode(",",array_slice($A,$i,$misc2num))."]";
             $i      +=$misc2num;
-            $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
+            $misc3  = "[".implode(",",array_slice($A,$i,$misc3num))."]";
         } else {
             $hw='['.str_repeat(",", $hwnum-1).']';
             $lab='['.str_repeat(",", $lnum-1).']';

@@ -453,8 +453,8 @@
         $_SESSION['verifiedUser']=$user;
 
         
-        // header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
-        // exit();
+        header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
+        exit();
     }
     
     ?>
