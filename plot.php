@@ -24,6 +24,7 @@
 
         $class      = $_GET['class'];
         $user       = $_SESSION['verifiedUser'];
+        echo '<center>'.$user.'</center>';
         $class   = str_replace("-","0xDEADBEEF",$class);
         $class_at = $class;
         
@@ -181,7 +182,6 @@
             //User Scores
             $i      = 1;
             $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
-            echo $hw;
             $i      +=$hwnum;
             $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
             $i      +=$lnum;
