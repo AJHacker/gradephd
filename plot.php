@@ -1184,6 +1184,32 @@
         }
     };
 
+    var ideal_line = {
+        x: label,
+        y: nideal,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: 'Ideal',
+        line: {
+            color: 'rgb(0, 0, 0)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+    
+    var user_line_predicted = {
+        x: label,
+        y: np_py,
+        mode:'lines+markers',
+        type: 'scatter',
+        name: 'Predicted',
+        line: {
+            color: 'rgb(0, 255, 255)',
+            width: 2,
+            // shape: 'spline'
+        }
+    };
+    
     var user_line_current = {
         x: label,
         y: np_cy,
@@ -1197,34 +1223,8 @@
         }
     };
 
-    var user_line_predicted = {
-        x: label,
-        y: np_py,
-        mode:'lines+markers',
-        type: 'scatter',
-        name: 'Predicted',
-        line: {
-            color: 'rgb(0, 255, 255)',
-            width: 2,
-            // shape: 'spline'
-        }
-    };
-
-    var ideal_line = {
-        x: label,
-        y: nideal,
-        mode:'lines+markers',
-        type: 'scatter',
-        name: 'Ideal',
-        line: {
-            color: 'rgb(0, 0, 0)',
-            width: 2,
-            // shape: 'spline'
-        }
-    };
-
     
-    var data = [user_line0, user_line25, user_line50, user_line75, user_line100, user_line_predicted, user_line_current, ideal_line];
+    var data = [user_line0, user_line25, user_line50, user_line75, user_line100, ideal_line, user_line_predicted, user_line_current];
 
     
     var layout = {
