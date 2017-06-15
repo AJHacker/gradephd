@@ -195,7 +195,7 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         } else {
-            $hw="[]";
+            $hw="[,,,,,,,,]";
             $lab="[]";
             $quiz="[]";
             $mid="[]";
