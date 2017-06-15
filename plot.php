@@ -180,6 +180,7 @@
             //User Scores
             $i      = 1;
             $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
+            echo $hw;
             $i      +=$hwnum;
             $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
             $i      +=$lnum;
