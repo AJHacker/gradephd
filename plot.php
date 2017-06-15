@@ -177,6 +177,7 @@
             $user_sql   = "SELECT * FROM $class WHERE name='$user';";
             $result     = pg_query($db,$user_sql);
             $A          = pg_fetch_row($result);
+            print_r($A);
             //User Scores
             $i      = 1;
             $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
@@ -1279,6 +1280,7 @@
             $A=array();
             $grades=array_pad($A,count($final),null);
         }
+        echo count($final),count($grades);
    
         $GA = array_combine($final, $grades);
         if ($GA==null) echo "fuck\n";
