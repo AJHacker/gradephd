@@ -27,6 +27,7 @@ if($user == "admin" && $pass == "admin") {
                 echo $row[0];
                 echo "\n";
             }
+                header("Location: https://gradephd.herokuapp.com/makedbs.php");
           
         }
     
@@ -42,7 +43,6 @@ if($user == "admin" && $pass == "admin") {
             ';
     }
 }
-    header("Location: https://gradephd.herokuapp.com/makedbs.php");
 ?>
   
 </html>
