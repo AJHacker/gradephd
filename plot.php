@@ -1229,8 +1229,7 @@
     </script>
 
     <?php 
-        $name=$A[0];
-        $grades = array_slice($A,1);
+
         $hw = array();
         for($i=1;$i<$hwnum+1;$i++){
             array_push($hw,"HW $i");
@@ -1273,6 +1272,13 @@
         $_SESSION['misc3name']=$misc3name;
 
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
+        if ($user) {
+            $name=$A[0];
+            $grades = array_slice($A,1);
+        } else {
+            $A=array();
+            $grades=array_pad($A,count($final),null);
+        }
    
         $GA = array_combine($final, $grades);
         if ($GA==null) echo "fuck\n";
