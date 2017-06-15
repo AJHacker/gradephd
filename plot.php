@@ -205,14 +205,14 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
         } else {
-            $hw="[]";
-            $lab="[]";
-            $quiz="[]";
-            $mid="[]";
-            $fin="[]";
-            $misc1="[]";
-            $misc2="[]";
-            $misc3="[]";
+            $hw='['.str_repeat(",", $hwnum-1).']';
+            $lab='['.str_repeat(",", $lnum-1).']';
+            $quiz='['.str_repeat(",", $qnum-1).']';
+            $mid='['.str_repeat(",", $tnum-1).']';
+            $fin='['.str_repeat(",", $fnum-1).']';
+            $misc1='['.str_repeat(",", $misc1num-1).']';
+            $misc2='['.str_repeat(",", $misc2num-1).']';
+            $misc3='['.str_repeat(",", $misc3num-1).']';
         }
         
     ?>
@@ -1288,8 +1288,7 @@
             $A=array();
             $grades=array_pad($A,count($final),null);
         }
-        echo count($final),count($grades);
-   
+
         $GA = array_combine($final, $grades);
         if ($GA==null) echo "fuck\n";
         
