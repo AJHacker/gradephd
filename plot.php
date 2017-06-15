@@ -187,6 +187,7 @@
             $user_sql   = "SELECT * FROM $class_at WHERE name='$user';";
             $result     = pg_query($db,$user_sql);
             $A          = pg_fetch_row($result);
+            
             //User Scores
             $i      = 1;
             $hw     = "[".implode(",",array_slice($A,$i,$hwnum))."]";
@@ -327,7 +328,8 @@
 
     // Values of each category, stored in arrays
     
-    var hw    = <?php echo $hw; ?>;
+    // var hw    = <?php echo $hw; ?>;
+    var hw    = [88, 95, 87, 66, 100, 98, 22, null, 100, 100];
     var quiz  = <?php echo $quiz; ?>;
     var lab   = <?php echo $lab; ?>;
     var mid   = <?php echo $mid; ?>;
