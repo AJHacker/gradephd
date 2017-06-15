@@ -1273,7 +1273,6 @@
 
         $final = array_merge($hw,$l,$q,$t,$f,$misc1,$misc2,$misc3);
         if ($user) {
-            $name=$A[0];
             $grades = array_slice($A,1);
         } else {
             $A=array();
