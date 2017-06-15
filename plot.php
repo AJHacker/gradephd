@@ -187,6 +187,7 @@
             $user_sql   = "SELECT * FROM $class_at WHERE name='$user';";
             $result     = pg_query($db,$user_sql);
             $A          = pg_fetch_row($result);
+            print_r($A);
             
             //User Scores
             $i      = 1;
@@ -328,8 +329,7 @@
 
     // Values of each category, stored in arrays
     
-    // var hw    = <?php echo $hw; ?>;
-    var hw    = [88, 95, 87, 66, 100, 98, 22, null, 100, 100];
+    var hw    = <?php echo $hw; ?>;
     var quiz  = <?php echo $quiz; ?>;
     var lab   = <?php echo $lab; ?>;
     var mid   = <?php echo $mid; ?>;
@@ -337,6 +337,18 @@
     var misc1 = <?php echo $misc1; ?>;
     var misc2 = <?php echo $misc2; ?>;
     var misc3 = <?php echo $misc3; ?>;
+    
+    
+     // Log the output arrays for each category.
+
+    console.log("hw   :"  + hw    + " !!! " + hw_scr   );
+    console.log("lab  :"  + lab   + " !!! " + lab_scr  );
+    console.log("quiz : " + quiz  + " !!! " + quiz_scr );
+    console.log("mid  : " + mid   + " !!! " + mid_scr  );
+    console.log("fin  : " + fin   + " !!! " + fin_scr  );
+    console.log("misc1: " + misc1 + " !!! " + misc1_scr);
+    console.log("misc2: " + misc2 + " !!! " + misc2_scr);
+    console.log("misc3: " + misc3 + " !!! " + misc3_scr);
 
 
     // Each block below is executed only if the user opted for Variable
