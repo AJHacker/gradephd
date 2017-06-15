@@ -26,9 +26,6 @@
         $user       = $_SESSION['verifiedUser'];
         $class   = str_replace("-","0xDEADBEEF",$class);
         $class_at = $class;
-        $user_sql   = "SELECT * FROM $class WHERE name='$user';";
-        $result     = pg_query($db,$user_sql);
-        $A          = pg_fetch_row($result);
         
         $class_sql  = "SELECT * FROM all_classes WHERE name='$class';";
         $result     = pg_query($db,$class_sql);
@@ -176,23 +173,37 @@
         $misc3name=$MISC3INFO[3];
         $misc3weight=($misc3exploded[0]=="different");
         
-        //User Scores
-        $i      = 1;
-        $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
-        $i      +=$hwnum;
-        $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
-        $i      +=$lnum;
-        $quiz   = "[".implode(",",array_slice($A,$i,$i+$qnum))."]";
-        $i      +=$qnum;
-        $mid    = "[".implode(",",array_slice($A,$i,$i+$tnum))."]";
-        $i      +=$tnum;
-        $fin      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
-        $i      +=$fnum;
-        $misc1  = "[".implode(",",array_slice($A,$i,$i+$misc1num))."]";
-        $i      +=$misc1num;
-        $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
-        $i      +=$misc2num;
-        $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
+        if ($user) {
+            $user_sql   = "SELECT * FROM $class WHERE name='$user';";
+            $result     = pg_query($db,$user_sql);
+            $A          = pg_fetch_row($result);
+            //User Scores
+            $i      = 1;
+            $hw     = "[".implode(",",array_slice($A,$i,$i+$hwnum))."]";
+            $i      +=$hwnum;
+            $lab    = "[".implode(",",array_slice($A,$i,$i+$lnum))."]";
+            $i      +=$lnum;
+            $quiz   = "[".implode(",",array_slice($A,$i,$i+$qnum))."]";
+            $i      +=$qnum;
+            $mid    = "[".implode(",",array_slice($A,$i,$i+$tnum))."]";
+            $i      +=$tnum;
+            $fin      = "[".implode(",",array_slice($A,$i,$i+$fnum))."]";
+            $i      +=$fnum;
+            $misc1  = "[".implode(",",array_slice($A,$i,$i+$misc1num))."]";
+            $i      +=$misc1num;
+            $misc2  = "[".implode(",",array_slice($A,$i,$i+$misc2num))."]";
+            $i      +=$misc2num;
+            $misc3  = "[".implode(",",array_slice($A,$i,$i+$misc3num))."]";
+        } else {
+            $hw="[]";
+            $lab="[]";
+            $quiz="[]";
+            $mid="[]";
+            $fin="[]";
+            $misc1="[]";
+            $misc2="[]";
+            $misc3="[]";
+        }
         
     ?>
 
