@@ -212,14 +212,14 @@
             $i      +=$misc2num;
             $misc3  = "[".implode(",",array_slice($A,$i,$misc3num))."]";
         } else {
-            $hw='['.str_repeat(",", $hwnum+1).']';
-            $lab='['.str_repeat(",", $lnum+1).']';
-            $quiz='['.str_repeat(",", $qnum+1).']';
-            $mid='['.str_repeat(",", $tnum+1).']';
-            $fin='['.str_repeat(",", $fnum+1).']';
-            $misc1='['.str_repeat(",", $misc1num+1).']';
-            $misc2='['.str_repeat(",", $misc2num+1).']';
-            $misc3='['.str_repeat(",", $misc3num+1).']';
+            $hw='['.str_repeat("null,", $hwnum).']';
+            $lab='['.str_repeat("null,", $lnum).']';
+            $quiz='['.str_repeat("null,", $qnum).']';
+            $mid='['.str_repeat("null,", $tnum).']';
+            $fin='['.str_repeat("null,", $fnum).']';
+            $misc1='['.str_repeat("null,", $misc1num).']';
+            $misc2='['.str_repeat("null,", $misc2num).']';
+            $misc3='['.str_repeat("null,", $misc3num).']';
         }
         
     ?>
@@ -1124,7 +1124,7 @@
         y: np_0y,
         mode:'lines+markers',
         type: 'scatter',
-        name: '0 - Black',
+        name: '0',
         line: {
             color: 'rgb(0, 0, 0)',
             width: 2,
@@ -1137,7 +1137,7 @@
         y: np_25y,
         mode:'lines+markers',
         type: 'scatter',
-        name: '25 - Red',
+        name: '25',
         line: {
             color: 'rgb(255, 0, 0)',
             width: 2,
@@ -1150,7 +1150,7 @@
         y: np_50y,
         mode:'lines+markers',
         type: 'scatter',
-        name: '50 - Blue',
+        name: '50',
         line: {
             color: 'rgb(0, 255, 0)',
             width: 2,
@@ -1163,7 +1163,7 @@
         y: np_75y,
         mode:'lines+markers',
         type: 'scatter',
-        name: '75 - Green',
+        name: '75',
         line: {
             color: 'rgb(0, 0, 255)',
             width: 2,
@@ -1176,7 +1176,7 @@
         y: np_100y,
         mode:'lines+markers',
         type: 'scatter',
-        name: '100 - Yellow',
+        name: '100',
         line: {
             color: 'rgb(255, 255, 0)',
             width: 2,
@@ -1189,7 +1189,7 @@
         y: np_cy,
         mode:'lines+markers',
         type: 'scatter',
-        name: 'current - Pink',
+        name: 'Current',
         line: {
             color: 'rgb(255, 0, 255)',
             width: 2,
@@ -1202,7 +1202,7 @@
         y: np_py,
         mode:'lines+markers',
         type: 'scatter',
-        name: 'predicted - Blue',
+        name: 'Predicted',
         line: {
             color: 'rgb(0, 255, 255)',
             width: 2,
@@ -1215,7 +1215,7 @@
         y: nideal,
         mode:'lines+markers',
         type: 'scatter',
-        name: 'ideal - Black',
+        name: 'Ideal',
         line: {
             color: 'rgb(0, 0, 0)',
             width: 2,
