@@ -7,6 +7,7 @@
 
 
 <head>
+    <link rel="stylesheet" href="styles/plot.css">
 
     <script src="plotly-latest.min.js"></script>
 
