@@ -1,3 +1,4 @@
+
 <?php
     session_start();
 ?>
@@ -13,7 +14,10 @@
 
 
 <body>
- 
+    <center>
+        <h1>Welcome To Grade PHD</h1>
+        <h3>Your one stop shop for all grade predicting needs</h3>
+    </center>
 
     <?php
         function pg_connection_string_from_database_url() {
@@ -39,13 +43,11 @@
         $semester   = $C[1];
         $prof       = $C[0];
 
-        
+        echo "<center>Currently predicting the grade for $class taught by $prof for the $semester semester<br></center>";
         if($user){
-            echo "<center>You're logged in as: $user<br>";
-            echo "Viewing grade predictor for $class taught by $prof for the $semester semester</center>";
+            echo "<center><h4>Welcome Back, $user</h4></center>";
         }else{
-            echo "<center>You're not logged in. Log in to save your grades<br>";
-            echo "Viewing grade predictor for $class_name taught by $prof for the $semester semester</center>";
+            echo "<center><h4>You're not logged in. <a href = '/login.php'>Log in to save your grades</a></h4></center>";
         }
 
         //Homework
@@ -192,7 +194,6 @@
                     $A[$i]="null";
                 }
             }
-            print_r($A);
             
             //User Scores
             $i      = 1;
@@ -1315,7 +1316,9 @@
     ?>
 
 
+
     <div id = 'gradesDiv'>
+        <h3>Current Grades</h3>
         <form method = 'POST' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
