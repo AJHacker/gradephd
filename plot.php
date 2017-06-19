@@ -44,7 +44,7 @@
         $semester   = $C[1];
         $prof       = $C[0];
 
-        echo "<center>Currently predicting the grade for $class taught by $prof for the $semester semester<br></center>";
+        echo "<center>Currently predicting the grade for $class_name taught by $prof for the $semester semester<br></center>";
         if($user){
             echo "<center><h4>Welcome Back, $user</h4></center>";
         }else{
