@@ -1315,11 +1315,11 @@
         
 
     ?>
-
+    <center><a href = '/interpret.php'>How to read this graph</a></center>
 
 
     <div id = 'gradesDiv'>
-        <h3>Current Grades</h3>
+        <center><h1>Current Grades</h1></center>
         <form method = 'POST' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
