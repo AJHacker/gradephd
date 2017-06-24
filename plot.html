@@ -21,11 +21,11 @@
 
     var Epsilon = 0.00000001;
 
-    
+
     // Number of items in each category
 
     // TODO -> GET VALUES FROM BACKEND.
-    
+
     var no_hw    = 8;
     var no_quiz  = 8;
     var no_lab   = 0;
@@ -44,11 +44,11 @@
     if (no_misc2 > 0) var misc2_name = "Miscellaneous 2";
     if (no_misc3 > 0) var misc3_name = "Miscellaneous 3";
 
-    
+
     // Percent weight of each category contributing towards total grade
 
     // TODO -> GET VALUES FROM BACKEND.
-    
+
     var hw_perc    = 35  ;
     var quiz_perc  = 15  ;
     var lab_perc   = 0   ;
@@ -131,11 +131,11 @@
     // Values of each category, stored in arrays
 
     // TODO -> GET VALUES FROM BACKEND.
-    
+
     var hw    = [90, 92, 86, 100, 99, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, null, null]       ;
     var lab   = []                                     ;
-    var mid   = [100.4, 77.2, 77.6, null]                ;
+    var mid   = [100.4, 77.4, 77.6, 100]                ;
     var fin   = [96]                                   ;
     var misc1 = []                                     ;
     var misc2 = []                                     ;
@@ -186,7 +186,7 @@
     };
 
 
-    // Function to caclculate the mean of the non-null values in an array.
+    // Function to calculate the mean of the non-null values in an array.
     // Returns "Don't Count" if all values in the array are 'null'.
 
     var mean = function (arr) {
@@ -202,7 +202,7 @@
     };
 
 
-    // Function to caclculate the weighted mean of the non-null values in 
+    // Function to calculate the weighted mean of the non-null values in
     // the array 'arr', based on the weights provided in the array 'weights'.
     // Returns "Don't Count" if all values in the array are 'null'.
 
@@ -356,7 +356,7 @@
     var drop = function(arr, no, perc, weight) {
 
         if (no === 0) return weight;
-        
+
         console.assert(0 <= no && no <= arr.length);
         console.assert(0 <= perc);
 
@@ -366,7 +366,7 @@
         });
 
         var arr3 = arr.slice().sort(order(true)).slice(0, no);
-        
+
         var thresh = 0;
         while(thresh < no) {
             arr2[arr.findIndex(x => x === arr3[thresh])] = -1;
@@ -406,27 +406,48 @@
     var scores_100       = new_array(8, null);
     var percentages_temp = new_array(8, null);
 
+    console.log("\n\nOld weights: \n\n");
+    console.log("hw   :"  + hw_weight   );
+    console.log("lab  :"  + lab_weight  );
+    console.log("quiz : " + quiz_weight );
+    console.log("mid  : " + mid_weight  );
+    console.log("fin  : " + fin_weight  );
+    console.log("misc1: " + misc1_weight);
+    console.log("misc2: " + misc2_weight);
+    console.log("misc3: " + misc3_weight);
+    console.log("\n\n");
+
 
     // The below operations are performed only if the user had chosen
     // the Drop Lowest Score(s) option.
     // Drops the lowest 'x' grades to 'y' percent, as indicated by the user.
 
-        if (no_hw    > 0) { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
-        if (no_quiz  > 0) { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
-        if (no_lab   > 0) { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
-        if (no_mid   > 0) { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
-        if (no_fin   > 0) { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
-        if (no_misc1 > 0) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
-        if (no_misc2 > 0) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
-        if (no_misc3 > 0) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
+    if (no_hw    > 0) { hw_weight    = drop (hw   , hw_drop   , hw_drop_perc   , hw_weight   ); }
+    if (no_quiz  > 0) { quiz_weight  = drop (quiz , quiz_drop , quiz_drop_perc , quiz_weight ); }
+    if (no_lab   > 0) { lab_weight   = drop (lab  , lab_drop  , lab_drop_perc  , lab_weight  ); }
+    if (no_mid   > 0) { mid_weight   = drop (mid  , mid_drop  , mid_drop_perc  , mid_weight  ); }
+    if (no_fin   > 0) { fin_weight   = drop (fin  , fin_drop  , fin_drop_perc  , fin_weight  ); }
+    if (no_misc1 > 0) { misc1_weight = drop (misc1, misc1_drop, misc1_drop_perc, misc1_weight); }
+    if (no_misc2 > 0) { misc2_weight = drop (misc2, misc2_drop, misc2_drop_perc, misc2_weight); }
+    if (no_misc3 > 0) { misc3_weight = drop (misc3, misc3_drop, misc3_drop_perc, misc3_weight); }
 
+    console.log("\n\nNew weights: \n\n");
+    console.log("hw   :"  + hw_weight   );
+    console.log("lab  :"  + lab_weight  );
+    console.log("quiz : " + quiz_weight );
+    console.log("mid  : " + mid_weight  );
+    console.log("fin  : " + fin_weight  );
+    console.log("misc1: " + misc1_weight);
+    console.log("misc2: " + misc2_weight);
+    console.log("misc3: " + misc3_weight);
+    console.log("\n\n");
 
     // Function to recompute percentage weight of each element
     // in perc_temp, based on which categories are left completely
-    // blank by the user (if flag is truee), and for all elements
+    // blank by the user (if flag is true), and for all elements
     // in the array, otherwise (if flag is false). The scores and the 
     // older percentages (in 'perc_temp') are provided as input, and
-    // the newly computed percentages are then returned as an arry;
+    // the newly computed percentages are then returned as an array;
 
     var re_perc = function (scores, perc_temp, flag) {
         var total = 0;
@@ -436,10 +457,10 @@
                     total += perc_temp [index];
                 }
             });
-            var perc = new_array (8, null);
+            var perc = new_array (perc_temp.length, null);
             scores.forEach (function (item, index) {
                 if (scores[index] !== null) {
-                    perc [index] = perc_temp [index] * 100 / total;  
+                    perc [index] = perc_temp [index] * 100 / total;
                 }
             });
         } else {
@@ -456,89 +477,99 @@
 
 
 
-    // 
+    //
 
     if (no_hw > 0)  { hw_weight     = re_perc ([], hw_weight, false);
                       if (take_hw)
-                          hw_scr        = weighted_mean (hw_u     , hw_weight   ); scores     [0] = hw_scr       ; 
+                          hw_scr        = weighted_mean (hw_u     , hw_weight   ); scores     [0] = hw_scr       ;
                       var hw_0_scr      = weighted_mean (hw_0     , hw_weight   ); scores_0   [0] = hw_0_scr     ;
-                      var hw_25_scr     = weighted_mean (hw_25    , hw_weight   ); scores_25  [0] = hw_25_scr    ; 
-                      var hw_50_scr     = weighted_mean (hw_50    , hw_weight   ); scores_50  [0] = hw_50_scr    ; 
-                      var hw_75_scr     = weighted_mean (hw_75    , hw_weight   ); scores_75  [0] = hw_75_scr    ; 
-                      var hw_100_scr    = weighted_mean (hw_100   , hw_weight   ); scores_100 [0] = hw_100_scr   ; 
-                      percentages_temp [0] = hw_perc   ;        
-                     } 
+                      var hw_25_scr     = weighted_mean (hw_25    , hw_weight   ); scores_25  [0] = hw_25_scr    ;
+                      var hw_50_scr     = weighted_mean (hw_50    , hw_weight   ); scores_50  [0] = hw_50_scr    ;
+                      var hw_75_scr     = weighted_mean (hw_75    , hw_weight   ); scores_75  [0] = hw_75_scr    ;
+                      var hw_100_scr    = weighted_mean (hw_100   , hw_weight   ); scores_100 [0] = hw_100_scr   ;
+                      percentages_temp [0] = hw_perc   ;
+                     }
     if (no_quiz > 0){ quiz_weight   = re_perc ([], quiz_weight, false);
                       if (take_quiz)
-                          quiz_scr      = weighted_mean (quiz_u   , quiz_weight ); scores     [1] = quiz_scr     ; 
+                          quiz_scr      = weighted_mean (quiz_u   , quiz_weight ); scores     [1] = quiz_scr     ;
                       var quiz_0_scr    = weighted_mean (quiz_0   , quiz_weight ); scores_0   [1] = quiz_0_scr   ;
-                      var quiz_25_scr   = weighted_mean (quiz_25  , quiz_weight ); scores_25  [1] = quiz_25_scr  ; 
-                      var quiz_50_scr   = weighted_mean (quiz_50  , quiz_weight ); scores_50  [1] = quiz_50_scr  ; 
-                      var quiz_75_scr   = weighted_mean (quiz_75  , quiz_weight ); scores_75  [1] = quiz_75_scr  ; 
-                      var quiz_100_scr  = weighted_mean (quiz_100 , quiz_weight ); scores_100 [1] = quiz_100_scr ; 
-                      percentages_temp [1] = quiz_perc ;                    
-                     }                                                     
+                      var quiz_25_scr   = weighted_mean (quiz_25  , quiz_weight ); scores_25  [1] = quiz_25_scr  ;
+                      var quiz_50_scr   = weighted_mean (quiz_50  , quiz_weight ); scores_50  [1] = quiz_50_scr  ;
+                      var quiz_75_scr   = weighted_mean (quiz_75  , quiz_weight ); scores_75  [1] = quiz_75_scr  ;
+                      var quiz_100_scr  = weighted_mean (quiz_100 , quiz_weight ); scores_100 [1] = quiz_100_scr ;
+                      percentages_temp [1] = quiz_perc ;
+                     }
     if (no_lab > 0) { lab_weight    = re_perc ([], lab_weight, false);
                       if (take_lab)
-                          lab_scr       = weighted_mean (lab_u    , lab_weight  ); scores     [2] = lab_scr      ; 
+                          lab_scr       = weighted_mean (lab_u    , lab_weight  ); scores     [2] = lab_scr      ;
                       var lab_0_scr     = weighted_mean (lab_0    , lab_weight  ); scores_0   [2] = lab_0_scr    ;
-                      var lab_25_scr    = weighted_mean (lab_25   , lab_weight  ); scores_25  [2] = lab_25_scr   ; 
-                      var lab_50_scr    = weighted_mean (lab_50   , lab_weight  ); scores_50  [2] = lab_50_scr   ; 
-                      var lab_75_scr    = weighted_mean (lab_75   , lab_weight  ); scores_75  [2] = lab_75_scr   ; 
-                      var lab_100_scr   = weighted_mean (lab_100  , lab_weight  ); scores_100 [2] = lab_100_scr  ; 
-                      percentages_temp [2] = lab_perc  ;                                      
-                     }                                                                      
-    if (no_mid > 0) { mid_weight    = re_perc ([], mid_weight, false);       
+                      var lab_25_scr    = weighted_mean (lab_25   , lab_weight  ); scores_25  [2] = lab_25_scr   ;
+                      var lab_50_scr    = weighted_mean (lab_50   , lab_weight  ); scores_50  [2] = lab_50_scr   ;
+                      var lab_75_scr    = weighted_mean (lab_75   , lab_weight  ); scores_75  [2] = lab_75_scr   ;
+                      var lab_100_scr   = weighted_mean (lab_100  , lab_weight  ); scores_100 [2] = lab_100_scr  ;
+                      percentages_temp [2] = lab_perc  ;
+                     }
+    if (no_mid > 0) { mid_weight    = re_perc ([], mid_weight, false);
                       if(take_mid)
-                          mid_scr       = weighted_mean (mid_u    , mid_weight  ); scores     [3] = mid_scr      ; 
+                          mid_scr       = weighted_mean (mid_u    , mid_weight  ); scores     [3] = mid_scr      ;
                       var mid_0_scr     = weighted_mean (mid_0    , mid_weight  ); scores_0   [3] = mid_0_scr    ;
-                      var mid_25_scr    = weighted_mean (mid_25   , mid_weight  ); scores_25  [3] = mid_25_scr   ; 
-                      var mid_50_scr    = weighted_mean (mid_50   , mid_weight  ); scores_50  [3] = mid_50_scr   ; 
-                      var mid_75_scr    = weighted_mean (mid_75   , mid_weight  ); scores_75  [3] = mid_75_scr   ; 
-                      var mid_100_scr   = weighted_mean (mid_100  , mid_weight  ); scores_100 [3] = mid_100_scr  ; 
+                      var mid_25_scr    = weighted_mean (mid_25   , mid_weight  ); scores_25  [3] = mid_25_scr   ;
+                      var mid_50_scr    = weighted_mean (mid_50   , mid_weight  ); scores_50  [3] = mid_50_scr   ;
+                      var mid_75_scr    = weighted_mean (mid_75   , mid_weight  ); scores_75  [3] = mid_75_scr   ;
+                      var mid_100_scr   = weighted_mean (mid_100  , mid_weight  ); scores_100 [3] = mid_100_scr  ;
                       percentages_temp [3] = mid_perc  ;
-                     }              
+                     }
     if (no_fin > 0){  fin_weight    = re_perc ([], fin_weight, false);
                       if (take_fin)
-                          fin_scr       = weighted_mean (fin_u    , fin_weight  ); scores     [4] = fin_scr      ; 
+                          fin_scr       = weighted_mean (fin_u    , fin_weight  ); scores     [4] = fin_scr      ;
                       var fin_0_scr     = weighted_mean (fin_0    , fin_weight  ); scores_0   [4] = fin_0_scr    ;
-                      var fin_25_scr    = weighted_mean (fin_25   , fin_weight  ); scores_25  [4] = fin_25_scr   ; 
-                      var fin_50_scr    = weighted_mean (fin_50   , fin_weight  ); scores_50  [4] = fin_50_scr   ; 
-                      var fin_75_scr    = weighted_mean (fin_75   , fin_weight  ); scores_75  [4] = fin_75_scr   ; 
+                      var fin_25_scr    = weighted_mean (fin_25   , fin_weight  ); scores_25  [4] = fin_25_scr   ;
+                      var fin_50_scr    = weighted_mean (fin_50   , fin_weight  ); scores_50  [4] = fin_50_scr   ;
+                      var fin_75_scr    = weighted_mean (fin_75   , fin_weight  ); scores_75  [4] = fin_75_scr   ;
                       var fin_100_scr   = weighted_mean (fin_100  , fin_weight  ); scores_100 [4] = fin_100_scr  ;
-                      percentages_temp [4] = fin_perc  ;                                      
-                     }                                                                      
+                      percentages_temp [4] = fin_perc  ;
+                     }
     if (no_misc1 > 0){misc1_weight  = re_perc ([], misc1_weight, false);
                       if (take_misc1)
-                          misc1_scr     = weighted_mean (misc1_u  , misc1_weight); scores     [5] = misc1_scr    ; 
+                          misc1_scr     = weighted_mean (misc1_u  , misc1_weight); scores     [5] = misc1_scr    ;
                       var misc1_0_scr   = weighted_mean (misc1_0  , misc1_weight); scores_0   [5] = misc1_0_scr  ;
-                      var misc1_25_scr  = weighted_mean (misc1_25 , misc1_weight); scores_25  [5] = misc1_25_scr ; 
-                      var misc1_50_scr  = weighted_mean (misc1_50 , misc1_weight); scores_50  [5] = misc1_50_scr ; 
-                      var misc1_75_scr  = weighted_mean (misc1_75 , misc1_weight); scores_75  [5] = misc1_75_scr ; 
-                      var misc1_100_scr = weighted_mean (misc1_100, misc1_weight); scores_100 [5] = misc1_100_scr; 
+                      var misc1_25_scr  = weighted_mean (misc1_25 , misc1_weight); scores_25  [5] = misc1_25_scr ;
+                      var misc1_50_scr  = weighted_mean (misc1_50 , misc1_weight); scores_50  [5] = misc1_50_scr ;
+                      var misc1_75_scr  = weighted_mean (misc1_75 , misc1_weight); scores_75  [5] = misc1_75_scr ;
+                      var misc1_100_scr = weighted_mean (misc1_100, misc1_weight); scores_100 [5] = misc1_100_scr;
                       percentages_temp [5] = misc1_perc;
                      }
     if (no_misc2 > 0){misc2_weight  = re_perc ([], misc2_weight, false);
                       if (take_misc2)
-                          misc2_scr     = weighted_mean (misc2_u  , misc2_weight); scores     [6] = misc2_scr    ; 
+                          misc2_scr     = weighted_mean (misc2_u  , misc2_weight); scores     [6] = misc2_scr    ;
                       var misc2_0_scr   = weighted_mean (misc2_0  , misc2_weight); scores_0   [6] = misc2_0_scr  ;
-                      var misc2_25_scr  = weighted_mean (misc2_25 , misc2_weight); scores_25  [6] = misc2_25_scr ; 
-                      var misc2_50_scr  = weighted_mean (misc2_50 , misc2_weight); scores_50  [6] = misc2_50_scr ; 
-                      var misc2_75_scr  = weighted_mean (misc2_75 , misc2_weight); scores_75  [6] = misc2_75_scr ; 
-                      var misc2_100_scr = weighted_mean (misc2_100, misc2_weight); scores_100 [6] = misc2_100_scr; 
+                      var misc2_25_scr  = weighted_mean (misc2_25 , misc2_weight); scores_25  [6] = misc2_25_scr ;
+                      var misc2_50_scr  = weighted_mean (misc2_50 , misc2_weight); scores_50  [6] = misc2_50_scr ;
+                      var misc2_75_scr  = weighted_mean (misc2_75 , misc2_weight); scores_75  [6] = misc2_75_scr ;
+                      var misc2_100_scr = weighted_mean (misc2_100, misc2_weight); scores_100 [6] = misc2_100_scr;
                       percentages_temp [6] = misc2_perc;
                      }
     if (no_misc3 > 0){misc3_weight  = re_perc ([], misc3_weight, false);
                       if (take_misc3)
-                          misc3_scr     = weighted_mean (misc3_u  , misc3_weight); scores     [7] = misc3_scr    ; 
+                          misc3_scr     = weighted_mean (misc3_u  , misc3_weight); scores     [7] = misc3_scr    ;
                       var misc3_0_scr   = weighted_mean (misc3_0  , misc3_weight); scores_0   [7] = misc3_0_scr  ;
-                      var misc3_25_scr  = weighted_mean (misc3_25 , misc3_weight); scores_25  [7] = misc3_25_scr ; 
-                      var misc3_50_scr  = weighted_mean (misc3_50 , misc3_weight); scores_50  [7] = misc3_50_scr ; 
-                      var misc3_75_scr  = weighted_mean (misc3_75 , misc3_weight); scores_75  [7] = misc3_75_scr ; 
-                      var misc3_100_scr = weighted_mean (misc3_100, misc3_weight); scores_100 [7] = misc3_100_scr; 
+                      var misc3_25_scr  = weighted_mean (misc3_25 , misc3_weight); scores_25  [7] = misc3_25_scr ;
+                      var misc3_50_scr  = weighted_mean (misc3_50 , misc3_weight); scores_50  [7] = misc3_50_scr ;
+                      var misc3_75_scr  = weighted_mean (misc3_75 , misc3_weight); scores_75  [7] = misc3_75_scr ;
+                      var misc3_100_scr = weighted_mean (misc3_100, misc3_weight); scores_100 [7] = misc3_100_scr;
                       percentages_temp [7] = misc3_perc;
                      }
 
+    console.log("\n\nNew weights after re_perc: \n\n");
+    console.log("hw   :"  + hw_weight   );
+    console.log("lab  :"  + lab_weight  );
+    console.log("quiz : " + quiz_weight );
+    console.log("mid  : " + mid_weight  );
+    console.log("fin  : " + fin_weight  );
+    console.log("misc1: " + misc1_weight);
+    console.log("misc2: " + misc2_weight);
+    console.log("misc3: " + misc3_weight);
+    console.log("\n\n");
 
     // Log the output arrays for each category.
 
@@ -556,9 +587,14 @@
     // the required percentages of each category in this situation,
     // and store them in 'percentages'.
 
+    console.log("Scores: " + scores);
+    console.log("Percentages Temp: " + percentages_temp);
+
     var percentages = re_perc (scores, percentages_temp, true);
 
-    
+    console.log("Percentages: " + percentages);
+
+
     // Function to calculate Total Score (in perecent), based on the 
     // scores on weights for each createHash(algorithm, options);y.
 
@@ -588,16 +624,47 @@
     console.log("100 : " + scores_100 + " !!! " + total_100);
 
 
+    // Recalculate each weight, now from the whole course's perspective
+
+    function new_total(arr, total) {
+        arr.forEach((item, index) => {
+            arr[index] = arr[index] * total / 100;
+        });
+        return arr;
+    }
+
+    if (no_hw > 0) hw_weight = new_total(hw_weight.slice(), percentages[0])
+    if (no_quiz > 0) quiz_weight = new_total(quiz_weight.slice(), percentages[1])
+    if (no_lab > 0) lab_weight = new_total(lab_weight.slice(), percentages[2])
+    if (no_mid > 0) mid_weight = new_total(mid_weight.slice(), percentages[3])
+    if (no_fin > 0) fin_weight = new_total(fin_weight.slice(), percentages[4])
+    if (no_misc1 > 0) misc1_weight = new_total(misc1_weight.slice(), percentages[5])
+    if (no_misc2 > 0) misc2_weight = new_total(misc2_weight.slice(), percentages[6])
+    if (no_misc3 > 0) misc3_weight = new_total(misc3_weight.slice(), percentages[7])
+
+
+    console.log("\n\nNew weights after reTotal: \n\n");
+    console.log("hw   :"  + hw_weight   );
+    console.log("lab  :"  + lab_weight  );
+    console.log("quiz : " + quiz_weight );
+    console.log("mid  : " + mid_weight  );
+    console.log("fin  : " + fin_weight  );
+    console.log("misc1: " + misc1_weight);
+    console.log("misc2: " + misc2_weight);
+    console.log("misc3: " + misc3_weight);
+    console.log("\n\n");
+
+
 
     // ------------  ACTUAL PLOTTING BEGINS HERE. ---------------
 
 
 
-    
+
     // SOME DETAILS ABOUT THE ARRAYS CONTAINING THE DATA,
     // TO PREVENT FROM HAVING TO READ THE ABOVE CODE:
 
-    
+
     // hw, quiz, lab, mid, fin, misc1, misc2, misc3 are
     // the arrays containing the raw input from the user.
     // They have 'null' values whenever the user leaves a
@@ -619,7 +686,7 @@
 
     // STRING ARRAYS FOR LABELLING PLOTS ARE MADE HERE.
 
-    
+
     // 
 
     var labeler = function (num, str) {
@@ -629,27 +696,6 @@
         }
         return arr;
     };
-
-    var yify = function (perc_temp, sum) {
-        var total = 0;
-        perc_temp.forEach (function (item, index) {
-                total += perc_temp [index];
-        });
-        var perc = new_array (perc_temp.length, null);
-        perc_temp.forEach (function (item, index) {
-            perc [index] = perc_temp [index] * sum / total;
-        });
-        return perc;
-    };
-
-    var hw_new_weights = yify(hw_weight, hw_perc);
-    var lab_new_weights = yify(lab_weight, lab_perc);
-    var quiz_new_weights = yify(quiz_weight, quiz_perc);
-    var mid_new_weights = yify(mid_weight, mid_perc);
-    var fin_new_weights = yify(fin_weight, fin_perc);
-    var misc1_new_weights = yify(misc1_weight, misc1_perc);
-    var misc2_weights = yify(misc2_weight, misc2_perc);
-    var misc3_weights = yify(misc3_weight, misc3_perc);
 
 
     // 
@@ -665,11 +711,6 @@
 
 
 
-    console.log(hw_label);
-    console.log(fin_label);
-    console.log(misc2_label);
-
-    
     var is_all_null = function (arr) {
         for(var i = 0; i < arr.length; i++) {
             if (arr[i] !== null) return false;
@@ -686,8 +727,9 @@
     var p_50y  = [];
     var p_75y  = [];
     var p_100y = [];
- 
-    
+    var weight = [];
+
+
 
     if (no_hw    > 0) { p_cy    = p_cy.concat   (hw);
                         p_py    = p_py.concat   (hw_u);
@@ -697,6 +739,7 @@
                         p_50y   = p_50y.concat  (hw_50);
                         p_75y   = p_75y.concat  (hw_75);
                         p_100y  = p_100y.concat (hw_100);
+                        weight  = weight.concat (hw_weight);
                        }
     if (no_lab   > 0) { p_cy    = p_cy.concat   (lab);
                         p_py    = p_py.concat   (lab_u);
@@ -706,6 +749,7 @@
                         p_50y   = p_50y.concat  (lab_50);
                         p_75y   = p_75y.concat  (lab_75);
                         p_100y  = p_100y.concat (lab_100);
+                        weight  = weight.concat (lab_weight);
                        }
     if (no_quiz  > 0) { p_cy    = p_cy.concat   (quiz);
                         p_py    = p_py.concat   (quiz_u);
@@ -715,6 +759,7 @@
                         p_50y   = p_50y.concat  (quiz_50);
                         p_75y   = p_75y.concat  (quiz_75);
                         p_100y  = p_100y.concat (quiz_100);
+                        weight  = weight.concat (quiz_weight);
                        }
     if (no_mid   > 0) { p_cy    = p_cy.concat   (mid);
                         p_py    = p_py.concat   (mid_u);
@@ -724,6 +769,7 @@
                         p_50y   = p_50y.concat  (mid_50);
                         p_75y   = p_75y.concat  (mid_75);
                         p_100y  = p_100y.concat (mid_100);
+                        weight  = weight.concat (mid_weight);
                        }
     if (no_fin   > 0) { p_cy    = p_cy.concat   (fin);
                         p_py    = p_py.concat   (fin_u);
@@ -733,6 +779,7 @@
                         p_50y   = p_50y.concat  (fin_50);
                         p_75y   = p_75y.concat  (fin_75);
                         p_100y  = p_100y.concat (fin_100);
+                        weight  = weight.concat (fin_weight);
                        }
     if (no_misc1 > 0) { p_cy    = p_cy.concat   (misc1);
                         p_py    = p_py.concat   (misc1_u);
@@ -742,6 +789,7 @@
                         p_50y   = p_50y.concat  (misc1_50);
                         p_75y   = p_75y.concat  (misc1_75);
                         p_100y  = p_100y.concat (misc1_100);
+                        weight  = weight.concat (misc1_weight);
                        }
     if (no_misc2 > 0) { p_cy    = p_cy.concat   (misc2);
                         p_py    = p_py.concat   (misc2_u);
@@ -751,6 +799,7 @@
                         p_50y   = p_50y.concat  (misc2_50);
                         p_75y   = p_75y.concat  (misc2_75);
                         p_100y  = p_100y.concat (misc2_100);
+                        weight  = weight.concat (misc2_weight);
                        }
     if (no_misc3 > 0) { p_cy    = p_cy.concat   (misc3);
                         p_py    = p_py.concat   (misc3_u);
@@ -760,27 +809,30 @@
                         p_50y   = p_50y.concat  (misc3_50);
                         p_75y   = p_75y.concat  (misc3_75);
                         p_100y  = p_100y.concat (misc3_100);
+                        weight  = weight.concat (misc3_weight);
                       }
 
-    console.log("curr: "  + p_cy );
-    console.log("pred: "  + p_py );
-    console.log("Label: " + label );
-    console.log("0   : "  + p_0y  );
-    console.log("25  : "  + p_25y );
-    console.log("50  : "  + p_50y );
-    console.log("75  : "  + p_75y );
-    console.log("100 : "  + p_100y);
+    console.log("curr   : "  + p_cy );
+    console.log("pred   : "  + p_py );
+    console.log("Label  : " + label );
+    console.log("0      : "  + p_0y  );
+    console.log("25     : "  + p_25y );
+    console.log("50     : "  + p_50y );
+    console.log("75     : "  + p_75y );
+    console.log("100    : "  + p_100y);
+    console.log("weight : "  + weight);
+    console.log("\n\n");
 
     var combined = [];
 
     for(var i = 0; i < p_100y.length; i++) {
-        combined.push([label[i], p_cy[i], p_py[i], p_0y[i], p_25y[i], p_50y[i], p_75y[i], p_100y[i]]);
+        combined.push([label[i], p_cy[i], p_py[i], p_0y[i], p_25y[i], p_50y[i], p_75y[i], p_100y[i], weight[i]]);
     }
 
     console.log("combined: "  + combined);
     var arr1 = [];
     var arr2 = [];
-    for (var i = 0; i < combined.length; i++) {    
+    for (var i = 0; i < combined.length; i++) {
         if (combined[i][1] === null) {
             arr2.push(combined[i]);
         } else {
@@ -789,7 +841,7 @@
     }
     var arr3 = [];
     var arr4 = [];
-    for (var i = 0; i < arr2.length; i++) {    
+    for (var i = 0; i < arr2.length; i++) {
         if (arr2[i][2] === null) {
             arr4.push(arr2[i]);
         } else {
@@ -809,6 +861,7 @@
         p_50y[i] = final_array[i][5];
         p_75y[i] = final_array[i][6];
         p_100y[i] = final_array[i][7];
+        weight[i] = final_array[i][8];
     }
 
     // var sumify = function(arr) {
@@ -858,14 +911,46 @@
         return arr2;
     };
 
-    var nideal = yify2(sumify(ideal), 100);
-    var np_cy = yify2(sumify(p_cy), 100);
-    var np_py = yify2(sumify(p_py), 100);
-    var np_0y = yify2(sumify(p_0y), 100);
-    var np_25y = yify2(sumify(p_25y), 100);
-    var np_50y = yify2(sumify(p_50y), 100);
-    var np_75y = yify2(sumify(p_75y), 100);
-    var np_100y = yify2(sumify(p_100y), 100);
+
+    var yify3 = (arr, sum) => {
+        var arr2 = arr.slice();
+        for (var i = 0; i < arr2.length; i++) {
+            if(arr2[i] != null)
+                arr2[i] = arr2[i] * final_array[i][8] / 100;
+        }
+        return arr2;
+    }
+
+
+//    var nideal = yify2(sumify(ideal), 100);
+//    var np_cy = yify2(sumify(p_cy), 100);
+//    var np_py = yify2(sumify(p_py), 100);
+//    var np_0y = yify2(sumify(p_0y), 100);
+//    var np_25y = yify2(sumify(p_25y), 100);
+//    var np_50y = yify2(sumify(p_50y), 100);
+//    var np_75y = yify2(sumify(p_75y), 100);
+//    var np_100y = yify2(sumify(p_100y), 100);
+
+    var nideal = sumify(yify3(ideal));
+    var np_cy = sumify(yify3(p_cy));
+    var np_py = sumify(yify3(p_py));
+    var np_0y = sumify(yify3(p_0y));
+    var np_25y = sumify(yify3(p_25y));
+    var np_50y = sumify(yify3(p_50y));
+    var np_75y = sumify(yify3(p_75y));
+    var np_100y = sumify(yify3(p_100y));
+
+    console.log("\n\n Awesome \n\n");
+    console.log("Label  : " + label );
+    console.log("curr   : "  + np_cy );
+    console.log("pred   : "  + np_py );
+    console.log("0      : "  + np_0y  );
+    console.log("25     : "  + np_25y );
+    console.log("50     : "  + np_50y );
+    console.log("75     : "  + np_75y );
+    console.log("100    : "  + np_100y);
+    console.log("weight : "  + weight);
+    console.log("\n\n");
 
 
 
@@ -1012,10 +1097,10 @@
         }
     };
 
-    
+
     var data = [user_line0, user_line25, user_line50, user_line75, user_line100, user_line_predicted, user_line_current, ideal_line];
 
-    
+
     var layout = {
       // legend: {
       //   y: 0.5,
