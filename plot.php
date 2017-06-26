@@ -11,10 +11,37 @@
 
     <script src="plotly-latest.min.js"></script>
 
+    <script id="recalculatejs">
+
+        var recalculate = () => {
+            var oldScript = document.getElementById('mainjs');
+
+            var name = document.getElementById("cooljs").name;
+            var value = document.getElementById("cooljs").value;
+
+
+
+            eval(oldScript.innerText);
+        }
+
+        document.getElementById("cooljs").addEventListener('change', recalculate());
+
+
+    </script>
+
 </head>
 
 
 <body>
+
+<div><form>
+        <table>
+            <tr>
+                <td style="align-content: center; background-color: #000000"><input style = 'width:3em;' type='number' name='midterm score' value = '92' id='cooljs' onchange="recalculate()"></td>
+            </tr>
+        </table>
+    </form></div>
+
     <center>
         <h1>Welcome To Grade PHD</h1>
         <h3>Your one stop shop for all grade predicting needs</h3>
@@ -1419,7 +1446,7 @@
                 $grade = $GA[$name];
 
                 // add JS event listener for name variable here, and refresh div every time it changes
-                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs'></center></td>";
+                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'></center></td>";
             }
             echo "</tr>";
             
@@ -1437,18 +1464,7 @@
         //TODO: Describe the grading system for this class
     </div>
 
-    // TODO: Test Code Below
 
-    <script id="recalculatejs">
-
-        var recalculate = (scriptId) => {
-            $('script[id="' + scriptId + '"]').remove();
-            $('<script>').attr('id', scriptId).appendTo('body');
-        }
-
-        document.getElementById("cooljs").addEventListener('change', recalculate('mainjs'));
-
-    </script>
 
 
 </body>
