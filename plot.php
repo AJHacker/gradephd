@@ -370,15 +370,15 @@
     });
 
     const reinput = function() {
-        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
-        arr_names.forEach(function (item, index) {
-            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
-            nums.forEach(function (it, i) {
-                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
-                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
-                }
-            });
-        });
+//        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
+//        arr_names.forEach(function (item, index) {
+//            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
+//            nums.forEach(function (it, i) {
+//                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
+//                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
+//                }
+//            });
+//        });
     };
 
 
