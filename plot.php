@@ -411,7 +411,7 @@
     const reinput = () => {
         arr_names.forEach((item, index) => {
             [...Array(arr_nv[arr_names[index]]).keys()].forEach(item, index) => {
-                console.log("input(" + document.getElementById("cooljs").name + ", " + document.getElementById("cooljs").value + ");\n")
+                console.log("input(" + document.getElementById("cooljs").name + ", " + document.getElementById("cooljs").value + ")\n");
                 input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
             }
         });
