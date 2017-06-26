@@ -15,9 +15,17 @@
 
         var recalculate = () => {
             var oldScript = document.getElementById('mainjs');
-            eval(oldScript.innerText)
+
+            var name = document.getElementById("cooljs").name;
+            var value = document.getElementById("cooljs").value;
+
+
+
+            eval(oldScript.innerText);
         }
+
         document.getElementById("cooljs").addEventListener('change', recalculate());
+
 
     </script>
 
@@ -25,6 +33,15 @@
 
 
 <body>
+
+<div><form>
+        <table>
+            <tr>
+                <td style="align-content: center; background-color: #000000"><input style = 'width:3em;' type='number' name='midterm score' value = '92' id='cooljs' onchange="recalculate()"></td>
+            </tr>
+        </table>
+    </form></div>
+
     <center>
         <h1>Welcome To Grade PHD</h1>
         <h3>Your one stop shop for all grade predicting needs</h3>
