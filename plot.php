@@ -11,19 +11,7 @@
 
     <script src="plotly-latest.min.js"></script>
 
-    <script id="recalculatejs">
 
-        var recalculate = () => {
-            var oldScript = document.getElementById('mainjs');
-
-            var name = document.getElementById("cooljs").name;
-            var value = document.getElementById("cooljs").value;
-
-            eval(oldScript.innerText);
-        }
-
-
-    </script>
 
 </head>
 
@@ -249,7 +237,6 @@
     // Floating Point Error allowed in Grade Calculations (Out of 100).
     
     var Epsilon = 0.00000001;
-
     
     // Number of items in each category
 
@@ -348,6 +335,8 @@
     var misc2_vw = <?php echo $misc2weight? 'true' : 'false'; ?>;
     var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
 
+    var name = document.getElementById("cooljs").name;
+    var value = document.getElementById("cooljs").value;
 
     // Values of each category, stored in arrays
     
@@ -1358,6 +1347,20 @@
 
 
         </script>
+
+    <script id="recalculatejs">
+
+        const rerunjs = () => {
+            const oldScript = document.getElementById('mainjs');
+            eval(oldScript.innerText);
+        }
+
+        const recalculate = () => {
+            reinput();
+            rerunjs();
+        }
+
+    </script>
 
     <?php 
 
