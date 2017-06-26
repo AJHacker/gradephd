@@ -349,62 +349,71 @@
         var misc3 = <?php echo $misc3; ?>;
 
 
-//    const input = (cat_nam, cat_val) => {
-//        if (cat_nam === null || cat_val === null) return;
-//
-//        const num = cat_nam.match(/\d+$/);
-//        const name = cat_nam.replace(/\s\d+$/, "");
-//        const value = parseInt(cat_val) - 1;
-//
-//        console.log("\n\n\nChange Values:\n\n\n");
-//        console.log("input name: " + name);
-//        console.log("input num: " + num);
-//        console.log("input value: " + value);
-//        console.log('\n\n\n');
-//
-//        if (name === misc1_name) {
-//            misc1[num] = value;
-//        } else if (name === misc2_name) {
-//            misc2[num] = value;
-//        } else if (name === misc3_name) {
-//            misc3[num] = value;
-//        } else {
-//            switch (name) {
-//                case 'HW':
-//                    hw[num] = value;
-//                    break;
-//                case 'Lab':
-//                    lab[num] = value;
-//                    break;
-//                case 'Quiz':
-//                    quiz[num] = value;
-//                    break;
-//                case 'Test':
-//                    mid[num] = value;
-//                    break;
-//                case 'Final':
-//                    fin[num] = value;
-//                    break;
-//            }
-//        }
-//    };
+    const input = (cat_nam, cat_val) => {
+        if (cat_nam === null || cat_val === null) return;
 
-//    val arr_names = ['HW', 'Lab', 'Quiz', 'Test', 'Final', misc1_name, misc2_name, misc3_name];
-//
-//    var arr_nums = [no_hw, no_quiz, no_lab, no_mid, no_fin, no_misc1, no_misc2, no_misc3];
-//
-//    var max_num = arr_nums.reduce(function(a, b) {
-//        return Math.max(a, b);
-//    });
-//
-//    val nums = [...Array(max_num).keys()];
+        const num = cat_nam.match(/\d+$/);
+        const name = cat_nam.replace(/\s\d+$/, "");
+        const value = parseInt(cat_val) - 1;
+
+        console.log("\n\n\nChange Values:\n\n\n");
+        console.log("input name: " + name);
+        console.log("input num: " + num);
+        console.log("input value: " + value);
+        console.log('\n\n\n');
+
+        if (name === misc1_name) {
+            misc1[num] = value;
+        } else if (name === misc2_name) {
+            misc2[num] = value;
+        } else if (name === misc3_name) {
+            misc3[num] = value;
+        } else {
+            switch (name) {
+                case 'HW':
+                    hw[num] = value;
+                    break;
+                case 'Lab':
+                    lab[num] = value;
+                    break;
+                case 'Quiz':
+                    quiz[num] = value;
+                    break;
+                case 'Test':
+                    mid[num] = value;
+                    break;
+                case 'Final':
+                    fin[num] = value;
+                    break;
+            }
+        }
+    };
+
+
+    var arr_nv = ['HW': no_hw, 'Lab': no_lab, 'Quiz': no_quiz, 'Test': no_mid, 'Final': no_fin, misc1_name: no_misc1, misc2_name: no_misc2, misc3_name: no_misc3];
+
+    var arr_names = [];
+    if (no_hw > 0) arr_names = arr_names.concat('HW');
+    if (no_lab > 0) arr_names = arr_names.concat('Lab');
+    if (no_quiz > 0) arr_names = arr_names.concat('Quiz');
+    if (no_mid > 0) arr_names = arr_names.concat('Test');
+    if (no_fin > 0) arr_names = arr_names.concat('Final');
+    if (no_misc1 > 0) arr_names = arr_names.concat(misc1_name);
+    if (no_misc2 > 0) arr_names = arr_names.concat(misc2_name);
+    if (no_misc3 > 0) arr_names = arr_names.concat(misc3_name);
+
+    var arr_nums = [no_hw, no_quiz, no_lab, no_mid, no_fin, no_misc1, no_misc2, no_misc3];
+
+    var max_num = arr_nums.reduce(function(a, b) {
+        return Math.max(a, b);
+    });
 
     const reinput = () => {
-//        arr_names.forEach((item, index) => {
-//            nums.forEach(item, index) => {
-//                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
-//            }
-//        });
+        arr_names.forEach((item, index) => {
+            [...Array(arr_nv[arr_names[index]]).keys()].forEach(item, index) => {
+                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
+            }
+        });
     };
 
 
