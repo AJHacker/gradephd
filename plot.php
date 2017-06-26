@@ -11,7 +11,7 @@
 
     <script src="plotly-latest.min.js"></script>
 
-    
+
 
 </head>
 
@@ -1347,6 +1347,20 @@
 
 
         </script>
+
+    <script id="recalculatejs">
+
+        const rerunjs = () => {
+            const oldScript = document.getElementById('mainjs');
+            eval(oldScript.innerText);
+        }
+
+        const recalculate = () => {
+            reinput();
+            rerunjs();
+        }
+
+    </script>
 
     <?php 
 
