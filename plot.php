@@ -11,36 +11,12 @@
 
     <script src="plotly-latest.min.js"></script>
 
-    <script id="recalculatejs">
-
-        var recalculate = () => {
-            var oldScript = document.getElementById('mainjs');
-
-            var name = document.getElementById("cooljs").name;
-            var value = document.getElementById("cooljs").value;
-
-
-
-            eval(oldScript.innerText);
-        }
-
-        document.getElementById("cooljs").addEventListener('change', recalculate());
-
-
-    </script>
+    
 
 </head>
 
 
 <body>
-
-<div><form>
-        <table>
-            <tr>
-                <td style="align-content: center; background-color: #000000"><input style = 'width:3em;' type='number' name='midterm score' value = '92' id='cooljs' onchange="recalculate()"></td>
-            </tr>
-        </table>
-    </form></div>
 
     <center>
         <h1>Welcome To Grade PHD</h1>
@@ -261,7 +237,6 @@
     // Floating Point Error allowed in Grade Calculations (Out of 100).
     
     var Epsilon = 0.00000001;
-
     
     // Number of items in each category
 
@@ -360,6 +335,8 @@
     var misc2_vw = <?php echo $misc2weight? 'true' : 'false'; ?>;
     var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
 
+    var name = document.getElementById("cooljs").name;
+    var value = document.getElementById("cooljs").value;
 
     // Values of each category, stored in arrays
     
@@ -1446,7 +1423,7 @@
                 $grade = $GA[$name];
 
                 // add JS event listener for name variable here, and refresh div every time it changes
-                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'></center></td>";
+                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs2' onchange='recalculate()'></center></td>";
             }
             echo "</tr>";
             
