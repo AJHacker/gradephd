@@ -1482,7 +1482,7 @@
                 $grade = $GA[$name];
 
                 // add JS event listener for name variable here, and refresh div every time it changes
-                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs2' onchange='recalculate()'></center></td>";
+                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'></center></td>";
             }
             echo "</tr>";
             
