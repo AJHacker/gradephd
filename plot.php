@@ -11,6 +11,20 @@
 
     <script src="plotly-latest.min.js"></script>
 
+    // TODO: Test Code Below
+
+    // TODO: Test Code Below
+
+    <script id="recalculatejs">
+
+        var recalculate = () => {
+            var oldScript = document.getElementById('mainjs');
+            eval(oldScript.innerText)
+        }
+        document.getElementById("cooljs").addEventListener('change', recalculate());
+
+    </script>
+
 </head>
 
 
@@ -1419,7 +1433,7 @@
                 $grade = $GA[$name];
 
                 // add JS event listener for name variable here, and refresh div every time it changes
-                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs'></center></td>";
+                echo "<td><center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'></center></td>";
             }
             echo "</tr>";
             
@@ -1432,19 +1446,12 @@
         </form>
     </div>
 
+    <div id='metricsDiv'>
+        This class is graded on the following scale:
+        //TODO: Describe the grading system for this class
+    </div>
 
-    // TODO: Test Code Below
 
-    <script id="recalculatejs">
-
-        var recalculate = (scriptId) => {
-            $('script[id="' + scriptId + '"]').remove();
-            $('<script>').attr('id', scriptId).appendTo('body');
-        }
-
-        document.getElementById("cooljs").addEventListener('change', recalculate('mainjs'));
-
-    </script>
 
 
 </body>

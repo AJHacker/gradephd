@@ -10,15 +10,8 @@
     <script id="recalculatejs">
 
         var recalculate = (scriptId) => {
-            var body = document.getElementsByTagName('body')[0];
             var oldScript = document.getElementById(scriptId);
-            body.removeChild(oldScript);
-            var newScript = document.createElement('script');
-            newScript.setAttribute("id", "mainjs");
-            newScript.innerText = oldScript.innerText;
-            console.log(oldScript.innerText);
-            var head = document.getElementsByTagName('head')[0];
-            body.appendChild(newScript);
+            eval(oldScript.innerText)
         }
 
       document.getElementById("cooljs").addEventListener('change', recalculate('mainjs'));
