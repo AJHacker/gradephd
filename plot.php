@@ -11,10 +11,6 @@
 
     <script src="plotly-latest.min.js"></script>
 
-    // TODO: Test Code Below
-
-    // TODO: Test Code Below
-
     <script id="recalculatejs">
 
         var recalculate = () => {
