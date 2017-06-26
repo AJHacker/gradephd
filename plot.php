@@ -349,9 +349,9 @@
         var misc3 = <?php echo $misc3; ?>;
 
 
-    var arr_nv = ['HW': no_hw, 'Lab': no_lab, 'Quiz': no_quiz, 'Test': no_mid, 'Final': no_fin, misc1_name: no_misc1, misc2_name: no_misc2, misc3_name: no_misc3];
+    var arr_nv = {'HW': no_hw, 'Lab': no_lab, 'Quiz': no_quiz, 'Test': no_mid, 'Final': no_fin, misc1_name: no_misc1, misc2_name: no_misc2, misc3_name: no_misc3};
 
-    var arr_nv2 = ['HW': hw, 'Lab': lab, 'Quiz': quiz, 'Test': mid, 'Final': fin, misc1_name: misc1, misc2_name: misc2, misc3_name: misc3]
+    var arr_nv2 = {'HW': hw, 'Lab': lab, 'Quiz': quiz, 'Test': mid, 'Final': fin, misc1_name: misc1, misc2_name: misc2, misc3_name: misc3};
 
     var arr_names = [];
     if (no_hw > 0) arr_names = arr_names.concat('HW');
@@ -370,15 +370,15 @@
     });
 
     const reinput = () => {
-//        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
-//        arr_names.forEach((item, index) => {
-//            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
-//            nums.forEach(it, i) => {
-//                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
-//                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
-//                }
-//            }
-//        });
+        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
+        arr_names.forEach((item, index) => {
+            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
+            nums.forEach(it, i) => {
+                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
+                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
+                }
+            }
+        });
     };
 
 
