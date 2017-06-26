@@ -338,27 +338,42 @@
 
 
     // Values of each category, stored in arrays
-    
-    var hw    = <?php echo $hw; ?>;
-    var quiz  = <?php echo $quiz; ?>;
-    var lab   = <?php echo $lab; ?>;
-    var mid   = <?php echo $mid; ?>;
-    var fin   = <?php echo $fin; ?>;
-    var misc1 = <?php echo $misc1; ?>;
-    var misc2 = <?php echo $misc2; ?>;
-    var misc3 = <?php echo $misc3; ?>;
+
+    //    var hw    = <?php //echo $hw; ?>;
+    //    var quiz  = <?php //echo $quiz; ?>;
+    //    var lab   = <?php //echo $lab; ?>;
+    //    var mid   = <?php //echo $mid; ?>;
+    //    var fin   = <?php //echo $fin; ?>;
+    //    var misc1 = <?php //echo $misc1; ?>;
+    //    var misc2 = <?php //echo $misc2; ?>;
+    //    var misc3 = <?php //echo $misc3; ?>;
+
+    var hw    = new_array(no_hw, 0);
+    var quiz  = new_array(no_quiz, 0);
+    var lab   = new_array(no_lab, 0);
+    var mid   = new_array(no_mid, 0);
+    var fin   = new_array(no_fin, 0);
+    var misc1 = new_array(no_misc1, 0);
+    var misc2 = new_array(no_misc2, 0);
+    var misc3 = new_array(no_misc3, 0);
 
     const reinput = () => {
         const num = document.getElementById("cooljs").name.match(/\d+$/);
         const name = document.getElementById("cooljs").name.replace(/\s\d+$/, "");
         const value = parseInt(document.getElementById("cooljs").value) - 1;
 
+        console.log("\n\n\nChange Values:\n\n\n");
+        console.log("name: " + name);
+        console.log("num: " + num);
+        console.log("value: " + value);
+        console.log('\n\n\n');
+
         if (name === misc1_name) {
-                misc1[num] = value;
+            misc1[num] = value;
         } else if (name === misc2_name) {
-                misc2[num] = value;
+            misc2[num] = value;
         } else if (name === misc3_name) {
-                misc3[num] = value;
+            misc3[num] = value;
         } else {
             switch (name) {
                 case 'HW':
