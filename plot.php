@@ -1439,7 +1439,7 @@
 
         var recalculate = (scriptId) => {
             $('script[id="' + scriptId + '"]').remove();
-            $('<script>').attr('id', scriptId).appendTo('head');
+            $('<script>').attr('id', scriptId).appendTo('body');
         }
 
         document.getElementById("cooljs").addEventListener('change', recalculate('mainjs'));

@@ -5,16 +5,45 @@
 
     <script src="plotly-latest.min.js"></script>
 
+    // TODO: Test Code Below
+
+    <script id="recalculatejs">
+
+        var recalculate = (scriptId) => {
+            var body = document.getElementsByTagName('body')[0];
+            var oldScript = document.getElementById(scriptId);
+            body.removeChild(oldScript);
+            var newScript = document.createElement('script');
+            newScript.setAttribute("id", "mainjs");
+            newScript.innerText = oldScript.innerText;
+            console.log(oldScript.innerText);
+            var head = document.getElementsByTagName('head')[0];
+            body.appendChild(newScript);
+        }
+
+      document.getElementById("cooljs").addEventListener('change', recalculate('mainjs'));
+
+    </script>
+
 </head>
 
 
 <body>
 
-    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:100%;height:100%;margin:auto;"></div>
+    <div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:50%;height:50%;margin:auto;"></div>
 
 
+    <div><form>
+        <h1>Starts here</h1>
+        <table>
+            <tr>
+                <td style="align-content: center; background-color: #000000"><input style = 'width:3em;' type='number' name='midterm score' value = '92' id='cooljs' onchange="recalculate('mainjs')"></td>
+            </tr>
+        </table>
+    </form></div>
 
-    <script>
+
+    <script id="mainjs">
 
 
     // Floating Point Error allowed in Grade Calculations (Out of 100).
@@ -132,7 +161,11 @@
 
     // TODO -> GET VALUES FROM BACKEND.
 
-    var hw    = [90, 92, 86, 100, 99, null, null, null];
+    var x = parseInt(document.getElementById("cooljs").value);
+
+    console.log("\n\n\n\n  " + x + "\n\n\n\n");
+
+    var hw    = [90, x, 86, 100, 99, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, null, null]       ;
     var lab   = []                                     ;
     var mid   = [100.4, 77.4, 77.6, 100]                ;
@@ -1130,6 +1163,8 @@
 
 
     </script>
+
+
 
 
 </body>
