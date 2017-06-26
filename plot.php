@@ -335,8 +335,7 @@
     var misc2_vw = <?php echo $misc2weight? 'true' : 'false'; ?>;
     var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
 
-    var name = document.getElementById("cooljs").name;
-    var value = document.getElementById("cooljs").value;
+
 
     // Values of each category, stored in arrays
     
@@ -348,7 +347,39 @@
     var misc1 = <?php echo $misc1; ?>;
     var misc2 = <?php echo $misc2; ?>;
     var misc3 = <?php echo $misc3; ?>;
-    
+
+    const reinput = () => {
+        const num = document.getElementById("cooljs").name.match(/\d+$/);
+        const name = document.getElementById("cooljs").name.replace(/\s\d+$/, "");
+        const value = parseInt(document.getElementById("cooljs").value) - 1;
+
+        if (name === misc1_name) {
+                misc1[num] = value;
+        } else if (name === misc2_name) {
+                misc2[num] = value;
+        } else if (name === misc3_name) {
+                misc3[num] = value;
+        } else {
+            switch (name) {
+                case 'HW':
+                    hw[num] = value;
+                    break;
+                case 'Lab':
+                    lab[num] = value;
+                    break;
+                case 'Quiz':
+                    quiz[num] = value;
+                    break;
+                case 'Test':
+                    mid[num] = value;
+                    break;
+                case 'Final':
+                    fin[num] = value;
+                    break;
+            }
+        }
+
+    }
     
      // Log the output arrays for each category.
 
