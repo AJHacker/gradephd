@@ -374,7 +374,7 @@
         arr_names.forEach((item, index) => {
             var nums = [...Array(arr_nv[arr_names[index]]).keys()];
             nums.forEach(it, i) => {
-                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))) {
+                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
                     arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
                 }
             }
