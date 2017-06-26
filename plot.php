@@ -1432,6 +1432,10 @@
         </form>
     </div>
 
+    <div id='metricsDiv'>
+        This class is graded on the following scale:
+        //TODO: Describe the grading system for this class
+    </div>
 
     // TODO: Test Code Below
 
