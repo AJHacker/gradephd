@@ -70,24 +70,36 @@
 	}
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
-	echo "<h2>Enrolled Classes:</h2><ul>";
+	echo "<h2>Enrolled Classes:</h2>";
 	
 		
 	$email = $_SESSION['verifiedUser'];
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result,0);
+    echo "
+    <table>
+        <tr>
+            <th>Course Number</th>
+            <th>Semester</th>
+            <th>Professor</th>
+        </tr>";
+
 	for($i = 2;$i<10;$i++) {
+	    echo "<tr>";
 	    $class=$A[$i];
 	    if ($class) {
 	    	$class=str_replace("0xDEADBEEF","-",$class);
-	    	echo "<li><a href='/plot.php?class=$class'3>$class</a></li>";
+	    	$c=explode("_",$class);
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[2]."</a></li></td>";
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[1]."</a></li></td>";
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[0]."</a></li></td>";
 	    }
+	    echo "</tr>";
 	}
-	echo "</ul>";
-	
-	
-	
+	echo "</table>";
+
+	header("Location: https://gradephd.herokuapp.com/user.php");
 ?>
 </p>
 

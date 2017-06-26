@@ -13,6 +13,7 @@
 <body>
 <center>
 <?php
+
     //Initiate Session User Variable and Class Variables
     $user       = $_SESSION["verifiedUser"];
     $new_class  = $_SESSION['new_class'];
@@ -28,11 +29,6 @@
     $semester   = $_POST['semester'];
     $prof       = $_POST['prof'];
     $porp       = $_POST['porp'];
-    
-    // TODO SEARCH FOR COURSE BY NUMBER TO SEE IF ALREADY IN DB
-
-
-    //
 
     $hw_diff=($_POST['hwweight']=='different');
     $l_diff=($_POST['lweight']=='different');
@@ -41,7 +37,30 @@
     $misc1_diff=($_POST['misc1weight']=='different');
     $misc2_diff=($_POST['misc2weight']=='different');
     $misc3_diff=($_POST['misc3weight']=='different');
-    
+
+    $class_exists=$_SESSION['class_exists']; //Class table exists
+    $class_correct=$_SESSION['class_correct']; //Existing class is correct. Set by plot.php or other display page
+
+    $skip=false; //Skip to middle of form because existing class is incorrect
+
+    if ($class_exists) {
+        if ($class_correct===null) {
+        //Display class info by redirecting to plot.php or something
+
+        } elseif ($class_correct) {
+            //Add user to class and class to USERS
+            add_class($db,$user,$new_class);
+            //Unset
+            session_unset();
+            $_SESSION['verifiedUser']=$user;
+            header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
+            exit();
+        } else {
+            $skip=true;
+            $_SESSION['class_exists']=null;
+        }
+
+    }
     if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
         echo "
         <form action='/class.php' method='post'>
@@ -64,11 +83,44 @@
             <input type='submit' value='Submit'>
         </form> 
         ";
-    } elseif ($coursenum && $semester && $prof && $porp && !$new_class) {
-        $class_name=$prof."_".$semester."_".$coursenum;
-        $class_name=str_replace("-","0xDEADBEEF",$class_name);
-        $_SESSION['new_class']=$class_name;
-//        unset($_SESSION['new_class']);
+    } elseif (($coursenum && $semester && $prof && $porp && !$new_class) || ($class_exists && $skip)) {
+        if (!$skip) {
+            $class_name=$prof."_".$semester."_".$coursenum;
+            $class_name=str_replace("-","0xDEADBEEF",$class_name);
+            $_SESSION['new_class']=$class_name;
+
+            function pg_connection_string_from_database_url() {
+                extract(parse_url($_ENV["DATABASE_URL"]));
+                return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
+            }
+
+            $db = pg_connect(pg_connection_string_from_database_url());
+
+            //Check if user already in class
+            $check_user="SELECT NAME FROM $class_name WHERE NAME='$user';";
+            $result=pg_query($db,$check_user);
+            if ($result) {
+                //Unset
+                session_unset();
+                $_SESSION['verifiedUser']=$user;
+                header("Location: https://gradephd.herokuapp.com/user.php?message=You are already enrolled in that class.");
+                exit();
+            }
+
+            //Check if the class already exists
+            $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME='$class_name';";
+            $result=pg_query($db,$check_dupl);
+            if ($result) {
+                $_SESSION['class_exists']=true;
+                $_SESSION['porp']=$porp;
+                header("Location: https://gradephd.herokuapp.com/class.php");
+                exit();
+            } else {
+                $_SESSION['class_exists']=false;
+            }
+        } else $porp=$_SESSION['porp'];
+
+        //Class doesn't exist
         if ($porp=='percentage') {
             $v = "%";
             $s="percentage of final grade";
@@ -226,10 +278,10 @@
         }
     }else{
         echo "DATABASE ENTRY<br>";
-        
+
         function pg_connection_string_from_database_url() {
             extract(parse_url($_ENV["DATABASE_URL"]));
-            return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
+            return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
         }
 
         $db = pg_connect(pg_connection_string_from_database_url());
@@ -425,13 +477,23 @@
         pg_query($db,$class_sql);
         echo "make class table:";
         echo pg_last_error();
-        
 
+        add_class($db,$user,$new_class);
+
+        session_unset();
+        $_SESSION['verifiedUser']=$user;
+
+        
+        header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
+        exit();
+    }
+
+    function add_class($db,$user,$new_class) {
         //Add the user as a student in the class
         pg_query($db,"INSERT INTO $new_class (NAME) VALUES ('$user');");
         echo "insert user:";
         echo pg_last_error();
-        
+
         //Add the class to the user's entry in the users table
         $get_user="SELECT * FROM users WHERE email='$user';";
         echo $get_user."<br>";
@@ -448,15 +510,8 @@
         pg_query($db,$add_class_to_user);
         echo "set class:";
         echo pg_last_error();
-
-        session_unset();
-        $_SESSION['verifiedUser']=$user;
-
-        
-        header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
-        exit();
     }
-    
+
     ?>
     </center>
     </p>

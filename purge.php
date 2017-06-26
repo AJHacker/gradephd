@@ -27,7 +27,7 @@ if($user == "admin" && $pass == "admin") {
                 echo $row[0];
                 echo "\n";
             }
-            header("Location: https://gradephd.herokuapp.com/makedbs.php");
+            echo "<a href='https://gradephd.herokuapp.com/makedbs.php'>Make DBs</a>";
           
         }
     

@@ -31,10 +31,11 @@
     $sql = "UPDATE $class SET ";
     foreach ($final as $name) {
         $item=str_replace(" ","_",$name);
-        if ($_POST[$item]==null) continue;
+        if ($_POST[$item]===null) continue;
         $s=explode(" ",$name);
         $a=$s[0];
-        $b=$s[1];
+        if (count($s)==2) $b=$s[1];
+        else $b="";
         $sql.=$abbrev[$a]."".$b."=";
         $sql .= $_POST[$item].", ";
     }
