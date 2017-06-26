@@ -378,7 +378,6 @@
                     break;
             }
         }
-
     }
     
      // Log the output arrays for each category.
