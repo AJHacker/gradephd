@@ -349,48 +349,9 @@
         var misc3 = <?php echo $misc3; ?>;
 
 
-    const input = (cat_nam, cat_val) => {
-        if (cat_nam === null || cat_val === null) return;
-
-        const num = cat_nam.match(/\d+$/);
-        const name = cat_nam.replace(/\s\d+$/, "");
-        const value = parseInt(cat_val) - 1;
-
-        console.log("\n\n\nChange Values:\n\n\n");
-        console.log("input name: " + name);
-        console.log("input num: " + num);
-        console.log("input value: " + value);
-        console.log('\n\n\n');
-
-        if (name === misc1_name) {
-            misc1[num] = value;
-        } else if (name === misc2_name) {
-            misc2[num] = value;
-        } else if (name === misc3_name) {
-            misc3[num] = value;
-        } else {
-            switch (name) {
-                case 'HW':
-                    hw[num] = value;
-                    break;
-                case 'Lab':
-                    lab[num] = value;
-                    break;
-                case 'Quiz':
-                    quiz[num] = value;
-                    break;
-                case 'Test':
-                    mid[num] = value;
-                    break;
-                case 'Final':
-                    fin[num] = value;
-                    break;
-            }
-        }
-    };
-
-
     var arr_nv = ['HW': no_hw, 'Lab': no_lab, 'Quiz': no_quiz, 'Test': no_mid, 'Final': no_fin, misc1_name: no_misc1, misc2_name: no_misc2, misc3_name: no_misc3];
+
+    var arr_nv2 = ['HW': hw, 'Lab': lab, 'Quiz': quiz, 'Test': mid, 'Final': fin, misc1_name: misc1, misc2_name: misc2, misc3_name: misc3]
 
     var arr_names = [];
     if (no_hw > 0) arr_names = arr_names.concat('HW');
@@ -409,10 +370,13 @@
     });
 
     const reinput = () => {
+        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
         arr_names.forEach((item, index) => {
-            [...Array(arr_nv[arr_names[index]]).keys()].forEach(item, index) => {
-                console.log("input(" + document.getElementById("cooljs").name + ", " + document.getElementById("cooljs").value + ")\n");
-                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
+            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
+            nums.forEach(it, i) => {
+                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))) {
+                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
+                }
             }
         });
     };
