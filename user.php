@@ -63,7 +63,7 @@
 		echo "will make this shit later";
 
 	} elseif(!$action && !$message) {
-		header("Location: https://gradephd.herokuapp.com/?error=Please Login First");
+		header("Location: https://gradephd.herokuapp.com/?error=Weird Ass Shit");
         exit();
 	} else{
 
