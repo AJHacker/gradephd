@@ -348,15 +348,17 @@
         var misc2 = <?php echo $misc2; ?>;
         var misc3 = <?php echo $misc3; ?>;
 
-    const reinput = () => {
-        const num = document.getElementById("cooljs").name.match(/\d+$/);
-        const name = document.getElementById("cooljs").name.replace(/\s\d+$/, "");
-        const value = parseInt(document.getElementById("cooljs").value) - 1;
+    const input = (cat_nam, cat_val) => {
+        if (cat_nam === null || cat_val === null) return;
+
+        const num = cat_nam.match(/\d+$/);
+        const name = cat_nam.replace(/\s\d+$/, "");
+        const value = parseInt(cat_val) - 1;
 
         console.log("\n\n\nChange Values:\n\n\n");
-        console.log("name: " + name);
-        console.log("num: " + num);
-        console.log("value: " + value);
+        console.log("input name: " + name);
+        console.log("input num: " + num);
+        console.log("input value: " + value);
         console.log('\n\n\n');
 
         if (name === misc1_name) {
@@ -385,6 +387,63 @@
             }
         }
     }
+
+    val arr_names = ['HW', 'Lab', 'Quiz', 'Test', 'Final', misc1_name, misc2_name, misc3_name];
+
+    var arr_nums = [no_hw, no_quiz, no_lab, no_mid, no_fin, no_misc1, no_misc2, no_misc3];
+
+    var max_num = arr_nums.reduce(function(a, b) {
+        return Math.max(a, b);
+    });
+
+    val nums = [...Array(max_num).keys()];
+
+    const reinput = () => {
+        arr_names.forEach((item, index) => {
+            nums.forEach(item, index) => {
+                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
+            }
+        });
+    }
+
+
+//    const reinput = () => {
+//        const num = document.getElementById("cooljs").name.match(/\d+$/);
+//        const name = document.getElementById("cooljs").name.replace(/\s\d+$/, "");
+//        const value = parseInt(document.getElementById("cooljs").value) - 1;
+//
+//        console.log("\n\n\nChange Values:\n\n\n");
+//        console.log("name: " + name);
+//        console.log("num: " + num);
+//        console.log("value: " + value);
+//        console.log('\n\n\n');
+//
+//        if (name === misc1_name) {
+//            misc1[num] = value;
+//        } else if (name === misc2_name) {
+//            misc2[num] = value;
+//        } else if (name === misc3_name) {
+//            misc3[num] = value;
+//        } else {
+//            switch (name) {
+//                case 'HW':
+//                    hw[num] = value;
+//                    break;
+//                case 'Lab':
+//                    lab[num] = value;
+//                    break;
+//                case 'Quiz':
+//                    quiz[num] = value;
+//                    break;
+//                case 'Test':
+//                    mid[num] = value;
+//                    break;
+//                case 'Final':
+//                    fin[num] = value;
+//                    break;
+//            }
+//        }
+//    };
     
      // Log the output arrays for each category.
 
