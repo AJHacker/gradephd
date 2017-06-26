@@ -348,6 +348,7 @@
         var misc2 = <?php echo $misc2; ?>;
         var misc3 = <?php echo $misc3; ?>;
 
+
     const input = (cat_nam, cat_val) => {
         if (cat_nam === null || cat_val === null) return;
 
@@ -386,7 +387,7 @@
                     break;
             }
         }
-    }
+    };
 
     val arr_names = ['HW', 'Lab', 'Quiz', 'Test', 'Final', misc1_name, misc2_name, misc3_name];
 
@@ -399,12 +400,13 @@
     val nums = [...Array(max_num).keys()];
 
     const reinput = () => {
-        arr_names.forEach((item, index) => {
-            nums.forEach(item, index) => {
-                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
-            }
-        });
-    }
+//        arr_names.forEach((item, index) => {
+//            nums.forEach(item, index) => {
+//                input(document.getElementById("cooljs").name, document.getElementById("cooljs").value);
+//            }
+//        });
+        ;
+    };
 
 
 //    const reinput = () => {
