@@ -339,23 +339,14 @@
 
     // Values of each category, stored in arrays
 
-    //    var hw    = <?php //echo $hw; ?>;
-    //    var quiz  = <?php //echo $quiz; ?>;
-    //    var lab   = <?php //echo $lab; ?>;
-    //    var mid   = <?php //echo $mid; ?>;
-    //    var fin   = <?php //echo $fin; ?>;
-    //    var misc1 = <?php //echo $misc1; ?>;
-    //    var misc2 = <?php //echo $misc2; ?>;
-    //    var misc3 = <?php //echo $misc3; ?>;
-
-    var hw    = new_array(no_hw, 0);
-    var quiz  = new_array(no_quiz, 0);
-    var lab   = new_array(no_lab, 0);
-    var mid   = new_array(no_mid, 0);
-    var fin   = new_array(no_fin, 0);
-    var misc1 = new_array(no_misc1, 0);
-    var misc2 = new_array(no_misc2, 0);
-    var misc3 = new_array(no_misc3, 0);
+        var hw    = <?php echo $hw; ?>;
+        var quiz  = <?php echo $quiz; ?>;
+        var lab   = <?php echo $lab; ?>;
+        var mid   = <?php echo $mid; ?>;
+        var fin   = <?php echo $fin; ?>;
+        var misc1 = <?php echo $misc1; ?>;
+        var misc2 = <?php echo $misc2; ?>;
+        var misc3 = <?php echo $misc3; ?>;
 
     const reinput = () => {
         const num = document.getElementById("cooljs").name.match(/\d+$/);
