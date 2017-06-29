@@ -1496,7 +1496,8 @@
         <form method = 'POST' action='/save.php'>
             <table style="width:100%;overflow:scroll;">
 
-        <?php 
+        <?php
+            
             echo "<tr>";
             foreach ($final as $name) {
                 echo "<th>$name</th>";

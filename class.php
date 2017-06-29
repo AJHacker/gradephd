@@ -102,7 +102,7 @@
             //Check if user already in class
             $check_user="SELECT NAME FROM $class_name WHERE NAME='$user';";
             $result=pg_query($db,$check_user);
-            if ($result) {
+            if (pg_num_rows($result)>0) {
                 //Unset
                 session_unset();
                 $_SESSION['verifiedUser']=$user;
@@ -113,7 +113,7 @@
             //Check if the class already exists
             $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME='$class_name';";
             $result=pg_query($db,$check_dupl);
-            if ($result) {
+            if (pg_num_rows($result)>0) {
                 $_SESSION['class_exists']=true;
                 $_SESSION['porp']=$porp;
                 header("Location: https://gradephd.herokuapp.com/class.php");
