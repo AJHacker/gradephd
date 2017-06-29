@@ -1539,16 +1539,16 @@
             echo_metrics($qnum,$qpercent,$qdrop,$qdroppc,'Quiz');
             echo_metrics($tnum,$tpercent,$tdrop,$tdroppc,'Test');
             echo_metrics($fnum,$fpercent,0,0,'Final');
-            echo_metrics($misc1num,$misc1percent,$misc1drop,$misc1droppc,'$misc1name');
-            echo_metrics($misc2num,$misc2percent,$misc2drop,$misc2droppc,'$misc2name');
-            echo_metrics($misc3num,$misc3percent,$misc3drop,$misc3droppc,'$misc3name');
+            echo_metrics($misc1num,$misc1percent,$misc1drop,$misc1droppc,"$misc1name");
+            echo_metrics($misc2num,$misc2percent,$misc2drop,$misc2droppc,"$misc2name");
+            echo_metrics($misc3num,$misc3percent,$misc3drop,$misc3droppc,"$misc3name");
 
 
         function echo_metrics($num,$pc,$drop,$droppc,$category) {
             if ($num>0) {
-                echo "<tr>$category: $num $category worth $pc of your final grade";
+                echo "<tr>$category: $num $category" . "s worth $pc percent of your final grade";
                 if ($drop>0 && $droppc>0) {
-                    echo "with the lowest $drop, weighted at $droppc </tr>";
+                    echo "with the lowest $drop, weighted at $droppc percent </tr>";
                 } elseif ($drop>0 && $droppc==0) {
                     echo "with the lowest $drop dropped </tr>";
                 } 
