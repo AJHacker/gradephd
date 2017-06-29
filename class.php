@@ -46,6 +46,9 @@
     if ($class_exists) {
         if ($class_correct===null) {
         //Display class info by redirecting to plot.php or something
+        $s=str_replace("0xDEADBEEF","-",$new_class);
+        header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&syl_only=1");
+        exit();
 
         } elseif ($class_correct) {
             //Add user to class and class to USERS

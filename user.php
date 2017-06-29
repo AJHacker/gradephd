@@ -38,7 +38,7 @@
     	echo pg_last_error();
         $_SESSION["verifiedUser"] = $email;
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
-		
+	 	header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "signin") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
@@ -56,18 +56,13 @@
         }
         $_SESSION["verifiedUser"] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
-		
-
+		header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
 
-	} elseif(!$action && !$message) {
-		header("Location: https://gradephd.herokuapp.com/?error=Weird Ass Shit");
-        exit();
-	} else{
-
 	}
+	echo "<center>Welcome to GradePHD ".$email."</center>";
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
@@ -91,15 +86,13 @@
 	    if ($class) {
 	    	$class=str_replace("0xDEADBEEF","-",$class);
 	    	$c=explode("_",$class);
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[2]."</a></li></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[1]."</a></li></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[0]."</a></li></td>";
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[2]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[1]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'3>".$c[0]."</a></td>";
 	    }
 	    echo "</tr>";
 	}
 	echo "</table>";
-
-	header("Location: https://gradephd.herokuapp.com/user.php");
 ?>
 </p>
 
