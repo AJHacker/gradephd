@@ -1512,7 +1512,7 @@
                 if(count($category)>0){
                     echo "<center><fieldset><legend>$legend</legend>";
                     foreach ($category as $name) {
-                        echo "<b>$name</b>";
+                        echo "<b>$name </b>";
                         $grade = $GA[$name];
     
                         // add JS event listener for name variable here, and refresh div every time it changes
