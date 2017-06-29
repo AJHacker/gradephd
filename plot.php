@@ -1516,16 +1516,14 @@
 
             function echo_field($category, $legend) {
                 if(count($category)>0){
-                    echo "<fieldset style = 'float:left'><legend>$legend</legend>";
+                    echo "<fieldset><legend>$legend</legend>";
                     foreach ($category as $name) {
                         echo "<b>$name</b>";
-                    }
-                    echo "<br>";
-                    foreach ($category as $name) {
                         $grade = $GA[$name];
     
                         // add JS event listener for name variable here, and refresh div every time it changes
                         echo "<center><input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'></center>";
+                        echo "<br>";
                     }
                     echo "</fieldset>";
                 }
