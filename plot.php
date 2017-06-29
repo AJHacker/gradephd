@@ -24,6 +24,8 @@
     </center>
 
     <?php
+        $syl_only=$_GET['syl_only'];
+    
         function pg_connection_string_from_database_url() {
             extract(parse_url($_ENV["DATABASE_URL"]));
             return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
@@ -1411,9 +1413,9 @@
             //ticktext: ['HW1', 'HW2', 'HW3', 'HW4']
           };
 
-
-        Plotly.newPlot('predictor', data, layout);
-
+        <?php
+        if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
+        ?>
 
 
         </script>
@@ -1433,6 +1435,7 @@
     </script>
 
     <?php 
+    if (!$syl_only) {
 
         $hw = array();
         for($i=1;$i<$hwnum+1;$i++){
@@ -1487,15 +1490,13 @@
         if ($GA===null) echo "fuck\n";
         
 
-    ?>
-    <center><a href = '/interpret.php'>How to read this graph</a></center>
+        echo "<center><a href = '/interpret.php'>How to read this graph</a></center>
+    
+    
+        <div id = 'gradesDiv'>
+            <center><h1>Current Grades</h1></center>
+            <form method = 'POST' action='/save.php'>";
 
-
-    <div id = 'gradesDiv'>
-        <center><h1>Current Grades</h1></center>
-        <form method = 'POST' action='/save.php'>
-
-        <?php
             echo_field($hw,'Homeworks');
             echo_field($l,'Labs');
             echo_field($q,'Quizzes');
@@ -1523,17 +1524,19 @@
                 }
             }
 
-        ?>  
 
             
-        <input type='submit' value = 'Save Grades'>
-        </form>
-    </div>
+            echo "<input type='submit' value = 'Save Grades'>
+            </form>
+        </div>";
+    }
+    ?>
 
     <div id='metricsDiv'>
-        <table>
+        This class is graded according to the following:
 
         <?php
+            echo "<table>";
             echo_metrics($hwnum,$hwpercent,$hwdrop,$hwdroppc,'Homework');
             echo_metrics($lnum,$lpercent,$ldrop,$ldroppc,'Lab');
             echo_metrics($qnum,$qpercent,$qdrop,$qdroppc,'Quiz');
@@ -1544,18 +1547,24 @@
             echo_metrics($misc3num,$misc3percent,$misc3drop,$misc3droppc,"$misc3name");
 
 
-        function echo_metrics($num,$pc,$drop,$droppc,$category) {
-            if ($num>0) {
-                echo "<tr>$category: $num ${category}s worth $pc percent of your final grade";
-                if ($drop>0 && $droppc>0) {
-                    echo "with the lowest $drop, weighted at $droppc percent </tr>";
-                } elseif ($drop>0 && $droppc==0) {
-                    echo "with the lowest $drop dropped </tr>";
-                } 
+            function echo_metrics($num,$pc,$drop,$droppc,$category) {
+                if ($num>0) {
+                    echo "<tr>$category: $num ${category}s worth $pc percent of your final grade";
+                    if ($drop>0 && $droppc>0) {
+                        echo "with the lowest $drop, weighted at $droppc percent </tr>";
+                    } elseif ($drop>0 && $droppc==0) {
+                        echo "with the lowest $drop dropped </tr>";
+                    } 
+                }
             }
-        }
+            echo "</table>";
+            if ($syl_only) {
+                echo " <p>Is this information correct?</p>
+                <a href='/class.php?class_correct=1'>Yes</a><br>
+                <a href='/class.php'>No</a>";
+               
+            }
         ?>
-        </table>
     </div>
 
 

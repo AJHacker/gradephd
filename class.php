@@ -39,7 +39,7 @@
     $misc3_diff=($_POST['misc3weight']=='different');
 
     $class_exists=$_SESSION['class_exists']; //Class table exists
-    $class_correct=$_SESSION['class_correct']; //Existing class is correct. Set by plot.php or other display page
+    $class_correct=$_GET['class_correct']; //Existing class is correct. Set by plot.php or other display page
 
     $skip=false; //Skip to middle of form because existing class is incorrect
 
