@@ -1561,7 +1561,7 @@
             if ($syl_only) {
                 echo " <p>Is this information correct?</p>
                 <a href='/class.php?class_correct=1'>Yes</a><br>
-                <a href='/class.php'>No</a>";
+                <a href='/class.php?class_correct=0'>No</a>";
                
             }
         ?>
