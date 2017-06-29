@@ -43,7 +43,7 @@
 
     $skip=false; //Skip to middle of form because existing class is incorrect
 
-    if ($class_exists) {
+    if ($_SESSION['class_exists']) {
         if ($class_correct===null) {
         //Display class info by redirecting to plot.php or something
         $s=str_replace("0xDEADBEEF","-",$new_class);

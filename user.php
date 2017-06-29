@@ -67,8 +67,10 @@
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
 	
-		
 	$email = $_SESSION['verifiedUser'];
+	session_unset();
+    $_SESSION['verifiedUser']=$email;
+    
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result,0);
