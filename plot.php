@@ -1496,7 +1496,6 @@
         <form method = 'POST' action='/save.php'>
 
         <?php
-
             echo_field($hw,'Homeworks');
             echo_field($l,'Labs');
             echo_field($q,'Quizzes');
@@ -1505,15 +1504,10 @@
             echo_field($misc1,"$misc1name");
             echo_field($misc2,"$misc2name");
             echo_field($misc3,"$misc3name");
-
-
-
-            
         
             $_SESSION['final']=$final;
             $_SESSION['class']=$class_at;
             
-
             function echo_field($category, $legend) {
                 if(count($category)>0){
                     echo "<center><fieldset><legend>$legend</legend>";
@@ -1523,7 +1517,7 @@
     
                         // add JS event listener for name variable here, and refresh div every time it changes
                         echo "<input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'>";
-                        //echo "<br>";
+                        echo "<br>";
                     }
                     echo "</fieldset></center>";
                 }
