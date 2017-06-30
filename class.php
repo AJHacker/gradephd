@@ -54,12 +54,14 @@
     if ($_SESSION['class_exists']) {
         if ($class_correct===null) {
         //Display class info by redirecting to plot.php or something
+        $_SESSION['new_class']=
         $s=str_replace("0xDEADBEEF","-",$new_class);
         header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&syl_only=1");
         exit();
 
         } elseif ($class_correct) {
             //Add user to class and class to USERS
+            $version=
             add_class($db,$user,$new_class);
             //Unset
             session_unset();
@@ -119,7 +121,8 @@
             if ($numfound>0) {
                 $_SESSION['class_exists']=true;
                 $_SESSION['porp']=$porp;
-                header("Location: https://gradephd.herokuapp.com/class.php?numfound=$numfound");
+                $_SESSION['dupl_classes']=pg_fetch_all($result);
+                header("Location: https://gradephd.herokuapp.com/class.php");
                 exit();
             } else {
                 $_SESSION['class_exists']=false;
