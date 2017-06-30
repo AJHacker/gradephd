@@ -69,7 +69,9 @@
             header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
             exit();
         } elseif (count($_SESSION['dupl_classes']>0)) {
-            header("Location: https://gradephd.herokuapp.com/class.php");
+            print_r($_SESSION['dupl_classes']);
+            echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
+            // header("Location: https://gradephd.herokuapp.com/class.php");
         } else {
             $skip=true;
             $_SESSION['class_exists']=null;
