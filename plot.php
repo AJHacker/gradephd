@@ -10,22 +10,6 @@
     <link rel="stylesheet" href="styles/plot.css">
 
     <script src="plotly-latest.min.js"></script>
-    
-    <script src="plotly-latest.min.js"></script>
-
-    // TODO: Test Code Below
-
-    // TODO: Test Code Below
-
-    <script id="recalculatejs">
-        var recalculate = () => {
-            var oldScript = document.getElementById('mainjs');
-            eval(oldScript.innerText)
-        }
-        document.getElementById("cooljs").addEventListener('change', recalculate());
-    </script>
-
-
 
 </head>
 
