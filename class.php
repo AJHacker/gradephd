@@ -117,7 +117,7 @@
             }
 
             //Check if the class already exists
-            $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME='$class_name%';";
+            $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME LIKE '$class_name%';";
             $result=pg_query($db,$check_dupl);
             $numfound=pg_num_rows($result);
             if ($numfound>0) {
