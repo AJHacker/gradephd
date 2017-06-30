@@ -113,12 +113,13 @@
             }
 
             //Check if the class already exists
-            $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME='$class_name';";
+            $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME='$class_name%';";
             $result=pg_query($db,$check_dupl);
-            if (pg_num_rows($result)>0) {
+            $numfound=pg_num_rows($result);
+            if ($numfound>0) {
                 $_SESSION['class_exists']=true;
                 $_SESSION['porp']=$porp;
-                header("Location: https://gradephd.herokuapp.com/class.php");
+                header("Location: https://gradephd.herokuapp.com/class.php?numfound=$numfound");
                 exit();
             } else {
                 $_SESSION['class_exists']=false;
