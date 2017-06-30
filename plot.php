@@ -1422,14 +1422,14 @@
 
     <script id="recalculatejs">
 
-        const rerunjs = () => {
-            const oldScript = document.getElementById('mainjs');
-            eval(oldScript.innerText);
-        }
+        // const rerunjs = () => {
+        //     const oldScript = document.getElementById('mainjs');
+        //     eval(oldScript.innerText);
+        // }
 
         const recalculate = () => {
-            reinput();
-            rerunjs();
+            // reinput();
+            // rerunjs();
         }
 
     </script>

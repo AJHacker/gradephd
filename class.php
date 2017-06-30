@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
 ?>
 <html>
 <head>
@@ -42,6 +43,13 @@
     $class_correct=$_GET['class_correct']; //Existing class is correct. Set by plot.php or other display page
 
     $skip=false; //Skip to middle of form because existing class is incorrect
+    
+    function pg_connection_string_from_database_url() {
+        extract(parse_url($_ENV["DATABASE_URL"]));
+        return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
+    }
+
+    $db = pg_connect(pg_connection_string_from_database_url());
 
     if ($_SESSION['class_exists']) {
         if ($class_correct===null) {
@@ -56,8 +64,8 @@
             //Unset
             session_unset();
             $_SESSION['verifiedUser']=$user;
-            header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
-            exit();
+            // header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
+            // exit();
         } else {
             $skip=true;
             $_SESSION['class_exists']=null;
@@ -92,12 +100,6 @@
             $class_name=str_replace("-","0xDEADBEEF",$class_name);
             $_SESSION['new_class']=$class_name;
 
-            function pg_connection_string_from_database_url() {
-                extract(parse_url($_ENV["DATABASE_URL"]));
-                return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
-            }
-
-            $db = pg_connect(pg_connection_string_from_database_url());
 
             //Check if user already in class
             $check_user="SELECT NAME FROM $class_name WHERE NAME='$user';";
