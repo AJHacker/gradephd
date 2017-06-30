@@ -6,5 +6,3 @@
 //Update Graph on input change
 //Make seperate register and login pages
 //Make index page a search box for class lookuop
-
-
