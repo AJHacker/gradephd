@@ -68,7 +68,7 @@
             $_SESSION['verifiedUser']=$user;
             header("Location: https://gradephd.herokuapp.com/user.php?message=Class Added");
             exit();
-        } elseif (!empty($_SESSION['dupl_classes']) {
+        } elseif (!empty($_SESSION['dupl_classes'])) {
             print_r($_SESSION['dupl_classes']);
             echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
             // header("Location: https://gradephd.herokuapp.com/class.php");
