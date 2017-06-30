@@ -371,17 +371,17 @@
 //        return Math.max(a, b);
 //    });
 
-    const reinput = function() {
-//        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
-//        arr_names.forEach(function (item, index) {
-//            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
-//            nums.forEach(function (it, i) {
-//                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
-//                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
-//                }
-//            });
-//        });
-    };
+//     const reinput = function() {
+// //        if (document.getElementById("cooljs").name === null || document.getElementById("cooljs").value === null) return;
+// //        arr_names.forEach(function (item, index) {
+// //            var nums = [...Array(arr_nv[arr_names[index]]).keys()];
+// //            nums.forEach(function (it, i) {
+// //                if (document.getElementById("cooljs").name === document.getElementsByName(arr_names[index] + " " + (nums[i] + 1))[0]) {
+// //                    arr_nv2[arr_names[index]][nums[i]] = parseInt(document.getElementById("cooljs").value);
+// //                }
+// //            });
+// //        });
+//     };
 
 
 //    const reinput = () => {
@@ -1420,19 +1420,19 @@
 
         </script>
 
-    <script id="recalculatejs">
+    <!--<script id="recalculatejs">-->
 
         // const rerunjs = () => {
         //     const oldScript = document.getElementById('mainjs');
         //     eval(oldScript.innerText);
         // }
 
-        const recalculate = () => {
-            // reinput();
-            // rerunjs();
-        }
+        // const recalculate = () => {
+        //     // reinput();
+        //     // rerunjs();
+        // }
 
-    </script>
+    <!--</script>-->
 
     <?php 
     if (!$syl_only) {
@@ -1490,13 +1490,8 @@
         if ($GA===null) echo "fuck\n";
         
 
-        echo "<center><a href = '/interpret.php'>How to read this graph</a></center>
-    
-    
-        <div id = 'gradesDiv'>
-            <center><h1>Current Grades</h1></center>
-            <form method = 'POST' action='/save.php'>";
-
+        echo "<center><a href = '/interpret.php'>How to read this graph</a></center><div id = 'gradesDiv'><center><h1>Current Grades</h1></center><form method = 'POST' action='/save.php'>";
+            
             echo_field($hw,'Homeworks');
             echo_field($l,'Labs');
             echo_field($q,'Quizzes');
@@ -1505,30 +1500,30 @@
             echo_field($misc1,"$misc1name");
             echo_field($misc2,"$misc2name");
             echo_field($misc3,"$misc3name");
-        
             $_SESSION['final']=$final;
             $_SESSION['class']=$class_at;
             
-            function echo_field($category, $legend) {
-                if(count($category)>0){
-                    echo "<center><fieldset><legend>$legend</legend>";
-                    foreach ($category as $name) {
-                        echo "<b>$name </b>";
-                        $grade = $GA[$name];
-    
-                        // add JS event listener for name variable here, and refresh div every time it changes
-                        echo "<input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs' onchange='recalculate()'>";
-                        echo "<br>";
-                    }
-                    echo "</fieldset></center>";
-                }
-            }
+
 
 
             
             echo "<input type='submit' value = 'Save Grades'>
             </form>
         </div>";
+    }
+    function echo_field($category, $legend) {
+        if(count($category)>0){
+            echo "<center><fieldset><legend>$legend</legend>";
+            foreach ($category as $name) {
+                echo "<b>$name </b>";
+                $grade = $GA[$name];
+
+                // add JS event listener for name variable here, and refresh div every time it changes
+                echo "<input style = 'width:3em;' type='number' name='$name' value = '$grade' id='cooljs'>";
+                echo "<br>";
+            }
+            echo "</fieldset></center>";
+        }
     }
     ?>
 
