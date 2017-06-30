@@ -54,7 +54,7 @@
     if ($_SESSION['class_exists']) {
         if ($class_correct===null) {
             //Display class info by redirecting to plot.php or something
-            $_SESSION['new_class']=array_pop($_SESSION['dupl_classes'])['NAME'];
+            $_SESSION['new_class']=array_pop($_SESSION['dupl_classes'])['name'];
             $new_class=$_SESSION['new_class'];
             $s=str_replace("0xDEADBEEF","-",$new_class);
             header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&syl_only=1");

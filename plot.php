@@ -1165,9 +1165,11 @@
             //ticktext: ['HW1', 'HW2', 'HW3', 'HW4']
           };
         
-        <?php
-        if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
-        ?>
+        // <?php
+        // if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
+        // ?>
+        
+        Plotly.newPlot('predictor', data, layout);
         
 
         </script>
