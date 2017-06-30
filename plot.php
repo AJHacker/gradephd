@@ -1180,7 +1180,12 @@
           //   tickvals: ['hw1', 'hw2', 'hw3', 'hw4']
             //ticktext: ['HW1', 'HW2', 'HW3', 'HW4']
           };
-        Plotly.newPlot('predictor', data, layout);
+        
+        <?php
+        if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
+        ?>
+        
+
         </script>
 
     <?php 

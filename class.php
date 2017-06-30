@@ -125,8 +125,9 @@
                 $_SESSION['class_exists']=true;
                 $_SESSION['porp']=$porp;
                 $_SESSION['dupl_classes']=pg_fetch_all($result);
-                header("Location: https://gradephd.herokuapp.com/class.php");
-                exit();
+                echo "<a href='https://gradephd.herokuapp.com/class.php'>"
+                // header("Location: https://gradephd.herokuapp.com/class.php");
+                // exit();
             } else {
                 $_SESSION['class_exists']=false;
             }
