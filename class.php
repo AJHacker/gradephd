@@ -121,6 +121,7 @@
             $result=pg_query($db,$check_dupl);
             $numfound=pg_num_rows($result);
             if ($numfound>0) {
+                $_SESSION['numfound']=$numfound;
                 $_SESSION['class_exists']=true;
                 $_SESSION['porp']=$porp;
                 $_SESSION['dupl_classes']=pg_fetch_all($result);
@@ -429,6 +430,8 @@
         $MISC3INFO.="|$misc3name";
 
         //Add to all_classes
+        $nf=$_SESSION['numfound'];
+        $new_class.="_v$nf";
 
         $sql="INSERT INTO all_classes VALUES ( 
             '$new_class', 
