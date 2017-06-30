@@ -1420,7 +1420,7 @@
 
         </script>
 
-    <!--<script id="recalculatejs">-->
+    <script id="recalculatejs">
 
         // const rerunjs = () => {
         //     const oldScript = document.getElementById('mainjs');
@@ -1432,7 +1432,7 @@
         //     // rerunjs();
         // }
 
-    <!--</script>-->
+    </script>
 
     <?php 
     if (!$syl_only) {
@@ -1528,7 +1528,7 @@
     ?>
 
     <div id='metricsDiv'>
-        This class is graded according to the following:
+        This class is graded according to the following:<br>
 
         <?php
             echo "<table>";
@@ -1550,6 +1550,7 @@
                     } elseif ($drop>0 && $droppc==0) {
                         echo "with the lowest $drop dropped </tr>";
                     } 
+                    echo "<br>";
                 }
             }
             echo "</table>";
