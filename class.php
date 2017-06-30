@@ -430,6 +430,7 @@
         $MISC3INFO.="|$misc3name";
 
         //Add to all_classes
+        echo "Adding $user to class\n";
         $nf=$_SESSION['numfound'];
         echo "$nf\n";
         $new_class.="_v$nf";
