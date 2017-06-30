@@ -431,8 +431,9 @@
 
         //Add to all_classes
         $nf=$_SESSION['numfound'];
+        echo "$nf\n";
         $new_class.="_v$nf";
-
+        echo $new_class;
         $sql="INSERT INTO all_classes VALUES ( 
             '$new_class', 
             '$HWINFO',
