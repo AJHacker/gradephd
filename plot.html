@@ -49,11 +49,11 @@
 
     // TODO -> GET VALUES FROM BACKEND.
 
-    var no_hw    = 8;
-    var no_quiz  = 8;
+    var no_hw    = 5;
+    var no_quiz  = 0;
     var no_lab   = 0;
-    var no_mid   = 4;
-    var no_fin   = 1;
+    var no_mid   = 0;
+    var no_fin   = 0;
     var no_misc1 = 0;
     var no_misc2 = 0;
     var no_misc3 = 0;
@@ -72,11 +72,11 @@
 
     // TODO -> GET VALUES FROM BACKEND.
 
-    var hw_perc    = 35  ;
-    var quiz_perc  = 15  ;
+    var hw_perc    = 100  ;
+    var quiz_perc  = 0  ;
     var lab_perc   = 0   ;
-    var mid_perc   = 37.5;
-    var fin_perc   = 12.5;
+    var mid_perc   = 0;
+    var fin_perc   = 0;
     var misc1_perc = 0   ;
     var misc2_perc = 0   ;
     var misc3_perc = 0   ;
@@ -159,7 +159,7 @@
 
     console.log("\n\n\n\n  " + x + "\n\n\n\n");
 
-    var hw    = [90, x, 0, 100, 0, null, null, null];
+    var hw    = [35, null, null, null, null];
     var quiz  = [80, 60, 80, 60, 80, 60, null, null]       ;
     var lab   = []                                     ;
     var mid   = [100.4, 77.4, 77.6, 100]                ;
@@ -184,7 +184,7 @@
     // TODO -> GET VALUES FROM BACKEND.
 
     if ( hw_vw  ) { hw_weight    = []; var hw_drop = 0; var hw_drop_perc = 0; }
-    else          { var  hw_drop = 1; var hw_drop_perc = 0                  }
+    else          { var  hw_drop = 0; var hw_drop_perc = 0                  }
     if ( quiz_vw  ) { quiz_weight  = []; var quiz_drop = 0; var quiz_drop_perc = 0; }
     else          { var  quiz_drop = 2 ; var quiz_drop_perc = 0}
     if ( lab_vw  ) { lab_weight    = []; var lab_drop = 0; var lab_drop_perc = 0; }

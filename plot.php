@@ -238,7 +238,8 @@
     var Epsilon = 0.00000001;
 
     // Number of items in each category
-    var no_hw    = <?php echo $hwnum; ?>;
+    //var no_hw    = <?php echo $hwnum; ?>;
+    var no_hw    = 5;
     var no_quiz  = <?php echo $qnum; ?>;
     var no_lab   = <?php echo $lnum; ?>;
     var no_mid   = <?php echo $tnum; ?>;
@@ -253,7 +254,8 @@
     if (no_misc3 > 0) var misc3_name = <?php echo "'$misc3name'"; ?>;
 
     // Percent weight of each category contributing towards total grade
-    var hw_perc    = <?php echo $hwpercent; ?>;
+    // var hw_perc    = <?php echo $hwpercent; ?>;
+    var hw_perc    = [20, null, null, null, null];
     var quiz_perc  = <?php echo $qpercent; ?>;
     var lab_perc   = <?php echo $lpercent; ?>;
     var mid_perc   = <?php echo $tpercent; ?>;
