@@ -82,7 +82,7 @@
     var misc3_perc = 0   ;
 
 
-    // Function to return a new array of length 'size', 
+    // Function to return a new array of length 'size',
     // containing 'val' as each of its values.
 
     var new_array = function (size, val) {
@@ -172,7 +172,7 @@
     // Each block below is executed only if the user opted for Variable
     // Weights for that category.
 
-    // x_drop -> Number of lowest items of each category that are 
+    // x_drop -> Number of lowest items of each category that are
     // 'dropped'.
 
     // x_drop_perc ->
@@ -250,7 +250,7 @@
     };
 
 
-    // Calculates the mean/weighted mean score in each category, 
+    // Calculates the mean/weighted mean score in each category,
     // based on the option chosen, and the values entered.
 
     var hw_mean    = hw_vw    ? weighted_mean (hw,    hw_weight)    : mean (hw)   ;
@@ -263,7 +263,7 @@
     var misc3_mean = misc3_vw ? weighted_mean (misc3, misc3_weight) : mean (misc3);
 
 
-    // Boolean values, which if true, indicate that the user has put in 
+    // Boolean values, which if true, indicate that the user has put in
     // enough info for a given category to be approximated, otherwise not.
 
     var take_hw    = (hw_mean    !== "Don't Count");
@@ -286,9 +286,9 @@
     };
 
 
-    // Assign values to the places that the user left empty during the 
+    // Assign values to the places that the user left empty during the
     // input process, only if that given category counts towards the total,
-    // by creating arrays that store the different curves for each 
+    // by creating arrays that store the different curves for each
     // category, to store this info in.
 
     if (no_hw > 0)  {   if (take_hw)
@@ -357,11 +357,11 @@
                        }
 
 
-    // Returns a Comparison Function, which returns -1 if 'a' should 
+    // Returns a Comparison Function, which returns -1 if 'a' should
     // come before 'b', 0 if they are the 'same', and 1 otherwise.
     // This depends on whether the input boolean variable 'ascending' is set
     // to true or false respectively. This comparison function ensures that
-    // null values in the input array, if any, always end up at the end of 
+    // null values in the input array, if any, always end up at the end of
     // the sorted array.
 
     var order = function (ascending) {
@@ -410,7 +410,7 @@
     };
 
 
-    // Variables meant to eventually store the final cumulative 
+    // Variables meant to eventually store the final cumulative
     // 'score' (in percent) for each category, for each curve.
 
     var hw_scr        = null;
@@ -472,7 +472,7 @@
     // Function to recompute percentage weight of each element
     // in perc_temp, based on which categories are left completely
     // blank by the user (if flag is true), and for all elements
-    // in the array, otherwise (if flag is false). The scores and the 
+    // in the array, otherwise (if flag is false). The scores and the
     // older percentages (in 'perc_temp') are provided as input, and
     // the newly computed percentages are then returned as an array;
 
@@ -622,7 +622,7 @@
     console.log("Percentages: " + percentages);
 
 
-    // Function to calculate Total Score (in perecent), based on the 
+    // Function to calculate Total Score (in perecent), based on the
     // scores on weights for each createHash(algorithm, options);y.
 
     var score_calc = function (scores, weights) {
@@ -630,7 +630,7 @@
     };
 
 
-    // Find total score for each curve, using the above score_calc() 
+    // Find total score for each curve, using the above score_calc()
     // function.
 
     var total     = score_calc (scores    , percentages);
@@ -705,7 +705,7 @@
     // A particular category is to be considered for plotting only if
     // the number of that category is strictly greater than 0.
 
-    // A particular category is to be considered for approximation only 
+    // A particular category is to be considered for approximation only
     // if the boolean variable representing that category is set to true.
     // These boolean variables are take_hw, take_quiz, .... respectively.
 
@@ -714,7 +714,7 @@
     // STRING ARRAYS FOR LABELLING PLOTS ARE MADE HERE.
 
 
-    // 
+    //
 
     var labeler = function (num, str) {
         arr = new_array(num, str);
@@ -725,7 +725,7 @@
     };
 
 
-    // 
+    //
 
     if (no_hw    > 0) var hw_label    = labeler   (no_hw   , "Homework" );
     if (no_lab   > 0) var lab_label   = labeler   (no_lab  , "Lab"      );
@@ -891,18 +891,6 @@
         weight[i] = final_array[i][8];
     }
 
-    // var sumify = function(arr) {
-    //     var arr2 = new_array(arr.length, 0);
-    //     for (var i = 0; i < arr.length; i++) {
-    //         var sum = 0;
-    //         for(var j = 0; j <= i; j++) {
-    //             sum += arr[j];
-    //         }
-    //         arr2[i] = sum;
-    //     }
-    //     return arr2;
-    // }
-
     var sumify = function(arr) {
         var num = null;
         for (var i = 0; i < arr.length; i++) {
@@ -948,16 +936,6 @@
         return arr2;
     }
 
-
-//    var nideal = yify2(sumify(ideal), 100);
-//    var np_cy = yify2(sumify(p_cy), 100);
-//    var np_py = yify2(sumify(p_py), 100);
-//    var np_0y = yify2(sumify(p_0y), 100);
-//    var np_25y = yify2(sumify(p_25y), 100);
-//    var np_50y = yify2(sumify(p_50y), 100);
-//    var np_75y = yify2(sumify(p_75y), 100);
-//    var np_100y = yify2(sumify(p_100y), 100);
-
     var nideal = sumify(yify3(ideal));
     var np_cy = sumify(yify3(p_cy));
     var np_py = sumify(yify3(p_py));
@@ -980,45 +958,7 @@
     console.log("\n\n");
 
 
-
-    // var p_ux = []
-    // var p_uy = []
-
-    // if (take_hw) {
-
-    //     p_uy = p_uy.concat(hw_u);
-    // }
-
-    // if(take_lab) {
-
-    //     p_uy = p_uy.c
-    // }
-
-
-
-
-
-
     PREDICTOR = document.getElementById('predictor');
-    // Plotly.plot( PREDICTOR, [{
-    // x: [1, 2, 3, 4, 5],
-    // y: [1, 2, 4, 8, 16] }], {
-    // margin: { t: 0 } } );
-
-
-    // var user_line = {
-    //     x: [...Array(no_hw + no_quiz + no_mid + no_fin).keys()],
-    //     y: hw_u.concat(quiz_u).concat(mid_u).concat(fin_u),
-    //     type: 'scatter',
-    //     name: 'UserCurrent - Blue',
-    //     line: {
-    //         color: 'rgb(55, 128, 191)',
-    //         width: 2
-    //     },
-    //     connectgaps: true,
-    //     showarrow: true
-    // };
-
 
     var user_line0 = {
         x: label,
