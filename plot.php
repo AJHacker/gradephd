@@ -255,7 +255,7 @@
 
     // Percent weight of each category contributing towards total grade
     // var hw_perc    = <?php echo $hwpercent; ?>;
-    var hw_perc    = [20, null, null, null, null];
+    var hw_perc    = 100;
     var quiz_perc  = <?php echo $qpercent; ?>;
     var lab_perc   = <?php echo $lpercent; ?>;
     var mid_perc   = <?php echo $tpercent; ?>;
@@ -320,7 +320,8 @@
     var misc3_vw = <?php echo $misc3weight? 'true' : 'false'; ?>;
     // Values of each category, stored in arrays
 
-    var hw    = <?php echo $hw; ?>;
+//     var hw    = <?php echo $hw; ?>;
+    var hw    = [30, null, null, null, null];
     var quiz  = <?php echo $quiz; ?>;
     var lab   = <?php echo $lab; ?>;
     var mid   = <?php echo $mid; ?>;
