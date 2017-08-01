@@ -62,10 +62,6 @@
 		echo "will make this shit later";
 	}
 	
-	if ($_SESSION['saving']) {
-	    header("Location: https://gradephd.herokuapp.com/save.php");
-	}
-	
 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
