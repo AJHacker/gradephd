@@ -88,9 +88,11 @@
 	    if ($class) {
 	    	$class=str_replace("0xDEADBEEF","-",$class);
 	    	$c=explode("_",$class);
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[2]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[1]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[0]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[2]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[1]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[0]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>View</a></td>";
+	    	echo "<td><a href='/remove.php?class=$class'>Remove</a></td>";
 	    }
 	    echo "</tr>";
 	}
