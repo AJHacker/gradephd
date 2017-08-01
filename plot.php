@@ -23,6 +23,7 @@
 
     <?php
         $syl_only=$_GET['syl_only'];
+        $search=$_GET['search'];
 
         function pg_connection_string_from_database_url() {
             extract(parse_url($_ENV["DATABASE_URL"]));
@@ -1378,9 +1379,13 @@
             }
             echo "</table>";
             if ($syl_only) {
-                    echo " <p>Is this information correct?</p>
+                echo " <p>Is this information correct?</p>
                     <a href='/class.php?class_correct=1'>Yes</a><br>
                     <a href='/class.php?class_correct=0'>No</a>";
+            } else if ($search) {
+                echo " <p>Is this information correct?</p>
+                    <a href='/search.php?class_correct=1'>Yes</a><br>
+                    <a href='/search.php?class_correct=0'>No</a>";
             }
 
 

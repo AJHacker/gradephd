@@ -23,7 +23,6 @@
     $coursenum  = $_POST['coursenum'];
     $semester   = $_POST['semester'];
     $prof       = $_POST['prof'];
-    $porp       = $_POST['porp'];
 
     $hw_diff=($_POST['hwweight']=='different');
     $l_diff=($_POST['lweight']=='different');
@@ -36,8 +35,7 @@
     $class_exists=$_SESSION['class_exists']; //Class table exists
     $class_correct=$_GET['class_correct']; //Existing class is correct. Set by plot.php or other display page
 
-    $skip=false; //Skip to middle of form because existing class is incorrect
-    
+
     function pg_connection_string_from_database_url() {
         extract(parse_url($_ENV["DATABASE_URL"]));
         return "user=$user password=$pass host=$host dbname=" . substr($path, 1);
@@ -51,12 +49,12 @@
             $_SESSION['new_class']=array_pop($_SESSION['dupl_classes'])['name'];
             $new_class=$_SESSION['new_class'];
             $s=str_replace("0xDEADBEEF","-",$new_class);
-            header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&syl_only=1");
+            header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&search=1");
             exit();
         } elseif (!empty($_SESSION['dupl_classes'])) {
             print_r($_SESSION['dupl_classes']);
-            echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
-            header("Location: https://gradephd.herokuapp.com/class.php");
+            echo "<a href='https://gradephd.herokuapp.com/search.php'>next</a>";
+            header("Location: https://gradephd.herokuapp.com/search.php");
             exit();
         } else {
             $_SESSION['class_exists']=null;
