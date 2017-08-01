@@ -1289,7 +1289,7 @@
         </script>
 
     <?php
-    if (!$syl_only && !$read) {
+    if (!$syl_only && !$search) {
 
         $hw = array();
         for($i=1;$i<$hwnum+1;$i++){
