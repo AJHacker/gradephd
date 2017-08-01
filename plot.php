@@ -228,6 +228,35 @@
             $misc3='['.str_repeat("null,", $misc3num).']';
         }
 
+
+        //Syllabus Info
+        echo "
+        <div id='metricsDiv'>
+            This class is graded according to the following:<br>";
+
+            echo "<table>";
+            echo_metrics($hwnum,$hwpercent,$hwdrop,$hwdroppc,'Homework');
+            echo_metrics($lnum,$lpercent,$ldrop,$ldroppc,'Lab');
+            echo_metrics($qnum,$qpercent,$qdrop,$qdroppc,'Quiz');
+            echo_metrics($tnum,$tpercent,$tdrop,$tdroppc,'Test');
+            echo_metrics($fnum,$fpercent,0,0,'Final');
+            echo_metrics($misc1num,$misc1percent,$misc1drop,$misc1droppc,"$misc1name");
+            echo_metrics($misc2num,$misc2percent,$misc2drop,$misc2droppc,"$misc2name");
+            echo_metrics($misc3num,$misc3percent,$misc3drop,$misc3droppc,"$misc3name");
+
+
+        function echo_metrics($num,$pc,$drop,$droppc,$category) {
+            if ($num>0) {
+                echo "<tr>$category: $num ${category}(s) worth $pc percent of your final grade";
+                if ($drop>0 && $droppc>0) {
+                    echo "with the lowest $drop, weighted at $droppc percent </tr>";
+                } elseif ($drop>0 && $droppc==0) {
+                    echo "with the lowest $drop dropped </tr>";
+                }
+                echo "<br>";
+            }
+        }
+        echo "</table>";
     ?>
 
     <!--<div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>-->
@@ -1260,7 +1289,7 @@
         </script>
 
     <?php
-    if (!$syl_only) {
+    if (!$syl_only && !$read) {
 
         $hw = array();
         for($i=1;$i<$hwnum+1;$i++){
@@ -1351,46 +1380,19 @@
         }
     }
 
-    echo "
-    <div id='metricsDiv'>
-        This class is graded according to the following:<br>";
-
-            echo "<table>";
-            echo_metrics($hwnum,$hwpercent,$hwdrop,$hwdroppc,'Homework');
-            echo_metrics($lnum,$lpercent,$ldrop,$ldroppc,'Lab');
-            echo_metrics($qnum,$qpercent,$qdrop,$qdroppc,'Quiz');
-            echo_metrics($tnum,$tpercent,$tdrop,$tdroppc,'Test');
-            echo_metrics($fnum,$fpercent,0,0,'Final');
-            echo_metrics($misc1num,$misc1percent,$misc1drop,$misc1droppc,"$misc1name");
-            echo_metrics($misc2num,$misc2percent,$misc2drop,$misc2droppc,"$misc2name");
-            echo_metrics($misc3num,$misc3percent,$misc3drop,$misc3droppc,"$misc3name");
-
-
-            function echo_metrics($num,$pc,$drop,$droppc,$category) {
-                if ($num>0) {
-                    echo "<tr>$category: $num ${category}s worth $pc percent of your final grade";
-                    if ($drop>0 && $droppc>0) {
-                        echo "with the lowest $drop, weighted at $droppc percent </tr>";
-                    } elseif ($drop>0 && $droppc==0) {
-                        echo "with the lowest $drop dropped </tr>";
-                    }
-                    echo "<br>";
-                }
-            }
-            echo "</table>";
-            if ($syl_only) {
-                echo " <p>Is this information correct?</p>
-                    <a href='/class.php?class_correct=1'>Yes</a><br>
-                    <a href='/class.php?class_correct=0'>No</a>";
-            } else if ($search) {
-                echo " <p>Is this information correct?</p>
-                    <a href='/search.php?class_correct=1'>Yes</a><br>
-                    <a href='/search.php?class_correct=0'>No</a>";
-            }
+    if ($syl_only) {
+        echo " <p>Is this information correct?</p>
+            <a href='/class.php?class_correct=1'>Yes</a><br>
+            <a href='/class.php?class_correct=0'>No</a>";
+    } else if ($search) {
+        echo " <p>Is this information correct?</p>
+            <a href='/search.php?class_correct=1'>Yes</a><br>
+            <a href='/search.php?class_correct=0'>No</a>";
+    }
 
 
 
-        ?>
+    ?>
     </div>
 
 

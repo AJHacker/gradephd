@@ -5,16 +5,14 @@
 <link rel="stylesheet" href="styles/index.css">
 
 <html>
-<div id='left'></div><div id='top_bar'>
-<button value='Sign In'>Sign In</button>
-<button value='Sign Up'>Sign Up</button>
-</div><div id='right'></div>
+<button class="button button1" value='Sign In'>Sign In</button>
+<button class="button button1" value='Sign Up'>Sign Up</button>
 <h3>Search for a class:</h3>
 
 <?php
 echo "
         <form action='/search.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
+            Course Number: <input type='text' name='coursenum' placeholder='18-100' required>
             Semester: 
             <select name='semester'>
                 <option value='F17'>F17</option>
@@ -24,8 +22,7 @@ echo "
                 <option value='F19'>F19</option>
                 <option value='S20'>S20</option>
             </select>
-            <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan' required><br> 
+            Professor: <input type='text' name='prof' placeholder='Sullivan' required>
             Points or Percentages?: 
             <input type='radio' name='porp' value='percentage' required>Percent
             <input type='radio' name='porp' value='points'>Points<br>
