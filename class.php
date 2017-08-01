@@ -431,7 +431,7 @@
         echo "Adding $user to class\n";
         $nf=$_SESSION['numfound'];
         echo "$nf\n";
-        $new_class.="_v$nf";
+        if ($nf) $new_class.="_v$nf";
         echo $new_class;
         $sql="INSERT INTO all_classes VALUES ( 
             '$new_class', 

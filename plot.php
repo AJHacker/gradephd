@@ -238,7 +238,8 @@
     var Epsilon = 0.00000001;
 
     // Number of items in each category
-    var no_hw    = <?php echo $hwnum; ?>;
+    //var no_hw    = <?php echo $hwnum; ?>;
+    var no_hw    = 5;
     var no_quiz  = <?php echo $qnum; ?>;
     var no_lab   = <?php echo $lnum; ?>;
     var no_mid   = <?php echo $tnum; ?>;
@@ -254,6 +255,7 @@
 
     // Percent weight of each category contributing towards total grade
     var hw_perc    = <?php echo $hwpercent; ?>
+
     var quiz_perc  = <?php echo $qpercent; ?>;
     var lab_perc   = <?php echo $lpercent; ?>;
     var mid_perc   = <?php echo $tpercent; ?>;
@@ -319,6 +321,7 @@
     // Values of each category, stored in arrays
 
     var hw    = <?php echo $hw; ?>;
+
     var quiz  = <?php echo $quiz; ?>;
     var lab   = <?php echo $lab; ?>;
     var mid   = <?php echo $mid; ?>;
@@ -1252,9 +1255,6 @@
         <?php
         if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
         ?>
-
-        // Plotly.newPlot('predictor', data, layout);
-
 
         </script>
 
