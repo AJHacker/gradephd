@@ -1,4 +1,7 @@
+<html>
 <body>
+<link rel="stylesheet" href="styles/index.css">
+
 <div id='topbar'>
 <button id="button" style="float:right;">Sign In</button>
 <button id="button" style="float:right;">Sign Up</button>
@@ -30,3 +33,4 @@
 </center>
 </div>
 </body>
+</html>
