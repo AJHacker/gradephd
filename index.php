@@ -25,7 +25,7 @@
             <br>
             Professor: <input type='text' id='textinput' name='prof' placeholder='Sullivan' required>
             <br>
-            
+            <br>
             <input id = 'button' type='submit' value='Search'>
             
         </form> 
