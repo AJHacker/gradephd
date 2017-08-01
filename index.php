@@ -5,12 +5,10 @@
 <link rel="stylesheet" href="styles/index.css">
 
 <html>
+<body>
 <button class="button button1" value='Sign In'>Sign In</button>
 <button class="button button1" value='Sign Up'>Sign Up</button>
-<h3>Search for a class:</h3>
-
-<?php
-echo "
+<center><h3>Search for a class:</h3>
         <form action='/search.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100' required>
             Semester: 
@@ -29,7 +27,6 @@ echo "
 
             <input type='submit' value='Submit'>
         </form> 
-        ";
-?>
-
+</center>
+</body>
 </html>

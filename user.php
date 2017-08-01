@@ -24,13 +24,13 @@
 
 	if($action == "signup"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
-			header("Location: https://gradephd.herokuapp.com/?error=Password Does Not Match"); /* Redirect browser */
+			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
 		$query= "SELECT * FROM users WHERE email IS '".$email.";";
 		$result=pg_query($db,$query);
 		if (0!=pg_num_rows($result)){ // CHECK IF USER EXISTS
-			header("Location: https://gradephd.herokuapp.com/?error=User Exists With Email"); /* Redirect browser */
+			header("Location: https://gradephd.herokuapp.com/login.php?error=User Exists With Email"); /* Redirect browser */
 			exit();
 		}
 	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')"; //CREATE USER
@@ -51,7 +51,7 @@
         $result=pg_query($db,$query);
 		$correct_pass=pg_fetch_row($result)[0];
         if($pass!=$correct_pass) { //Verify password
-            header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ");
+            header("Location: https://gradephd.herokuapp.com/login.php?error=Invalid Password ");
             exit();
         }
         $_SESSION["verifiedUser"] = $email;
@@ -60,8 +60,8 @@
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
-
 	}
+	
 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
@@ -88,9 +88,11 @@
 	    if ($class) {
 	    	$class=str_replace("0xDEADBEEF","-",$class);
 	    	$c=explode("_",$class);
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[2]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[1]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'3>".$c[0]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[2]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[1]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>".$c[0]."</a></td>";
+	    	echo "<td><a href='/plot.php?class=$class'>View</a></td>";
+	    	echo "<td><a href='/remove.php?class=$class'>Remove</a></td>";
 	    }
 	    echo "</tr>";
 	}
