@@ -7,7 +7,6 @@
         header("Location: https://gradephd.herokuapp.com/login.php?error=Please Login First"); 
         exit();
     }
-    
     $final= $_SESSION['final'];
     $class= $_SESSION['class'];
     $misc1name = $_SESSION['misc1name'];
