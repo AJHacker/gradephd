@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" href="styles/mainpage.css">
+<link rel="stylesheet" href="styles/login.css">
 <script>
 function yesorno(){
     if (document.getElementById('signin').checked) {

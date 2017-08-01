@@ -51,6 +51,9 @@
             $s=str_replace("0xDEADBEEF","-",$new_class);
             header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&search=1");
             exit();
+        } elseif ($class_correct) {
+            session_unset();
+            header("Location: https://gradephd.herokuapp.com/plot.php?class=$s");
         } elseif (!empty($_SESSION['dupl_classes'])) {
             print_r($_SESSION['dupl_classes']);
             echo "<a href='https://gradephd.herokuapp.com/search.php'>next</a>";
@@ -58,6 +61,7 @@
             exit();
         } else {
             $_SESSION['class_exists']=null;
+            echo "No Matching Classes Found";
         }
 
     }
@@ -80,7 +84,7 @@
                 header("Location: https://gradephd.herokuapp.com/search.php");
                 exit();
             } else {
-                $_SESSION['class_exists']=false;
+                echo "No Matching Classes Found";
             }
         }
     }

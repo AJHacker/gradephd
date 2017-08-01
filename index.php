@@ -2,6 +2,8 @@
     session_start();
     
 ?>
+<link rel="stylesheet" href="styles/index.css">
+
 <html>
 <div id='top_bar'>
 <button value='Sign In'>Sign In</button>
