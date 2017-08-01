@@ -60,6 +60,8 @@
             
             echo "Done\n";
             echo "<a href='/user.php'>Back</a>";
+            header("Location: https://gradephd.herokuapp.com/user.php"); 
+            exit();
         } else {
             header("Location: https://gradephd.herokuapp.com/user.php"); 
             exit();
