@@ -59,50 +59,15 @@
             header("Location: https://gradephd.herokuapp.com/class.php");
             exit();
         } else {
-            $skip=true;
             $_SESSION['class_exists']=null;
         }
 
     }
-    if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
-        echo "
-        <form action='/class.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
-            Semester: 
-            <select name='semester'>
-                <option value='F17'>F17</option>
-                <option value='S18'>S18</option>
-                <option value='F18'>F18</option>
-                <option value='S19'>S19</option>
-                <option value='F19'>F19</option>
-                <option value='S20'>S20</option>
-            </select>
-            <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan' required><br> 
-            Points or Percentages?: 
-            <input type='radio' name='porp' value='percentage' required>Percent
-            <input type='radio' name='porp' value='points'>Points<br>
-
-            <input type='submit' value='Submit'>
-        </form> 
-        ";
-    } elseif (($coursenum && $semester && $prof && $porp && !$new_class) || ($class_exists && $skip)) {
+    if ($coursenum && $semester && $prof && !$new_class) {
         if (!$skip) {
             $class_name=$prof."_".$semester."_".$coursenum;
             $class_name=str_replace("-","0xDEADBEEF",$class_name);
             $_SESSION['new_class']=$class_name;
-
-
-            //Check if user already in class
-            $check_user="SELECT NAME FROM $class_name WHERE NAME='$user';";
-            $result=pg_query($db,$check_user);
-            if (pg_num_rows($result)>0) {
-                //Unset
-                session_unset();
-                $_SESSION['verifiedUser']=$user;
-                header("Location: https://gradephd.herokuapp.com/user.php?message=You are already enrolled in that class.");
-                exit();
-            }
 
             //Check if the class already exists
             $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME LIKE '$class_name%';";
@@ -111,17 +76,16 @@
             if ($numfound>0) {
                 $_SESSION['numfound']=$numfound;
                 $_SESSION['class_exists']=true;
-                $_SESSION['porp']=$porp;
                 $_SESSION['dupl_classes']=pg_fetch_all($result);
                 print_r($_SESSION['dupl_classes']);
-                echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
-                header("Location: https://gradephd.herokuapp.com/class.php");
+                echo "<a href='https://gradephd.herokuapp.com/search.php'>next</a>";
+                header("Location: https://gradephd.herokuapp.com/search.php");
                 exit();
             } else {
                 $_SESSION['class_exists']=false;
             }
-        } else $porp=$_SESSION['porp'];
-
+        }
+    }
 ?>
 </center>
 

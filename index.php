@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    
+?>
 <html>
 <div id='top_bar'>
 <button value='Sign In'>Sign In</button>
@@ -7,7 +11,7 @@
 
 <?php
 echo "
-        <form action='/class.php' method='post'>
+        <form action='/search.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
             Semester: 
             <select name='semester'>
