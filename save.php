@@ -4,17 +4,17 @@
     $user       = $_SESSION['verifiedUser'];
     //Make Sure User is Logged in
     if (!$user) {
-        header("Location: https://gradephd.herokuapp.com/?error=Please Login First"); 
+        $_SESSION['saving']=true;
+        header("Location: https://gradephd.herokuapp.com/login.php?error=Please Login First"); 
         exit();
     }   
-
+    
+    $_SESSION['saving']=false;
     $final= $_SESSION['final'];
     $class= $_SESSION['class'];
     $misc1name = $_SESSION['misc1name'];
     $misc2name = $_SESSION['misc2name'];
     $misc3name = $_SESSION['misc3name'];
-    
-     
 
 
     $abbrev=array(

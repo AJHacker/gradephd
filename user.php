@@ -24,13 +24,13 @@
 
 	if($action == "signup"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
-			header("Location: https://gradephd.herokuapp.com/?error=Password Does Not Match"); /* Redirect browser */
+			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
 		$query= "SELECT * FROM users WHERE email IS '".$email.";";
 		$result=pg_query($db,$query);
 		if (0!=pg_num_rows($result)){ // CHECK IF USER EXISTS
-			header("Location: https://gradephd.herokuapp.com/?error=User Exists With Email"); /* Redirect browser */
+			header("Location: https://gradephd.herokuapp.com/login.php?error=User Exists With Email"); /* Redirect browser */
 			exit();
 		}
 	 	$query= "INSERT INTO USERS (EMAIL, PASSWORD) VALUES ('".$email ."','".$pass."')"; //CREATE USER
@@ -51,7 +51,7 @@
         $result=pg_query($db,$query);
 		$correct_pass=pg_fetch_row($result)[0];
         if($pass!=$correct_pass) { //Verify password
-            header("Location: https://gradephd.herokuapp.com/?error=Invalid Password ");
+            header("Location: https://gradephd.herokuapp.com/login.php?error=Invalid Password ");
             exit();
         }
         $_SESSION["verifiedUser"] = $email;
@@ -60,8 +60,12 @@
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
-
 	}
+	
+	if ($_SESSION['saving']) {
+	    header("Location: https://gradephd.herokuapp.com/save.php");
+	}
+	
 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";

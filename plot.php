@@ -48,11 +48,15 @@
         $semester   = $C[1];
         $prof       = $C[0];
 
-        echo "<center>Currently predicting the grade for $class_name taught by $prof for the $semester semester<br></center>";
-        if($user){
-            echo "<center><h4>Welcome Back, $user</h4></center>";
-        }else{
-            echo "<center><h4>You're not logged in. <a href = '/login.php'>Log in to save your grades</a></h4></center>";
+        if (!$syl_only && !$search) {
+            echo "<center>Currently predicting the grade for $class_name taught by $prof for the $semester semester<br></center>";
+            if($user){
+                echo "<center><h4>Welcome Back, $user</h4></center>";
+            }else{
+                echo "<center><h4>You're not logged in. <a href = '/login.php'>Log in to save your grades</a></h4></center>";
+            }
+        } else {
+            echo "<center>Currently viewing the syllabus for $class_name taught by $prof for the $semester semester<br></center>";
         }
 
         //Homework

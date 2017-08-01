@@ -3,7 +3,7 @@
 	$user=$_SESSION["verifiedUser"];
 
     if(!$user){
-        header("Location: https://gradephd.herokuapp.com/?error=Please Login First"); 
+        header("Location: https://gradephd.herokuapp.com/login.php?error=Please Login First"); 
 		exit();
     }
 ?>
