@@ -71,7 +71,7 @@
         } elseif (!empty($_SESSION['dupl_classes'])) {
             print_r($_SESSION['dupl_classes']);
             echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
-            // header("Location: https://gradephd.herokuapp.com/class.php");
+            header("Location: https://gradephd.herokuapp.com/class.php");
             exit();
         } else {
             $skip=true;
@@ -130,8 +130,8 @@
                 $_SESSION['dupl_classes']=pg_fetch_all($result);
                 print_r($_SESSION['dupl_classes']);
                 echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
-                // header("Location: https://gradephd.herokuapp.com/class.php");
-                // exit();
+                header("Location: https://gradephd.herokuapp.com/class.php");
+                exit();
             } else {
                 $_SESSION['class_exists']=false;
             }
