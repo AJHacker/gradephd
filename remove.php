@@ -46,15 +46,17 @@
             echo "get row:";
             $classes=pg_fetch_row($result,0);
             echo pg_last_error() . "<br>";
-            $n=2;
-            for ($n;$n<10;$n++) {
-                if ($classes[$n]==$tname) break;
+            $n=1;
+            for ($n;$n<9;$n++) {
+                if ($classes[$n+1]==$tname) break;
             }
-            $user_sql="UPDATE users SET class$n=NULL WHERE email='$user';";
-            echo "$user_sql\n";
-            pg_query($db,$user_sql);
-            echo pg_last_error();
-            echo "<br>";
+            if ($n+1<10) {
+                $user_sql="UPDATE users SET class$n=NULL WHERE email='$user';";
+                echo "$user_sql\n";
+                pg_query($db,$user_sql);
+                echo pg_last_error();
+                echo "<br>";
+            }
             
             echo "Done\n";
             echo "<a href='/user.php'>Back</a>";
