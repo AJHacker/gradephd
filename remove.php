@@ -22,8 +22,42 @@
             <a href='/remove.php?class=$class&remove_confirm=1'>Yes</a><br>
             <a href='/remove.php?class=$class&remove_confirm=0'>No</a>";
         } elseif ($remove_confirm) {
-            $tname=str_replace("0xDEADBEEF","-",$class);
+            function pg_connection_string_from_database_url() {
+                extract(parse_url($_ENV["DATABASE_URL"]));
+                return "user=$user password=$pass host=$host dbname=" . substr($path, 1); 
+            }
+            $db = pg_connect(pg_connection_string_from_database_url());
             
+            $tname=str_replace("-","0xDEADBEEF",$class);
+            
+            //Remove user from class
+            echo "remove user from class\n";
+            $class_sql="DELETE FROM $tname WHERE name='$user';";
+            echo "$class_sql\n";
+            pg_query($db,$class_sql);
+            echo pg_last_error();
+            echo "<br>";
+            
+            //remove class from user
+            echo "remove class from user\n";
+            $get_user="SELECT * FROM users WHERE email='$user';";
+            echo $get_user."<br>";
+            $result=pg_query($db,$get_user);
+            echo "get row:";
+            $classes=pg_fetch_row($result,0);
+            echo pg_last_error() . "<br>";
+            $n=2;
+            for ($n;$n<10;$n++) {
+                if ($classes[$n]==$tname) break;
+            }
+            $user_sql="UPDATE users SET class$n=NULL WHERE email='$user';";
+            echo "$user_sql\n";
+            pg_query($db,$user_sql);
+            echo pg_last_error();
+            echo "<br>";
+            
+            echo "Done\n";
+            echo "<a href='/user.php>Back</a>";
         } else {
             header("Location: https://gradephd.herokuapp.com/user.php"); 
             exit();

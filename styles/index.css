@@ -1,8 +1,8 @@
 body{
-	background-color: #CBE5ED;
+	background-color: #068D9D;
 }
 .button {
-    background-color: #4CAF50; /* Green */
+    background-color: #53599A; /* Green */
     border: none;
     color: white;
     padding: 16px 32px;
@@ -16,12 +16,12 @@ body{
     cursor: pointer;
 }
 .button1 {
-    background-color: #4CAF50; 
+    background-color: #53599A; 
     color: black; 
     border: 2px solid white;
 }
 
 .button1:hover {
     background-color: white;
-    color: #4CAF50;
+    color: #53599A;
 }
