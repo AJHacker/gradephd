@@ -1,4 +1,15 @@
 #top_bar{
-	background-color:#ff00ff;
-
+	background-color:#a0f0fa;
+	height:3em;
+	width:100%;
+}
+#left{
+	width:100px;
+	float:left;
+	height:3em;
+}
+#right{
+	width:100px;
+	float:right;
+	height:3em;
 }

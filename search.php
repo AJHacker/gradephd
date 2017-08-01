@@ -52,6 +52,7 @@
             header("Location: https://gradephd.herokuapp.com/plot.php?class=$s&search=1");
             exit();
         } elseif ($class_correct) {
+            $s=str_replace("0xDEADBEEF","-",$new_class);
             session_unset();
             header("Location: https://gradephd.herokuapp.com/plot.php?class=$s");
         } elseif (!empty($_SESSION['dupl_classes'])) {

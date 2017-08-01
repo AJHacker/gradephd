@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="styles/index.css">
 
 <html>
-<div id='top_bar'>
+<div id='left'></div><div id='top_bar'>
 <button value='Sign In'>Sign In</button>
 <button value='Sign Up'>Sign Up</button>
-</div>
+</div><div id='right'></div>
 <h3>Search for a class:</h3>
 
 <?php

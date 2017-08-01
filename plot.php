@@ -1254,7 +1254,7 @@
       };
 
         <?php
-        if (!$syl_only) echo "Plotly.newPlot('predictor', data, layout);";
+        if (!$syl_only && !$search) echo "Plotly.newPlot('predictor', data, layout);";
         ?>
 
         </script>
