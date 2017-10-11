@@ -92,6 +92,7 @@ table {
 th {
     height: 20px;
     width: 20%;
+    text-align: left;
 }
 
 td {

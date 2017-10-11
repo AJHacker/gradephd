@@ -28,7 +28,6 @@
     $coursenum  = $_POST['coursenum'];
     $semester   = $_POST['semester'];
     $prof       = $_POST['prof'];
-    $porp       = $_POST['porp'];
 
     $hw_diff=($_POST['hwweight']=='different');
     $l_diff=($_POST['lweight']=='different');
@@ -78,7 +77,7 @@
         }
 
     }
-    if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
+    if (!$coursenum && !$semester && !$prof && !$new_class) {
         echo "
         <form action='/class.php' method='post'>
             Course Number: <input type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required><br> 
@@ -93,19 +92,17 @@
             </select>
             <br>
             Professor: <input type='text' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required><br> 
-            Points or Percentages?: 
-            <input type='radio' name='porp' value='percentage' required>Percent
-            <input type='radio' name='porp' value='points'>Points<br>
 
             <input type='submit' value='Submit'>
         </form> 
         ";
-    } elseif (($coursenum && $semester && $prof && $porp && !$new_class) || ($class_exists && $skip)) {
+    } elseif (($coursenum && $semester && $prof && !$new_class) || ($class_exists && $skip)) {
         if (!$skip) {
             $class_name=$prof."_".$semester."_".$coursenum;
             $class_name=str_replace("-","0xDEADBEEF",$class_name);
             $_SESSION['new_class']=$class_name;
 
+            /* Basically Dead Code since duplicate classes have different table names
 
             //Check if user already in class
             $check_user="SELECT NAME FROM $class_name WHERE NAME='$user';";
@@ -117,6 +114,7 @@
                 header("Location: https://gradephd.herokuapp.com/user.php?message=You are already enrolled in that class.");
                 exit();
             }
+            */
 
             //Check if the class already exists
             $check_dupl="SELECT NAME FROM ALL_CLASSES WHERE NAME LIKE '$class_name%';";
@@ -125,7 +123,6 @@
             if ($numfound>0) {
                 $_SESSION['numfound']=$numfound;
                 $_SESSION['class_exists']=true;
-                $_SESSION['porp']=$porp;
                 $_SESSION['dupl_classes']=pg_fetch_all($result);
                 print_r($_SESSION['dupl_classes']);
                 echo "<a href='https://gradephd.herokuapp.com/class.php'>next</a>";
@@ -134,16 +131,11 @@
             } else {
                 $_SESSION['class_exists']=false;
             }
-        } else $porp=$_SESSION['porp'];
+        }
 
         //Class doesn't exist
-        if ($porp=='percentage') {
-            $v = "%";
-            $s="percentage of final grade";
-        } else {
-            $v = "points";
-            $s="points";
-        }
+        $v = "%";
+        $s="percentage of final grade";
         echo "
         <form action='/class.php' method='post'>
             <fieldset>
