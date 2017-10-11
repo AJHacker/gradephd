@@ -67,9 +67,9 @@
 	echo "<center>Welcome to GradePHD ".$email."</center>";
     ?>
 </div>
-<
+<?php
 	echo $message;
-	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
+	echo "<h3><a class="button" href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
