@@ -30,9 +30,12 @@ function yesorno(a){
   <form action="/user.php" method="post">
     <div class='topbar' style="width: 60%; left: 20%;">
     <center>
-    <input type = 'radio' class='button' id="signin" name="action" value="signin" onclick="javascript:yesorno(0);" checked>Sign In</input>
-    <input type = 'radio' class='button' id="signup" name="action" value="signup" onclick="javascript:yesorno(1);">Sign Up</input>
-    <input type = 'radio' class='button' id="reset" name="action" value="reset" onclick="javascript:yesorno(2);">Reset</input>
+    <input type = 'radio' class='button hidden' id="signin" name="action" value="signin" onclick="javascript:yesorno(0);" checked></input>
+    <label for='signin'>Sign In</label>
+    <input type = 'radio' class='button hidden' id="signup" name="action" value="signup" onclick="javascript:yesorno(1);"></input>
+    <label for='signup'>Sign Up</label>
+    <input type = 'radio' class='button hidden' id="reset" name="action" value="reset" onclick="javascript:yesorno(2);"></input>
+    <label for='reset'>Reset</label>
     </center>
     </div>
     <br>
