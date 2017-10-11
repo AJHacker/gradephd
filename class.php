@@ -9,7 +9,6 @@
 
     
 </script>
-<link rel='stylesheet' href='styles/mainpage.css'>
 </head>
 <body>
 <center>
