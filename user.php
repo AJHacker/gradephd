@@ -9,10 +9,15 @@
 <body>
 <?php
 	$message = $_GET["message"];
-	$action = $_POST["action"];
+    debug_to_console($message);
+    $action = $_POST["action"];
+    debug_to_console($action);
 	$email = $_POST["email"];
+    debug_to_console($email);
 	$pass = $_POST["pass"];
+    debug_to_console($pass);
 	$repass = $_POST["repass"];
+    debug_to_console($repass);
 
 	function pg_connection_string_from_database_url() {
 	    extract(parse_url($_ENV["DATABASE_URL"]));
@@ -71,7 +76,7 @@
 <?php
 	echo $message;
 	echo "<h2>Enrolled Classes:</h2>";
-	
+	debug_to_console($email);
 	$email = $_SESSION['verifiedUser'];
     debug_to_console($email);
 	session_unset();
