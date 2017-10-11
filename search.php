@@ -63,6 +63,7 @@
         } else {
             $_SESSION['class_exists']=null;
             echo "No Matching Classes Found";
+            echo "<a href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
         }
 
     }
@@ -86,6 +87,7 @@
                 exit();
             } else {
                 echo "No Matching Classes Found";
+                echo "<a href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
             }
         }
     }
