@@ -1,0 +1,80 @@
+:root {
+    --background1: white;
+    --background2: LightSlateGray;
+    --highlight2: DodgerBlue;
+    --highlight1: black;
+    --textcolor: black;
+    --alttextcolor: white;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: var(--secondary1);
+}
+
+.button {
+    border:none;
+    background-color: var(--highlight2);
+    color: var(--textcolor);
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    opacity:0.011;
+    z-index:100;
+}
+
+.button:hover {
+    color: var(--alttextcolor);  
+}
+
+.topbar{
+    position: absolute;
+    width: 100%;
+    background-color: var(--highlight2);
+}
+
+.container {
+    position: absolute;
+    left:20%;
+    top:15%;
+    width:60%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--background1);
+}
+
+.textinput{
+    border:none;
+    color: var(--textcolor);
+    font-size:16px;
+    margin:4px;
+    border-bottom: 2px solid;
+    border-bottom-color: var(--highlight2);
+}
+
+body{
+    background-color: var(--background1);
+    color: var(--textcolor);
+    font-family: Tahoma, Verdana, Segoe, sans-serif;
+    margin:0;
+    padding:0;
+}
+
+.left {
+    width: 25%;
+    right: 53%;
+    text-align: right;
+    position: absolute;
+    line-height: 32px;
+}
+
+.right {
+    width: 25%;
+    left: 53%;
+    position: absolute;
+    text-align: left;
+}

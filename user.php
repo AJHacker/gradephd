@@ -3,11 +3,10 @@
 ?>
 <html>
 <head>
-<link rel="stylesheet" href="styles/mainpage.css">
+<link rel="stylesheet" href="styles/global.css">
 
 </head>
 <body>
-<p>
 <?php
 	$message = $_GET["message"];
 	$action = $_POST["action"];
@@ -21,8 +20,10 @@
 	}
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
-
-	if($action == "signup"){ //NEW USER SIGN UP
+?>
+<div class="topbar"><h1>
+    <?php
+	if($action == "Sign Up"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
@@ -40,7 +41,7 @@
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	 	header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "signin") { //SIGN IN
+	} elseif($action == "Sign In") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){//NO USER FOUND
@@ -58,19 +59,25 @@
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "reset") {
+	} elseif($action == "Reset") {
 		echo "will make this shit later";
 	}
 	
-	echo "<center>Welcome to GradePHD ".$email."</center>";
+	echo "<center>Welcome to GradePHD, ".$email."</center>";
+    debug_to_console($email);
+    ?>
+</h1></div>
+<div class="container">
+<?php
 	echo $message;
-	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
+    debug_to_console("original email: ".$email);
 	session_unset();
     $_SESSION['verifiedUser']=$email;
-    
+    debug_to_console("after unset: $email");
+
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result,0);
@@ -97,8 +104,18 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
+    echo "<h3><a class='button' href='/class.php' style='position: relative; top: 100px;'>Add a Class</a></h3>";
+
+
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
 ?>
-</p>
+</div>
 
 </body>
 </html>
