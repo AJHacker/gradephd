@@ -37,7 +37,7 @@
 #container {
     position: absolute;
     left:20%;
-    top:20%;
+    top:15%;
     width:60%;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -63,14 +63,15 @@ body{
 
 .left {
     width: 25%;
-    right: 50%;
+    right: 53%;
     text-align: right;
     position: absolute;
-
+    line-height: 32px;
 }
 
 .right {
     width: 25%;
-    left: 50%;
+    left: 53%;
     position: absolute;
+    text-align: left;
 }
