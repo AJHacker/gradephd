@@ -3,7 +3,7 @@
 ?>
 <html>
 <head>
-<link rel="stylesheet" href="styles/mainpage.css">
+<link rel="stylesheet" href="styles/global.css">
 
 </head>
 <body>

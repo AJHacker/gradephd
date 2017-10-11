@@ -28,7 +28,7 @@ function yesorno(a){
 </head>
 <div class="container">
   <form action="/user.php" method="post">
-    <div class='topbar' style="width: 60%; left: 15%;">
+    <div class='topbar' style="width: 60%; left: 20%;">
         <center>
     <input type = 'button' class='button' id="signin" name="action" value="Sign In" onclick="javascript:yesorno(0);" ></input>
     <input type = 'button' class='button' id="signup" name="action" value="Sign Up" onclick="javascript:yesorno(1);" ></input>
@@ -41,7 +41,7 @@ function yesorno(a){
     <div class="left">
         Email: <br>
         <label id='passLabel'>Password: </label><br>
-        <label id='repassLabel'>Repeat Password: </label><br>
+        <label id='repassLabel' style="visibility: hidden;">Repeat Password: </label><br>
     </div>
     <div class="right">
         <input class = "textinput" name = "email" id="email" type="text" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}"></input><br>
