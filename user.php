@@ -33,9 +33,11 @@
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
-		$query= "SELECT * FROM users WHERE email IS '".$email.";";
+		$query= "SELECT * FROM users WHERE email = '".$email.";";
 		$result=pg_query($db,$query);
+        debug_to_console(pg_last_error());
 		if (0!=pg_num_rows($result)){ // CHECK IF USER EXISTS
+            debug_to_console("user exists");
 			header("Location: https://gradephd.herokuapp.com/login.php?error=User Exists With Email"); /* Redirect browser */
 			exit();
 		}
@@ -53,7 +55,7 @@
 			header("Location: https://gradephd.herokuapp.com/?error=User Not Found"); /* Redirect browser */
 			exit();
 		}
-		$query= "SELECT password FROM users WHERE email='".$email."';";
+		$query= "SELECT password FROM users WHERE email ='".$email."';";
         $result=pg_query($db,$query);
 		$correct_pass=pg_fetch_row($result)[0];
         if($pass!=$correct_pass) { //Verify password
@@ -115,7 +117,7 @@ function debug_to_console( $data ) {
     if ( is_array( $output ) )
         $output = implode( ',', $output);
 
-    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log( '$output' );</script>";
 }
 ?>
 </div>
