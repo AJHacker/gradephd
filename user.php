@@ -21,7 +21,9 @@
 	}
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
-
+?>
+<div class="topbar">
+    <?php
 	if($action == "signup"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
@@ -63,6 +65,9 @@
 	}
 	
 	echo "<center>Welcome to GradePHD ".$email."</center>";
+    ?>
+</div>
+<
 	echo $message;
 	echo "<h3><a href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
