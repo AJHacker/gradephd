@@ -32,6 +32,12 @@
                 <br>
             </div>
             <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
             <input id = 'button' type='submit' value='Search'>
             
         </form> 
@@ -39,4 +45,9 @@
 </center>
 </div>
 </body>
+<?php 
+  echo "<center>".$_GET["error"]."</center>";
+?>
+
 </html>
+
