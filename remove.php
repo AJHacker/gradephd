@@ -3,6 +3,7 @@
     <body>
         <div class='topbar'></div>
         <center>
+        <div class='container'>
     <?php
         session_start();
         $class=$_GET['class'];
@@ -22,8 +23,9 @@
             echo "<h3>Removing $class_name taught by $prof for the $semester semester</h3>";
             
             echo " <p>Are you sure you want to remove this class from your class list?</p>
-            <a class='button' href='/remove.php?class=$class&remove_confirm=1'>Yes</a><br>
-            <a class='button' href='/remove.php?class=$class&remove_confirm=0'>No</a>";
+            <br><br><br><br>
+            <a class='button left' href='/remove.php?class=$class&remove_confirm=1'>Yes</a>
+            <a class='button right' href='/remove.php?class=$class&remove_confirm=0'>No</a>";
         } elseif ($remove_confirm) {
             function pg_connection_string_from_database_url() {
                 extract(parse_url($_ENV["DATABASE_URL"]));
@@ -72,6 +74,7 @@
         
     
     ?>
+        </div>
         </center>
     </body>
 </html>

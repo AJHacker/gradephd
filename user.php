@@ -88,11 +88,13 @@
 	$A=pg_fetch_row($result,0);
     echo "
     <table>
+        <thead>
         <tr>
             <th>Course Number</th>
             <th>Semester</th>
             <th>Professor</th>
-        </tr>";
+        </tr>
+        </thead>";
 
 	for($i = 2;$i<10;$i++) {
 	    echo "<tr>";
@@ -100,11 +102,11 @@
 	    if ($class) {
 	    	$class=str_replace("0xDEADBEEF","-",$class);
 	    	$c=explode("_",$class);
-	    	echo "<td><a href='/plot.php?class=$class'>".$c[2]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'>".$c[1]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'>".$c[0]."</a></td>";
-	    	echo "<td><a href='/plot.php?class=$class'>View</a></td>";
-	    	echo "<td><a href='/remove.php?class=$class'>Remove</a></td>";
+	    	echo "<td>".$c[2]."</td>";
+	    	echo "<td>".$c[1]."</td>";
+	    	echo "<td>".$c[0]."</td>";
+	    	echo "<td><a class='button' style='padding: 0px;' href='/plot.php?class=$class'>View</a></td>";
+	    	echo "<td><a class='button' style='padding: 0px;' href='/remove.php?class=$class'>Remove</a></td>";
 	    }
 	    echo "</tr>";
 	}

@@ -84,3 +84,17 @@ body{
     position: absolute;
     text-align: left;
 }
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 20px;
+    width: 20%;
+}
+
+td {
+    height: 20px;
+    width: 20%;
+}
