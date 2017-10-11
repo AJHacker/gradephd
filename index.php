@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if ($_SESSION['verifiedUser']) header("Location: https://gradephd.herokuapp.com/user.php");
     if ($_GET['logout']) session_unset();
+    if ($_SESSION['verifiedUser']) header("Location: https://gradephd.herokuapp.com/user.php");
 ?>
 <html>
 <body>
