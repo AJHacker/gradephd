@@ -32,7 +32,7 @@
     background-color: var(--highlight2);
 }
 
-#container {
+.container {
     position: absolute;
     left:20%;
     top:15%;
@@ -42,7 +42,7 @@
     background-color: var(--background1);
 }
 
-#textinput{
+.textinput{
     border:none;
     color: var(--textcolor);
     font-size:16px;

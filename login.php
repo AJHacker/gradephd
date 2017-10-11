@@ -22,17 +22,19 @@ function yesorno(){
 </script>
 </head>
 
-<form action="/user.php" method="post">
+<div class="container">
+  <form action="/user.php" method="post">
 
-  <input checked = "checked" id="signin" name="action" type="radio" value="signin" onclick="javascript:yesorno();" >Sign In</input><br>
-  <input id="signup" name="action" type="radio" value="signup" onclick="javascript:yesorno();" >Sign Up</input><br>
-  <input id="reset" name="action" type="radio" value="reset" onclick="javascript:yesorno();" >Reset</input><br>
+    <input checked = "checked" id="signin" name="action" type="radio" value="signin" onclick="javascript:yesorno();" >Sign In</input><br>
+    <input id="signup" name="action" type="radio" value="signup" onclick="javascript:yesorno();" >Sign Up</input><br>
+    <input id="reset" name="action" type="radio" value="reset" onclick="javascript:yesorno();" >Reset</input><br>
 
-  <input name = "email" id="textinput" placeholder="Email" type="text" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}"></input><br>
-  <input name = "pass" id="textinput" placeholder="Password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}"></input></br>
-  <input name = "repass" id="textinput" placeholder="Repeat password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" style="visibility: hidden;"></input></br>
-  <input type="submit" value="Hello Sir?" id="button">
-</form>
+    <input class = "textinput" name = "email" id="email" placeholder="Email" type="text" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}"></input><br>
+    <input class = "textinput" name = "pass" id="pass" placeholder="Password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}"></input></br>
+    <input class = "textinput" name = "repass" id="repass" placeholder="Repeat password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}" style="visibility: hidden;"></input></br>
+    <input class = "button" type="submit" value="Hello Sir?">
+  </form>
+</div>
 
 <?php 
   echo "<center>".$_GET["error"]."</center>";

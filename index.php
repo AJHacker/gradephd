@@ -6,7 +6,7 @@
 <button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
 <button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
 </div>
-<div id='container'>
+<div class='container'>
 <center>
 <h1>Welcome to GradePhD</h1>
 <h3>Search for a class:</h3>
@@ -16,10 +16,10 @@
                 Professor: <br>
             </div>
             <div class="right">
-                <input id = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" required>
+                <input class = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}" required>
                 <br>
                 
-                <select id = 'textinput' name='semester'>
+                <select class='textinput' name='semester'>
                     <option value='F17'>F17</option>
                     <option value='S18'>S18</option>
                     <option value='F18'>F18</option>
@@ -28,7 +28,7 @@
                     <option value='S20'>S20</option>
                 </select>
                 <br>
-                <input type='text' id='textinput' name='prof' placeholder='Sullivan' pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" required>
+                <input type='text' class='textinput' name='prof' placeholder='Sullivan' pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}" required>
                 <br>
             </div>
             <br>
