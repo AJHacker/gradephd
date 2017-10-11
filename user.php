@@ -7,7 +7,6 @@
 
 </head>
 <body>
-<p>
 <?php
 	$message = $_GET["message"];
 	$action = $_POST["action"];
@@ -22,7 +21,7 @@
 	# Here we establish the connection. Yes, that's all.
 	$db = pg_connect(pg_connection_string_from_database_url());
 ?>
-<div class="topbar">
+<div class="topbar"><h1>
     <?php
 	if($action == "signup"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
@@ -66,10 +65,10 @@
 	
 	echo "<center>Welcome to GradePHD ".$email."</center>";
     ?>
-</div>
+</h1></div>
+<div class="container">
 <?php
 	echo $message;
-	echo "<h3><a class="button" href='/class.php'>Add a Class</a></h3>";
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
@@ -102,8 +101,10 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
+    echo "<h3><a class='button' href='/class.php'>Add a Class</a></h3>";
+
 ?>
-</p>
+</div>
 
 </body>
 </html>
