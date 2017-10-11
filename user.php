@@ -101,7 +101,6 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-    echo $_SESSION['verifiedUser'];
     echo "<h3><a class='button' href='/class.php' style='position: relative; top: 100px;'>Add a Class</a></h3>";
 
 ?>
