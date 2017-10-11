@@ -23,7 +23,7 @@
 ?>
 <div class="topbar"><h1>
     <?php
-	if($action == "signup"){ //NEW USER SIGN UP
+	if($action == "Sign Up"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
@@ -41,7 +41,7 @@
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	 	header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "signin") { //SIGN IN
+	} elseif($action == "Sign In") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){//NO USER FOUND
@@ -59,11 +59,11 @@
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "reset") {
+	} elseif($action == "Reset") {
 		echo "will make this shit later";
 	}
 	
-	echo "<center>Welcome to GradePHD ".$email."</center>";
+	echo "<center>Welcome to GradePHD, ".$email."</center>";
     ?>
 </h1></div>
 <div class="container">
@@ -101,7 +101,8 @@
 	    echo "</tr>";
 	}
 	echo "</table>";
-    echo "<h3><a class='button' href='/class.php'>Add a Class</a></h3>";
+    echo $_SESSION['verifiedUser'];
+    echo "<h3><a class='button' href='/class.php' style='position: relative; top: 100px;'>Add a Class</a></h3>";
 
 ?>
 </div>
