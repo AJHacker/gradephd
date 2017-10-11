@@ -43,7 +43,7 @@
 	 	$result=pg_query($db,$query);
     	echo pg_last_error();
         $_SESSION["verifiedUser"] = $email;
-	 	echo "<center>Welcome to GradePHD ".$email."</center>";
+	 	// echo "<center>Welcome to GradePHD ".$email."</center>";
 	 	// header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "signin") { //SIGN IN
@@ -61,13 +61,14 @@
             exit();
         }
         $_SESSION["verifiedUser"] = $email;
-		echo "<center>Welcome Back to GradePHD ".$email."</center>";
+		// echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		// header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";
 	}
 	
+    $email = $_SESSION['verifiedUser'];
 	echo "<center>Welcome to GradePHD, ".$email."</center>";
     debug_to_console($email);
     ?>
@@ -76,9 +77,6 @@
 <?php
 	echo $message;
 	echo "<h2>Enrolled Classes:</h2>";
-	debug_to_console($email);
-	$email = $_SESSION['verifiedUser'];
-    debug_to_console($email);
 	session_unset();
     $_SESSION['verifiedUser']=$email;
     debug_to_console($email);
