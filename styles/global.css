@@ -39,7 +39,7 @@ input:checked + label {
 }
 
 .topbar{
-    position: absolute;
+    position: fixed;
     width: 100%;
     background-color: var(--highlight2);
     padding: 10px;
@@ -50,8 +50,6 @@ input:checked + label {
     left:20%;
     top:20%;
     width:60%;
-    padding-top: 50px;
-    padding-bottom: 50px;
     background-color: var(--background1);
 }
 
