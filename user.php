@@ -44,7 +44,7 @@
     	echo pg_last_error();
         $_SESSION["verifiedUser"] = $email;
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
-	 	header("Location: https://gradephd.herokuapp.com/user.php");
+	 	// header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "signin") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
@@ -62,7 +62,7 @@
         }
         $_SESSION["verifiedUser"] = $email;
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
-		header("Location: https://gradephd.herokuapp.com/user.php");
+		// header("Location: https://gradephd.herokuapp.com/user.php");
 
 	} elseif($action == "reset") {
 		echo "will make this shit later";

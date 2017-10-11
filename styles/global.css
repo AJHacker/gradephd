@@ -22,11 +22,6 @@
     cursor: pointer;
 }
 
-input[type="radio"] {
-    opacity:0.011;
-    z-index:100;
-}
-
 .button:hover {
     color: var(--alttextcolor);  
 }
