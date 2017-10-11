@@ -1,5 +1,8 @@
 <html>
+<link rel="stylesheet" href="styles/global.css">
     <body>
+        <div class='topbar'></div>
+        <center>
     <?php
         session_start();
         $class=$_GET['class'];
@@ -16,11 +19,11 @@
             $class_name = $C[2];
             $semester   = $C[1];
             $prof       = $C[0];
-            echo "Removing $class_name taught by $prof for the $semester semester";
+            echo "<h3>Removing $class_name taught by $prof for the $semester semester</h3>";
             
             echo " <p>Are you sure you want to remove this class from your class list?</p>
-            <a href='/remove.php?class=$class&remove_confirm=1'>Yes</a><br>
-            <a href='/remove.php?class=$class&remove_confirm=0'>No</a>";
+            <a class='button' href='/remove.php?class=$class&remove_confirm=1'>Yes</a><br>
+            <a class='button' href='/remove.php?class=$class&remove_confirm=0'>No</a>";
         } elseif ($remove_confirm) {
             function pg_connection_string_from_database_url() {
                 extract(parse_url($_ENV["DATABASE_URL"]));
@@ -69,5 +72,6 @@
         
     
     ?>
+        </center>
     </body>
 </html>

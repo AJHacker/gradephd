@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    if ($_SESSION['verifiedUser']) header("Location: https://gradephd.herokuapp.com/user.php");
+?>
 <html>
 <body>
 <link rel="stylesheet" href="styles/global.css">

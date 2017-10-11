@@ -42,7 +42,7 @@ input:checked + label {
     position: fixed;
     width: 100%;
     background-color: var(--highlight2);
-    padding: 10px;
+    height: 60px;
 }
 
 .container {
