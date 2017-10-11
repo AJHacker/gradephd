@@ -31,7 +31,7 @@ function yesorno(){
   <input name = "email" id="textinput" placeholder="Email" type="text" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}"></input><br>
   <input name = "pass" id="textinput" placeholder="Password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}"></input></br>
   <input name = "repass" id="textinput" placeholder="Repeat password" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" style="visibility: hidden;"></input></br>
-  <input type="submit" value="Hello Sir?">
+  <input type="submit" value="Hello Sir?" id="button">
 </form>
 
 <?php 
