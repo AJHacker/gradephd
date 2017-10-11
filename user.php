@@ -64,6 +64,7 @@
 	}
 	
 	echo "<center>Welcome to GradePHD, ".$email."</center>";
+    debug_to_console($email);
     ?>
 </h1></div>
 <div class="container">
@@ -72,7 +73,7 @@
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
-    debug_to_console("original email: $email");
+    debug_to_console("original email: ".$email);
 	session_unset();
     $_SESSION['verifiedUser']=$email;
     debug_to_console("after unset: $email");
