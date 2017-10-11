@@ -3,15 +3,15 @@
 <link rel="stylesheet" href="styles/index.css">
 
 <div id='topbar'>
-<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
-<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
+<button id="button" style="float:right" onclick="window.location.href='login.php'">Sign In</button>
+<button id="button" style="float:right" onclick="window.location.href='login.php'">Sign Up</button>
 </div>
 <div id='container'>
 <center>
 <h1>Welcome to GradePHD</h1>
 <h2>SEARCH FOR A CLASS:</h2>
         <form action='/search.php' method='post'>
-            Course Number: <input id = 'textinput' type='text' name='coursenum' placeholder='18-100' required>
+            Course Number: <input id = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" required>
             <br>
             Semester: 
             <select id = 'textinput' name='semester'>
@@ -23,7 +23,7 @@
                 <option value='S20'>S20</option>
             </select>
             <br>
-            Professor: <input type='text' id='textinput' name='prof' placeholder='Sullivan' required>
+            Professor: <input type='text' id='textinput' name='prof' placeholder='Sullivan' pattern="[a-zA-Z0-9!@#$%^*_|]{6,25}" required>
             <br>
             <br>
             <input id = 'button' type='submit' value='Search'>
