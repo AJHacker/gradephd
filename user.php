@@ -33,7 +33,7 @@
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
 		}
-		$query= "SELECT * FROM users WHERE email = '".$email.";";
+		$query= "SELECT * FROM users WHERE email = '".$email."';";
         debug_to_console($query);
 		$result=pg_query($db,$query);
         debug_to_console(pg_last_error());
@@ -116,7 +116,7 @@ function debug_to_console( $data ) {
     if ( is_array( $output ) )
         $output = implode( ',', $output);
 
-    echo "<script>console.log($output);</script>";
+    echo "<script>console.log('$output');</script>";
 }
 ?>
 </div>
