@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="styles/index.css">
 
 <div id='topbar'>
-<button id="button" style="float:right;" onclick="window.location.href='/login.php'">Sign In</button>
-<button id="button" style="float:right;" onclick="window.location.href='/login.php'">Sign Up</button>
+<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
+<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
 </div>
 <div id='container'>
 <center>
