@@ -1,6 +1,6 @@
 <html>
 <body>
-<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/global.css">
 
 <div id='topbar'>
 <button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>

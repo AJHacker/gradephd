@@ -1,0 +1,49 @@
+:root {
+    --background1: #0B0C10;
+    --background2: #1F2833;
+    --secondary1: #C5C6C7;
+    --highlight1: #66FCF1;
+    --highlight2: #45A29E;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--secondary1);
+}
+
+#button {
+  border:none;
+  background-color: var(--highlight2);
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#button:hover {
+    background-color: var(--highlight1);
+    color: white;  
+}
+
+#container {
+  background-color: var(--background2);
+  padding:50px 40px; 
+}
+
+body{
+  background-color: var(--background1);
+  font-family: "Lato";
+  margin:0;
+  padding:0;
+}
+
+#textinput{
+ background-color: var(--highlight2);
+ border:none;
+ color: white;
+ font-size:16px;
+ margin:4px;
+}
