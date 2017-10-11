@@ -28,7 +28,7 @@
 ?>
 <div class="topbar"><h1>
     <?php
-	if($action == "Sign Up"){ //NEW USER SIGN UP
+	if($action == "signup"){ //NEW USER SIGN UP
 		if($pass!=$repass){ //Passwords Don't match
 			header("Location: https://gradephd.herokuapp.com/login.php?error=Password Does Not Match"); /* Redirect browser */
 			exit();
@@ -46,7 +46,7 @@
 	 	echo "<center>Welcome to GradePHD ".$email."</center>";
 	 	header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "Sign In") { //SIGN IN
+	} elseif($action == "signin") { //SIGN IN
 		$query= "SELECT * FROM users WHERE email = '".$email."';";
 		$result=pg_query($db,$query);
 		if (0==pg_num_rows($result)){//NO USER FOUND
@@ -64,7 +64,7 @@
 		echo "<center>Welcome Back to GradePHD ".$email."</center>";
 		header("Location: https://gradephd.herokuapp.com/user.php");
 
-	} elseif($action == "Reset") {
+	} elseif($action == "reset") {
 		echo "will make this shit later";
 	}
 	
