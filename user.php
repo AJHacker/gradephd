@@ -73,10 +73,10 @@
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
-    debug_to_console("original email: ".$email);
+    debug_to_console($email);
 	session_unset();
     $_SESSION['verifiedUser']=$email;
-    debug_to_console("after unset: $email");
+    debug_to_console($email);
 
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
