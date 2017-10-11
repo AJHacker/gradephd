@@ -82,7 +82,7 @@
     if (!$coursenum && !$semester && !$prof && !$porp && !$new_class) {
         echo "
         <form action='/class.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100' required><br> 
+            Course Number: <input type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^*_|]{6,25}' required><br> 
             Semester: 
             <select name='semester'>
                 <option value='F17'>F17</option>
@@ -93,7 +93,7 @@
                 <option value='S20'>S20</option>
             </select>
             <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan' required><br> 
+            Professor: <input type='text' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^*_|]{6,25}' required><br> 
             Points or Percentages?: 
             <input type='radio' name='porp' value='percentage' required>Percent
             <input type='radio' name='porp' value='points'>Points<br>
