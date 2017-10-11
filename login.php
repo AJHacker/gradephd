@@ -28,13 +28,13 @@ function yesorno(a){
 </head>
 <div class="container">
   <form action="/user.php" method="post">
-    <div class='topbar' style="width: 50%">
+    <center><div class='topbar' style="width: 50%">
         <center>
     <input type = 'button' class='button' id="signin" name="action" value="Sign In" onclick="javascript:yesorno(0);" ></input>
     <input type = 'button' class='button' id="signup" name="action" value="Sign Up" onclick="javascript:yesorno(1);" ></input>
     <input type = 'button' class='button' id="reset" name="action" value="Reset" onclick="javascript:yesorno(2);"></input>
     </center>
-    </div>
+    </div></center>
     <br>
     <br>
     <br>
