@@ -2,9 +2,9 @@
 <body>
 <link rel="stylesheet" href="styles/global.css">
 
-<div id='topbar'>
-<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
-<button id="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
+<div class='topbar'>
+<button class="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
+<button class="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
 </div>
 <div class='container'>
 <center>
@@ -38,7 +38,7 @@
             <br>
             <br>
             <br>
-            <input id = 'button' type='submit' value='Search'>
+            <input class='button' type='submit' value='Search'>
             
         </form> 
         

@@ -11,7 +11,7 @@
     color: var(--secondary1);
 }
 
-#button {
+.button {
     border:none;
     background-color: var(--highlight2);
     color: var(--textcolor);
@@ -22,11 +22,11 @@
     cursor: pointer;
 }
 
-#button:hover {
+.button:hover {
     color: var(--alttextcolor);  
 }
 
-#topbar{
+.topbar{
     position: absolute;
     width: 100%;
     background-color: var(--highlight2);
