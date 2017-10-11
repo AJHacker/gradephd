@@ -32,9 +32,9 @@ function yesorno(a){
         <center>
     <input type = 'radio' class='button' id="signin" name="action" value="Sign In" onclick="javascript:yesorno(0);" ></input>
     <label for="signin">Sign In</label>
-    <input type = 'radio' class='button' id="signup" name="action" value="Sign Up" onclick="javascript:yesorno(1);" >Sign Up</input>
+    <input type = 'radio' class='button' id="signup" name="action" value="Sign Up" onclick="javascript:yesorno(1);" ></input>
     <label for="signup">Sign Up</label>
-    <input type = 'radio' class='button' id="reset" name="action" value="Reset" onclick="javascript:yesorno(2);">Reset</input>
+    <input type = 'radio' class='button' id="reset" name="action" value="Reset" onclick="javascript:yesorno(2);"></input>
     <label for="reset">Reset</label>
     </center>
     </div>

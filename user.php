@@ -72,9 +72,11 @@
 	echo "<h2>Enrolled Classes:</h2>";
 	
 	$email = $_SESSION['verifiedUser'];
+    debug_to_console("original email: $email");
 	session_unset();
     $_SESSION['verifiedUser']=$email;
-    
+    debug_to_console("after unset: $email");
+
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
 	$A=pg_fetch_row($result,0);
@@ -103,6 +105,14 @@
 	echo "</table>";
     echo "<h3><a class='button' href='/class.php' style='position: relative; top: 100px;'>Add a Class</a></h3>";
 
+
+function debug_to_console( $data ) {
+    $output = $data;
+    if ( is_array( $output ) )
+        $output = implode( ',', $output);
+
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+}
 ?>
 </div>
 
