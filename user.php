@@ -34,6 +34,7 @@
 			exit();
 		}
 		$query= "SELECT * FROM users WHERE email = '".$email.";";
+        debug_to_console($query);
 		$result=pg_query($db,$query);
         debug_to_console(pg_last_error());
 		if (0!=pg_num_rows($result)){ // CHECK IF USER EXISTS
@@ -72,7 +73,6 @@
 	
     $email = $_SESSION['verifiedUser'];
 	echo "<center>Welcome to GradePHD, ".$email."</center>";
-    debug_to_console($email);
     ?>
 </h1></div>
 <div class="container">
@@ -81,7 +81,6 @@
 	echo "<h2>Enrolled Classes:</h2>";
 	session_unset();
     $_SESSION['verifiedUser']=$email;
-    debug_to_console($email);
 
 	$query= "SELECT * FROM users WHERE email = '$email';";
 	$result=pg_query($db,$query);
@@ -117,7 +116,7 @@ function debug_to_console( $data ) {
     if ( is_array( $output ) )
         $output = implode( ',', $output);
 
-    echo "<script>console.log( '$output' );</script>";
+    echo "<script>console.log($output);</script>";
 }
 ?>
 </div>
