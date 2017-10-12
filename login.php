@@ -28,7 +28,7 @@ function yesorno(a){
 </head>
 <div class="container">
   <form action="/user.php" method="post">
-    <div class='topbar' style="width: 60%; left: 20%; height: 40px; padding-top: 5px;">
+    <div class='topbar' style="width: 60%; left: 20%; height: 40px; padding-top: 5px; z-index: 0;">
     <center>
     <input type = 'radio' class='button hidden' id="signin" name="action" value="signin" onclick="javascript:yesorno(0);" checked></input>
     <label for='signin'>Sign In</label>

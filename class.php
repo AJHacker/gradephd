@@ -3,6 +3,7 @@
     
 ?>
 <html>
+<link rel="stylesheet" href="styles/global.css">
 <head>
 <script type="text/javascript">
 
@@ -143,7 +144,7 @@
                 How many? <input type=number name='hwnum'  value = '0'><br>
                 Total " . $s . "?  <input type=number name='hwpercent' value = '0'>".$v."<br>
                 <input value='same' name = 'hwweight' type='radio' checked>
-                Lowest <input type=number name='hwnumwc' value='0'> are <input type=number name='hwwcp' value='100'>% normal weight.<br>
+                All same weight and Lowest <input type=number name='hwnumwc' value='0'> are <input type=number name='hwwcp' value='100'>% normal weight.<br>
                 <input value='different' name = 'hwweight' type='radio'>Different weights for all
               
             </fieldset>
