@@ -20,7 +20,7 @@
         <h1>Welcome To Grade PHD</h1>
     </center>
 </div>
-<div style='position: absolute; text-align: center; width: 100%; margin-top: 20%;'>
+<div style='position: absolute; text-align: center; width: 100%; margin-top: 10%;'>
     <center>
         <h3>Your one stop shop for all grade predicting needs</h3>
     </center>
@@ -267,7 +267,7 @@
         echo "</table></div>";
 
         if (!$syl_only && !$search)
-            echo '<div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>';
+            echo '<div id="predictor" style="display:inline-block;position:absolute;left:20%;width:60%;height:60%;margin:auto;"></div>';
 
     ?>
 
@@ -1354,7 +1354,7 @@
         if ($GA===null) echo "fuck\n";
 
 
-        echo "<center><a class='button' href = '/interpret.php'>How to read this graph</a></center>
+        echo "<center><br><br><a class='button' href = '/interpret.php'>How to read this graph</a></center>
         <div id = 'gradesDiv'><center><h1>Current Grades</h1></center>
             <form method = 'POST' action='/save.php'>";
 
