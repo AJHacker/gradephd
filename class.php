@@ -1,14 +1,10 @@
 <?php
     session_start();
-    
 ?>
 <html>
 <head>
 <link rel="stylesheet" href="styles/global.css">
 <script type="text/javascript">
-
-
-    
 </script>
 </head>
 <body>
@@ -182,7 +178,7 @@
         echoFieldset("Other 1 (optional)", "misc1", true);
         echoFieldset("Other 2 (optional)", "misc2", true);
         echoFieldset("Other 3 (optional)", "misc3", true);
-        echo "
+        echo "<br><br>
         <input class='button' type='submit' value='Submit'>
         </form>
         ";

@@ -11,16 +11,6 @@
     color: var(--secondary1);
 }
 
-* {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        outline: 0;
-        font-size: 100%;
-        vertical-align: baseline;
-        background: transparent;
-}
-
 .button {
     border:none;
     background-color: var(--highlight2);
@@ -50,7 +40,7 @@ label {
 }
 
 input:checked + label {
-    background: LightSlateGray;
+    color: var(--alttextcolor);
 }
 
 .button:hover {
@@ -92,11 +82,14 @@ body{
     font-family: Tahoma, Verdana, Segoe, sans-serif;
     margin:0;
     padding:0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
 }
 
 .left {
     width: 25%;
-    right: 53%;
+    right: 52%;
     text-align: right;
     position: absolute;
     line-height: 32px;
@@ -104,7 +97,7 @@ body{
 
 .right {
     width: 25%;
-    left: 53%;
+    left: 52%;
     position: absolute;
     text-align: left;
 }
