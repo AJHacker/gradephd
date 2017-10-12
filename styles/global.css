@@ -8,7 +8,7 @@
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: var(--secondary1);
+    color: LightGray;
 }
 
 .button {
