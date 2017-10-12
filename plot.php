@@ -252,13 +252,13 @@
 
         function echo_metrics($num,$pc,$drop,$droppc,$category) {
             if ($num>0) {
-                echo "<tr>$category: $num ${category}(s) worth $pc percent of your final grade";
+                echo "<tr><td>$category: $num ${category}(s) worth $pc percent of your final grade";
                 if ($drop>0 && $droppc>0) {
                     echo "with the lowest $drop, weighted at $droppc percent";
                 } elseif ($drop>0 && $droppc==0) {
                     echo "with the lowest $drop dropped";
                 }
-                echo "</tr><br>";
+                echo "</td></tr><br>";
             }
         }
         echo "</table></div>";
