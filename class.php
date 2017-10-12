@@ -12,6 +12,7 @@
 </script>
 </head>
 <body>
+<div class='topbar'><a class="button" href="/user.php">Cancel</a></div>
 <center>
 <?php
 
@@ -81,20 +82,34 @@
     if (!$coursenum && !$semester && !$prof && !$new_class) {
         echo "
         <form action='/class.php' method='post'>
-            Course Number: <input type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required><br> 
-            Semester: 
-            <select name='semester'>
-                <option value='F17'>F17</option>
-                <option value='S18'>S18</option>
-                <option value='F18'>F18</option>
-                <option value='S19'>S19</option>
-                <option value='F19'>F19</option>
-                <option value='S20'>S20</option>
-            </select>
+            <div class='left'>Course Number: <br>
+                Semester: <br>
+                Professor: <br>
+            </div>
+            <div class='right'>
+                <input class = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required>
+                <br>
+                
+                <select class='textinput' name='semester'>
+                    <option value='F17'>F17</option>
+                    <option value='S18'>S18</option>
+                    <option value='F18'>F18</option>
+                    <option value='S19'>S19</option>
+                    <option value='F19'>F19</option>
+                    <option value='S20'>S20</option>
+                </select>
+                <br>
+                <input type='text' class='textinput' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required>
+                <br>
+            </div>
             <br>
-            Professor: <input type='text' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required><br> 
-
-            <input type='submit' value='Submit'>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <input class='button' type='submit' value='Submit'>
         </form> 
         ";
     } elseif (($coursenum && $semester && $prof && !$new_class) || ($class_exists && $skip)) {
@@ -134,78 +149,36 @@
             }
         }
 
-        //Class doesn't exist
-        $v = "%";
-        $s="percentage of final grade";
-        echo "
-        <form action='/class.php' method='post'>
-            <fieldset>
-                <legend>Homeworks</legend>
-                How many? <input type=number name='hwnum'  value = '0'><br>
-                Total " . $s . "?  <input type=number name='hwpercent' value = '0'>".$v."<br>
-                <input value='same' name = 'hwweight' type='radio' checked>
-                All same weight and Lowest <input type=number name='hwnumwc' value='0'> are <input type=number name='hwwcp' value='100'>% normal weight.<br>
-                <input value='different' name = 'hwweight' type='radio'>Different weights for all
+        function echoFieldset($legend,$abbrev) {
+            echo "<fieldset>
+                <legend>$legend</legend>
+                How many? <input type=number name='${abbrev}num'  value = '0'><br>
+                Total percentage of final grade?  <input type=number name='${abbrev}percent' value = '0'>%<br>
+                <input value='same' name = '${abbrev}weight' type='radio' checked>
+                All same weight and Lowest <input type=number name='${abbrev}numwc' value='0'> are <input type=number name='${abbrev}wcp' value='100'>% normal weight.<br>
+                <input value='different' name = '${abbrev}weight' type='radio'>Different weights for all
               
-            </fieldset>
-            <fieldset>
-                <legend>Labs</legend>
-                How many? <input type=number name='lnum' value = '0'><br>
-                Total " . $s . "?  <input type=number name='lpercent' value = '0'>".$v."<br>
-                <input value='same' name = 'lweight' type='radio' checked>
-                All same weight and Lowest <input type=number name='lnumwc' value='0'> are <input type=number name='lwcp' value='100'>% normal weight.<br>
-                <input value='different' name = 'lweight' type='radio'>Different weights for all
+            </fieldset>";
+        }
 
-            </fieldset>
-            <fieldset>
-                <legend>Quizzes</legend>
-                How many? <input type=number name='qnum' value = '0'><br>
-                Total " . $s . "?  <input type=number name='qpercent' value = '0'>".$v."<br>
-                <input value='same' name = 'qweight' type='radio' checked>
-                All same weight and Lowest <input type=number name='qnumwc' value = '0'> are <input type=number name='qwcp' value='100'>% normal weight.<br>
-                <input value='different' name = 'qweight' type='radio'>Different weights for all
-            </fieldset>
-            <fieldset>
-                <legend>Tests</legend>
-                How many? <input type=number name='tnum' value = '0'><br>
-                Total " . $s . "?  <input type=number name='tpercent' value = '0'>".$v."<br>
-                <input value='same' name='tweight' type='radio' checked>
-                All same weight and Lowest <input type=number name='tnumwc' value='0'> are <input type=number name='twcp' value='100'>% normal weight.<br>
-                <input value='different' name='tweight' type='radio'>Different weights for all
-            </fieldset>
+        //Class doesn't exist
+        echo "
+        <form action='/class.php' method='post'>";
+        echoFieldset("Homeworks", "hw");
+        echoFieldset("Labs", "l");
+        echoFieldset("Quizzes", "q");
+        echoFieldset("Tests", "t");
+        echo "
             <fieldset>
                 <legend>Final</legend>
                 Is there a final? <input type='radio' name='fnum' value = '1'>Yes
                                   <input type='radio' name='fnum' value = '0' checked>No
-                Total " . $s . "?  <input type=number name='fpercent' value = '0'>".$v."
-            </fieldset>
-            <fieldset>
-                <legend>Other 1 (optional)</legend>
-                Name of category: <input type=text name='misc1name' value = 'Participation'><br>
-                How many? <input type=number name='misc1num' value = '0'><br>
-                Total " . $s . "?  <input type=number name='misc1percent' value = '0'>".$v."<br>
-                <input value='same' name='misc1weight' type='radio' checked>                
-                All same weight and Lowest <input type=number name='misc1numwc' value='0'> are <input type=number name='misc1wcp' value='100' >% normal weight.<br>
-                <input value='different' name='misc1weight' type='radio'>Different weights for all
-            </fieldset>
-            <fieldset>
-                <legend>Other 2 (optional)</legend>
-                Name of category: <input type=text name='misc2name' value = 'Attendance'><br>
-                How many? <input type=number name='misc2num' value = '0'><br>
-                Total ?  <input type=number name='misc2percent' value = '0'>".$v."<br>
-                <input value='same' name='misc2weight' type='radio' checked>                
-                All same weight and Lowest <input type=number name='misc2numwc' value='0'> are <input type=number name='misc2wcp' value='100'>% normal weight.<br>
-                <input value='different' name='misc2weight' type='radio'>Different weights for all
-            </fieldset>
-            <fieldset>
-                <legend>Other 3 (optional)</legend>
-                Name of category: <input type=text name='misc3name' value = 'Fun'><br>
-                How many? <input type=number name='misc3num' value = '0'><br>
-                Total " . $s . "?  <input type=number name='misc3percent' value = '0'><br>
-                <input value='same' name='misc3weight' type='radio' checked>
-                All same weight and Lowest <input type=number name='misc3numwc' value='0'> are <input type=number name='misc3wcp' value='100'>% normal weight.<br>
-                <input value='different' name='misc3weight' type='radio'>Different weights for all
-            </fieldset>
+                Total percentage of final grade?  <input type=number name='fpercent' value = '0'>%
+            </fieldset>";
+        echoFieldset("Other 1 (optional)", "misc1");
+        echoFieldset("Other 2 (optional)", "misc2");
+        echoFieldset("Other 3 (optional)", "misc3");
+        echo "
         <input type='submit' value='Submit'>
         </form>
         ";

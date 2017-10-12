@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="styles/global.css">
 
 <div class='topbar'>
-<button class="button" style="float:right;" onclick="window.location.href='login.php'">Sign In</button>
-<button class="button" style="float:right;" onclick="window.location.href='login.php'">Sign Up</button>
+<button class="button topRight" onclick="window.location.href='login.php'">Sign In</button>
+<button class="button topRight" onclick="window.location.href='login.php'">Sign Up</button>
 </div>
 <div class='container'>
 <center>

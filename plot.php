@@ -5,6 +5,7 @@
 
 <html>
 
+<link rel="stylesheet" href="styles/global.css">
 
 <head>
     <link rel="stylesheet" href="styles/plot.css">
