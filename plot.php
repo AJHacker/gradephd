@@ -15,9 +15,10 @@
 
 
 <body>
-<div class='topbar'></div>
-    <center>
+<div class='topbar'>
         <h1>Welcome To Grade PHD</h1>
+</div>
+    <center>
         <h3>Your one stop shop for all grade predicting needs</h3>
     </center>
 

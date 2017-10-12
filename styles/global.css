@@ -96,8 +96,13 @@ body{
     line-height: 32px;
 }
 
+.confirmContainer {
+    position: relative;
+    top: 10%;
+}
+
 .confirmLeft {
-    position: relative; 
+    position: absolute; 
     right: 52%;
     top: 15%;
 }
@@ -110,7 +115,7 @@ body{
 }
 
 .confirmRight {
-    position: relative;
+    position: absolute;
     left: 52%;
     top: 15%;
 }
