@@ -20,7 +20,8 @@
         <h1>Welcome To Grade PHD</h1>
     </center>
 </div>
-<div class='plotContainer' style='text-align: center;'>
+<center>
+<div class='plotContainer' style='text-align: center; width: 100%;'>
     <center>
         <h3>Your one stop shop for all grade predicting needs</h3>
     </center>
@@ -1408,7 +1409,7 @@
 
     ?>
 </div>
-
+<center>
 </body>
 
 </html>
