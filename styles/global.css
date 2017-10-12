@@ -53,6 +53,7 @@ input:checked + label {
 
 .topbar{
     position: fixed;
+    top: 0;
     width: 100%;
     background-color: var(--highlight2);
     height: 75px;
@@ -96,8 +97,9 @@ body{
 }
 
 .confirmLeft {
-    position: absolute; 
+    position: relative; 
     right: 52%;
+    top: 15%;
 }
 
 .right {
@@ -108,8 +110,9 @@ body{
 }
 
 .confirmRight {
-    position: absolute;
+    position: relative;
     left: 52%;
+    top: 15%;
 }
 
 table {
