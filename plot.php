@@ -254,11 +254,11 @@
             if ($num>0) {
                 echo "<tr>$category: $num ${category}(s) worth $pc percent of your final grade";
                 if ($drop>0 && $droppc>0) {
-                    echo "with the lowest $drop, weighted at $droppc percent </tr>";
+                    echo "with the lowest $drop, weighted at $droppc percent";
                 } elseif ($drop>0 && $droppc==0) {
-                    echo "with the lowest $drop dropped </tr>";
+                    echo "with the lowest $drop dropped";
                 }
-                echo "<br>";
+                echo "</tr><br>";
             }
         }
         echo "</table></div>";
@@ -1400,8 +1400,6 @@
 
 
     ?>
-    </div>
-
 
 
 </body>

@@ -4,14 +4,13 @@
 ?>
 <html>
 <head>
-<script type="text/javascript">
-
-
-    
+<link rel="stylesheet" href="styles/global.css">
+<script type="text/javascript"> 
 </script>
-<link rel='stylesheet' href='styles/mainpage.css'>
 </head>
 <body>
+<div class='topbar'></div>
+<div class='container'>
 <center>
 <?php
 
@@ -62,8 +61,8 @@
             exit();
         } else {
             $_SESSION['class_exists']=null;
-            echo "No Matching Classes Found<br>";
-            echo "<a href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
+            echo "No Matching Classes Found<br><br><br>";
+            echo "<a class='button' href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
         }
 
     }
@@ -86,14 +85,14 @@
                 header("Location: https://gradephd.herokuapp.com/search.php");
                 exit();
             } else {
-                echo "No Matching Classes Found<br>";
-                echo "<a href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
+                echo "No Matching Classes Found<br><br><br>";
+                echo "<a class='button' href='https://gradephd.herokuapp.com/class.php'>Add a new class</a>";
             }
         }
     }
 ?>
 </center>
-
+</div>
 </body>
 </html>
    
