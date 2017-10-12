@@ -258,7 +258,7 @@
                 } elseif ($drop>0 && $droppc==0) {
                     echo "with the lowest $drop dropped";
                 }
-                echo "</td></tr><br>";
+                echo "</td></tr>";
             }
         }
         echo "</table></div>";
