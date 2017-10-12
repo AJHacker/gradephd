@@ -24,8 +24,10 @@
             
             echo " <p>Are you sure you want to remove this class from your class list?</p>
             <br><br><br><br>
-            <a class='button confirmLeft' href='/remove.php?class=$class&remove_confirm=1'>Yes</a>
-            <a class='button confirmRight' href='/remove.php?class=$class&remove_confirm=0'>No</a>";
+            <div class='confirmContainer'>
+                <a class='button confirmLeft' href='/remove.php?class=$class&remove_confirm=1'>Yes</a>
+                <a class='button confirmRight' href='/remove.php?class=$class&remove_confirm=0'>No</a>
+            </div>";
         } elseif ($remove_confirm) {
             function pg_connection_string_from_database_url() {
                 extract(parse_url($_ENV["DATABASE_URL"]));

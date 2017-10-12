@@ -1388,12 +1388,16 @@
 
     if ($syl_only) {
         echo " <p>Is this information correct?</p>
+            <div class='confirmContainer'>        
             <a class='button confirmLeft' href='/class.php?class_correct=1'>Yes</a><br>
-            <a class='button confirmRight' href='/class.php?class_correct=0'>No</a>";
+            <a class='button confirmRight' href='/class.php?class_correct=0'>No</a>
+            </div>";
     } else if ($search) {
         echo " <p>Is this information correct?</p>
+            <div class='confirmContainer'>
             <a class='button confirmLeft' href='/search.php?class_correct=1'>Yes</a><br>
-            <a class='button confirmRight' href='/search.php?class_correct=0'>No</a>";
+            <a class='button confirmRight' href='/search.php?class_correct=0'>No</a>
+            </div>";
     }
 
 
