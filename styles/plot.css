@@ -14,9 +14,3 @@ input[type=number]::-webkit-outer-spin-button {
 fieldset{
 	display: block;
 }
-
-.plotContainer {
-    position: absolute;
-    margin: 20%;
-    text-align: left;
-}
