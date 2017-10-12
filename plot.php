@@ -236,7 +236,7 @@
 
         //Syllabus Info
         echo "
-        <div class='container' id='metricsDiv'>
+        <div id='metricsDiv'>
             This class is graded according to the following:<br>";
 
             echo "<table>";
@@ -1350,7 +1350,7 @@
 
 
         echo "<center><a class='button' href = '/interpret.php'>How to read this graph</a></center>
-        <div class='container' id = 'gradesDiv'><center><h1>Current Grades</h1></center>
+        <div id = 'gradesDiv'><center><h1>Current Grades</h1></center>
             <form method = 'POST' action='/save.php'>";
 
             echo_field($hw,'Homeworks');
