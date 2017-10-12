@@ -5,9 +5,9 @@
 
 <html>
 
-<link rel="stylesheet" href="styles/global.css">
 
 <head>
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/plot.css">
 
     <script src="plotly-latest.min.js"></script>
@@ -16,7 +16,7 @@
 
 
 <body>
-
+<div class='topbar'></div>
     <center>
         <h1>Welcome To Grade PHD</h1>
         <h3>Your one stop shop for all grade predicting needs</h3>
@@ -236,7 +236,7 @@
 
         //Syllabus Info
         echo "
-        <div id='metricsDiv'>
+        <div class='container' id='metricsDiv'>
             This class is graded according to the following:<br>";
 
             echo "<table>";
@@ -261,7 +261,7 @@
                 echo "<br>";
             }
         }
-        echo "</table>";
+        echo "</table></div>";
     ?>
 
     <!--<div id="predictor" style="display:inline-block;position:fixed;top:0;bottom:0;left:0;right:0;width:60%;height:60%;margin:auto;"></div>-->
@@ -1349,7 +1349,9 @@
         if ($GA===null) echo "fuck\n";
 
 
-        echo "<center><a href = '/interpret.php'>How to read this graph</a></center><div id = 'gradesDiv'><center><h1>Current Grades</h1></center><form method = 'POST' action='/save.php'>";
+        echo "<center><a class='button' href = '/interpret.php'>How to read this graph</a></center>
+        <div class='container' id = 'gradesDiv'><center><h1>Current Grades</h1></center>
+            <form method = 'POST' action='/save.php'>";
 
             echo_field($hw,'Homeworks');
             echo_field($l,'Labs');
@@ -1387,19 +1389,18 @@
 
     if ($syl_only) {
         echo " <p>Is this information correct?</p>
-            <a href='/class.php?class_correct=1'>Yes</a><br>
-            <a href='/class.php?class_correct=0'>No</a>";
+            <a class='button confirmLeft' href='/class.php?class_correct=1'>Yes</a><br>
+            <a class='button confirmRight' href='/class.php?class_correct=0'>No</a>";
     } else if ($search) {
         echo " <p>Is this information correct?</p>
-            <a href='/search.php?class_correct=1'>Yes</a><br>
-            <a href='/search.php?class_correct=0'>No</a>";
+            <a class='button confirmLeft' href='/search.php?class_correct=1'>Yes</a><br>
+            <a class='button confirmRight' href='/search.php?class_correct=0'>No</a>";
     }
 
 
 
     ?>
     </div>
-
 
 
 

@@ -95,11 +95,21 @@ body{
     line-height: 32px;
 }
 
+.confirmLeft {
+    position: absolute; 
+    right: 52%;
+}
+
 .right {
     width: 25%;
     left: 52%;
     position: absolute;
     text-align: left;
+}
+
+.confirmRight {
+    position: absolute;
+    left: 52%;
 }
 
 table {
