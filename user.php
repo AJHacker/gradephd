@@ -73,9 +73,9 @@
 	
     $email = $_SESSION['verifiedUser'];
 	echo "<center>Welcome to GradePHD, ".$email."</center>";
-    ?>
-    <a class='button' href='/index.php?logout=1' style='position: absolute; right: 0%; top: 0%;'>Sign Out</a>
-</h1></div>
+    ?></h1>
+    <a class='button topRight' href='/index.php?logout=1'>Sign Out</a>
+</div>
 <div class="container">
 <?php
 	echo $message;

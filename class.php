@@ -12,8 +12,9 @@
 </script>
 </head>
 <body>
-<div class='topbar'><a class="button" href="/user.php">Cancel</a></div>
+<div class='topbar'><a class="button topRight" href="/user.php">Cancel</a></div>
 <center>
+    <div class='container'>
 <?php
 
     //Initiate Session User Variable and Class Variables
@@ -492,9 +493,9 @@
     }
 
     ?>
+    </div>
     </center>
-    </p>
-    
-    </body>
-    </html>
-   
+</p>
+
+</body>
+</html>
