@@ -121,5 +121,5 @@ fieldset {
 }
 
 legend {
-    color: var(--textcolor);
+    color: var(--highlight2);
 }

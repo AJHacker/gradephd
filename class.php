@@ -11,9 +11,8 @@
     
 </script>
 </head>
-<body>
 <div class='topbar'><a class="button topRight" href="/user.php">Cancel</a></div>
-
+<body>
 <div class='container'>
 <center>
 <?php
