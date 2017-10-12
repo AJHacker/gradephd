@@ -59,7 +59,7 @@
                 echo "<center><h4>You're not logged in. <a href = '/login.php'>Log in to save your grades</a></h4></center>";
             }
         } else {
-            echo "<center>Currently viewing the syllabus for $class_name taught by $prof for the $semester semester<br></center>";
+            echo "<center>Currently viewing the syllabus for $class_name taught by $prof for the $semester semester<br> </center>";
         }
 
         //Homework
