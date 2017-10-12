@@ -21,7 +21,7 @@
     </center>
 </div>
 <center>
-<div class='plotContainer' style='text-align: center; width: 100%;'>
+<div class='plotContainer' style='text-align: center;'>
     <center>
         <h3>Your one stop shop for all grade predicting needs</h3>
     </center>

@@ -47,9 +47,9 @@ function yesorno(a){
         <label id='repassLabel' style="visibility: hidden;">Repeat Password: </label><br>
     </div>
     <div class="right">
-        <input class = "textinput" name = "email" id="email" type="text" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}"></input><br>
-        <input class = "textinput" name = "pass" id="pass" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}"></input></br>
-        <input class = "textinput" name = "repass" id="repass" type="password" pattern="[a-zA-Z0-9!@#$%^*_|]{1,25}" style="visibility: hidden;"></input></br>
+        <input class = "textinput" name = "email" id="email" type="text" pattern="[a-zA-Z0-9!@#$%^-*_|]{1,25}"></input><br>
+        <input class = "textinput" name = "pass" id="pass" type="password" pattern="[a-zA-Z0-9!@#$%^-*_|]{1,25}"></input></br>
+        <input class = "textinput" name = "repass" id="repass" type="password" pattern="[a-zA-Z0-9!@#$%^-*_|]{1,25}" style="visibility: hidden;"></input></br>
     </div>
     <center><input class = "button" type="submit" value="Hello Sir?" style="position: relative; top: 150px;"></center>
   </form>

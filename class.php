@@ -84,7 +84,7 @@
                 Professor: <br>
             </div>
             <div class='right'>
-                <input class = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required>
+                <input class = 'textinput' type='text' name='coursenum' placeholder='18-100' pattern='[a-zA-Z0-9!@#$%^-*_|]{1,25}' required>
                 <br>
                 
                 <select class='textinput' name='semester'>
@@ -96,7 +96,7 @@
                     <option value='S20'>S20</option>
                 </select>
                 <br>
-                <input type='text' class='textinput' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^*_|]{1,25}' required>
+                <input type='text' class='textinput' name='prof' placeholder='Sullivan' pattern='[a-zA-Z0-9!@#$%^-*_|]{1,25}' required>
                 <br>
             </div>
             <br>
