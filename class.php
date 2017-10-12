@@ -3,16 +3,16 @@
     
 ?>
 <html>
-<link rel="stylesheet" href="styles/global.css">
 <head>
+<link rel="stylesheet" href="styles/global.css">
 <script type="text/javascript">
 
 
     
 </script>
 </head>
-<div class='topbar'><a class="button topRight" href="/user.php">Cancel</a></div>
 <body>
+<div class='topbar'><a class="button topRight" href="/user.php">Cancel</a></div>
 <div class='container'>
 <center>
 <?php
