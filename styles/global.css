@@ -118,11 +118,10 @@ td {
 }
 
 fieldset {
-    background-color: var(--background2);
-    color: var(--alttextcolor);
+    color: var(--textcolor);
     text-align: left;
 }
 
 legend {
-    color: var(--highlight2);
+    color: var(--textcolor);
 }

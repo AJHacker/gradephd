@@ -494,7 +494,6 @@
     ?>
     </center>
     </div>
-</p>
 
 </body>
 </html>
