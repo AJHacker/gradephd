@@ -19,7 +19,7 @@
     <center>
         <h1>Welcome To Grade PHD</h1>
     </center>
-</div class='container'>
+</div class='plotContainer' style='text-align: center;'>
     <center>
         <h3>Your one stop shop for all grade predicting needs</h3>
     </center>
@@ -238,7 +238,7 @@
 
         //Syllabus Info
         echo "
-        <div class='container' id='metricsDiv'>
+        <div class='plotContainer' id='metricsDiv'>
             This class is graded according to the following:<br>";
 
             echo "<table>";
@@ -1352,7 +1352,7 @@
 
 
         echo "<center><a class='button' href = '/interpret.php'>How to read this graph</a></center>
-        <div class='container' id = 'gradesDiv'><center><h1>Current Grades</h1></center>
+        <div class='plotContainer' id = 'gradesDiv'><center><h1>Current Grades</h1></center>
             <form method = 'POST' action='/save.php'>";
 
             echo_field($hw,'Homeworks');
