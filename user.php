@@ -74,7 +74,7 @@
     $email = $_SESSION['verifiedUser'];
 	echo "<center>Welcome to GradePHD, ".$email."</center>";
     ?></h1>
-    <a class='button topRight' href='/index.php?logout=1'>Sign Out</a>
+    <a class='button topRight' style='position: absolute; top: 0; right:0;' href='/index.php?logout=1'>Sign Out</a>
 </div>
 <div class="container">
 <?php
@@ -105,8 +105,8 @@
 	    	echo "<td>".$c[2]."</td>";
 	    	echo "<td>".$c[1]."</td>";
 	    	echo "<td>".$c[0]."</td>";
-	    	echo "<td><a class='button' style='padding: 2px;' href='/plot.php?class=$class'>View</a></td>";
-	    	echo "<td><a class='button' style='padding: 2px;' href='/remove.php?class=$class'>Remove</a></td>";
+	    	echo "<td><a class='tableButton' style='padding: 2px;' href='/plot.php?class=$class'>View</a></td>";
+	    	echo "<td><a class='tableButton' style='padding: 2px;' href='/remove.php?class=$class'>Remove</a></td>";
 	    }
 	    echo "</tr>";
 	}

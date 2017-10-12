@@ -22,6 +22,15 @@
     cursor: pointer;
 }
 
+.tableButton {
+    border:none;
+    color: var(--textcolor);
+    cursor: pointer;
+}
+.tableButton:hover {
+    color: var(--background2);
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -106,7 +115,11 @@ td {
 }
 
 fieldset {
-    background-color: LightSlateGray;
-    color: white;
+    background-color: var(--background2);
+    color: var(--alttextcolor);
     text-align: left;
+}
+
+legend {
+    color: var(--textcolor);
 }

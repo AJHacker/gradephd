@@ -13,8 +13,9 @@
 </head>
 <body>
 <div class='topbar'><a class="button topRight" href="/user.php">Cancel</a></div>
+
+<div class='container'>
 <center>
-    <div class='container'>
 <?php
 
     //Initiate Session User Variable and Class Variables
@@ -150,9 +151,11 @@
             }
         }
 
-        function echoFieldset($legend,$abbrev) {
+        function echoFieldset($legend,$abbrev,$misc) {
             echo "<fieldset>
-                <legend>$legend</legend>
+                <legend>$legend</legend>";
+            if ($misc) echo "Name of category: <input type=text name='${abbrev}name'><br>";
+            echo "
                 How many? <input type=number name='${abbrev}num'  value = '0'><br>
                 Total percentage of final grade?  <input type=number name='${abbrev}percent' value = '0'>%<br>
                 <input value='same' name = '${abbrev}weight' type='radio' checked>
@@ -172,15 +175,16 @@
         echo "
             <fieldset>
                 <legend>Final</legend>
-                Is there a final? <input type='radio' name='fnum' value = '1'>Yes
-                                  <input type='radio' name='fnum' value = '0' checked>No
+                Is there a final?<br>
+                <input type='radio' name='fnum' value = '1'>Yes
+                <input type='radio' name='fnum' value = '0' checked>No<br>
                 Total percentage of final grade?  <input type=number name='fpercent' value = '0'>%
             </fieldset>";
-        echoFieldset("Other 1 (optional)", "misc1");
-        echoFieldset("Other 2 (optional)", "misc2");
-        echoFieldset("Other 3 (optional)", "misc3");
+        echoFieldset("Other 1 (optional)", "misc1", true);
+        echoFieldset("Other 2 (optional)", "misc2", true);
+        echoFieldset("Other 3 (optional)", "misc3", true);
         echo "
-        <input type='submit' value='Submit'>
+        <input class='button' type='submit' value='Submit'>
         </form>
         ";
     
@@ -493,8 +497,8 @@
     }
 
     ?>
-    </div>
     </center>
+    </div>
 </p>
 
 </body>
