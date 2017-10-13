@@ -239,7 +239,7 @@
 
         //Syllabus Info
         echo "
-        <div id='metricsDiv' style='text-align:left;'>
+        <div id='metricsDiv' style='text-align:left;left:10%;'>
             This class is graded according to the following:<br>";
 
             echo "<table>";
