@@ -264,10 +264,10 @@
                 echo "</td></tr>";
             }
         }
-        echo "</table></div>";
+        echo "</table></div><br><br>";
 
         if (!$syl_only && !$search)
-            echo '<div id="predictor" style="display:inline-block;position:absolute;left:20%;width:60%;height:60%;margin:auto;"></div>';
+            echo '<div id="predictor" style="position:relative;left:20%;width:60%;"></div>';
 
     ?>
 
@@ -1276,6 +1276,7 @@
       //   font: {size: 16},
       //   yref: 'paper'
       // }
+      height:500,
       xaxis: {
         dtick: 1
       },
@@ -1373,7 +1374,7 @@
 
 
 
-            echo "<input class='button' type='submit' value = 'Save Grades'>
+            echo "<br><br><input class='button' type='submit' value = 'Save Grades'>
             </form>
         </div>";
     }
