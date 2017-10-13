@@ -239,7 +239,7 @@
 
         //Syllabus Info
         echo "
-        <div id='metricsDiv'>
+        <div id='metricsDiv' style='text-align:left;'>
             This class is graded according to the following:<br>";
 
             echo "<table>";
@@ -267,7 +267,7 @@
         echo "</table></div><br><br>";
 
         if (!$syl_only && !$search)
-            echo '<div id="predictor" style="position:relative;left:20%;width:60%;"></div>';
+            echo '<div id="predictor" style="position:relative;left:10%;width:80%;"></div>';
 
     ?>
 
@@ -1355,7 +1355,7 @@
         if ($GA===null) echo "fuck\n";
 
 
-        echo "<center><br><br><a class='button' href = '/interpret.php'>How to read this graph</a></center>
+        echo "<center><br><br><a class='button' href = '/interpret.php'>How to read this graph</a></center><br><br><br>
         <div id = 'gradesDiv'><center><h1>Current Grades</h1></center>
             <form method = 'POST' action='/save.php'>";
 
@@ -1410,6 +1410,7 @@
 
 
     ?>
+    <br><br><br>
 </div>
 </body>
 
